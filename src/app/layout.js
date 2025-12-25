@@ -30,9 +30,12 @@ const geistMono = localFont({
 
 /* ------------------------------------------------------
    ⭐ FULL SITE-WIDE SEO — BEST SETTINGS FOR RANKING
-------------------------------------------------------- */
+-
+------------------------------------------------------ */
 export const metadata = {
-  metadataBase: new URL("https://www.webxartist.com"),
+  verification: {
+    google: "xyvHPQW3Gi3HzvFtrTwRk5s3SG_VZvbE1o3z5C_Ag6I",
+  },
 
   title: {
     default:
