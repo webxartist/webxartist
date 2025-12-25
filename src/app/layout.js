@@ -5,10 +5,10 @@ import Footer from "./Components/Footer";
 import Letconnect from "./Components/Letconnect";
 import { Poppins } from "next/font/google";
 
-// Load Poppins font from Google Fonts
+// Load Poppins font
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["100"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
   variable: "--font-poppins",
   display: "swap",
 });
@@ -28,41 +28,85 @@ const geistMono = localFont({
   display: "swap",
 });
 
-// ✅ Define metadata for SEO (using Metadata API)
+/* ------------------------------------------------------
+   ⭐ FULL SITE-WIDE SEO — BEST SETTINGS FOR RANKING
+------------------------------------------------------- */
 export const metadata = {
-  title: "Webxartist | Leading Web Development & Design Agency",
+  metadataBase: new URL("https://www.webxartist.com"),
+
+  title: {
+    default:
+      "WebXArtist | Web Development, Branding & Digital Marketing Agency",
+    template: "%s | WebXArtist",
+  },
+
   description:
-    "Webxartist provides expert website development, graphic design, video editing, and logo design services. Our premium solutions help businesses achieve their digital goals. We provide Brand Identity and much more.",
-  keywords:
-    "webxartist, website development, logo design, graphic design, video editing, digital marketing, branding services, custom websites, digital transformation, SEO services, Brand Identity, Best software Agency, Best Websites, Web Service, Webdevelopment, Affordable Price, Website Creation",
+    "WebXArtist is a professional web development, branding, digital marketing, SEO, and graphic design agency delivering custom modern digital solutions worldwide.",
+
+  keywords: [
+    "WebXArtist",
+    "website development",
+    "branding services",
+    "digital marketing",
+    "SEO services",
+    "logo design",
+    "web design agency",
+    "video editing",
+    "React websites",
+    "Next.js websites",
+  ],
+
   robots: "index, follow",
+
   openGraph: {
     type: "website",
-    url: "https://www.webxartist.com",
-    title: "Webxartist | Leading Web Development & Design Agency",
+    title: "WebXArtist | Modern Web Development & Branding Agency",
     description:
-      "Webxartist provides expert website development, graphic design, video editing, and logo design services. Our premium solutions help businesses achieve their digital goals.",
+      "We create high-performance websites, professional branding, SEO-friendly digital solutions, and marketing strategies.",
+    siteName: "WebXArtist",
+    locale: "en_US",
+    url: "https://www.webxartist.com",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Webxartist - Professional Web Development and Design Services",
+        alt: "WebXArtist - Web Development & Branding Agency",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Webxartist | Leading Web Development & Design Agency",
+    title: "WebXArtist | Leading Web Development & Branding Services",
     description:
-      "Expert website development, logo design, graphic design & digital branding services.",
+      "Professional website development, digital marketing, branding, SEO and modern digital solutions.",
     images: ["/twitter-image.png"],
+    creator: "@webxartist",
   },
+
   alternates: {
     canonical: "https://www.webxartist.com",
   },
+
   icons: {
     icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+};
+
+/* ------------------------------------------------------
+   ⭐ JSON-LD SCHEMA FOR GOOGLE SEO BOOST
+------------------------------------------------------- */
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "WebXArtist",
+  url: "https://www.webxartist.com",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://www.webxartist.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string",
   },
 };
 
@@ -72,6 +116,14 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
+      <head>
+        {/* JSON-LD – Google will read this */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      </head>
+
       <body className="bg-white text-black">
         <Navbar />
         {children}

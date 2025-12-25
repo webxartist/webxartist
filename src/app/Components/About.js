@@ -1,117 +1,159 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const About = () => {
-  const [inView, setInView] = useState(false);
-  const [ref, setRef] = useState(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref) {
-      observer.observe(ref);
-    }
-
-    return () => {
-      if (ref) {
-        observer.unobserve(ref);
-      }
-    };
-  }, [ref]);
-
   return (
-    <div
-      id="about-section"
-      ref={setRef}
-      className="w-full flex flex-col font-poppins font-extrabold items-center p-6 bg-gradient-to-r from-blue-50 to-gray-100 overflow-hidden"
-    >
-      <motion.h2
-        className="text-4xl font-bold mb-10 text-center text-gray-800 "
-        initial={{ opacity: 0, y: -30 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        About WebXArtist
-      </motion.h2>
+    <>
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 py-24 font-poppins overflow-hidden bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
+        {/* Background Glow Elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 left-10 w-72 h-72 bg-pink-500/20 blur-3xl rounded-full animate-pulse" />
+          <div className="absolute bottom-0 right-10 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
+        </div>
 
-      {/* Image and Content Section */}
-      <div className="w-full flex flex-col lg:flex-row lg:justify-between items-center overflow-hidden">
-        {/* Left Side: Image */}
-        <motion.div
-          className="w-full lg:w-1/2 flex justify-center mb-8 lg:mb-0"
-          initial={{ opacity: 0, x: -50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+        {/* Header */}
+        <motion.h2
+          className="text-5xl md:text-6xl font-extrabold text-center mb-16 z-10"
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
         >
-          <img
-            src="/about.png"
-            alt="About WebXArtist"
-            width={450}
-            height={450}
-            className="rounded-lg shadow-xl border-4 border-blue-300"
-          />
-        </motion.div>
+          About{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-violet-500">
+            WebXArtist
+          </span>
+        </motion.h2>
 
-        {/* Right Side: Content */}
-        <motion.div
-          className="w-full lg:w-1/2 px-6 flex flex-col justify-center"
-          initial={{ opacity: 0, x: 50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        >
-          <h3 className="text-3xl text-gray-700 mb-6 text-center lg:text-left font-semibold">
-            Transforming Ideas into Digital Success
-          </h3>
+        {/* Content */}
+        <div className="relative z-10 w-full flex flex-col lg:flex-row items-center gap-12 max-w-6xl">
+          {/* Left: Image */}
+          <motion.div
+            className="w-full lg:w-1/2 flex justify-center"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="relative w-[650px] h-[650px] rounded-3xl shadow-2xl border-4 border-white/20 overflow-hidden hover:scale-105 transition-transform duration-500">
+              <Image
+                src="/about.png"
+                alt="About WebXArtist"
+                fill
+                className="object-contain rounded-3xl"
+                priority
+              />
+            </div>
+          </motion.div>
 
-          <p className="text-gray-600 mb-6 leading-relaxed text-center lg:text-left">
-            WebXArtist is a leading web development, graphic design, and video
-            editing agency, helping businesses establish a strong online
-            presence with visually compelling and strategically designed digital
-            assets. Whether you need a stunning website, brand identity, or
-            captivating video content, we bring innovation and expertise to
-            every project.
-          </p>
+          {/* Right: Text */}
+          <motion.div
+            className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 mb-4">
+              Transforming Ideas into Digital Success
+            </h3>
 
-          <h3 className="text-2xl font-bold mb-4 text-gray-800">
-            Our Expertise
-          </h3>
-          <ul className="list-none text-gray-700 space-y-4">
-            <li className="flex items-center">
-              <span className="text-blue-500 text-xl mr-3">✔</span>
-              Custom Website Development–Optimized for SEO, speed, and user
-              experience.
-            </li>
-            <li className="flex items-center">
-              <span className="text-blue-500 text-xl mr-3">✔</span>
-              Graphic Design & Branding – Logos, banners, social media
-              creatives, and marketing materials.
-            </li>
-            <li className="flex items-center">
-              <span className="text-blue-500 text-xl mr-3">✔</span>
-              Editing & Motion Graphics – Engaging content to boost audience
-              interaction and conversions.
-            </li>
-            <li className="flex items-center">
-              <span className="text-blue-500 text-xl mr-3">✔</span>
-              E-Commerce Solutions – From Shopify to custom stores, ensuring
-              seamless customer experiences.
-            </li>
-          </ul>
-        </motion.div>
-      </div>
+            <p className="text-gray-300 leading-relaxed text-lg">
+              WebXArtist is a leading web development, branding, and digital
+              design agency delivering stunning websites, powerful branding, and
+              creative content. We help businesses build strong online
+              identities that drive engagement, conversions, and long-term
+              growth.
+            </p>
 
-      {/* Call to Action */}
-    </div>
+            <h4 className="text-2xl md:text-3xl font-semibold text-white/90 mt-6">
+              Our Expertise
+            </h4>
+
+            <ul className="list-none text-gray-300 space-y-4 text-lg">
+              <li className="flex items-start gap-3">
+                <span className="text-orange-400 text-2xl mt-1">✔</span>
+                Custom Website Development – SEO-optimized, fast, and
+                mobile-friendly.
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-400 text-2xl mt-1">✔</span>
+                Graphic Design & Branding – Logos, banners, creatives, and
+                promotional materials.
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-400 text-2xl mt-1">✔</span>
+                Video Editing & Motion Graphics – Eye-catching content for
+                YouTube, ads, and social media.
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-orange-400 text-2xl mt-1">✔</span>
+                E-Commerce Development – Shopify, custom stores, and payment
+                integrations.
+              </li>
+            </ul>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FIXED SEO CONTENT SECTION */}
+      <section className="px-6 py-20 bg-white text-gray-800 max-w-6xl mx-auto font-poppins leading-relaxed">
+        <h2 className="text-4xl font-bold mb-6 text-center">
+          Your Trusted Website Development & Branding Agency in Mumbai, Thane &
+          Mumbra
+        </h2>
+
+        <p className="text-lg mb-4">
+          WebXArtist is recognized as one of the most reliable and affordable
+          website development companies serving{" "}
+          <strong>Mumbai, Thane, Mumbra, Navi Mumbai, and across India</strong>.
+          We specialize in building modern, SEO-optimized websites that load
+          fast, look premium, and help businesses grow digitally.
+        </p>
+
+        <p className="text-lg mb-4">
+          Whether you're searching for{" "}
+          <strong>“best website developer in Mumbai”</strong>,{" "}
+          <strong>“affordable website designer in Thane”</strong>,{" "}
+          <strong>“professional web development agency in Mumbra”</strong> or{" "}
+          <strong>“top branding and digital marketing agency India”</strong>,
+          WebXArtist offers unmatched quality at the best pricing.
+        </p>
+
+        <h3 className="text-3xl font-semibold mt-10 mb-4">
+          Why WebXArtist Is the Best Choice?
+        </h3>
+
+        <ul className="list-disc pl-5 space-y-3 text-lg">
+          <li>Affordable pricing without compromising high-end quality</li>
+          <li>SEO-friendly websites that rank faster on Google</li>
+          <li>Creative brand identity and premium UI/UX</li>
+          <li>Fast delivery and dedicated support</li>
+          <li>
+            Trusted by businesses, institutes, brands and startups in India
+          </li>
+        </ul>
+
+        <h3 className="text-3xl font-semibold mt-10 mb-4">Service Locations</h3>
+
+        <ul className="list-disc pl-5 space-y-2 text-lg">
+          <li>Mumbai</li>
+          <li>Thane</li>
+          <li>Mumbra</li>
+          <li>Navi Mumbai</li>
+          <li>Pune</li>
+          <li>Pan India (Online Projects)</li>
+        </ul>
+
+        <p className="mt-6 text-lg">
+          At WebXArtist, we merge creativity with technology to help brands grow
+          online. From website building to branding, SEO, design, and marketing
+          — we deliver everything your business needs to stand out.
+        </p>
+      </section>
+    </>
   );
 };
 

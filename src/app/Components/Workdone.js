@@ -1,70 +1,81 @@
-// components/WorkDone.js
 "use client";
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const WorkDone = () => {
-  const [counter1, setCounter1] = useState(0);
-  const [counter2, setCounter2] = useState(0);
-  const [counter3, setCounter3] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false });
+  const isInView = useInView(ref, { once: true });
 
-  // Counter Animation logic
+  const statsData = [
+    { label: "Websites Built", target: 250, symbol: "+" },
+    { label: "Brand Identities", target: 180, symbol: "+" },
+    { label: "Startup Growth", target: 4, symbol: "x" },
+    { label: "Projects Delivered", target: 500, symbol: "+" },
+  ];
+
+  const [counters, setCounters] = useState(statsData.map(() => 0));
+
   useEffect(() => {
+    let interval;
     if (isInView) {
-      const interval = setInterval(() => {
-        if (counter1 < 200) setCounter1((prev) => prev + 1);
-        if (counter2 < 350) setCounter2((prev) => prev + 1);
-        if (counter3 < 3) setCounter3((prev) => prev + 0.1);
-      }, 20);
-      return () => clearInterval(interval);
+      interval = setInterval(() => {
+        setCounters((prev) =>
+          prev.map((val, i) => {
+            if (val < statsData[i].target) {
+              const increment =
+                statsData[i].symbol === "x"
+                  ? 0.02
+                  : Math.ceil(statsData[i].target / 100);
+              return Math.min(val + increment, statsData[i].target);
+            }
+            return val;
+          })
+        );
+      }, 25);
     }
-  }, [isInView, counter1, counter2, counter3]);
+    return () => clearInterval(interval);
+  }, [isInView]);
 
   return (
-    <div className="navbar relative w-full text-black flex items-center justify-center  py-10  font-poppins font-extrabold">
+    <section className="relative w-full py-28 bg-gradient-to-tr from-blue-50 to-purple-50 overflow-hidden font-poppins">
+      {/* Background Shapes */}
+      <motion.div
+        className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-gradient-to-tr from-blue-300 to-purple-300 opacity-20 blur-3xl animate-pulse"
+        animate={{ scale: [1, 1.1, 1] }}
+        transition={{ repeat: Infinity, duration: 8 }}
+      />
+      <motion.div
+        className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-gradient-to-tr from-pink-300 to-yellow-300 opacity-20 blur-3xl animate-pulse"
+        animate={{ scale: [1, 1.05, 1] }}
+        transition={{ repeat: Infinity, duration: 8 }}
+      />
+
       <div
         ref={ref}
-        className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+        className="relative z-10 max-w-6xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12"
       >
-        {/* Circle 1 */}
-        <motion.div
-          className="flex flex-col items-center justify-center rounded-full w-40 h-40 bg-gradient-to-r from-blue-100 to-gray-100 text-black shadow-lg transform transition-transform duration-300 hover:scale-105"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.8 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-4xl font-bold">{Math.floor(counter1)}+</span>
-          <span className="text-lg">Websites Built</span>
-        </motion.div>
-
-        {/* Circle 2 */}
-        <motion.div
-          className="flex flex-col items-center justify-center rounded-full w-40 h-40 bg-gradient-to-r from-blue-100 to-gray-100 shadow-lg transform transition-transform duration-300 hover:scale-105"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.8 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-4xl font-bold">{Math.floor(counter2)}+</span>
-          <span className="text-lg">Brand Identities</span>
-        </motion.div>
-
-        {/* Circle 3 */}
-        <motion.div
-          className="flex flex-col items-center justify-center rounded-full w-40 h-40 bg-gradient-to-r from-blue-100 to-gray-100 shadow-lg transform transition-transform duration-300 hover:scale-105"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isInView ? 1 : 0, scale: isInView ? 1 : 0.8 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-4xl font-bold text-center">
-            {counter3.toFixed(1)}x
-          </span>
-          <span className="text-lg text-center">Your Startup Growth</span>
-        </motion.div>
+        {statsData.map((stat, i) => (
+          <motion.div
+            key={i}
+            className="flex flex-col items-center justify-center p-8 rounded-3xl bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl hover:scale-105 transition-transform duration-500"
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 60 }}
+            transition={{ duration: 0.8, delay: i * 0.2, ease: "easeOut" }}
+          >
+            <span className="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
+              {stat.symbol === "x"
+                ? counters[i].toFixed(1)
+                : Math.floor(counters[i])}
+              {stat.symbol}
+            </span>
+            <span className="mt-3 text-lg md:text-xl font-semibold text-gray-800 text-center">
+              {stat.label}
+            </span>
+          </motion.div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 

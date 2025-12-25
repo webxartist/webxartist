@@ -1,121 +1,152 @@
 "use client";
+
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ShieldCheck, Star, Users } from "lucide-react";
 
 const Hero = () => {
   const [currentCard, setCurrentCard] = useState(0);
 
-  // Automatically rotate cards every 4 seconds
+  const cardImages = [
+    "/hero-1.png",
+    "/hero-2.png",
+    "/hero-3.png",
+    "/hero-4.png",
+  ];
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentCard((prevCard) => (prevCard + 1) % 3); // Cycle through 3 cards
-    }, 4000);
-
+      setCurrentCard((prev) => (prev + 1) % cardImages.length);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
-  const cardImages = [
-    "/hero1.png", // Replace with your actual images
-    "/hero2.png",
-    "/hero3.png",
-  ];
-
   return (
-    <div className="relative bg-gradient-to-r from-blue-200 to-gray-100 pt-20 lg:pt-20 pb-16 px-6 md:px-12 lg:px-24 xl:px-36 flex flex-col md:flex-row justify-between items-center overflow-hidden font-poppins ">
-      {/* Left Side: Hero Content */}
-      <motion.div
-        className="md:w-1/2 space-y-6 relative z-10 text-center lg:text-start"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.0, ease: "easeInOut" }} // Smooth on-load transition
-      >
-        {/* Code symbol moved to the start of content */}
-        <div className="relative top-4 left-0 text-red-600 text-4xl font-bold animate-pulse">
-          &lt;/&gt;
-        </div>
+    <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white font-poppins pt-28 pb-20 px-6 sm:px-10 lg:px-20">
+      {/* Glowing background circles */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute w-[350px] h-[350px] bg-pink-500/20 blur-3xl rounded-full -top-10 -left-10 animate-spin-slow"></div>
+        <div className="absolute w-[400px] h-[400px] bg-purple-500/20 blur-3xl rounded-full -bottom-10 -right-10 animate-spin-slower"></div>
+      </div>
 
-        <motion.h1
-          className="text-4xl  lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-500 leading-tight"
-          style={{
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-          }}
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-16">
+        {/* LEFT SECTION */}
+        <motion.div
+          className="md:w-1/2 space-y-8 text-center md:text-left"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
         >
-          Let’s Show Your Brandness with <br />
-          WebXArtist!
-        </motion.h1>
+          <motion.div
+            className="text-6xl font-extrabold text-pink-400 drop-shadow-xl"
+            initial={{ rotate: -15, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+          >
+            &lt;/&gt;
+          </motion.div>
 
-        <motion.p
-          className="text-xl lg:text-2xl text-gray-600 font-bold"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          We provide cutting - edge web development, design, and marketing
-          services to elevate your brand.
-        </motion.p>
+          <motion.h1
+            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            Build a Brand That
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-violet-500">
+              {" "}
+              People Trust
+            </span>
+            <br />
+            With <span className="text-white">WebXArtist</span>
+          </motion.h1>
 
-        <Link href="https://www.instagram.com/webxartist2024/" target="_blank">
-          <motion.button
-            className="px-6 py-3 mt-2 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-700 text-white font-semibold rounded-lg shadow-lg hover:from-purple-500 hover:via-pink-400 hover:to-purple-600 transition duration-300"
+          <motion.p
+            className="text-gray-300 text-lg sm:text-xl leading-relaxed max-w-lg mx-auto md:mx-0"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            Premium Websites • Branding • Social Media • Growth
+            <br />
+            We transform ideas into powerful digital presence that attracts
+            customers & builds trust.
+          </motion.p>
+
+          {/* TRUST BADGES */}
+          <motion.div
+            className="flex items-center justify-center md:justify-start gap-6 mt-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}
+            transition={{ delay: 0.8 }}
           >
-            Get On Instagram
-          </motion.button>
-        </Link>
-      </motion.div>
-
-      {/* Right Side: Rotating 3D Cards with Improved Styling */}
-      <motion.div
-        className="md:w-1/2 mt-12 md:mt-0 relative h-[24rem] flex justify-center items-center"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2, duration: 1.0, ease: "easeInOut" }}
-      >
-        <div className="relative w-80 h-full mx-auto">
-          {cardImages.map((imgSrc, index) => (
-            <div
-              key={index}
-              className={`absolute w-full h-full transition-opacity duration-1000 transform-gpu rounded-2xl shadow-xl overflow-hidden ${
-                currentCard === index
-                  ? "opacity-100 scale-100 rotate-0 shadow-2xl"
-                  : "opacity-0 scale-90 rotate-6"
-              }`}
-              style={{ transitionTimingFunction: "ease-in-out" }}
-            >
-              <img
-                src={imgSrc}
-                alt={`Card ${index + 1}`}
-                fill="true"
-                className="rounded-2xl object-contain"
-              />
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-lg border border-white/20">
+              <ShieldCheck className="text-green-400 w-5 h-5" />
+              <span className="text-sm">Trusted Agency</span>
             </div>
-          ))}
-        </div>
-      </motion.div>
 
-      {/* Stylish Background Elements, Avoiding Text and Cards */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        {/* Repositioned geometric shapes and icons to avoid overlapping with content */}
-        <div className="absolute top-10 left-20 w-8 h-8 bg-blue-500 rounded-full shadow-lg"></div>
-        <div className="absolute top-2/4 left-12 right-22 w-6 h-6 bg-purple-700 rounded-full shadow-lg"></div>
-        <div className="absolute bottom-2 left-10 w-12 h-12 bg-fuchsia-800 rounded-lg shadow-lg"></div>{" "}
-        {/* Moved red icon away from WhatsApp button */}
-        <div className="absolute bottom-2 right-28  w-12 h-12 bg-green-500 rotate-45 shadow-lg"></div>
-        <div className="absolute bottom-2 right-28 text-gray-300 text-4xl">
-          🐞
-        </div>
-        <div className="absolute top-3/4 right-16 text-gray-300 text-4xl transform rotate-45">
-          *
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-lg border border-white/20">
+              <Star className="text-yellow-400 w-5 h-5" />
+              <span className="text-sm">5-Star Work</span>
+            </div>
+
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-lg border border-white/20">
+              <Users className="text-blue-400 w-5 h-5" />
+              <span className="text-sm">300+ Clients</span>
+            </div>
+          </motion.div>
+
+          {/* CTA BUTTON */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+          >
+            <Link
+              href="https://www.instagram.com/webxartist2024/"
+              target="_blank"
+              className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-500 to-violet-600 rounded-2xl text-lg font-semibold shadow-[0_0_30px_rgba(236,72,153,0.4)] hover:shadow-[0_0_45px_rgba(236,72,153,0.6)] transition-all duration-300"
+            >
+              Connect On Instagram
+              <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* RIGHT SECTION - CARD SLIDER */}
+        <div className="md:w-1/2 flex justify-center relative">
+          <div className="relative w-[300px] h-[280px] sm:w-[380px] sm:h-[360px] md:w-[450px] md:h-[420px] lg:w-[520px] lg:h-[480px] rounded-3xl overflow-hidden shadow-2xl border-2 border-white/10 backdrop-blur-xl">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={currentCard}
+                src={cardImages[currentCard]}
+                alt="WebXArtist Hero"
+                initial={{ opacity: 0, scale: 0.9, rotateY: -30 }}
+                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                exit={{ opacity: 0, scale: 0.9, rotateY: 30 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </AnimatePresence>
+          </div>
+
+          {/* Floating Glow */}
+          <motion.div
+            className="absolute -z-10 w-64 h-64 bg-pink-500/30 blur-2xl rounded-full"
+            animate={{
+              x: [0, 30, -30, 0],
+              y: [0, 20, -20, 0],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -28,7 +29,6 @@ const faqs = [
     answer:
       "We deliver graphics in multiple formats, including PNG, JPG, SVG, and PDF.",
   },
-  // New Pricing Questions
   {
     question: "What is the starting price for a website logo design?",
     answer:
@@ -60,48 +60,79 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleAnswer = (index) => {
-    setOpenIndex(openIndex === index ? null : index); // Toggle the answer visibility
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <div className="pb-4  pt-4 bg-gradient-to-r from-blue-50 to-gray-100">
-      <div className="navbar max-w-2xl  text-white mx-auto p-6  font-poppins font-extrabold">
-        <h2 className="text-2xl font-bold mb-6 text-center">
-          Most Asked Questions
-        </h2>
-        <div className="space-y-4 ">
+    <section className="relative bg-gradient-to-br from-blue-50 to-gray-100 py-16 overflow-hidden font-poppins">
+      {/* Background shapes */}
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          className="absolute -top-10 -left-20 w-40 h-40 bg-blue-400/20 blur-3xl rounded-full animate-pulse"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ repeat: Infinity, duration: 6 }}
+        />
+        <motion.div
+          className="absolute bottom-16 right-16 w-48 h-48 bg-pink-500/20 blur-3xl rounded-full animate-pulse"
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{ repeat: Infinity, duration: 6 }}
+        />
+      </div>
+
+      <div className="max-w-3xl mx-auto relative z-10">
+        <motion.h2
+          className="text-5xl md:text-6xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 drop-shadow-lg"
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          Frequently Asked Questions
+        </motion.h2>
+
+        <div className="space-y-6">
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`rounded-md overflow-hidden  shadow-lg transition duration-200 ${
-                openIndex === index
-                  ? "border-b-4 border-orange-500"
-                  : "border border-orange-500"
-              }`}
+              className="relative rounded-3xl bg-black/20 backdrop-blur-md border-l-8 border-purple-500 shadow-2xl overflow-hidden"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
               <button
                 onClick={() => toggleAnswer(index)}
-                className="w-full text-left p-4 bg-gray-100 hover:bg-gray-200 transition duration-200 flex justify-between items-center"
+                className="w-full text-left p-6 flex justify-between items-center hover:bg-black/10 transition-colors duration-300"
               >
-                <h3 className="font-semibold text-black">{faq.question}</h3>
-                {/* Dropdown arrow */}
-                <span
-                  className={`text-orange-500 transform transition-transform ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
+                <h3 className="text-xl md:text-2xl font-bold text-white">
+                  {faq.question}
+                </h3>
+                <motion.span
+                  className="text-purple-400 text-2xl ml-4"
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
                 >
                   ▼
-                </span>
+                </motion.span>
               </button>
-              {openIndex === index && (
-                <div className="p-4 bg-gray-50 text-black border-t border-gray-300">
-                  <p>{faq.answer}</p>
-                </div>
-              )}
-            </div>
+
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="p-6 bg-black/10 text-white border-t border-purple-500"
+                  >
+                    <p>{faq.answer}</p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

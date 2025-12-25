@@ -1,109 +1,107 @@
-"use client"; // Ensure this component is client-side
-
-import React from "react";
+"use client";
 import { motion } from "framer-motion";
 
-const GraphicDesignPricing = () => {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+const pricingData = [
+  {
+    title: "Basic Design",
+    price: "₹10,000 - ₹25,000",
+    description:
+      "Perfect for startups and personal projects. Simple yet effective designs.",
+    features: ["Logo Design", "Social Media Graphics", "Business Card Design"],
+    color: "from-blue-400 to-purple-500",
+  },
+  {
+    title: "Standard Branding",
+    price: "₹30,000 - ₹70,000",
+    description:
+      "Complete branding with custom logo, stationery, and social media kit.",
+    features: [
+      "Custom Logo & Brand Identity",
+      "Social Media Kit",
+      "Stationery Design",
+    ],
+    color: "from-pink-500 to-yellow-500",
+  },
+  {
+    title: "Premium Branding",
+    price: "₹75,000+",
+    description:
+      "High-end branding with custom illustrations, UI/UX, and complete strategy.",
+    features: [
+      "Complete Brand Strategy",
+      "Custom Illustrations",
+      "UI/UX Design for Web & Apps",
+    ],
+    color: "from-purple-600 to-pink-500",
+  },
+];
 
+export default function GraphicPricingOptimized() {
   return (
-    <div className="navbar min-h-screen  text-black py-12 px-6 font-poppins">
-      <div className="max-w-5xl mx-auto text-center">
+    <section className="relative w-full py-32 bg-gray-900 font-poppins overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 opacity-20 blur-3xl animate-pulse"></div>
+      <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-tr from-pink-600 to-yellow-500 opacity-20 blur-3xl animate-pulse"></div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 md:px-12 text-center">
         <motion.h2
-          className="text-4xl text-white font-bold mb-4"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          transition={{ duration: 0.5 }}
+          className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 mb-6"
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Every Design is Unique
+          Graphic Design Pricing
         </motion.h2>
+        <p className="text-gray-300 text-lg sm:text-xl mb-16 max-w-3xl mx-auto">
+          Every project is unique. These prices are indicative for the Thane
+          market. Contact us for a personalized quote.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {pricingData.map((plan, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="bg-gray-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-2xl transform transition-all hover:-translate-y-2"
+            >
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  {plan.title}
+                </h3>
+                <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 mb-4">
+                  {plan.price}
+                </p>
+                <p className="text-gray-300 mb-6">{plan.description}</p>
+                <ul className="text-gray-200 space-y-2">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <span className="text-green-400 font-bold">✔</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <button
+                className={`mt-6 py-3 rounded-xl font-bold text-white bg-gradient-to-r ${plan.color} hover:scale-105 transition-transform duration-300`}
+              >
+                Get Started
+              </button>
+            </motion.div>
+          ))}
+        </div>
+
         <motion.p
-          className="text-lg text-white mb-8"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          transition={{ duration: 0.5, delay: 0.1 }}
+          className="mt-16 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
-          There are many factors to consider when pricing a graphic design
-          project. Here are some average prices based on past projects. Your
-          project may vary, and we'll work with you to meet your budget.
+          Prices vary depending on project complexity. We customize each quote
+          to fit your design needs and budget.
         </motion.p>
       </div>
-
-      <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        {/* Basic Design */}
-        <motion.div
-          className="bg-gradient-to-r from-blue-200 to-gray-100 p-6 rounded-lg shadow-lg hover:scale-105 transition-transform"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <h3 className="text-2xl font-bold text-purple-900 mb-3">
-            Basic Design
-          </h3>
-          <p className="text-xl font-bold text-black"> $120 - $300</p>
-          <ul className="mt-4 font-semibold text-purple-900">
-            <li>- Logo Design</li>
-            <li>- Social Media Graphics</li>
-            <li>- Business Card Design</li>
-          </ul>
-        </motion.div>
-
-        {/* Standard Branding */}
-        <motion.div
-          className="bg-gradient-to-r from-blue-200 to-gray-100 p-6 rounded-lg shadow-lg hover:scale-105 transition-transform"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <h3 className="text-2xl font-bold text-purple-900 mb-3">
-            Standard Branding
-          </h3>
-          <p className="text-xl font-bold text-black">$360 - $850</p>
-          <ul className="mt-4 font-semibold text-purple-900">
-            <li>- Custom Logo & Brand Identity</li>
-            <li>- Social Media Kit</li>
-            <li>- Stationery Design</li>
-          </ul>
-        </motion.div>
-
-        {/* Premium Branding */}
-        <motion.div
-          className="bg-gradient-to-r from-blue-200 to-gray-100 p-6 rounded-lg shadow-lg hover:scale-105 transition-transform"
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <h3 className="text-2xl font-bold text-purple-900 mb-3">
-            Premium Branding
-          </h3>
-          <p className="text-xl font-bold text-black">$900 - $2,400+</p>
-          <ul className="mt-4 text-purple-900 font-semibold">
-            <li>- Complete Brand Strategy</li>
-            <li>- Custom Illustrations</li>
-            <li>- UI/UX Design for Web & Apps</li>
-          </ul>
-        </motion.div>
-      </div>
-
-      <div className="text-center mt-12">
-        <p className="text-white text-lg">
-          $$$ Looking for a budget-friendly option? We offer customized
-          solutions tailored to your needs.
-        </p>
-        <button className="mt-4 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-700 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:bg-yellow-400 transition">
-          Contact Us
-        </button>
-      </div>
-    </div>
+    </section>
   );
-};
-
-export default GraphicDesignPricing;
+}

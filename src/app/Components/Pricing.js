@@ -1,100 +1,122 @@
 "use client";
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const pricingData = [
   {
-    title: "Custom Website",
-    price: "$3,500 - $8,000",
+    title: "Basic Website",
+    price: "₹15,000 - ₹20,000",
     description:
-      "A fully custom website designed and built specifically for you. Multiple revisions during the design phase, lead to a polished and customized website. Custom code means a highly performant website with lightning-fast load times, strong security, and good SEO from the ground up.",
+      "A clean, responsive website perfect for small businesses or personal projects.",
     features: [
-      "Custom, unique design",
-      "Custom coded development",
-      "3-5 pages + blog/articles",
-      "No eCommerce functionality",
+      "Pre-designed layouts with minimal customization",
+      "3-5 pages",
+      "Basic SEO setup",
+      "Fast delivery",
     ],
+    color: "from-blue-400 to-purple-500",
   },
   {
-    title: "Custom eCommerce",
-    price: "$4,500 - $20,000+",
+    title: "Professional Business Website",
+    price: "₹25,000 - ₹50,000",
     description:
-      "A completely custom web application built using the MERN stack (MongoDB, Express, React, and Node.js) with Next.js for enhanced performance. Multiple design revisions ensure an optimized and user-friendly experience, tailored specifically for your business needs.",
+      "Custom-coded, modern websites with professional branding, smooth animations, and SEO optimization.",
     features: [
-      "Custom, unique design",
-      "Built with MERN stack & Next.js",
-      "3-5 pages + blog/articles",
-      "Fully scalable and secure",
+      "Custom design tailored to brand identity",
+      "Responsive & optimized for performance",
+      "5-10 pages with blog/articles",
+      "Analytics and SEO integration",
     ],
+    color: "from-pink-500 to-yellow-500",
   },
   {
-    title: "Awwwards-worthy",
-    price: "$20,000+",
+    title: "Premium eCommerce / Enterprise",
+    price: "₹1,00,000+",
     description:
-      "If you're truly serious about making an impact, we'll spend weeks refining every single element of your website. Unique interactions and animations coupled with stand-out design and every element painstakingly hand-coded leads to a website that will make waves.",
+      "High-end, fully customized eCommerce or enterprise solutions with advanced functionality and premium support.",
     features: [
-      "Extremely detailed and unique design",
+      "Custom MERN/Next.js stack",
       "Advanced animations & interactions",
-      "Optimized for high performance",
+      "Multiple integrations: payment, tracking, CRM",
+      "Unlimited pages and premium support",
     ],
+    color: "from-purple-600 to-pink-500",
   },
 ];
 
-export default function PricingComponent() {
+export default function Pricing() {
   return (
-    <div className="navbar min-h-screen  text-black py-20 px-5 sm:px-10 md:px-20 font-poppins">
-      <h2 className="text-center text-white text-4xl font-bold mb-10">
-        Every Project is Unique
-      </h2>
-      <p className="text-center max-w-3xl mx-auto text-lg text-gray-300 mb-16">
-        There are so many variables to consider when deciding how much to spend
-        on a website. We've tried to simplify it with these average prices:
-      </p>
+    <section className="w-full py-24 bg-gray-900 font-poppins">
+      <div className="max-w-7xl mx-auto px-6 text-center">
+        {/* Heading */}
+        <motion.h2
+          className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 mb-4"
+          initial={{ opacity: 0, y: -40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          Premium Web Solutions Pricing
+        </motion.h2>
 
-      <div className="grid md:grid-cols-3 gap-10">
-        {pricingData.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
-            className="bg-gradient-to-r from-blue-200 to-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:scale-105"
-          >
-            <h3 className="text-2xl font-bold text-purple-900">{item.title}</h3>
-            <p className="text-xl font-bold mt-2">{item.price}</p>
-            <p className="text-gray-600 font-semibold mt-4">
-              {item.description}
-            </p>
-            <ul className="mt-4 space-y-2">
-              {item.features.map((feature, i) => (
-                <li key={i} className="text-purple-900 font-semibold">
-                  • {feature}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
+        <motion.p
+          className="text-gray-300 text-lg max-w-2xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          Choose a plan that suits your business. These plans are crafted for
+          real market needs.
+        </motion.p>
+
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-3 gap-10">
+          {pricingData.map((plan, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="bg-gray-800 rounded-3xl p-8 border border-gray-700 hover:border-purple-400 transition-all duration-300"
+            >
+              {/* Popular Tag */}
+              {index === 1 && (
+                <div className="mb-4 w-fit mx-auto bg-yellow-400 text-gray-900 font-bold px-4 py-1 rounded-full text-sm">
+                  Most Popular
+                </div>
+              )}
+
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-white mb-2">
+                {plan.title}
+              </h3>
+
+              {/* Price */}
+              <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 mb-4">
+                {plan.price}
+              </p>
+
+              {/* Description */}
+              <p className="text-gray-300 mb-6">{plan.description}</p>
+
+              {/* Features */}
+              <ul className="text-gray-200 space-y-2 mb-6">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="text-green-400 font-bold">✔</span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Button */}
+              <button
+                className={`mt-auto py-3 w-full rounded-xl font-bold text-white bg-gradient-to-r ${plan.color} hover:scale-105 transition-transform duration-300`}
+              >
+                Get Started
+              </button>
+            </motion.div>
+          ))}
+        </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-        className="mt-20 text-center"
-      >
-        <h3 className="text-3xl font-semibold text-gray-300">$$$</h3>
-        <p className="text-white mt-2 max-w-xl mx-auto">
-          Want a lower budget? We can accommodate lower budgets! Skipping the
-          design phase, and using a prebuilt (but still custom coded) theme can
-          save significantly on the budget. Get in touch today and let's discuss
-          your project.
-        </p>
-        <button className="mt-6 px-6 py-3 bg-gradient-to-r from-purple-600 via-pink-500 to-purple-700 text-white font-bold rounded-lg hover:bg-yellow-600 transition">
-          Contact Us
-        </button>
-      </motion.div>
-    </div>
+    </section>
   );
 }
