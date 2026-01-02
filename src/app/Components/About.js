@@ -114,10 +114,11 @@ const About = () => {
         </p>
 
         <p className="text-lg mb-4">
-          Whether you're searching for{" "}
-          <strong>“best website developer in Mumbai”</strong>,{" "}
-          <strong>“affordable website designer in Thane”</strong>,{" "}
-          <strong>“professional web development agency in Mumbra”</strong> or{" "}
+          Whether you're searching for
+          <strong>“best website development agnecy in Mumbai”</strong>,
+          <strong>“website development agnecy in near me”</strong>,
+          <strong>“affordable website designer in Mumbra”</strong>,
+          <strong>“Web development agency in Mumbra”</strong> or
           <strong>“top branding and digital marketing agency India”</strong>,
           WebXArtist offers unmatched quality at the best pricing.
         </p>

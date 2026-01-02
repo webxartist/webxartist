@@ -14,11 +14,11 @@ export const metadata = {
   keywords: [
     "WebXArtist",
     "About WebXArtist",
-    "Website Development Agency",
-    "Digital Marketing",
-    "Meta Ads Expert",
-    "Web Development Institute",
-    "Branding Agency",
+    "Website Development Agency in Thane ",
+    "Digital Marketing agency near me",
+    "Meta Ads Expert in mumbra",
+    "best Web Development Institute in mumbra",
+    "Branding Agency in mumbra",
   ],
   openGraph: {
     title: "About WebXArtist Institute & Agency",

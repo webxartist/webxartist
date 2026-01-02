@@ -11,10 +11,10 @@ export const metadata = {
   description:
     "Discover why WebXArtist is the most trusted and affordable website developer in Mumbai, Thane, Mumbra & Navi Mumbai. High-quality websites, branding, SEO & digital marketing.",
   keywords: [
-    "website developer Mumbai",
-    "web designer Thane",
+    "Custom Web development agency",
+    "web designer Mumbra",
     "best web agency Mumbra",
-    "affordable website development India",
+    "affordable website developer in mumbra",
     "WebXArtist",
     "React website designer Mumbai",
   ],

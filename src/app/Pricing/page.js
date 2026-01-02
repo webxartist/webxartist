@@ -4,10 +4,10 @@ export const metadata = {
   description:
     "Affordable website pricing packages for businesses in Mumbai, Thane, Mumbra & India. Choose from Basic, Professional, and Premium eCommerce solutions.",
   keywords: [
-    "website pricing",
-    "web design cost",
-    "website developer charges",
-    "best web development pricing",
+    "Affordable web Development Agency",
+    "Affordable branding agency",
+    "Affordable digital marketing agency",
+    "webiste price",
     "WebXArtist packages",
   ],
   alternates: {

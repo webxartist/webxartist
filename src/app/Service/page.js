@@ -10,12 +10,12 @@ export const metadata = {
   description:
     "WebXArtist provides website development, graphic design, SEO, digital marketing, SMM, video editing, and branding services across Mumbai, Thane, Mumbra & India.",
   keywords: [
-    "web design services",
-    "website development mumbai",
+    "web design services near me",
+    "website development in mumbai",
     "branding agency mumbai",
     "digital marketing services",
     "graphic design services",
-    "WebXArtist services",
+    "website development",
   ],
   alternates: {
     canonical: "https://webxartist/Service",
