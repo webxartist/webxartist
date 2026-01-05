@@ -159,7 +159,7 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="md:hidden bg-black/70 backdrop-blur-lg overflow-hidden"
+            className="md:hidden bg-gradient-to-r from-pink-400 to-violet-500 backdrop-blur-lg overflow-hidden"
           >
             <ul className="flex flex-col items-center py-6 space-y-6 text-white px-12">
               {navItems.map((item, index) => (

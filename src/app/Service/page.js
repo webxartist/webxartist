@@ -3,35 +3,29 @@ import Service from "../Components/Service";
 import Whatsapp from "../Components/WhatsApp";
 import Instagram from "../Components/Instgram";
 
-// ⭐ SEO Metadata
+// ⭐ SEO METADATA (FIXED)
 export const metadata = {
   title:
-    "Our Services | Web Development, Branding & Digital Marketing – WebXArtist",
+    "Our Services | Web Development, Branding & Digital Marketing in Mumbra – WebXArtist",
   description:
-    "WebXArtist provides website development, graphic design, SEO, digital marketing, SMM, video editing, and branding services across Mumbai, Thane, Mumbra & India.",
-  keywords: [
-    "web design services near me",
-    "website development in mumbai",
-    "branding agency mumbai",
-    "digital marketing services",
-    "graphic design services",
-    "website development",
-  ],
+    "WebXArtist Institute & Agency offers professional website development, branding, SEO, digital marketing, graphic design, SMM, and video editing services in Mumbai, Thane, and Mumbra.",
+
   alternates: {
-    canonical: "https://webxartist/Service",
+    canonical: "https://webxartist.com/service",
   },
+
   openGraph: {
-    title: "WebXArtist Services – Web Development & Branding Agency",
+    title: "WebXArtist Services – Web Development & Digital Marketing",
     description:
-      "Explore premium services like web design, development, branding, SMM, SEO, and more from WebXArtist.",
-    url: "https://webxartist/Service",
-    siteName: "WebXArtist",
+      "Explore web development, branding, SEO, social media marketing, graphic design, and video editing services by WebXArtist.",
+    url: "https://webxartist.com/service",
+    siteName: "WebXArtist Institute & Agency",
     images: [
       {
         url: "/services-banner.png",
         width: 1200,
         height: 630,
-        alt: "WebXArtist Services Banner",
+        alt: "WebXArtist Services",
       },
     ],
     locale: "en_IN",
@@ -40,31 +34,36 @@ export const metadata = {
 };
 
 export default function Page() {
-  // ⭐ JSON-LD Schema
+  // ⭐ SERVICE SCHEMA (CORRECT)
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Web Development & Branding Services",
+    "@id": "https://webxartist.com/service#service",
+    name: "Web Development & Digital Marketing Services",
+    description:
+      "Professional web development, branding, SEO, digital marketing, graphic design, and social media services for businesses.",
     provider: {
       "@type": "Organization",
-      name: "WebXArtist",
+      name: "WebXArtist Institute & Agency",
       url: "https://webxartist.com",
       logo: "https://webxartist.com/logo.png",
     },
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: "Mumbai, Thane, Mumbra, Navi Mumbai, India",
+    },
     serviceType:
-      "Website design, development, branding, SEO, graphic design, social media management.",
-    areaServed: ["Mumbai", "Thane", "Mumbra", "Navi Mumbai", "India"],
+      "Website development, branding, SEO, graphic design, social media marketing, video editing",
   };
 
   return (
     <>
-      {/* ⭐ Inject Schema Markup */}
+      {/* ✅ Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      {/* ⭐ Actual Layout */}
       <div className="pt-16">
         <Service />
       </div>

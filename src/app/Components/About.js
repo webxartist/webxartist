@@ -107,7 +107,7 @@ const About = () => {
 
         <p className="text-lg mb-4">
           WebXArtist is recognized as one of the most reliable and affordable
-          website development companies serving{" "}
+          website development companies serving
           <strong>Mumbai, Thane, Mumbra, Navi Mumbai, and across India</strong>.
           We specialize in building modern, SEO-optimized websites that load
           fast, look premium, and help businesses grow digitally.
@@ -115,12 +115,14 @@ const About = () => {
 
         <p className="text-lg mb-4">
           Whether you're searching for
-          <strong>“best website development agnecy in Mumbai”</strong>,
-          <strong>“website development agnecy in near me”</strong>,
+          <strong>“best website development agnecy in Mumbra”</strong>,
+          <strong>“website development agnecy in mumbra”</strong>,
           <strong>“affordable website designer in Mumbra”</strong>,
           <strong>“Web development agency in Mumbra”</strong> or
-          <strong>“top branding and digital marketing agency India”</strong>,
-          WebXArtist offers unmatched quality at the best pricing.
+          <strong>
+            “top branding and digital marketing agency in mumbra, Thane”
+          </strong>
+          , WebXArtist offers unmatched quality at the best pricing.
         </p>
 
         <h3 className="text-3xl font-semibold mt-10 mb-4">
@@ -152,6 +154,85 @@ const About = () => {
           At WebXArtist, we merge creativity with technology to help brands grow
           online. From website building to branding, SEO, design, and marketing
           — we deliver everything your business needs to stand out.
+        </p>
+      </section>
+      {/* WEBXARTIST INSTITUTE SEO SECTION */}
+      <section className="px-6 py-20 bg-gray-50 text-gray-800 max-w-6xl mx-auto font-poppins leading-relaxed">
+        <h2 className="text-4xl font-bold mb-6 text-center">
+          WebXArtist Institute – Practical IT & Digital Skills Training in
+          Mumbra, Thane & Mumbai
+        </h2>
+
+        <p className="text-lg mb-4">
+          WebXArtist Institute is a professional IT and digital skills training
+          institute focused on practical, industry-ready education. We provide
+          hands-on training for students, job seekers, freelancers, and
+          entrepreneurs who want to build real careers in technology and digital
+          fields.
+        </p>
+
+        <p className="text-lg mb-4">
+          If you are searching for{" "}
+          <strong>
+            web development institute in Mumbra, Best digital marketing course
+            in Mumbra, graphic design classes near me, computer institute in
+            Mumbra , Best IT Institute In Mumbra , Best Computer Class In Mumbra
+            ,
+          </strong>
+          , WebXArtist Institute offers structured learning with real projects,
+          guidance, and career support.
+        </p>
+
+        <h3 className="text-3xl font-semibold mt-10 mb-4">
+          Courses Offered at WebXArtist Institute
+        </h3>
+
+        <ul className="list-disc pl-5 space-y-3 text-lg">
+          <li>
+            Full Stack Web Development (HTML, CSS, JavaScript, React, Node.js,
+            Mongodb, Api, MERN)
+          </li>
+          <li>
+            Graphic Design & Branding (Ms-Office, Photoshop, Illustrator,
+            Indesign, Canva)
+          </li>
+          <li>
+            Digital Marketing (SEO, Social Media, Website, Branding, Google Ads,
+            Meta Ads)
+          </li>
+          <li>UI / UX Design Fundamentals</li>
+          <li>Basic Computer & Office Skills</li>
+          <li>Freelancing & Career Guidance</li>
+        </ul>
+
+        <h3 className="text-3xl font-semibold mt-10 mb-4">
+          Why Choose WebXArtist Institute?
+        </h3>
+
+        <ul className="list-disc pl-5 space-y-3 text-lg">
+          <li>Practical, project-based learning approach</li>
+          <li>Industry-relevant syllabus updated regularly</li>
+          <li>Affordable course fees with high-quality training</li>
+          <li>Personal mentorship and doubt-clearing sessions</li>
+          <li>Career guidance, portfolio building & internship support</li>
+        </ul>
+
+        <h3 className="text-3xl font-semibold mt-10 mb-4">
+          Institute Locations & Training Mode
+        </h3>
+
+        <ul className="list-disc pl-5 space-y-2 text-lg">
+          <li>Mumbra</li>
+          <li>Thane</li>
+          <li>Mumbai</li>
+          <li>Online Classes (Pan India)</li>
+        </ul>
+
+        <p className="mt-6 text-lg">
+          WebXArtist Institute is committed to shaping skilled professionals
+          through quality education and real-world experience. Whether you want
+          a job, freelance career, or start your own business — we help you
+          build the right skills with confidence.
         </p>
       </section>
     </>

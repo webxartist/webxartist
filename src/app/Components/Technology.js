@@ -2,91 +2,124 @@
 
 import { motion } from "framer-motion";
 
-const techSteps = [
+const solutions = [
   {
-    number: "01",
-    title: "Foundation: HTML, CSS & JavaScript",
+    step: "01",
+    title: "Business Website Development",
+    subtitle: "Your Digital Identity Starts Here",
     description:
-      "HTML structures content, CSS styles it, and JavaScript brings interactivity to web applications.",
+      "We create fast, SEO-optimized, and conversion-focused business websites that represent your brand professionally. From landing pages to corporate websites, every design is built to attract visitors, build trust, and convert leads into customers.",
+    points: [
+      "Modern UI/UX design",
+      "SEO-friendly structure",
+      "Mobile & tablet responsive",
+      "High-speed performance",
+    ],
   },
   {
-    number: "02",
-    title: "Styling: Tailwind CSS & Bootstrap",
+    step: "02",
+    title: "E-Commerce Website Solutions",
+    subtitle: "Turn Visitors Into Paying Customers",
     description:
-      "Tailwind CSS offers utility-first design, while Bootstrap provides a component-based approach for responsive web layouts.",
+      "Our e-commerce solutions are designed to sell. Whether it’s Shopify, custom stores, or payment integrations, we build scalable online stores that deliver smooth user experience and higher conversions.",
+    points: [
+      "Product & inventory management",
+      "Secure payment gateway integration",
+      "Order tracking & automation",
+      "Optimized checkout flow",
+    ],
   },
   {
-    number: "03",
-    title: "Full Stack: MERN Stack",
+    step: "03",
+    title: "LMS & Custom Web Applications",
+    subtitle: "Smart Systems for Scalable Growth",
     description:
-      "MongoDB, Express.js, React, and Node.js power scalable, modern web applications.",
+      "We develop Learning Management Systems (LMS), admin dashboards, CRM tools, and custom web applications tailored to your business or institute needs using modern technologies like MERN & Next.js.",
+    points: [
+      "Student & user management",
+      "Admin panels & dashboards",
+      "Secure authentication systems",
+      "Scalable architecture",
+    ],
   },
   {
-    number: "04",
-    title: "Advanced: Next.js",
+    step: "04",
+    title: "Digital Marketing & Growth Strategy",
+    subtitle: "Traffic Is Good. Sales Are Better.",
     description:
-      "Server-side rendering, API routes, and performance optimization make Next.js ideal for SEO-friendly applications.",
+      "A powerful website needs traffic and strategy. Our digital marketing services help you reach the right audience, generate quality leads, and increase sales through performance-driven campaigns.",
+    points: [
+      "SEO & Google ranking strategy",
+      "Meta Ads & Google Ads",
+      "Social media marketing",
+      "Lead generation funnels",
+    ],
   },
   {
-    number: "05",
-    title: "Graphic Design Tools",
+    step: "05",
+    title: "Graphic Design & Brand Identity",
+    subtitle: "Design That Speaks, Brands That Sell",
     description:
-      "Adobe Photoshop, Illustrator, and Figma help create stunning UI/UX designs and branding assets.",
-  },
-  {
-    number: "06",
-    title: "Video Editing Tools",
-    description:
-      "Adobe Premiere Pro, After Effects, and DaVinci Resolve enable professional video production.",
+      "We craft visually stunning brand identities that make your business memorable. From logos to social media creatives, every design element is aligned with your brand voice and marketing goals.",
+    points: [
+      "Logo & brand identity design",
+      "Social media creatives",
+      "Marketing banners & ads",
+      "UI / UX design systems",
+    ],
   },
 ];
 
 const Technology = () => {
   return (
-    <section className="relative w-full py-20 sm:py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white font-poppins overflow-hidden">
-      {/* Background Glow Shapes */}
+    <section className="relative w-full py-24 px-6 md:px-12 lg:px-24 bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white font-poppins overflow-hidden">
+      {/* Background Effects */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute top-0 left-5 sm:left-10 w-48 sm:w-64 h-48 sm:h-64 bg-pink-500/20 blur-3xl rounded-full animate-pulse" />
-        <div className="absolute bottom-0 right-5 sm:right-10 w-56 sm:w-72 h-56 sm:h-72 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
-        <div className="absolute top-1/2 left-1/2 w-32 sm:w-40 h-32 sm:h-40 bg-blue-400/10 blur-2xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-10 left-10 w-72 h-72 bg-pink-500/20 blur-3xl rounded-full animate-pulse" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
       </div>
 
-      {/* Header */}
+      {/* Heading */}
       <motion.h2
-        className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-center mb-12 sm:mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 z-10"
-        initial={{ opacity: 0, y: -50 }}
+        className="relative text-4xl md:text-5xl lg:text-6xl font-extrabold text-center mb-20 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 z-10"
+        initial={{ opacity: 0, y: -40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
-        Technology & Development Process
+        Complete Digital Solutions That Build, Scale & Sell
       </motion.h2>
 
-      {/* Steps */}
-      <div className="relative w-full max-w-6xl mx-auto flex flex-col gap-10 sm:gap-12">
-        {techSteps.map((step, index) => (
+      {/* Cards */}
+      <div className="relative max-w-7xl mx-auto grid gap-14 z-10">
+        {solutions.map((item, index) => (
           <motion.div
             key={index}
-            className="relative bg-black/20 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/10 hover:scale-[1.03] transition-transform duration-500"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10 shadow-2xl hover:scale-[1.03] transition-all duration-500"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: index * 0.2 }}
+            transition={{ duration: 0.8, delay: index * 0.15 }}
           >
-            {/* Step Number Circle */}
-            <div className="absolute -top-9 sm:-left-10 left-1/2 sm:left-auto -translate-x-1/2 sm:translate-x-0 w-14 sm:w-16 h-14 sm:h-16 bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-lg sm:text-2xl font-bold rounded-full shadow-xl">
-              {step.number}
+            {/* Step Badge */}
+            <div className="absolute -top-6 left-6 w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-xl font-bold shadow-xl">
+              {item.step}
             </div>
 
-            {/* Step Content */}
-            <div className="mt-10 sm:mt-0 text-center sm:text-left">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-2 text-white">
-                {step.title}
-              </h3>
-              <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-                {step.description}
-              </p>
-            </div>
+            <h3 className="text-3xl font-bold mt-6 mb-2">{item.title}</h3>
+            <p className="text-pink-400 text-lg mb-4">{item.subtitle}</p>
+            <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              {item.description}
+            </p>
+
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-200 text-base">
+              {item.points.map((point, i) => (
+                <li key={i} className="flex gap-3">
+                  <span className="text-pink-400 font-bold">✔</span>
+                  {point}
+                </li>
+              ))}
+            </ul>
           </motion.div>
         ))}
       </div>

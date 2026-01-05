@@ -1,30 +1,26 @@
-// ⭐ SEO Metadata
+// ⭐ SEO METADATA (FIXED)
 export const metadata = {
-  title: "Website Pricing | Web Design & Development Packages – WebXArtist",
+  title:
+    "Website Pricing & Packages | Affordable Web Design & Development – WebXArtist",
   description:
-    "Affordable website pricing packages for businesses in Mumbai, Thane, Mumbra & India. Choose from Basic, Professional, and Premium eCommerce solutions.",
-  keywords: [
-    "Affordable web Development Agency",
-    "Affordable branding agency",
-    "Affordable digital marketing agency",
-    "webiste price",
-    "WebXArtist packages",
-  ],
+    "Affordable website pricing packages by WebXArtist for businesses in Mumbai, Thane, and Mumbra. Transparent pricing for web design, development, and eCommerce solutions.",
+
   alternates: {
-    canonical: "https://webxartist.com/Pricing",
+    canonical: "https://webxartist.com/pricing",
   },
+
   openGraph: {
-    title: "Website Pricing – WebXArtist",
+    title: "Website Pricing & Packages – WebXArtist",
     description:
-      "Transparent and affordable website development pricing crafted for every business type.",
-    url: "https://webxartist.com/Pricing",
-    siteName: "WebXArtist",
+      "Affordable and transparent website development pricing for startups and businesses.",
+    url: "https://webxartist.com/pricing",
+    siteName: "WebXArtist Institute & Agency",
     images: [
       {
         url: "/pricing-banner.png",
         width: 1200,
         height: 630,
-        alt: "WebXArtist Pricing Banner",
+        alt: "WebXArtist Website Pricing Packages",
       },
     ],
     locale: "en_IN",
@@ -43,33 +39,42 @@ import ReferAndEarn from "../Components/ReferandEarn";
 import Line from "../Components/Line";
 
 export default function Page() {
-  // ⭐ JSON-LD Schema
+  // ⭐ SERVICE SCHEMA (CORRECT FOR PRICING PAGE)
   const schemaData = {
     "@context": "https://schema.org",
-    "@type": "Product",
-    name: "Website Development Pricing",
-    brand: "WebXArtist",
+    "@type": "Service",
+    "@id": "https://webxartist.com/pricing#service",
+    name: "Website Development Pricing & Packages",
     description:
-      "Website development and eCommerce pricing plans for small businesses and enterprises.",
+      "Affordable website development, web design, and eCommerce pricing packages for startups and businesses.",
+    provider: {
+      "@type": "Organization",
+      name: "WebXArtist Institute & Agency",
+      url: "https://webxartist.com",
+      logo: "https://webxartist.com/logo.png",
+    },
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: "Mumbai, Thane, Mumbra, India",
+    },
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "INR",
       lowPrice: "15000",
       highPrice: "100000",
-      priceValidUntil: "2026-01-01",
       availability: "https://schema.org/InStock",
+      url: "https://webxartist.com/pricing",
     },
   };
 
   return (
     <>
-      {/* Inject Schema / Structured Data */}
+      {/* ✅ Inject Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      {/* ⭐ YOUR ORIGINAL CODE (NO CHANGES MADE) */}
       <div className="pt-16">
         <PricingHeader />
         <Line />
