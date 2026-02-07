@@ -1,72 +1,72 @@
 "use client";
 import { motion } from "framer-motion";
 
-const whatsappNumber = "918169413149"; // ✅ Your WhatsApp number (no +)
+const whatsappNumber = "918169413149"; // Your WhatsApp number (no +)
 
 const getWhatsappLink = (plan) => {
   const message = `Hello WebXArtist 👋%0A%0A
-I am interested in the *${plan.title}* package.%0A%0A
-💰 *Price Range:* ${plan.price}%0A%0A
-📌 *Package Includes:*%0A
+I am interested in your *Meta Ads – ${plan.title}* plan (Facebook & Instagram).%0A%0A
+💰 *Monthly Management Fee:* ${plan.price}%0A%0A
+📢 *Plan Includes:*%0A
 ${plan.features.map((f) => `• ${f}`).join("%0A")}%0A%0A
 Please share:%0A
-✔ Timeline%0A
-✔ Process & next steps%0A
-✔ Sample work / portfolio%0A%0A
-Looking forward to your response.`;
+✔ Recommended ad budget%0A
+✔ Expected leads/sales strategy%0A
+✔ Timeline & onboarding steps%0A%0A
+Looking forward to your guidance.`;
 
   return `https://wa.me/${whatsappNumber}?text=${message}`;
 };
 
 const pricingData = [
   {
-    title: "Basic Website",
-    price: "₹15,000 – ₹20,000",
+    title: "Starter Meta Ads",
+    price: "₹8,000 – ₹12,000",
     description:
-      "A clean, responsive website perfect for small businesses or personal projects.",
+      "Best for local businesses and startups looking to generate leads or engagement.",
     features: [
-      "Pre-designed professional layout",
-      "3–5 responsive pages",
-      "Mobile & tablet friendly design",
-      "Basic SEO & Google indexing",
-      "Fast loading & quick delivery",
-      "Contact form with WhatsApp integration",
+      "Facebook & Instagram Ads account setup",
+      "Audience research & targeting",
+      "1–2 campaigns (Lead / Traffic / Engagement)",
+      "Ad creative guidance (copy + visuals)",
+      "Pixel & basic conversion tracking",
+      "Monthly performance report",
     ],
     color: "from-blue-400 to-purple-500",
   },
   {
-    title: "Professional Business Website",
-    price: "₹25,000 – ₹35,000",
+    title: "Growth Meta Ads",
+    price: "₹15,000 – ₹25,000",
     description:
-      "Custom-coded, modern websites with strong branding, animations, and SEO optimization.",
+      "Ideal for scaling brands focused on consistent leads, sales, and retargeting.",
     features: [
-      "100% custom UI/UX design",
-      "Brand-focused layout & color system",
-      "5–10 pages with blog/articles",
-      "Advanced SEO & performance optimization",
-      "Smooth animations & transitions",
-      "Google Analytics & Search Console setup",
+      "Full-funnel Meta Ads strategy",
+      "Multiple campaigns & ad sets",
+      "Custom audience & lookalike targeting",
+      "A/B testing for creatives & copies",
+      "Advanced retargeting setup",
+      "Weekly optimization & reporting",
     ],
     color: "from-pink-500 to-yellow-500",
   },
   {
-    title: "Premium eCommerce / Enterprise",
-    price: "₹1,00,000+",
+    title: "Performance / Enterprise Meta Ads",
+    price: "₹30,000+",
     description:
-      "Enterprise-level solutions with advanced features, scalability, and premium support.",
+      "Aggressive growth-focused Meta Ads management for high budgets and ROAS.",
     features: [
-      "Custom MERN / Next.js architecture",
-      "High-end UI with advanced animations",
-      "Payment gateway & order management",
-      "CRM, tracking & third-party integrations",
-      "Scalable & secure backend system",
-      "Priority support & long-term scalability",
+      "High-budget campaign structuring",
+      "Sales, catalog & conversion ads",
+      "Advanced funnel & remarketing system",
+      "Daily monitoring & scaling",
+      "ROAS-focused optimization strategy",
+      "Dedicated account manager & priority support",
     ],
     color: "from-purple-600 to-pink-500",
   },
 ];
 
-export default function Pricing() {
+export default function MetaAdsPricing() {
   return (
     <section className="w-full py-24 bg-gray-900 font-poppins">
       <div className="max-w-7xl mx-auto px-6 text-center">
@@ -77,7 +77,7 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          Premium Web Solutions Pricing
+          Meta Ads (Facebook & Instagram) Pricing
         </motion.h2>
 
         <motion.p
@@ -86,8 +86,8 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          Choose a plan that fits your business goals. Built for performance,
-          growth, and real-world results.
+          Data-driven Facebook & Instagram ad strategies designed to scale
+          leads, sales, and brand visibility.
         </motion.p>
 
         {/* Pricing Cards */}
@@ -103,7 +103,7 @@ export default function Pricing() {
               {/* Popular Tag */}
               {index === 1 && (
                 <div className="mb-4 w-fit mx-auto bg-yellow-400 text-gray-900 font-bold px-4 py-1 rounded-full text-sm">
-                  Most Popular
+                  Most Recommended
                 </div>
               )}
 
@@ -130,14 +130,14 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              {/* WhatsApp Button */}
+              {/* WhatsApp CTA */}
               <a
                 href={getWhatsappLink(plan)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-auto py-3 w-full text-center rounded-xl font-bold text-white bg-gradient-to-r ${plan.color} hover:scale-105 transition-transform duration-300`}
               >
-                Get Started on WhatsApp
+                Start Meta Ads on WhatsApp
               </a>
             </motion.div>
           ))}

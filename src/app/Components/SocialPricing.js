@@ -1,72 +1,72 @@
 "use client";
 import { motion } from "framer-motion";
 
-const whatsappNumber = "918169413149"; // ✅ Your WhatsApp number (no +)
+const whatsappNumber = "918169413149"; // Your WhatsApp number (no +)
 
 const getWhatsappLink = (plan) => {
   const message = `Hello WebXArtist 👋%0A%0A
-I am interested in the *${plan.title}* package.%0A%0A
-💰 *Price Range:* ${plan.price}%0A%0A
-📌 *Package Includes:*%0A
+I am interested in your *Social Media Management – ${plan.title}* plan.%0A%0A
+💰 *Monthly Package:* ${plan.price}%0A%0A
+📱 *Plan Includes:*%0A
 ${plan.features.map((f) => `• ${f}`).join("%0A")}%0A%0A
 Please share:%0A
-✔ Timeline%0A
-✔ Process & next steps%0A
-✔ Sample work / portfolio%0A%0A
-Looking forward to your response.`;
+✔ Content calendar & posting frequency%0A
+✔ Growth & engagement strategy%0A
+✔ Reporting format & timeline%0A%0A
+Looking forward to working together.`;
 
   return `https://wa.me/${whatsappNumber}?text=${message}`;
 };
 
 const pricingData = [
   {
-    title: "Basic Website",
-    price: "₹15,000 – ₹20,000",
+    title: "Starter Social Media",
+    price: "₹8,000 – ₹12,000",
     description:
-      "A clean, responsive website perfect for small businesses or personal projects.",
+      "Ideal for small businesses starting their social media presence.",
     features: [
-      "Pre-designed professional layout",
-      "3–5 responsive pages",
-      "Mobile & tablet friendly design",
-      "Basic SEO & Google indexing",
-      "Fast loading & quick delivery",
-      "Contact form with WhatsApp integration",
+      "2 platforms (Instagram / Facebook)",
+      "8–10 posts per month",
+      "Basic creatives & captions",
+      "Hashtag research",
+      "Profile optimization",
+      "Monthly performance report",
     ],
     color: "from-blue-400 to-purple-500",
   },
   {
-    title: "Professional Business Website",
-    price: "₹25,000 – ₹35,000",
+    title: "Growth Social Media",
+    price: "₹15,000 – ₹25,000",
     description:
-      "Custom-coded, modern websites with strong branding, animations, and SEO optimization.",
+      "Best for brands looking to grow followers, reach, and engagement.",
     features: [
-      "100% custom UI/UX design",
-      "Brand-focused layout & color system",
-      "5–10 pages with blog/articles",
-      "Advanced SEO & performance optimization",
-      "Smooth animations & transitions",
-      "Google Analytics & Search Console setup",
+      "Up to 3 platforms",
+      "12–16 posts + stories per month",
+      "Advanced creatives & branded captions",
+      "Engagement management (comments & DMs)",
+      "Content calendar & strategy",
+      "Bi-weekly reporting",
     ],
     color: "from-pink-500 to-yellow-500",
   },
   {
-    title: "Premium eCommerce / Enterprise",
-    price: "₹1,00,000+",
+    title: "Premium / Brand Authority",
+    price: "₹30,000+",
     description:
-      "Enterprise-level solutions with advanced features, scalability, and premium support.",
+      "High-end social media management for scaling brands and influencers.",
     features: [
-      "Custom MERN / Next.js architecture",
-      "High-end UI with advanced animations",
-      "Payment gateway & order management",
-      "CRM, tracking & third-party integrations",
-      "Scalable & secure backend system",
-      "Priority support & long-term scalability",
+      "All major platforms (IG, FB, LinkedIn, etc.)",
+      "20+ posts, reels & stories per month",
+      "Advanced brand storytelling & visuals",
+      "Community management & growth strategy",
+      "Trend-based content & reels strategy",
+      "Dedicated manager & priority support",
     ],
     color: "from-purple-600 to-pink-500",
   },
 ];
 
-export default function Pricing() {
+export default function SocialMediaPricing() {
   return (
     <section className="w-full py-24 bg-gray-900 font-poppins">
       <div className="max-w-7xl mx-auto px-6 text-center">
@@ -77,7 +77,7 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          Premium Web Solutions Pricing
+          Social Media Management Pricing
         </motion.h2>
 
         <motion.p
@@ -86,8 +86,8 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          Choose a plan that fits your business goals. Built for performance,
-          growth, and real-world results.
+          Strategic content, consistent posting, and real engagement to grow
+          your brand on social media.
         </motion.p>
 
         {/* Pricing Cards */}
@@ -130,14 +130,14 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              {/* WhatsApp Button */}
+              {/* WhatsApp CTA */}
               <a
                 href={getWhatsappLink(plan)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-auto py-3 w-full text-center rounded-xl font-bold text-white bg-gradient-to-r ${plan.color} hover:scale-105 transition-transform duration-300`}
               >
-                Get Started on WhatsApp
+                Start Social Media Management
               </a>
             </motion.div>
           ))}

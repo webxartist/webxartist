@@ -37,6 +37,9 @@ import VideoEditingPricing from "../Components/VideoEditingPricing";
 import PricingHeader from "../Components/PricingHeader";
 import ReferAndEarn from "../Components/ReferandEarn";
 import Line from "../Components/Line";
+import GoogleAdsPricing from "../Components/GoogleAdsPricing";
+import MetaAdsPricing from "../Components/MetaAdsPricing";
+import SocialMediaPricing from "../Components/SocialPricing";
 
 export default function Page() {
   // ⭐ SERVICE SCHEMA (CORRECT FOR PRICING PAGE)
@@ -79,6 +82,9 @@ export default function Page() {
         <PricingHeader />
         <Line />
         <Pricing />
+        <GoogleAdsPricing />
+        <MetaAdsPricing />
+        <SocialMediaPricing />
         <GraphicsPrice />
         <VideoEditingPricing />
         <Line />

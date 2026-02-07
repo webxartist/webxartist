@@ -126,15 +126,6 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
-        <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17837123576"
-        ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'AW-17837123576');
-        </script>
       </head>
 
       <body className="bg-white text-black">

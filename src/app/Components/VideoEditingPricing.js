@@ -1,6 +1,18 @@
 "use client";
 import { motion } from "framer-motion";
 
+const whatsappNumber = "918169413149"; // no +
+
+const getWhatsappLink = (planTitle, price) => {
+  const message = `Hello WebXArtist 👋%0A
+I am interested in your *Video Editing* service.%0A
+Package: *${planTitle}*%0A
+Price Range: ${price}%0A
+Please share complete details.`;
+
+  return `https://wa.me/${whatsappNumber}?text=${message}`;
+};
+
 const pricingData = [
   {
     title: "Basic Editing",
@@ -50,6 +62,7 @@ export default function VideoEditingPricingOptimized() {
         >
           Every Video Tells a Story
         </motion.h2>
+
         <motion.p
           className="text-gray-300 text-lg sm:text-xl mb-16 max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +90,8 @@ export default function VideoEditingPricingOptimized() {
                 <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 mb-4">
                   {plan.price}
                 </p>
-                <ul className="text-gray-200 space-y-2">
+
+                <ul className="text-gray-200 space-y-2 text-left">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-center gap-2">
                       <span className="text-green-400 font-bold">✔</span>
@@ -86,11 +100,16 @@ export default function VideoEditingPricingOptimized() {
                   ))}
                 </ul>
               </div>
-              <button
-                className={`mt-6 py-3 rounded-xl font-bold text-white bg-gradient-to-r ${plan.color} hover:scale-105 transition-transform duration-300`}
+
+              {/* WhatsApp CTA */}
+              <a
+                href={getWhatsappLink(plan.title, plan.price)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`mt-6 py-3 rounded-xl font-bold text-white text-center bg-gradient-to-r ${plan.color} hover:scale-105 transition-transform duration-300`}
               >
                 Get Started
-              </button>
+              </a>
             </motion.div>
           ))}
         </div>
