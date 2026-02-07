@@ -12,14 +12,14 @@ export const metadata = {
     "Discover why WebXArtist Institute & Agency is a trusted and affordable website development and digital marketing company in Mumbra, Thane, Mumbai & Navi Mumbai.",
 
   alternates: {
-    canonical: "https://webxartist.com/why-us",
+    canonical: "https://webxartist.com/Whyus",
   },
 
   openGraph: {
     title: "Why Choose WebXArtist | Website Development & Branding Experts",
     description:
       "High-quality website development, branding, SEO, and digital marketing services by WebXArtist Institute & Agency.",
-    url: "https://webxartist.com/why-us",
+    url: "https://webxartist.com/Whyus",
     siteName: "WebXArtist Institute & Agency",
     images: [
       {
@@ -60,8 +60,8 @@ export default function Page() {
       },
       {
         "@type": "WebPage",
-        "@id": "https://webxartist.com/why-us#webpage",
-        url: "https://webxartist.com/why-us",
+        "@id": "https://webxartist.com/Whyus#webpage",
+        url: "https://webxartist.com/Whyus",
         name: "Why Choose WebXArtist",
         isPartOf: {
           "@id": "https://webxartist.com/#organization",
