@@ -38,7 +38,7 @@ export default function Page() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://webxartist.com/Service#Service",
+    "@id": "https://webxartist.com/Service",
     name: "Web Development & Digital Marketing Services",
     description:
       "Professional web development, branding, SEO, digital marketing, graphic design, and social media services for businesses.",
