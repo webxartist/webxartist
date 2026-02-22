@@ -40,6 +40,7 @@ import Line from "../Components/Line";
 import GoogleAdsPricing from "../Components/GoogleAdsPricing";
 import MetaAdsPricing from "../Components/MetaAdsPricing";
 import SocialMediaPricing from "../Components/SocialPricing";
+import GMBPricing from "../Components/Gmb";
 
 export default function Page() {
   // ⭐ SERVICE SCHEMA (CORRECT FOR PRICING PAGE)
@@ -82,6 +83,7 @@ export default function Page() {
         <PricingHeader />
         <Line />
         <Pricing />
+        <GMBPricing />
         <GoogleAdsPricing />
         <MetaAdsPricing />
         <SocialMediaPricing />

@@ -30,7 +30,7 @@ const Service = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        Our
+        Our{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-violet-500">
           Services
         </span>

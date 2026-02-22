@@ -1,72 +1,72 @@
 "use client";
 import { motion } from "framer-motion";
 
-const whatsappNumber = "918169413149"; // ✅ Your WhatsApp number (no +)
+const whatsappNumber = "918169413149"; // Your WhatsApp number (no +)
 
 const getWhatsappLink = (plan) => {
   const message = `Hello WebXArtist 👋%0A%0A
-I am interested in the *${plan.title}* package.%0A%0A
-💰 *Price Range:* ${plan.price}%0A%0A
-📌 *Package Includes:*%0A
+I am interested in your *Google My Business – ${plan.title}* plan.%0A%0A
+💰 *Monthly Management Fee:* ${plan.price}%0A%0A
+📌 *Plan Includes:*%0A
 ${plan.features.map((f) => `• ${f}`).join("%0A")}%0A%0A
 Please share:%0A
-✔ Timeline%0A
-✔ Process & next steps%0A
-✔ Sample work / portfolio%0A%0A
-Looking forward to your response.`;
+✔ Expected results & strategy%0A
+✔ Timeline & onboarding process%0A
+✔ GMB growth plan%0A%0A
+Waiting for your guidance.`;
 
   return `https://wa.me/${whatsappNumber}?text=${message}`;
 };
 
 const pricingData = [
   {
-    title: "Basic Website",
-    price: "₹12,000 – ₹20,000",
+    title: "Starter GMB Setup",
+    price: "₹7,999",
     description:
-      "A clean, responsive website perfect for small businesses or personal projects.",
+      "Perfect for new businesses that want to properly set up and optimize their Google Business Profile.",
     features: [
-      "Pre-designed professional layout",
-      "4–5 responsive pages",
-      "Mobile & tablet friendly design",
-      "Basic SEO & Google indexing",
-      "Fast loading & quick delivery",
-      "Contact form with WhatsApp integration",
+      "Complete GMB account setup",
+      "Business category optimization",
+      "Profile SEO optimization",
+      "Service & product listing",
+      "Business description writing",
+      "Basic image optimization",
     ],
     color: "from-blue-400 to-purple-500",
   },
   {
-    title: "Professional Business Website",
-    price: "₹25,000 – ₹35,000",
+    title: "Growth GMB Management",
+    price: "₹11,999",
     description:
-      "Custom-coded, modern websites with strong branding, animations, and SEO optimization.",
+      "Ideal for businesses looking to improve local ranking and generate consistent calls & leads.",
     features: [
-      "100% custom UI/UX design",
-      "Brand-focused layout & color system",
-      "5–10 pages with blog/articles",
-      "Advanced SEO & performance optimization",
-      "Smooth animations & transitions",
-      "Google Analytics & Search Console setup",
+      "Full GMB optimization",
+      "Local SEO keyword strategy",
+      "Weekly posts & updates",
+      "Review management & reply strategy",
+      "Competitor analysis",
+      "Monthly performance report",
     ],
     color: "from-pink-500 to-yellow-500",
   },
   {
-    title: "Premium eCommerce / Enterprise",
-    price: "₹1,00,000+",
+    title: "Premium Local Domination",
+    price: "₹18,000+",
     description:
-      "Enterprise-level solutions with advanced features, scalability, and premium support.",
+      "Advanced GMB & Local SEO strategy to dominate Google Maps and local search results.",
     features: [
-      "Custom MERN / Next.js architecture",
-      "High-end UI with advanced animations",
-      "Payment gateway & order management",
-      "CRM, tracking & third-party integrations",
-      "Scalable & secure backend system",
-      "Priority support & long-term scalability",
+      "Advanced local SEO strategy",
+      "Google Maps ranking optimization",
+      "Geo-tagged image uploads",
+      "Citation & directory building",
+      "Reputation management system",
+      "Weekly optimization & priority support",
     ],
     color: "from-purple-600 to-pink-500",
   },
 ];
 
-export default function Pricing() {
+export default function GMBPricing() {
   return (
     <section className="w-full py-24 bg-gray-900 font-poppins">
       <div className="max-w-7xl mx-auto px-6 text-center">
@@ -77,7 +77,7 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          Premium Web Solutions Pricing
+          Google My Business (GMB) Pricing
         </motion.h2>
 
         <motion.p
@@ -86,8 +86,8 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
         >
-          Choose a plan that fits your business goals. Built for performance,
-          growth, and real-world results.
+          Rank higher on Google Maps, increase local visibility, and generate
+          more calls with our professional GMB optimization services.
         </motion.p>
 
         {/* Pricing Cards */}
@@ -100,10 +100,10 @@ export default function Pricing() {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="bg-gray-800 rounded-3xl p-8 border border-gray-700 hover:border-purple-400 transition-all duration-300 flex flex-col"
             >
-              {/* Popular Tag */}
+              {/* Most Recommended */}
               {index === 1 && (
                 <div className="mb-4 w-fit mx-auto bg-yellow-400 text-gray-900 font-bold px-4 py-1 rounded-full text-sm">
-                  Most Popular
+                  Most Recommended
                 </div>
               )}
 
@@ -130,14 +130,14 @@ export default function Pricing() {
                 ))}
               </ul>
 
-              {/* WhatsApp Button */}
+              {/* WhatsApp CTA */}
               <a
                 href={getWhatsappLink(plan)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`mt-auto py-3 w-full text-center rounded-xl font-bold text-white bg-gradient-to-r ${plan.color} hover:scale-105 transition-transform duration-300`}
               >
-                Get Started on WhatsApp
+                Start GMB on WhatsApp
               </a>
             </motion.div>
           ))}
