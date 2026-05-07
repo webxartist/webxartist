@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Letconnect from "./Components/Letconnect";
 import { Poppins } from "next/font/google";
+import Script from "next/script"; // ✅ ADD THIS
 
 // Load Poppins font
 const poppins = Poppins({
@@ -30,7 +31,6 @@ const geistMono = localFont({
 
 /* ------------------------------------------------------
    ⭐ FULL SITE-WIDE SEO — BEST SETTINGS FOR RANKING
--
 ------------------------------------------------------ */
 export const metadata = {
   verification: {
@@ -126,6 +126,22 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
         />
+
+        {/* ✅ GOOGLE ANALYTICS */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-29NBKJ07ZZ"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-29NBKJ07ZZ');
+          `}
+        </Script>
       </head>
 
       <body className="bg-white text-black">
