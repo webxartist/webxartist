@@ -1,5 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
+import { Check } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const whatsappNumber = "918169413149"; // no +
 
@@ -22,7 +24,8 @@ const pricingData = [
       "Basic cuts and transitions",
       "1 round of revisions",
     ],
-    color: "from-blue-400 to-purple-500",
+    accent: "from-cyan-400 to-blue-400",
+    popular: false,
   },
   {
     title: "Standard Editing",
@@ -32,7 +35,8 @@ const pricingData = [
       "Advanced effects and transitions",
       "2 rounds of revisions",
     ],
-    color: "from-pink-500 to-yellow-500",
+    accent: "from-orange-400 to-amber-300",
+    popular: true,
   },
   {
     title: "Premium Editing",
@@ -42,60 +46,87 @@ const pricingData = [
       "Complete editing with animations",
       "Unlimited revisions & additional features",
     ],
-    color: "from-purple-600 to-pink-500",
+    accent: "from-amber-300 to-cyan-400",
+    popular: false,
   },
 ];
 
 export default function VideoEditingPricingOptimized() {
   return (
-    <section className="relative w-full py-32 bg-gray-900 font-poppins overflow-hidden">
-      {/* Decorative Background */}
-      <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-gradient-to-tr from-blue-600 to-purple-600 opacity-20 blur-3xl animate-pulse"></div>
-      <div className="absolute -bottom-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-tr from-pink-600 to-yellow-500 opacity-20 blur-3xl animate-pulse"></div>
+    <section className="relative w-full py-24 bg-[#0a0d28] font-poppins overflow-hidden">
+      {/* Ambient background glow — brand palette */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/[0.06] blur-[130px] rounded-full" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-orange-500/[0.06] blur-[130px] rounded-full" />
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 md:px-12 text-center">
-        <motion.h2
-          className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 mb-6"
-          initial={{ opacity: 0, y: -40 }}
+        <motion.div
+          className="flex flex-col items-center mb-16"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
         >
-          Every Video Tells a Story
-        </motion.h2>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[2px] text-slate-300 mb-5">
+            Video &amp; Motion
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+            Every Video Tells{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+              a Story
+            </span>
+          </h2>
+          <p className="text-slate-400 text-base sm:text-lg max-w-2xl mt-4">
+            Video editing pricing varies based on complexity and requirements.
+            These are average prices — we'll create a custom package tailored to
+            your project and budget.
+          </p>
+        </motion.div>
 
-        <motion.p
-          className="text-gray-300 text-lg sm:text-xl mb-16 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          Video editing pricing varies based on complexity and requirements.
-          These are average prices. We'll create a custom package tailored to
-          your project and budget.
-        </motion.p>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
           {pricingData.map((plan, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-gray-800 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-xl hover:shadow-2xl transform transition-all hover:-translate-y-2"
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className={`relative rounded-2xl p-8 flex flex-col justify-between text-left transition-all duration-300 ${
+                plan.popular
+                  ? "bg-white/[0.06] border border-orange-400/30 md:-translate-y-3 shadow-[0_0_40px_rgba(255,106,26,0.12)]"
+                  : "bg-white/[0.04] border border-white/10 hover:border-white/20"
+              }`}
             >
+              {/* top accent bar */}
+              <div
+                className={`absolute top-0 left-0 right-0 h-[3px] rounded-t-2xl bg-gradient-to-r ${plan.accent}`}
+              />
+
+              {/* Popular Tag */}
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 text-[#080a20] font-bold px-4 py-1.5 rounded-full text-[12px] uppercase tracking-wide shadow-lg">
+                  Most Popular
+                </div>
+              )}
+
               <div>
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <h3 className="text-xl font-bold text-white mb-2 mt-2">
                   {plan.title}
                 </h3>
-                <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-400 mb-4">
+                <p className="text-2xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 mb-4">
                   {plan.price}
                 </p>
 
-                <ul className="text-gray-200 space-y-2 text-left">
+                <ul className="space-y-3 mb-8">
                   {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <span className="text-green-400 font-bold">✔</span>
-                      {feature}
+                    <li key={i} className="flex items-start gap-2.5">
+                      <span className="flex items-center justify-center w-[18px] h-[18px] rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 text-[#080a20] shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5" strokeWidth={3} />
+                      </span>
+                      <span className="text-slate-300 text-[13.5px]">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -106,8 +137,9 @@ export default function VideoEditingPricingOptimized() {
                 href={getWhatsappLink(plan.title, plan.price)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`mt-6 py-3 rounded-xl font-bold text-white text-center bg-gradient-to-r ${plan.color} hover:scale-105 transition-transform duration-300`}
+                className="group mt-auto flex items-center justify-center gap-2.5 py-3.5 w-full rounded-full font-bold text-white text-[14px] bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-400 hover:to-green-400 shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:shadow-[0_0_28px_rgba(16,185,129,0.4)] transition-all duration-300"
               >
+                <FaWhatsapp className="text-lg" />
                 Get Started
               </a>
             </motion.div>
@@ -115,10 +147,11 @@ export default function VideoEditingPricingOptimized() {
         </div>
 
         <motion.p
-          className="mt-16 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg"
-          initial={{ opacity: 0, y: 40 }}
+          className="mt-14 text-slate-500 max-w-2xl mx-auto text-[14px] sm:text-[15px]"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           Prices depend on project complexity and requirements. We always
           customize quotes to fit your needs and ensure premium results.

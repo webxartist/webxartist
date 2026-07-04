@@ -1,140 +1,197 @@
 "use client";
 
-import React from "react";
+import Image from "next/image";
+import Link from "next/link";
 import {
   FaInstagram,
   FaTwitter,
   FaFacebookF,
   FaLinkedin,
+  FaWhatsapp,
+  FaEnvelope,
+  FaPhoneAlt,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
+const quickLinks = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/Service" },
+  { name: "Pricing", href: "/Pricing" },
+  { name: "Why Us", href: "/Whyus" },
+  { name: "About", href: "/About" },
+];
+
+const socialLinks = [
+  { icon: FaInstagram, href: "https://www.instagram.com/webxartist2024/" },
+  { icon: FaTwitter, href: "https://twitter.com/" },
+  { icon: FaFacebookF, href: "https://www.facebook.com/" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/" },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-r from-blue-950 via-purple-950 to-pink-900 text-white overflow-hidden font-poppins font-extrabold">
-      {/* Decorative Animated Blobs */}
-      <motion.div
-        className="absolute -top-32 -left-32 w-96 h-96 bg-purple-600 opacity-20 blur-3xl rounded-full"
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{ repeat: Infinity, duration: 8 }}
-      />
-      <motion.div
-        className="absolute -bottom-24 right-10 w-72 h-72 bg-pink-500 opacity-20 blur-3xl rounded-full"
-        animate={{ scale: [1, 1.15, 1] }}
-        transition={{ repeat: Infinity, duration: 10 }}
+    <footer className="relative bg-[#080a20] text-white overflow-hidden font-poppins">
+      {/* top gradient hairline — bookends the navbar's bottom border */}
+      <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
+      <div
+        className="h-[2px] w-full"
+        style={{
+          backgroundImage:
+            "linear-gradient(90deg, rgba(26,143,227,0.5) 0%, rgba(255,106,26,0.5) 55%, rgba(255,178,56,0.5) 100%)",
+        }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row md:justify-between md:items-start gap-12">
+      {/* Ambient background glow — brand palette */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-500/[0.06] blur-[130px] rounded-full" />
+        <div className="absolute -bottom-24 right-10 w-72 h-72 bg-orange-500/[0.06] blur-[130px] rounded-full" />
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12">
         {/* Brand Section */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <motion.h1
-            className="text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500"
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1 }}
-          >
-            WebXArtist
-          </motion.h1>
-          <motion.p
-            className="mt-2 text-gray-200 max-w-sm"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
+        <motion.div
+          className="flex flex-col items-center md:items-start text-center md:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <Image
+              src="/logo.png"
+              alt="WebXArtist"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+            <span className="text-xl font-bold">
+              WebX
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+                Artist
+              </span>
+            </span>
+          </div>
+          <p className="text-slate-400 text-[14px] leading-relaxed max-w-xs">
             We create stunning websites, graphics, and digital experiences for
             businesses of all sizes.
-          </motion.p>
-        </div>
+          </p>
+        </motion.div>
+
+        {/* Quick Links */}
+        <motion.div
+          className="flex flex-col items-center md:items-start text-center md:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          transition={{ delay: 0.1 }}
+        >
+          <h2 className="text-[13px] font-bold uppercase tracking-[2px] text-slate-300 mb-5">
+            Quick Links
+          </h2>
+          <ul className="space-y-3">
+            {quickLinks.map((item) => (
+              <li key={item.name}>
+                <Link
+                  href={item.href}
+                  className="text-slate-400 text-[14px] font-medium hover:text-white transition-colors duration-300"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
 
         {/* Contact Info */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-2">
-          <motion.h2
-            className="text-2xl font-semibold text-white mb-2"
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+        <motion.div
+          className="flex flex-col items-center md:items-start text-center md:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          transition={{ delay: 0.2 }}
+        >
+          <h2 className="text-[13px] font-bold uppercase tracking-[2px] text-slate-300 mb-5">
             Contact Us
-          </motion.h2>
-          <motion.p
-            className="text-gray-300 hover:text-white transition duration-200 cursor-pointer"
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            Email: webxartist@gmail.com
-          </motion.p>
-          <motion.p
-            className="text-gray-300 hover:text-white transition duration-200 cursor-pointer"
-            initial={{ x: -50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            Phone: +91 8169413149
-          </motion.p>
-        </div>
+          </h2>
+          <ul className="space-y-3.5">
+            <li>
+              <a
+                href="mailto:webxartist@gmail.com"
+                className="flex items-center gap-2.5 text-slate-400 text-[14px] hover:text-cyan-400 transition-colors duration-300"
+              >
+                <FaEnvelope className="text-cyan-400 text-xs shrink-0" />
+                webxartist@gmail.com
+              </a>
+            </li>
+            <li>
+              <a
+                href="tel:+918169413149"
+                className="flex items-center gap-2.5 text-slate-400 text-[14px] hover:text-cyan-400 transition-colors duration-300"
+              >
+                <FaPhoneAlt className="text-cyan-400 text-xs shrink-0" />
+                +91 8169413149
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/8169413149"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 text-slate-400 text-[14px] hover:text-emerald-400 transition-colors duration-300"
+              >
+                <FaWhatsapp className="text-emerald-400 text-xs shrink-0" />
+                Chat on WhatsApp
+              </a>
+            </li>
+          </ul>
+        </motion.div>
 
         {/* Social Media */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
-          <motion.h2
-            className="text-2xl font-semibold text-white mb-2"
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
+        <motion.div
+          className="flex flex-col items-center md:items-start text-center md:text-left"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          transition={{ delay: 0.3 }}
+        >
+          <h2 className="text-[13px] font-bold uppercase tracking-[2px] text-slate-300 mb-5">
             Follow Us
-          </motion.h2>
-          <motion.div
-            className="flex gap-6"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <a
-              href="https://www.instagram.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-yellow-400 transition duration-300 text-3xl"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-blue-400 transition duration-300 text-3xl"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://www.facebook.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-blue-600 transition duration-300 text-3xl"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-blue-500 transition duration-300 text-3xl"
-            >
-              <FaLinkedin />
-            </a>
-          </motion.div>
-        </div>
+          </h2>
+          <div className="flex gap-3">
+            {socialLinks.map(({ icon: Icon, href }, i) => (
+              <a
+                key={i}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-9 h-9 rounded-full border border-white/10 bg-white/[0.04] text-slate-300 hover:text-white hover:border-cyan-400/40 hover:bg-white/[0.08] transition-all duration-300"
+              >
+                <Icon className="text-[15px]" />
+              </a>
+            ))}
+          </div>
+        </motion.div>
       </div>
 
       {/* Bottom Bar */}
-      <motion.div
-        className="border-t border-white/20 mt-8 pt-6 text-center text-gray-300 text-sm"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-      >
-        © {new Date().getFullYear()} WebXArtist. All Rights Reserved.
-      </motion.div>
+      <div className="relative z-10 border-t border-white/10 px-6 py-6">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-slate-500 text-[13px]">
+            © {new Date().getFullYear()} WebXArtist. All Rights Reserved.
+          </p>
+          <p className="text-slate-500 text-[13px]">
+            Institute &amp; Agency — Mumbai · Thane · Mumbra
+          </p>
+        </div>
+      </div>
     </footer>
   );
 }

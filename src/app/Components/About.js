@@ -2,47 +2,140 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FaMapMarkerAlt, FaCheck } from "react-icons/fa";
+
+const expertise = [
+  "Custom Website Development – SEO-optimized, fast, and mobile-friendly.",
+  "Graphic Design & Branding – Logos, banners, creatives, and promotional materials.",
+  "Video Editing & Motion Graphics – Eye-catching content for YouTube, ads, and social media.",
+  "E-Commerce Development – Shopify, custom stores, and payment integrations.",
+];
+
+const whyBest = [
+  "Affordable pricing without compromising high-end quality",
+  "SEO-friendly websites that rank faster on Google",
+  "Creative brand identity and premium UI/UX",
+  "Fast delivery and dedicated support",
+  "Trusted by businesses, institutes, brands and startups in India",
+];
+
+const agencyLocations = [
+  "Mumbai",
+  "Thane",
+  "Mumbra",
+  "Navi Mumbai",
+  "Pune",
+  "Pan India (Online Projects)",
+];
+
+const courses = [
+  "Full Stack Web Development (HTML, CSS, JavaScript, React, Node.js, Mongodb, Api, MERN)",
+  "Graphic Design & Branding (Ms-Office, Photoshop, Illustrator, Indesign, Canva)",
+  "Digital Marketing (SEO, Social Media, Website, Branding, Google Ads, Meta Ads)",
+  "UI / UX Design Fundamentals",
+  "Basic Computer & Office Skills",
+  "Freelancing & Career Guidance",
+];
+
+const whyInstitute = [
+  "Practical, project-based learning approach",
+  "Industry-relevant syllabus updated regularly",
+  "Affordable course fees with high-quality training",
+  "Personal mentorship and doubt-clearing sessions",
+  "Career guidance, portfolio building & internship support",
+];
+
+const instituteLocations = [
+  "Mumbra",
+  "Thane",
+  "Mumbai",
+  "Online Classes (Pan India)",
+];
+
+const CheckItem = ({ children }) => (
+  <li className="flex items-start gap-3">
+    <span className="flex items-center justify-center w-5 h-5 rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 text-[#080a20] text-[10px] mt-0.5 shrink-0">
+      <FaCheck />
+    </span>
+    <span className="text-slate-400">{children}</span>
+  </li>
+);
+
+const DotItem = ({ children }) => (
+  <li className="flex items-start gap-3">
+    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-amber-300 mt-2.5 shrink-0" />
+    <span className="text-slate-400">{children}</span>
+  </li>
+);
+
+const LocationChips = ({ items }) => (
+  <ul className="flex flex-wrap gap-3">
+    {items.map((loc) => (
+      <li
+        key={loc}
+        className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[13px] font-medium text-slate-300"
+      >
+        <FaMapMarkerAlt className="text-cyan-400 text-xs" />
+        {loc}
+      </li>
+    ))}
+  </ul>
+);
 
 const About = () => {
   return (
     <>
-      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 py-24 font-poppins overflow-hidden bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white">
-        {/* Background Glow Elements */}
+      {/* MAIN ABOUT SECTION */}
+      <section className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 py-24 font-poppins overflow-hidden bg-[#080a20] text-white">
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-0 left-10 w-72 h-72 bg-pink-500/20 blur-3xl rounded-full animate-pulse" />
-          <div className="absolute bottom-0 right-10 w-72 h-72 bg-purple-500/20 blur-3xl rounded-full animate-pulse" />
+          <div className="absolute top-0 left-10 w-72 h-72 bg-cyan-500/10 blur-[110px] rounded-full" />
+          <div className="absolute bottom-0 right-10 w-72 h-72 bg-orange-500/10 blur-[110px] rounded-full" />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+              backgroundSize: "48px 48px",
+            }}
+          />
         </div>
 
         {/* Header */}
-        <motion.h2
-          className="text-5xl md:text-6xl font-extrabold text-center mb-16 z-10"
-          initial={{ opacity: 0, y: -50 }}
+        <motion.div
+          className="relative z-10 flex flex-col items-center text-center mb-16"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.7 }}
         >
-          About{" "}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-violet-500">
-            WebXArtist
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[2px] text-slate-300 mb-5">
+            Who We Are
           </span>
-        </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            About{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+              WebXArtist
+            </span>
+          </h2>
+        </motion.div>
 
         {/* Content */}
-        <div className="relative z-10 w-full flex flex-col lg:flex-row items-center gap-12 max-w-6xl">
+        <div className="relative z-10 w-full flex flex-col lg:flex-row items-center gap-14 max-w-6xl">
           {/* Left: Image */}
           <motion.div
             className="w-full lg:w-1/2 flex justify-center"
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
-            <div className="relative w-[650px] h-[650px] rounded-3xl shadow-2xl border-4 border-white/20 overflow-hidden hover:scale-105 transition-transform duration-500">
+            <div className="relative w-full max-w-[480px] aspect-square rounded-2xl border border-white/10 overflow-hidden">
+              <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 z-10" />
               <Image
                 src="/about.png"
                 alt="About WebXArtist"
                 fill
-                className="object-contain rounded-3xl"
+                className="object-contain p-8"
                 priority
               />
             </div>
@@ -51,16 +144,16 @@ const About = () => {
           {/* Right: Text */}
           <motion.div
             className="w-full lg:w-1/2 flex flex-col justify-center space-y-6"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
           >
-            <h3 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-white">
               Transforming Ideas into Digital Success
             </h3>
 
-            <p className="text-gray-300 leading-relaxed text-lg">
+            <p className="text-slate-400 leading-relaxed text-[15px] sm:text-base">
               WebXArtist is a leading web development, branding, and digital
               design agency delivering stunning websites, powerful branding, and
               creative content. We help businesses build strong online
@@ -68,172 +161,173 @@ const About = () => {
               growth.
             </p>
 
-            <h4 className="text-2xl md:text-3xl font-semibold text-white/90 mt-6">
-              Our Expertise
-            </h4>
+            <h4 className="text-lg font-bold text-white pt-2">Our Expertise</h4>
 
-            <ul className="list-none text-gray-300 space-y-4 text-lg">
-              <li className="flex items-start gap-3">
-                <span className="text-orange-400 text-2xl mt-1">✔</span>
-                Custom Website Development – SEO-optimized, fast, and
-                mobile-friendly.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-orange-400 text-2xl mt-1">✔</span>
-                Graphic Design & Branding – Logos, banners, creatives, and
-                promotional materials.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-orange-400 text-2xl mt-1">✔</span>
-                Video Editing & Motion Graphics – Eye-catching content for
-                YouTube, ads, and social media.
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-orange-400 text-2xl mt-1">✔</span>
-                E-Commerce Development – Shopify, custom stores, and payment
-                integrations.
-              </li>
+            <ul className="space-y-3.5 text-[15px] sm:text-base">
+              {expertise.map((item) => (
+                <CheckItem key={item}>{item}</CheckItem>
+              ))}
             </ul>
           </motion.div>
         </div>
       </section>
 
-      {/* FIXED SEO CONTENT SECTION */}
-      <section className="px-6 py-20 bg-white text-gray-800 max-w-6xl mx-auto font-poppins leading-relaxed">
-        <h2 className="text-4xl font-bold mb-6 text-center">
-          Your Trusted Website Development & Branding Agency in Mumbai, Thane &
-          Mumbra
-        </h2>
+      {/* AGENCY SEO CONTENT SECTION */}
+      <section className="relative px-6 py-24 font-poppins bg-[#0a0d28] text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-cyan-500/[0.06] blur-[130px] rounded-full" />
+        </div>
 
-        <p className="text-lg mb-4">
-          WebXArtist is recognized as one of the most reliable and affordable
-          website development companies serving
-          <strong>Mumbai, Thane, Mumbra, Navi Mumbai, and across India</strong>.
-          We specialize in building modern, SEO-optimized websites that load
-          fast, look premium, and help businesses grow digitally.
-        </p>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-8 text-center leading-tight"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Your Trusted Website Development &amp; Branding Agency in{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+              Mumbai, Thane &amp; Mumbra
+            </span>
+          </motion.h2>
 
-        <p className="text-lg mb-4">
-          Whether you're searching for
-          <strong>“best website development agnecy in Mumbra”</strong>,
-          <strong>“website development agnecy in mumbra”</strong>,
-          <strong>“affordable website designer in Mumbra”</strong>,
-          <strong>“Web development agency in Mumbra”</strong> or
-          <strong>
-            “top branding and digital marketing agency in mumbra, Thane”
-          </strong>
-          , WebXArtist offers unmatched quality at the best pricing.
-        </p>
+          <div className="space-y-5 text-slate-400 text-[15px] sm:text-base leading-relaxed">
+            <p>
+              WebXArtist is recognized as one of the most reliable and
+              affordable website development companies serving{" "}
+              <strong className="text-slate-200 font-semibold">
+                Mumbai, Thane, Mumbra, Navi Mumbai, and across India
+              </strong>
+              . We specialize in building modern, SEO-optimized websites that
+              load fast, look premium, and help businesses grow digitally.
+            </p>
 
-        <h3 className="text-3xl font-semibold mt-10 mb-4">
-          Why WebXArtist Is the Best Choice?
-        </h3>
+            <p>
+              Whether you're searching for{" "}
+              <strong className="text-slate-200 font-semibold">
+                "best website development agnecy in Mumbra"
+              </strong>
+              ,{" "}
+              <strong className="text-slate-200 font-semibold">
+                "website development agnecy in mumbra"
+              </strong>
+              ,{" "}
+              <strong className="text-slate-200 font-semibold">
+                "affordable website designer in Mumbra"
+              </strong>
+              ,{" "}
+              <strong className="text-slate-200 font-semibold">
+                "Web development agency in Mumbra"
+              </strong>{" "}
+              or{" "}
+              <strong className="text-slate-200 font-semibold">
+                "top branding and digital marketing agency in mumbra, Thane"
+              </strong>
+              , WebXArtist offers unmatched quality at the best pricing.
+            </p>
+          </div>
 
-        <ul className="list-disc pl-5 space-y-3 text-lg">
-          <li>Affordable pricing without compromising high-end quality</li>
-          <li>SEO-friendly websites that rank faster on Google</li>
-          <li>Creative brand identity and premium UI/UX</li>
-          <li>Fast delivery and dedicated support</li>
-          <li>
-            Trusted by businesses, institutes, brands and startups in India
-          </li>
-        </ul>
+          <h3 className="text-xl font-bold mt-12 mb-5 text-white">
+            Why WebXArtist Is the Best Choice?
+          </h3>
 
-        <h3 className="text-3xl font-semibold mt-10 mb-4">Service Locations</h3>
+          <ul className="space-y-3.5 text-[15px] sm:text-base">
+            {whyBest.map((item) => (
+              <CheckItem key={item}>{item}</CheckItem>
+            ))}
+          </ul>
 
-        <ul className="list-disc pl-5 space-y-2 text-lg">
-          <li>Mumbai</li>
-          <li>Thane</li>
-          <li>Mumbra</li>
-          <li>Navi Mumbai</li>
-          <li>Pune</li>
-          <li>Pan India (Online Projects)</li>
-        </ul>
+          <h3 className="text-xl font-bold mt-12 mb-5 text-white">
+            Service Locations
+          </h3>
 
-        <p className="mt-6 text-lg">
-          At WebXArtist, we merge creativity with technology to help brands grow
-          online. From website building to branding, SEO, design, and marketing
-          — we deliver everything your business needs to stand out.
-        </p>
+          <LocationChips items={agencyLocations} />
+
+          <p className="mt-8 text-slate-400 text-[15px] sm:text-base leading-relaxed">
+            At WebXArtist, we merge creativity with technology to help brands
+            grow online. From website building to branding, SEO, design, and
+            marketing — we deliver everything your business needs to stand out.
+          </p>
+        </div>
       </section>
+
       {/* WEBXARTIST INSTITUTE SEO SECTION */}
-      <section className="px-6 py-20 bg-gray-50 text-gray-800 max-w-6xl mx-auto font-poppins leading-relaxed">
-        <h2 className="text-4xl font-bold mb-6 text-center">
-          WebXArtist Institute – Practical IT & Digital Skills Training in
-          Mumbra, Thane & Mumbai
-        </h2>
+      <section className="relative px-6 py-24 font-poppins bg-[#080a20] text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-orange-500/[0.06] blur-[130px] rounded-full" />
+        </div>
 
-        <p className="text-lg mb-4">
-          WebXArtist Institute is a professional IT and digital skills training
-          institute focused on practical, industry-ready education. We provide
-          hands-on training for students, job seekers, freelancers, and
-          entrepreneurs who want to build real careers in technology and digital
-          fields.
-        </p>
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-8 text-center leading-tight"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            WebXArtist Institute – Practical IT &amp;{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+              Digital Skills Training
+            </span>{" "}
+            in Mumbra, Thane &amp; Mumbai
+          </motion.h2>
 
-        <p className="text-lg mb-4">
-          If you are searching for{" "}
-          <strong>
-            web development institute in Mumbra, Best digital marketing course
-            in Mumbra, graphic design classes near me, computer institute in
-            Mumbra , Best IT Institute In Mumbra , Best Computer Class In Mumbra
-            ,
-          </strong>
-          , WebXArtist Institute offers structured learning with real projects,
-          guidance, and career support.
-        </p>
+          <div className="space-y-5 text-slate-400 text-[15px] sm:text-base leading-relaxed">
+            <p>
+              WebXArtist Institute is a professional IT and digital skills
+              training institute focused on practical, industry-ready education.
+              We provide hands-on training for students, job seekers,
+              freelancers, and entrepreneurs who want to build real careers in
+              technology and digital fields.
+            </p>
 
-        <h3 className="text-3xl font-semibold mt-10 mb-4">
-          Courses Offered at WebXArtist Institute
-        </h3>
+            <p>
+              If you are searching for{" "}
+              <strong className="text-slate-200 font-semibold">
+                web development institute in Mumbra, Best digital marketing
+                course in Mumbra, graphic design classes near me, computer
+                institute in Mumbra, Best IT Institute In Mumbra, Best Computer
+                Class In Mumbra
+              </strong>
+              , WebXArtist Institute offers structured learning with real
+              projects, guidance, and career support.
+            </p>
+          </div>
 
-        <ul className="list-disc pl-5 space-y-3 text-lg">
-          <li>
-            Full Stack Web Development (HTML, CSS, JavaScript, React, Node.js,
-            Mongodb, Api, MERN)
-          </li>
-          <li>
-            Graphic Design & Branding (Ms-Office, Photoshop, Illustrator,
-            Indesign, Canva)
-          </li>
-          <li>
-            Digital Marketing (SEO, Social Media, Website, Branding, Google Ads,
-            Meta Ads)
-          </li>
-          <li>UI / UX Design Fundamentals</li>
-          <li>Basic Computer & Office Skills</li>
-          <li>Freelancing & Career Guidance</li>
-        </ul>
+          <h3 className="text-xl font-bold mt-12 mb-5 text-white">
+            Courses Offered at WebXArtist Institute
+          </h3>
 
-        <h3 className="text-3xl font-semibold mt-10 mb-4">
-          Why Choose WebXArtist Institute?
-        </h3>
+          <ul className="space-y-3.5 text-[15px] sm:text-base">
+            {courses.map((item) => (
+              <DotItem key={item}>{item}</DotItem>
+            ))}
+          </ul>
 
-        <ul className="list-disc pl-5 space-y-3 text-lg">
-          <li>Practical, project-based learning approach</li>
-          <li>Industry-relevant syllabus updated regularly</li>
-          <li>Affordable course fees with high-quality training</li>
-          <li>Personal mentorship and doubt-clearing sessions</li>
-          <li>Career guidance, portfolio building & internship support</li>
-        </ul>
+          <h3 className="text-xl font-bold mt-12 mb-5 text-white">
+            Why Choose WebXArtist Institute?
+          </h3>
 
-        <h3 className="text-3xl font-semibold mt-10 mb-4">
-          Institute Locations & Training Mode
-        </h3>
+          <ul className="space-y-3.5 text-[15px] sm:text-base">
+            {whyInstitute.map((item) => (
+              <CheckItem key={item}>{item}</CheckItem>
+            ))}
+          </ul>
 
-        <ul className="list-disc pl-5 space-y-2 text-lg">
-          <li>Mumbra</li>
-          <li>Thane</li>
-          <li>Mumbai</li>
-          <li>Online Classes (Pan India)</li>
-        </ul>
+          <h3 className="text-xl font-bold mt-12 mb-5 text-white">
+            Institute Locations &amp; Training Mode
+          </h3>
 
-        <p className="mt-6 text-lg">
-          WebXArtist Institute is committed to shaping skilled professionals
-          through quality education and real-world experience. Whether you want
-          a job, freelance career, or start your own business — we help you
-          build the right skills with confidence.
-        </p>
+          <LocationChips items={instituteLocations} />
+
+          <p className="mt-8 text-slate-400 text-[15px] sm:text-base leading-relaxed">
+            WebXArtist Institute is committed to shaping skilled professionals
+            through quality education and real-world experience. Whether you
+            want a job, freelance career, or start your own business — we help
+            you build the right skills with confidence.
+          </p>
+        </div>
       </section>
     </>
   );

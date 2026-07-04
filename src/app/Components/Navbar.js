@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -15,75 +16,104 @@ const Navbar = () => {
         setIsOpen(false);
       }
     };
+    const handleScroll = () => setScrolled(window.scrollY > 12);
+
     window.addEventListener("click", handleOutsideClick);
-    return () => window.removeEventListener("click", handleOutsideClick);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [isOpen]);
 
   const navItems = [
-    { name: "HOME", href: "/" },
-    { name: "SERVICES", href: "/Service" },
-    { name: "PRICING", href: "/Pricing" },
-    { name: "WHY US", href: "/Whyus" },
-    { name: "ABOUT", href: "/About" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/Service" },
+    { name: "Pricing", href: "/Pricing" },
+    { name: "Why Us", href: "/Whyus" },
+    { name: "About", href: "/About" },
   ];
 
   const socialLinks = [
     {
       icon: <FaWhatsapp />,
-      color: "text-green-400",
       link: "https://wa.me/8169413149",
     },
     {
       icon: <FaInstagram />,
-      color: "text-pink-400",
       link: "https://www.instagram.com/webxartist2024/",
     },
-    { icon: <FaTwitter />, color: "text-sky-400", link: "https://twitter.com" },
+    { icon: <FaTwitter />, link: "https://twitter.com" },
   ];
 
   const navItemVariants = {
-    hidden: { opacity: 0, y: -10 },
+    hidden: { opacity: 0, y: -8 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.1, type: "spring", stiffness: 300 },
+      transition: { delay: i * 0.08, type: "spring", stiffness: 300 },
     }),
   };
 
   const socialVariants = {
-    hidden: { opacity: 0, y: -10 },
+    hidden: { opacity: 0, y: -8 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: 0.5 + i * 0.15, type: "spring", stiffness: 300 },
+      transition: { delay: 0.45 + i * 0.1, type: "spring", stiffness: 300 },
     }),
   };
 
   return (
-    <nav className="navbar fixed w-full z-50 font-poppins backdrop-blur-lg bg-black/40 shadow-2xl px-4 md:px-24 lg:px-26 py-3">
+    <nav
+      className={`navbar fixed w-full z-50 font-poppins transition-all duration-300 px-4 md:px-16 lg:px-24 ${
+        scrolled
+          ? "bg-[#080a20]/90 backdrop-blur-xl py-2 shadow-[0_2px_30px_rgba(0,0,0,0.45)]"
+          : "bg-[#080a20]/60 backdrop-blur-md py-4"
+      }`}
+      style={{
+        borderBottom: "1px solid transparent",
+        backgroundImage:
+          "linear-gradient(90deg, rgba(26,143,227,0.55) 0%, rgba(255,106,26,0.55) 55%, rgba(255,178,56,0.55) 100%)",
+        backgroundOrigin: "border-box",
+        backgroundClip: "padding-box, border-box",
+        boxShadow: scrolled
+          ? undefined
+          : "inset 0 -1px 0 rgba(255,255,255,0.04)",
+      }}
+    >
       <div className="container mx-auto flex justify-between items-center relative">
         {/* Logo */}
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
           <motion.div
-            whileHover={{
-              scale: 1.2,
-              rotate: 10,
-              textShadow: "0 0 10px rgba(255,255,255,0.5)",
-            }}
+            whileHover={{ scale: 1.06 }}
             transition={{ type: "spring", stiffness: 300 }}
+            className="relative"
           >
             <Image
-              src="/logo.jpg"
-              alt="Logo"
-              width={100}
-              height={100}
-              className="cursor-pointer"
+              src="/logo.png"
+              alt="WebXArtist"
+              width={48}
+              height={48}
+              className="cursor-pointer rounded-full"
+              priority
             />
           </motion.div>
+          <div className="hidden sm:flex flex-col leading-none">
+            <span className="text-white font-bold text-[17px] tracking-wide">
+              WebX
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+                Artist
+              </span>
+            </span>
+            <span className="text-[9px] uppercase tracking-[2.5px] text-slate-400 font-medium mt-0.5">
+              Institute &amp; Agency
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-16 text-white text-lg font-semibold">
+        <ul className="hidden md:flex items-center space-x-10 text-[13.5px] font-semibold tracking-wide">
           {navItems.map((item, index) => (
             <motion.li
               key={item.name}
@@ -95,56 +125,68 @@ const Navbar = () => {
             >
               <Link
                 href={item.href}
-                className="hover:text-violet-400 transition-colors duration-300"
+                className="text-slate-200 uppercase transition-colors duration-300 group-hover:text-white"
               >
                 {item.name}
               </Link>
-              <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-violet-500 transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1.5 w-0 h-[2px] rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 transition-all duration-300 group-hover:w-full"></span>
             </motion.li>
           ))}
         </ul>
 
-        {/* Social Icons */}
-        <div className="hidden md:flex space-x-8">
-          {socialLinks.map((social, index) => (
-            <motion.a
-              key={index}
-              custom={index}
-              initial="hidden"
-              animate="visible"
-              variants={socialVariants}
-              href={social.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`relative ${social.color} text-2xl`}
-              whileHover={{
-                scale: 1.4,
-                textShadow: "0 0 15px rgba(255,255,255,0.7)",
-              }}
-              transition={{ duration: 0.3 }}
+        {/* Right cluster: socials + CTA */}
+        <div className="hidden md:flex items-center space-x-6">
+          <div className="flex items-center space-x-5">
+            {socialLinks.map((social, index) => (
+              <motion.a
+                key={index}
+                custom={index}
+                initial="hidden"
+                animate="visible"
+                variants={socialVariants}
+                href={social.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative text-slate-300 text-lg transition-colors duration-300 hover:text-cyan-400"
+                whileHover={{ scale: 1.25 }}
+                transition={{ duration: 0.25 }}
+              >
+                {social.icon}
+              </motion.a>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75, type: "spring", stiffness: 300 }}
+          >
+            <Link
+              href="/Contact"
+              className="inline-flex items-center rounded-full px-5 py-2 text-[12.5px] font-bold uppercase tracking-wide text-[#080a20] bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 shadow-[0_0_18px_rgba(26,143,227,0.35)] hover:shadow-[0_0_24px_rgba(255,106,26,0.45)] transition-shadow duration-300"
             >
-              {social.icon}
-            </motion.a>
-          ))}
+              Get Started
+            </Link>
+          </motion.div>
         </div>
 
         {/* Hamburger Icon */}
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex flex-col items-center justify-center space-y-1 cursor-pointer z-50"
+          className="md:hidden flex flex-col items-center justify-center space-y-1.5 cursor-pointer z-50 w-8 h-8"
         >
           <motion.div
-            className={`w-6 h-0.5 bg-white transition-all ${
+            className={`w-6 h-[2px] rounded-full bg-gradient-to-r from-cyan-400 to-orange-400 transition-all ${
               isOpen ? "rotate-45 translate-y-2" : ""
             }`}
           />
           <motion.div
-            className={`w-6 h-0.5 bg-white transition-all ${
+            className={`w-6 h-[2px] rounded-full bg-gradient-to-r from-cyan-400 to-orange-400 transition-all ${
               isOpen ? "opacity-0" : ""
             }`}
           />
           <motion.div
-            className={`w-6 h-0.5 bg-white transition-all ${
+            className={`w-6 h-[2px] rounded-full bg-gradient-to-r from-cyan-400 to-orange-400 transition-all ${
               isOpen ? "-rotate-45 -translate-y-2" : ""
             }`}
           />
@@ -158,20 +200,20 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="md:hidden bg-gradient-to-r from-pink-400 to-violet-500 backdrop-blur-lg overflow-hidden"
+            transition={{ duration: 0.35 }}
+            className="md:hidden bg-[#0a0d2b]/98 backdrop-blur-xl overflow-hidden border-t border-white/5"
           >
-            <ul className="flex flex-col items-center py-6 space-y-6 text-white px-12">
+            <ul className="flex flex-col items-center py-8 space-y-6 px-12">
               {navItems.map((item, index) => (
                 <motion.li
                   key={item.name}
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.08 }}
                 >
                   <Link
                     href={item.href}
-                    className="hover:text-violet-400 transition duration-300 text-lg"
+                    className="text-slate-200 uppercase text-[13.5px] font-semibold tracking-wide hover:text-cyan-400 transition duration-300"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
@@ -179,20 +221,31 @@ const Navbar = () => {
                 </motion.li>
               ))}
 
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: navItems.length * 0.08 }}
+              >
+                <Link
+                  href="/Contact"
+                  onClick={() => setIsOpen(false)}
+                  className="inline-flex items-center rounded-full px-6 py-2.5 text-[12.5px] font-bold uppercase tracking-wide text-[#080a20] bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300"
+                >
+                  Get Started
+                </Link>
+              </motion.div>
+
               {/* Mobile Social */}
-              <div className="flex space-x-8 mt-4">
+              <div className="flex space-x-8 pt-2">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={index}
                     href={social.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`relative ${social.color} text-2xl`}
-                    whileHover={{
-                      scale: 1.3,
-                      textShadow: "0 0 10px rgba(255,255,255,0.8)",
-                    }}
-                    transition={{ duration: 0.3 }}
+                    className="relative text-slate-300 text-xl hover:text-cyan-400 transition-colors duration-300"
+                    whileHover={{ scale: 1.2 }}
+                    transition={{ duration: 0.25 }}
                   >
                     {social.icon}
                   </motion.a>

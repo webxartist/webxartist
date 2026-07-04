@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import Letconnect from "./Components/Letconnect";
 import { Poppins } from "next/font/google";
 import Script from "next/script"; // ✅ ADD THIS
+import CursorSwitcher from "./Components/Cursor";
 
 // Load Poppins font
 const poppins = Poppins({
@@ -147,6 +148,7 @@ export default function RootLayout({ children }) {
       <body className="bg-white text-black">
         <Navbar />
         {children}
+        <CursorSwitcher />
         <Letconnect />
         <Footer />
       </body>

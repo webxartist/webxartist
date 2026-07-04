@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
@@ -64,73 +65,110 @@ export default function FAQ() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-blue-50 to-gray-100 py-16 overflow-hidden font-poppins">
-      {/* Background shapes */}
+    <section className="relative bg-[#080a20] py-24 px-6 overflow-hidden font-poppins">
+      {/* Ambient background glow — brand palette */}
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute -top-10 -left-20 w-40 h-40 bg-blue-400/20 blur-3xl rounded-full animate-pulse"
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ repeat: Infinity, duration: 6 }}
-        />
-        <motion.div
-          className="absolute bottom-16 right-16 w-48 h-48 bg-pink-500/20 blur-3xl rounded-full animate-pulse"
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{ repeat: Infinity, duration: 6 }}
+        <div className="absolute -top-10 -left-20 w-72 h-72 bg-cyan-500/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-16 right-16 w-80 h-80 bg-orange-500/10 blur-[120px] rounded-full" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
         />
       </div>
 
       <div className="max-w-3xl mx-auto relative z-10">
-        <motion.h2
-          className="text-5xl md:text-6xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 drop-shadow-lg"
-          initial={{ opacity: 0, y: -50 }}
+        {/* Header */}
+        <motion.div
+          className="flex flex-col items-center text-center mb-14"
+          initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
         >
-          Frequently Asked Questions
-        </motion.h2>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[2px] text-slate-300 mb-5">
+            Got Questions?
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
+            Frequently Asked{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+              Questions
+            </span>
+          </h2>
+          <p className="text-slate-400 text-base sm:text-lg max-w-lg mt-4">
+            Everything clients usually ask before starting a project. Don't see
+            yours? Reach out and we'll answer directly.
+          </p>
+        </motion.div>
 
-        <div className="space-y-6">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              className="relative rounded-3xl bg-black/20 backdrop-blur-md border-l-8 border-purple-500 shadow-2xl overflow-hidden"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <button
-                onClick={() => toggleAnswer(index)}
-                className="w-full text-left p-6 flex justify-between items-center hover:bg-black/10 transition-colors duration-300"
+        {/* Accordion */}
+        <div className="space-y-3">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <motion.div
+                key={index}
+                className={`relative rounded-xl border overflow-hidden transition-colors duration-300 ${
+                  isOpen
+                    ? "border-cyan-400/30 bg-white/[0.06]"
+                    : "border-white/10 bg-white/[0.03] hover:border-white/20"
+                }`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                viewport={{ once: true }}
               >
-                <h3 className="text-xl md:text-2xl font-bold text-white">
-                  {faq.question}
-                </h3>
-                <motion.span
-                  className="text-purple-400 text-2xl ml-4"
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
+                <button
+                  onClick={() => toggleAnswer(index)}
+                  className="w-full text-left px-6 py-5 flex justify-between items-center gap-4"
                 >
-                  ▼
-                </motion.span>
-              </button>
-
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="p-6 bg-black/10 text-white border-t border-purple-500"
+                  <div className="flex items-start gap-4">
+                    <span
+                      className={`text-[11px] font-bold tabular-nums pt-1 shrink-0 ${
+                        isOpen ? "text-cyan-400" : "text-slate-600"
+                      }`}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-[15px] md:text-[16px] font-semibold text-white leading-snug">
+                      {faq.question}
+                    </h3>
+                  </div>
+                  <motion.span
+                    className={`flex items-center justify-center w-7 h-7 rounded-full border shrink-0 ${
+                      isOpen
+                        ? "border-transparent bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 text-[#080a20]"
+                        : "border-white/15 text-slate-400"
+                    }`}
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
                   >
-                    <p>{faq.answer}</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                    <ChevronDown className="w-4 h-4" />
+                  </motion.span>
+                </button>
+
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                    >
+                      <div className="px-6 pb-6 pl-[3.1rem]">
+                        <p className="text-slate-400 text-[14px] sm:text-[15px] leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -17,43 +17,43 @@ const steps = [
   {
     title: "Consultation",
     description: "Understanding your requirements and goals.",
-    icon: <FaComments className="text-4xl text-orange-500" />,
+    icon: <FaComments />,
   },
   {
     title: "Planning",
     description: "Creating a detailed plan and timeline for the project.",
-    icon: <FaClipboardList className="text-4xl text-orange-500" />,
+    icon: <FaClipboardList />,
   },
   {
     title: "Design",
     description: "Developing prototypes and design concepts.",
-    icon: <FaPaintBrush className="text-4xl text-orange-500" />,
+    icon: <FaPaintBrush />,
   },
   {
     title: "Development",
     description:
       "Building the project with a focus on quality and performance.",
-    icon: <FaCode className="text-4xl text-orange-500" />,
+    icon: <FaCode />,
   },
   {
     title: "Testing",
     description: "Thorough testing to ensure everything works as intended.",
-    icon: <FaCheckCircle className="text-4xl text-orange-500" />,
+    icon: <FaCheckCircle />,
   },
   {
     title: "Launch",
     description: "Deploying the project and going live.",
-    icon: <FaRocket className="text-4xl text-orange-500" />,
+    icon: <FaRocket />,
   },
   {
     title: "Feedback",
     description: "Collecting feedback for continuous improvement.",
-    icon: <FaCommentDots className="text-4xl text-orange-500" />,
+    icon: <FaCommentDots />,
   },
   {
     title: "Support",
     description: "Providing ongoing support and maintenance.",
-    icon: <FaHeadset className="text-4xl text-orange-500" />,
+    icon: <FaHeadset />,
   },
 ];
 
@@ -61,59 +61,127 @@ const Strategy = () => {
   const [currentStep, setCurrentStep] = useState(0);
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] px-6 py-24 font-poppins text-white overflow-hidden">
-      {/* Floating Glow Backgrounds */}
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center bg-[#080a20] px-6 py-24 font-poppins text-white overflow-hidden">
+      {/* Ambient background glow — brand palette */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-orange-500/20 blur-3xl rounded-full animate-pulse" />
-        <div className="absolute bottom-10 right-10 w-72 h-72 bg-pink-500/20 blur-3xl rounded-full animate-pulse" />
+        <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/10 blur-[110px] rounded-full" />
+        <div className="absolute bottom-10 right-10 w-72 h-72 bg-orange-500/10 blur-[110px] rounded-full" />
       </div>
 
       {/* Section Header */}
-      <motion.h2
-        className="text-5xl md:text-6xl font-extrabold mb-16 text-center z-10"
-        initial={{ opacity: 0, y: -40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+      <motion.div
+        className="relative z-10 flex flex-col items-center text-center mb-16"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
       >
-        Our{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500">
-          Strategy
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[2px] text-slate-300 mb-5">
+          How We Work
         </span>
-      </motion.h2>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          Our{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+            Strategy
+          </span>
+        </h2>
+        <p className="text-slate-400 text-base sm:text-lg max-w-xl mt-4">
+          An 8-step process refined across every project — clear at each stage,
+          so you always know what happens next.
+        </p>
+      </motion.div>
 
-      {/* Strategy Card */}
+      {/* Step Rail */}
+      <div className="relative z-10 w-full max-w-4xl overflow-x-auto pb-4 mb-10 [scrollbar-width:none]">
+        <div className="relative flex items-start justify-between min-w-[720px] md:min-w-0 px-2">
+          {/* connecting track */}
+          <div className="absolute top-6 left-0 right-0 h-[2px] bg-white/10 mx-6" />
+          <motion.div
+            className="absolute top-6 left-0 h-[2px] bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 mx-6"
+            initial={{ width: 0 }}
+            animate={{
+              width: `${(currentStep / (steps.length - 1)) * 100}%`,
+            }}
+            transition={{ duration: 0.4 }}
+            style={{ maxWidth: "calc(100% - 3rem)" }}
+          />
+
+          {steps.map((step, index) => {
+            const active = index === currentStep;
+            const done = index < currentStep;
+            return (
+              <button
+                key={step.title}
+                onClick={() => setCurrentStep(index)}
+                className="relative z-10 flex flex-col items-center gap-2 flex-1 group"
+              >
+                <span
+                  className={`flex items-center justify-center w-12 h-12 rounded-full border text-base transition-all duration-300 ${
+                    active
+                      ? "bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 text-[#080a20] border-transparent shadow-[0_0_18px_rgba(255,178,56,0.4)]"
+                      : done
+                        ? "bg-white/10 border-cyan-400/40 text-cyan-300"
+                        : "bg-white/5 border-white/10 text-slate-500 group-hover:text-slate-300 group-hover:border-white/20"
+                  }`}
+                >
+                  {step.icon}
+                </span>
+                <span
+                  className={`text-[11px] font-semibold tracking-wide transition-colors duration-300 whitespace-nowrap ${
+                    active
+                      ? "text-white"
+                      : "text-slate-500 group-hover:text-slate-300"
+                  }`}
+                >
+                  {step.title}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Detail Panel */}
       <AnimatePresence mode="wait">
         <motion.div
           key={currentStep}
-          className="relative z-10 bg-white/10 backdrop-blur-lg border border-white/10 rounded-3xl shadow-[0_0_25px_rgba(255,255,255,0.1)] p-8 max-w-lg w-full cursor-pointer hover:shadow-[0_0_40px_rgba(236,72,153,0.5)] transition-all duration-500"
-          initial={{ opacity: 0, y: 40, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 40, scale: 0.9 }}
-          transition={{ duration: 0.6 }}
+          className="relative z-10 bg-white/[0.04] border border-white/10 rounded-2xl p-8 max-w-lg w-full"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.4 }}
         >
-          <div className="flex items-center mb-6 space-x-4">
-            {steps[currentStep].icon}
-            <h3 className="text-3xl font-bold text-white">
-              {steps[currentStep].title}
-            </h3>
+          <div className="flex items-center gap-4 mb-4">
+            <span className="flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 text-[#080a20] text-lg shrink-0">
+              {steps[currentStep].icon}
+            </span>
+            <div>
+              <span className="text-[11px] font-semibold text-slate-500 tracking-wide">
+                STEP {String(currentStep + 1).padStart(2, "0")} /{" "}
+                {String(steps.length).padStart(2, "0")}
+              </span>
+              <h3 className="text-2xl font-bold text-white leading-tight">
+                {steps[currentStep].title}
+              </h3>
+            </div>
           </div>
-          <p className="text-gray-300 text-lg">
+          <p className="text-slate-400 text-[15px] leading-relaxed">
             {steps[currentStep].description}
           </p>
         </motion.div>
       </AnimatePresence>
 
       {/* Navigation Buttons */}
-      <div className="flex justify-center space-x-6 mt-10 z-10">
+      <div className="flex justify-center gap-4 mt-8 z-10">
         <button
-          className="bg-gradient-to-r from-orange-500 to-pink-500 px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 disabled:opacity-50"
+          className="px-6 py-3 rounded-full text-[13px] font-semibold uppercase tracking-wide text-slate-200 border border-white/15 hover:border-cyan-400/50 hover:text-white transition-colors duration-300 disabled:opacity-30 disabled:pointer-events-none"
           onClick={() => setCurrentStep((prev) => Math.max(prev - 1, 0))}
           disabled={currentStep === 0}
         >
           Previous
         </button>
         <button
-          className="bg-gradient-to-r from-orange-500 to-pink-500 px-6 py-3 rounded-xl shadow-lg hover:scale-105 transition-transform duration-300 disabled:opacity-50"
+          className="px-6 py-3 rounded-full text-[13px] font-bold uppercase tracking-wide text-[#080a20] bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 shadow-[0_0_18px_rgba(26,143,227,0.3)] hover:shadow-[0_0_26px_rgba(255,106,26,0.4)] transition-shadow duration-300 disabled:opacity-30 disabled:pointer-events-none"
           onClick={() =>
             setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1))
           }
@@ -121,18 +189,6 @@ const Strategy = () => {
         >
           Next
         </button>
-      </div>
-
-      {/* Progress Indicator */}
-      <div className="w-full max-w-lg mt-8 z-10">
-        <div className="h-2 bg-white/20 rounded-full overflow-hidden">
-          <motion.div
-            className="h-2 bg-gradient-to-r from-orange-400 to-pink-500 rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
-            transition={{ duration: 0.5 }}
-          />
-        </div>
       </div>
     </section>
   );

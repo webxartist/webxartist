@@ -23,18 +23,13 @@ const page = () => {
       <Ads />
       <Line />
       <Service />
-      <Line />
       <Roadmap />
-      <Line />
       <WhyChooseUs />
       <Workdone />
-      <Line />
       <About />
       <Technology />
       <MetaAds />
       <Portfolio />
-
-      <Line />
       <QA />
       <Feedback />
       <Whatsapp />

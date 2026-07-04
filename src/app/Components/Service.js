@@ -16,70 +16,79 @@ const services = [
 
 const Service = () => {
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0c29] via-[#302b63] to-[#24243e] text-white font-poppins px-6 py-20 overflow-hidden">
-      {/* Soft Glow Backgrounds */}
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center bg-[#080a20] text-white font-poppins px-6 py-24 overflow-hidden">
+      {/* Ambient background glow — brand palette */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-[30rem] h-[30rem] bg-pink-500/20 blur-3xl rounded-full animate-pulse" />
-        <div className="absolute bottom-0 right-0 w-[25rem] h-[25rem] bg-violet-600/20 blur-3xl rounded-full animate-pulse" />
+        <div className="absolute top-0 left-0 w-[28rem] h-[28rem] bg-cyan-500/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 right-0 w-[26rem] h-[26rem] bg-orange-500/10 blur-[120px] rounded-full" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
       </div>
 
       {/* Section Header */}
-      <motion.h2
-        className="text-5xl md:text-6xl font-extrabold text-center mb-14 z-10"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+      <motion.div
+        className="relative z-10 flex flex-col items-center mb-16 text-center"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
       >
-        Our{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-violet-500">
-          Services
+        <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[2px] text-slate-300 mb-5">
+          What We Offer
         </span>
-      </motion.h2>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          Our{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
+            Services
+          </span>
+        </h2>
+        <p className="text-slate-400 text-base sm:text-lg max-w-xl mt-4">
+          End-to-end digital solutions built to help your brand launch, grow,
+          and stay ahead — all under one roof.
+        </p>
+      </motion.div>
 
       {/* Service Grid */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl w-full">
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl w-full">
         {services.map((service, index) => (
           <motion.div
             key={index}
-            className="group relative bg-white/10 backdrop-blur-lg border border-white/10 rounded-2xl p-6 flex flex-col items-center justify-center shadow-[0_0_25px_rgba(255,255,255,0.1)] hover:shadow-[0_0_40px_rgba(236,72,153,0.4)] transition-all duration-500 cursor-pointer"
-            initial={{ opacity: 0, y: 40 }}
+            className="group relative bg-white/[0.04] border border-white/10 rounded-2xl p-7 flex flex-col items-center justify-center text-center hover:border-cyan-400/30 hover:bg-white/[0.06] transition-all duration-400 cursor-pointer"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.7, ease: "easeOut" }}
-            whileHover={{ scale: 1.05 }}
+            transition={{ delay: index * 0.08, duration: 0.6, ease: "easeOut" }}
+            whileHover={{ y: -4 }}
           >
-            {/* Service Image */}
-            <div className="relative w-24 h-24 flex justify-center items-center mb-6">
-              <motion.div
-                whileHover={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 0.6 }}
-              >
-                <Image
-                  src={service.image}
-                  alt={service.name}
-                  width={100}
-                  height={100}
-                  className="object-contain drop-shadow-lg"
-                />
-              </motion.div>
+            {/* Index tag */}
+            <span className="absolute top-5 right-5 text-[11px] font-semibold text-slate-500 tabular-nums">
+              {String(index + 1).padStart(2, "0")}
+            </span>
 
-              {/* Glow Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-pink-500 to-violet-600 opacity-0 group-hover:opacity-30 blur-2xl rounded-full transition-opacity duration-500"></div>
+            {/* Service Image */}
+            <div className="relative w-16 h-16 flex justify-center items-center mb-5 rounded-xl bg-white/[0.05] border border-white/10 group-hover:border-cyan-400/30 transition-colors duration-400">
+              <Image
+                src={service.image}
+                alt={service.name}
+                width={34}
+                height={34}
+                className="object-contain"
+              />
             </div>
 
             {/* Service Name */}
-            <h3 className="text-xl font-bold mb-2 text-center group-hover:text-pink-400 transition-colors duration-300">
+            <h3 className="text-[15px] font-semibold text-slate-100 group-hover:text-white transition-colors duration-300">
               {service.name}
             </h3>
 
-            {/* Decorative Glow Line */}
-            <div className="w-16 h-[2px] bg-gradient-to-r from-pink-500 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-            {/* Floating Shine Effect */}
-            <motion.div
-              className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-r from-white/10 to-transparent"
-              style={{ mixBlendMode: "overlay" }}
-            />
+            {/* Accent underline */}
+            <div className="w-8 h-[2px] mt-4 rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 opacity-0 group-hover:opacity-100 group-hover:w-12 transition-all duration-400" />
           </motion.div>
         ))}
       </div>
