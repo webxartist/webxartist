@@ -30,72 +30,105 @@ const geistMono = localFont({
   display: "swap",
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#080a20",
+  colorScheme: "dark",
+};
 /* ------------------------------------------------------
    ⭐ FULL SITE-WIDE SEO — BEST SETTINGS FOR RANKING
 ------------------------------------------------------ */
 export const metadata = {
+  metadataBase: new URL("https://webxartist.com"),
+
   verification: {
     google: "xyvHPQW3Gi3HzvFtrTwRk5s3SG_VZvbE1o3z5C_Ag6I",
   },
 
   title: {
     default:
-      "WebXArtist | Web Development, Branding & Digital Marketing Agency",
+      "WebXArtist | Website Development, Branding & Digital Marketing Agency",
     template: "%s | WebXArtist",
   },
 
   description:
-    "WebXArtist is a professional web development, branding, digital marketing, SEO, and graphic design agency delivering custom modern digital solutions worldwide.",
+    "WebXArtist is a professional website development, branding, SEO, digital marketing, graphic design and software development agency serving businesses across India.",
 
   keywords: [
+    "Website Development",
+    "Web Design",
+    "SEO",
+    "Digital Marketing",
+    "Graphic Design",
+    "Logo Design",
+    "Social Media Marketing",
     "WebXArtist",
-    "Website development agency in mumbra",
-    "Website development near me",
-    "Website development services",
-    "branding services in mumbra",
-    "digital marketing agency in mumbra",
-    "SEO services in mumbra",
-    "digital marketing agency",
-    "web design agency",
-    "best IT institute in mumbra",
-    "best computer institute near me",
+    "Mumbai",
+    "Thane",
+    "Mumbra",
+    "Pune",
+    "Navi Mumbai",
   ],
 
-  robots: "index, follow",
+  alternates: {
+    canonical: "/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
+    },
+  },
 
   openGraph: {
-    type: "website",
-    title: "WebXArtist | Modern Web Development & Branding Agency",
+    title:
+      "WebXArtist | Website Development, Branding & Digital Marketing Agency",
+
     description:
-      "We create high-performance websites, professional branding, SEO-friendly digital solutions, and marketing strategies.",
+      "Professional Website Development, Branding, SEO, Digital Marketing and Graphic Design Services.",
+
+    url: "https://webxartist.com",
+
     siteName: "WebXArtist",
-    locale: "en_US",
-    url: "https://www.webxartist.com",
+
+    locale: "en_IN",
+
+    type: "website",
+
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "WebXArtist - Web Development & Branding Agency",
+        alt: "WebXArtist",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "WebXArtist | Leading Web Development & Branding Services",
-    description:
-      "Professional website development, digital marketing, branding, SEO and modern digital solutions.",
-    images: ["/twitter-image.png"],
-    creator: "@webxartist",
-  },
 
-  alternates: {
-    canonical: "https://www.webxartist.com",
+    title: "WebXArtist",
+
+    description:
+      "Website Development, Branding, SEO and Digital Marketing Agency.",
+
+    images: ["/og-image.png"],
   },
 
   icons: {
     icon: "/favicon.ico",
+
+    shortcut: "/favicon.ico",
+
     apple: "/apple-touch-icon.png",
   },
 };
@@ -103,17 +136,63 @@ export const metadata = {
 /* ------------------------------------------------------
    ⭐ JSON-LD SCHEMA FOR GOOGLE SEO BOOST
 ------------------------------------------------------- */
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "WebXArtist",
-  url: "https://www.webxartist.com",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: "https://www.webxartist.com/?q={search_term_string}",
-    "query-input": "required name=search_term_string",
+const schema = [
+  {
+    "@context": "https://schema.org",
+
+    "@type": "Organization",
+
+    "@id": "https://webxartist.com/#organization",
+
+    name: "WebXArtist",
+
+    url: "https://webxartist.com",
+
+    logo: "https://webxartist.com/logo.png",
+
+    email: "webxartist@gmail.com",
+
+    telephone: "+91-8169413149",
+
+    sameAs: [
+      "https://www.instagram.com/webxartist2024",
+      "https://www.facebook.com/webxartist",
+      "https://www.linkedin.com/company/webxartist",
+      "https://www.youtube.com/@webxartist",
+    ],
+
+    address: {
+      "@type": "PostalAddress",
+
+      streetAddress:
+        "Shop No. 1, Baugh-E-Meher Apartment, A Wing, Shibli Nagar",
+
+      addressLocality: "Mumbra",
+
+      addressRegion: "Maharashtra",
+
+      postalCode: "400612",
+
+      addressCountry: "IN",
+    },
   },
-};
+
+  {
+    "@context": "https://schema.org",
+
+    "@type": "WebSite",
+
+    "@id": "https://webxartist.com/#website",
+
+    url: "https://webxartist.com",
+
+    name: "WebXArtist",
+
+    publisher: {
+      "@id": "https://webxartist.com/#organization",
+    },
+  },
+];
 
 export default function RootLayout({ children }) {
   return (
@@ -122,13 +201,13 @@ export default function RootLayout({ children }) {
       className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
       <head>
-        {/* JSON-LD – Google will read this */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
         />
 
-        {/* ✅ GOOGLE ANALYTICS */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-29NBKJ07ZZ"
           strategy="afterInteractive"
@@ -136,12 +215,12 @@ export default function RootLayout({ children }) {
 
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-            gtag('config', 'G-29NBKJ07ZZ');
-          `}
+      gtag('config', 'G-29NBKJ07ZZ');
+    `}
         </Script>
       </head>
 

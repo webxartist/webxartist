@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ShieldCheck, Star, Users } from "lucide-react";
+import { Phone, ShieldCheck, Star, Users } from "lucide-react";
 
 const Hero = () => {
   const [currentCard, setCurrentCard] = useState(0);
@@ -71,9 +71,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.7 }}
           >
-            Build a Brand That{" "}
+            Build your Startup{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
-              People Trust
+              and BRAND
             </span>
             <br />
             With WebXArtist
@@ -85,9 +85,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            Premium websites, branding, social media and growth strategy — we
-            turn ideas into a digital presence that attracts customers and earns
-            their trust.
+            We're your one-stop digital team — building websites, shaping
+            brands, and driving growth through SEO and marketing, so you can
+            focus on your business while customers find their way to you.
           </motion.p>
 
           {/* TRUST BADGES */}
@@ -118,11 +118,11 @@ const Hero = () => {
             transition={{ delay: 0.65 }}
           >
             <Link
-              href="/Contact"
+              href="tel:+918169413149"
               className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-[14px] font-bold uppercase tracking-wide text-[#080a20] bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 shadow-[0_0_24px_rgba(26,143,227,0.3)] hover:shadow-[0_0_32px_rgba(255,106,26,0.4)] transition-shadow duration-300"
             >
-              Get Started
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <Phone className="w-4 h-4 transition-transform group-hover:scale-110" />
+              Call Us Now
             </Link>
 
             <Link
@@ -130,7 +130,7 @@ const Hero = () => {
               target="_blank"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-semibold text-slate-200 border border-white/15 hover:border-cyan-400/50 hover:text-white transition-colors duration-300"
             >
-              View Our Work
+              Connect On Instagram
             </Link>
           </motion.div>
         </motion.div>

@@ -1,26 +1,38 @@
-import React from "react";
-import WhyChooseUs from "../Components/whychooseus";
-import Workdone from "../Components/Workdone";
-import Whatsapp from "../Components/WhatsApp";
-import Instagram from "../Components/Instgram";
+import WhyHero from "@/app/Components/whychooseus/WhyHero";
+import WhyStats from "@/app/Components/whychooseus/WhyStats";
+import WhyFeatures from "@/app/Components/whychooseus/WhyFeatures";
 
-// ✅ SEO METADATA (FIXED)
+import WhyTechnology from "@/app/Components/whychooseus/WhyTechnology";
+import WhyProjects from "@/app/Components/whychooseus/WhyProjects";
+import WhyTestimonials from "@/app/Components/whychooseus/WhyTestimonials";
+import WhyFAQ from "@/app/Components/whychooseus/WhyFaq";
+import WhyCTA from "@/app/Components/whychooseus/WhyCTA";
+
+import Whatsapp from "@/app/Components/WhatsApp";
+import Instagram from "@/app/Components/Instgram";
+
+// ✅ SEO Metadata
 export const metadata = {
   title:
-    "Why Choose WebXArtist | Affordable Website Developer in Mumbra, Thane & Mumbai",
+    "Why Choose WebXArtist | Website Development, Branding & Digital Marketing Company",
+
   description:
-    "Discover why WebXArtist Institute & Agency is a trusted and affordable website development and digital marketing company in Mumbra, Thane, Mumbai & Navi Mumbai.",
+    "Discover why businesses across India trust WebXArtist for website development, branding, SEO, digital marketing, graphic design, and complete business growth solutions.",
 
   alternates: {
     canonical: "https://webxartist.com/Whyus",
   },
 
   openGraph: {
-    title: "Why Choose WebXArtist | Website Development & Branding Experts",
+    title: "Why Choose WebXArtist",
+
     description:
-      "High-quality website development, branding, SEO, and digital marketing services by WebXArtist Institute & Agency.",
+      "Professional website development, branding, SEO, graphic design and digital marketing services for startups and businesses.",
+
     url: "https://webxartist.com/Whyus",
+
     siteName: "WebXArtist Institute & Agency",
+
     images: [
       {
         url: "/about.png",
@@ -29,28 +41,35 @@ export const metadata = {
         alt: "Why Choose WebXArtist",
       },
     ],
+
     locale: "en_IN",
+
     type: "website",
   },
 };
 
 export default function Page() {
-  // ✅ COMBINED SCHEMA (BEST PRACTICE)
   const schemaData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Organization",
         "@id": "https://webxartist.com/#organization",
+
         name: "WebXArtist Institute & Agency",
+
         url: "https://webxartist.com",
+
         logo: "https://webxartist.com/logo.png",
+
         description:
-          "WebXArtist Institute & Agency provides website development, branding, SEO, and digital marketing services across Mumbai, Thane, Mumbra, and India.",
+          "Professional website development, branding, SEO, social media marketing and digital marketing services across India.",
+
         sameAs: [
           "https://www.instagram.com/webxartist",
           "https://www.facebook.com/webxartist",
         ],
+
         address: {
           "@type": "PostalAddress",
           addressLocality: "Mumbra",
@@ -58,34 +77,56 @@ export default function Page() {
           addressCountry: "IN",
         },
       },
+
       {
         "@type": "WebPage",
+
         "@id": "https://webxartist.com/Whyus#webpage",
+
         url: "https://webxartist.com/Whyus",
+
         name: "Why Choose WebXArtist",
+
+        description:
+          "Learn why WebXArtist is trusted for website development, branding, SEO, digital marketing and complete business growth solutions.",
+
         isPartOf: {
           "@id": "https://webxartist.com/#organization",
         },
-        description:
-          "Reasons to choose WebXArtist for website development, branding, SEO, and digital marketing services.",
       },
     ],
   };
 
   return (
     <>
-      {/* ✅ Structured Data */}
+      {/* Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemaData),
+        }}
       />
 
       <div className="pt-16">
-        <WhyChooseUs />
-        <Workdone />
+        <WhyHero />
+
+        <WhyStats />
+
+        <WhyFeatures />
+
+        <WhyTechnology />
+
+        <WhyProjects />
+
+        <WhyTestimonials />
+
+        <WhyFAQ />
+
+        <WhyCTA />
       </div>
 
       <Whatsapp />
+
       <Instagram />
     </>
   );
