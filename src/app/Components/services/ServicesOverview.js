@@ -33,7 +33,9 @@ const ServiceOverview = ({ service }) => {
             Solutions
           </h2>
 
-          <p className="mt-6 text-slate-400 leading-8">{service.description}</p>
+          <p className="mt-6 text-slate-400 leading-8">
+            {service.overviewdescription}
+          </p>
 
           <Link
             href="/Contact"
@@ -52,9 +54,7 @@ const ServiceOverview = ({ service }) => {
           transition={{ duration: 0.7 }}
           className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-lg p-8"
         >
-          <h3 className="text-2xl font-semibold mb-8">
-            Why Choose WebXArtist?
-          </h3>
+          <h3 className="text-2xl font-semibold mb-8">What We Build:</h3>
 
           <div className="grid gap-5">
             {service.benefits?.map((item, index) => (

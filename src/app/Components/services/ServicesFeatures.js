@@ -63,13 +63,11 @@ const ServiceFeatures = ({ service }) => {
               </div>
 
               <h3 className="mt-6 text-xl font-semibold text-white">
-                {feature}
+                {feature.title}
               </h3>
 
               <p className="mt-3 text-slate-400 leading-7">
-                We implement this feature using industry best practices,
-                ensuring your business receives maximum performance, security,
-                and long-term scalability.
+                {feature.description}
               </p>
             </motion.div>
           ))}

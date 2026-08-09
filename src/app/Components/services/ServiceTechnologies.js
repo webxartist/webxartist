@@ -71,13 +71,11 @@ const ServiceTechnologies = ({ service }) => {
                 </div>
 
                 <h3 className="mt-6 text-2xl font-semibold text-white">
-                  {tech}
+                  {tech.title}
                 </h3>
 
                 <p className="mt-3 leading-7 text-slate-400">
-                  Our experts use {tech} to build reliable, scalable, secure,
-                  and high-performing digital solutions that help businesses
-                  grow faster.
+                  {tech.description}.
                 </p>
               </motion.div>
             );

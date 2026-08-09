@@ -35,7 +35,7 @@ export default function ServiceLocationFeatures({ service }) {
             >
               <FaCheckCircle className="text-cyan-400 text-2xl mb-5" />
 
-              <h3 className="text-lg font-semibold">{feature}</h3>
+              <h3 className="text-lg font-semibold">{feature.title}</h3>
             </motion.div>
           ))}
         </div>

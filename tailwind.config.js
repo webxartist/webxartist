@@ -11,8 +11,11 @@ module.exports = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+
       fontFamily: {
-        poppins: ["var(--font-poppins)", "sans-serif"], // Use the CSS variable for Poppins
+        poppins: ["var(--font-poppins)", "sans-serif"],
+        geist: ["var(--font-geist-sans)", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "monospace"],
       },
     },
   },

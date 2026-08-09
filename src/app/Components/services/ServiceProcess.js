@@ -64,12 +64,12 @@ const ServiceProcess = ({ service }) => {
 
                 {/* Content */}
                 <div className="flex-1 rounded-3xl border border-white/10 bg-white/[0.04] p-8 hover:border-cyan-400/30 transition-all duration-300">
-                  <h3 className="text-2xl font-semibold text-white">{step}</h3>
+                  <h3 className="text-2xl font-semibold text-white">
+                    {step.title}
+                  </h3>
 
                   <p className="mt-3 text-slate-400 leading-7">
-                    Our team carefully completes this stage to ensure your
-                    project meets business goals, maintains high quality, and
-                    delivers the best experience for your customers.
+                    {step.description}
                   </p>
                 </div>
               </motion.div>

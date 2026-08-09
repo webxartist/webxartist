@@ -73,8 +73,7 @@ export default function ServiceLocations({ service }) {
                 </h3>
 
                 <p className="text-slate-400 mt-4 leading-7">
-                  Professional {service.name.toLowerCase()} services in{" "}
-                  {location.city}.
+                  {service.name.toLowerCase()} services in {location.city}.
                 </p>
 
                 <span className="inline-block mt-6 text-cyan-400 font-semibold">

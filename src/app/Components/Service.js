@@ -81,8 +81,8 @@ const Service = () => {
                 <Image
                   src={service.image}
                   alt={service.name}
-                  width={34}
-                  height={34}
+                  width={100}
+                  height={100}
                   className="object-contain"
                 />
               </div>

@@ -72,15 +72,9 @@ const ServiceBenefits = ({ service }) => {
                   <Icon className="text-cyan-400" size={30} />
                 </div>
 
-                <h3 className="mt-6 text-xl font-semibold text-white">
-                  {benefit}
-                </h3>
+                <h3 className="mt-6 text-xl font-semibold text-white">{}</h3>
 
-                <p className="mt-3 leading-7 text-slate-400">
-                  We focus on delivering measurable business value, helping your
-                  company stand out, build credibility, and achieve sustainable
-                  digital growth.
-                </p>
+                <p className="mt-3 leading-7 text-slate-400">{benefit}</p>
               </motion.div>
             );
           })}

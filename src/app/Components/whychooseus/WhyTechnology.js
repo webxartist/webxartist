@@ -6,62 +6,62 @@ import Image from "next/image";
 const technologies = [
   {
     name: "Next.js",
-    image: "/tech/nextjs.png",
+    image: "/nextdotjs.svg",
     description: "Fast, SEO-friendly websites for modern businesses.",
   },
   {
     name: "React.js",
-    image: "/tech/react.png",
+    image: "/react.svg",
     description: "Interactive and scalable user interfaces.",
   },
   {
     name: "Node.js",
-    image: "/tech/nodejs.png",
+    image: "/nodejs.svg",
     description: "Powerful backend APIs and business applications.",
   },
   {
     name: "MongoDB",
-    image: "/tech/mongodb.png",
+    image: "/mongodb.svg",
     description: "Reliable database for modern web applications.",
   },
   {
     name: "Express.js",
-    image: "/tech/express.png",
+    image: "/expressdotjs.svg",
     description: "Secure and scalable server-side development.",
   },
   {
     name: "Tailwind CSS",
-    image: "/tech/tailwind.png",
+    image: "/tailwind-css.svg",
     description: "Beautiful, responsive, and modern UI design.",
   },
   {
     name: "Figma",
-    image: "/tech/figma.png",
+    image: "/figma.svg",
     description: "Professional UI/UX design and prototyping.",
   },
   {
     name: "Adobe Photoshop",
-    image: "/tech/photoshop.png",
+    image: "/logodesign.png",
     description: "Creative graphics and marketing designs.",
   },
   {
     name: "Adobe Illustrator",
-    image: "/tech/illustrator.png",
+    image: "/tool.png",
     description: "Professional logo and brand identity design.",
   },
   {
     name: "Google Analytics",
-    image: "/tech/analytics.png",
+    image: "/google-analytics.svg",
     description: "Track visitors and improve business performance.",
   },
   {
     name: "Google Ads",
-    image: "/tech/googleads.png",
+    image: "/google-ads.svg",
     description: "Generate qualified leads through paid advertising.",
   },
   {
     name: "Meta Ads",
-    image: "/tech/meta.png",
+    image: "/meta.svg",
     description: "Reach customers across Facebook & Instagram.",
   },
 ];

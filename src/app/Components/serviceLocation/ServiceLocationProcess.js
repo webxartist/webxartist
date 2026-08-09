@@ -35,7 +35,11 @@ export default function ServiceLocationProcess({ service }) {
                 {String(index + 1).padStart(2, "0")}
               </div>
 
-              <h3 className="text-xl font-semibold mt-10">{step}</h3>
+              <h3 className="text-xl font-semibold mt-10">{step.title}</h3>
+
+              <p className="mt-4 text-slate-400 leading-7">
+                {step.description}
+              </p>
             </motion.div>
           ))}
         </div>

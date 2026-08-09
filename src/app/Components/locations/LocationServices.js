@@ -1,88 +1,79 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  FaLaptopCode,
-  FaPaintBrush,
-  FaSearch,
-  FaBullhorn,
-  FaEnvelope,
-  FaArrowRight,
-} from "react-icons/fa";
-
+import { FaArrowRight } from "react-icons/fa";
 import services from "@/data/services";
 
-const icons = {
-  "website-development": <FaLaptopCode />,
-  "graphic-design": <FaPaintBrush />,
-  "logo-design": <FaPaintBrush />,
-  "video-editing": <FaBullhorn />,
-  "seo-services": <FaSearch />,
-  "social-media-management": <FaBullhorn />,
-  "content-creation": <FaPaintBrush />,
-  "email-marketing": <FaEnvelope />,
-};
-
 export default function LocationServices({ location }) {
-  const availableServices = services.filter((service) =>
-    location.services?.includes(service.slug),
-  );
-
-  if (!availableServices.length) return null;
-
   return (
-    <section className="relative py-24 bg-[#0a0d28] overflow-hidden">
+    <section className="relative bg-[#0b1027] py-24 overflow-hidden">
+      {/* Background Glow */}
       <div className="absolute inset-0">
-        <div className="absolute left-0 top-0 w-80 h-80 bg-cyan-500/10 blur-[120px] rounded-full" />
-        <div className="absolute right-0 bottom-0 w-80 h-80 bg-orange-500/10 blur-[120px] rounded-full" />
+        <div className="absolute top-10 left-10 w-80 h-80 rounded-full bg-cyan-500/10 blur-[140px]" />
+        <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-orange-500/10 blur-[140px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Heading */}
+
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
           <span className="inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-300">
             Our Services
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-bold mt-6 text-white">
-            Services Available in{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 bg-clip-text text-transparent">
-              {location.city}
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mt-6">
+            Digital Services Available in {location.city}
           </h2>
 
-          <p className="text-slate-400 mt-6 max-w-3xl mx-auto text-lg">
-            We provide complete digital solutions to businesses in{" "}
-            {location.city}.
+          <p className="text-slate-400 text-lg leading-8 mt-6">
+            WebXArtist provides complete digital solutions for startups,
+            professionals and businesses in {location.city}. Explore our
+            professional services below.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {availableServices.map((service, index) => (
+        {/* Services Grid */}
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {services.map((service, index) => (
             <motion.div
-              key={service.slug}
-              initial={{ opacity: 0, y: 40 }}
+              key={service.id}
+              initial={{ opacity: 0, y: 35 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.08 }}
             >
               <Link
-                href={`/services/${service.slug}/${location.slug}`}
-                className="group block rounded-3xl border border-white/10 bg-white/5 p-8 hover:border-cyan-400/40 hover:bg-white/10 transition-all"
+                href={`/services/${service.slug}`}
+                className="group block h-full rounded-3xl border border-white/10 bg-white/5 p-8 hover:border-cyan-400/30 transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 flex items-center justify-center text-[#080a20] text-xl mb-6">
-                  {icons[service.slug]}
+                <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
+                  <Image
+                    src={service.image}
+                    alt={service.name}
+                    width={40}
+                    height={40}
+                  />
                 </div>
 
-                <h3 className="text-xl font-bold text-white">{service.name}</h3>
+                <h3 className="text-xl font-bold text-white mb-4">
+                  {service.name}
+                </h3>
 
-                <p className="text-slate-400 mt-4 leading-7">
+                <p className="text-slate-400 leading-7">
                   {service.shortDescription}
                 </p>
 
-                <div className="flex items-center mt-6 text-cyan-400 font-semibold gap-2">
+                <div className="mt-8 inline-flex items-center gap-2 text-cyan-400 group-hover:gap-4 transition-all">
                   Learn More
-                  <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  <FaArrowRight />
                 </div>
               </Link>
             </motion.div>

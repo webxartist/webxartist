@@ -31,3 +31,6 @@
 .navbar {
   background-color: rgb(38 11 52);
 }
+body {
+  font-family: var(--font-poppins), sans-serif;
+}

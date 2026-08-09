@@ -228,7 +228,6 @@ export default function RootLayout({ children }) {
         <Navbar />
         {children}
         <CursorSwitcher />
-        <Letconnect />
         <Footer />
       </body>
     </html>

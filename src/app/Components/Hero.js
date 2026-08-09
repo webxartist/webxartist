@@ -85,9 +85,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            We're your one-stop digital team — building websites, shaping
-            brands, and driving growth through SEO and marketing, so you can
-            focus on your business while customers find their way to you.
+            We're your one-stop digital team building websites, shaping brands,
+            and driving growth through SEO and marketing, so you can focus on
+            your business while customers find their way to you.
           </motion.p>
 
           {/* TRUST BADGES */}
