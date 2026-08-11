@@ -1,33 +1,69 @@
 import services from "@/data/services";
 import locations from "@/data/locations";
 
+/*
+|--------------------------------------------------------------------------
+| Get all valid Service + Location pages
+|--------------------------------------------------------------------------
+|
+| A page is generated only when BOTH sides agree:
+|
+| Service → locations includes the location
+| Location → services includes the service
+|
+*/
+
 export function getAllServiceLocationPages() {
   const pages = [];
 
   services.forEach((service) => {
-    if (!service.locations) return;
+    locations.forEach((location) => {
+      const serviceAllowsLocation =
+        !service.locations || service.locations.includes(location.slug);
 
-    service.locations.forEach((locationSlug) => {
-      const location = locations.find((loc) => loc.slug === locationSlug);
+      const locationAllowsService =
+        !location.services || location.services.includes(service.slug);
 
-      if (!location) return;
-
-      pages.push({
-        service,
-        location,
-      });
+      if (serviceAllowsLocation && locationAllowsService) {
+        pages.push({
+          service,
+          location,
+        });
+      }
     });
   });
 
   return pages;
 }
 
+/*
+|--------------------------------------------------------------------------
+| Get one Service + Location page
+|--------------------------------------------------------------------------
+*/
+
 export function getServiceLocation(serviceSlug, locationSlug) {
   const service = services.find((item) => item.slug === serviceSlug);
 
   const location = locations.find((item) => item.slug === locationSlug);
 
-  if (!service || !location) return null;
+  // Service or location does not exist
+  if (!service || !location) {
+    return null;
+  }
+
+  // Check Service → Location relationship
+  const serviceAllowsLocation =
+    !service.locations || service.locations.includes(location.slug);
+
+  // Check Location → Service relationship
+  const locationAllowsService =
+    !location.services || location.services.includes(service.slug);
+
+  // Invalid combination
+  if (!serviceAllowsLocation || !locationAllowsService) {
+    return null;
+  }
 
   return {
     service,

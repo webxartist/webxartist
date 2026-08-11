@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+
 import {
   getAllServiceLocationPages,
   getServiceLocation,
@@ -16,6 +17,12 @@ import ServiceLocationFAQ from "@/app/Components/serviceLocation/ServiceLocation
 import RelatedLocations from "@/app/Components/serviceLocation/RelatedLocations";
 import RelatedServices from "@/app/Components/serviceLocation/RelatedServices";
 
+/*
+|--------------------------------------------------------------------------
+| Static Service + Location Pages
+|--------------------------------------------------------------------------
+*/
+
 export async function generateStaticParams() {
   return getAllServiceLocationPages().map(({ service, location }) => ({
     slug: service.slug,
@@ -23,53 +30,109 @@ export async function generateStaticParams() {
   }));
 }
 
+/*
+|--------------------------------------------------------------------------
+| SEO Metadata
+|--------------------------------------------------------------------------
+*/
+
 export async function generateMetadata({ params }) {
   const page = getServiceLocation(params.slug, params.location);
 
   if (!page) {
     return {
       title: "Page Not Found | WebXArtist",
+      description: "The requested page could not be found.",
     };
   }
 
   const { service, location } = page;
 
+  // Canonical URL
+  const canonicalUrl = `https://webxartist.com/services/${service.slug}/${location.slug}`;
+
+  // Location-specific SEO data
+  const title =
+    location.seo?.title || `${service.name} in ${location.city} | WebXArtist`;
+
+  const description =
+    location.seo?.description ||
+    `Professional ${service.name.toLowerCase()} services in ${location.city} by WebXArtist. Modern, affordable and results-focused digital solutions for businesses.`;
+
+  const keywords = [
+    `${service.name} ${location.city}`,
+    `${service.name} in ${location.city}`,
+    `${service.name} services in ${location.city}`,
+    `${service.name.toLowerCase()} agency ${location.city}`,
+    `WebXArtist ${location.city}`,
+  ];
+
   return {
-    title: `${service.name} in ${location.city} | WebXArtist`,
-    description: `Professional ${service.name.toLowerCase()} services in ${
-      location.city
-    }. Affordable, SEO-friendly and modern digital solutions by WebXArtist.`,
+    title,
+    description,
+    keywords,
 
     alternates: {
-      canonical: `https://webxartist.com/services/${service.slug}/${location.slug}`,
+      canonical: canonicalUrl,
     },
 
     openGraph: {
-      title: `${service.name} in ${location.city} | WebXArtist`,
-      description: `Professional ${service.name.toLowerCase()} services in ${location.city}.`,
-      url: `https://webxartist.com/services/${service.slug}/${location.slug}`,
+      title,
+      description,
+      url: canonicalUrl,
       siteName: "WebXArtist",
       type: "website",
+      locale: "en_IN",
+
       images: [
         {
           url: service.heroImage || "/about.png",
           width: 1200,
           height: 630,
-          alt: `${service.name} in ${location.city}`,
+          alt: `${service.name} in ${location.city} | WebXArtist`,
         },
       ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [service.heroImage || "/about.png"],
+    },
+
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
 
+/*
+|--------------------------------------------------------------------------
+| Page
+|--------------------------------------------------------------------------
+*/
+
 export default function Page({ params }) {
   const page = getServiceLocation(params.slug, params.location);
+
+  /*
+   * Invalid service/location combination
+   * will return a proper 404 page.
+   */
 
   if (!page) {
     notFound();
   }
 
   const { service, location } = page;
+
+  /*
+  |--------------------------------------------------------------------------
+  | Breadcrumb
+  |--------------------------------------------------------------------------
+  */
 
   const breadcrumb = [
     {
@@ -90,9 +153,16 @@ export default function Page({ params }) {
     },
   ];
 
+  /*
+  |--------------------------------------------------------------------------
+  | Breadcrumb Schema
+  |--------------------------------------------------------------------------
+  */
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+
     itemListElement: breadcrumb.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -101,9 +171,48 @@ export default function Page({ params }) {
     })),
   };
 
+  /*
+  |--------------------------------------------------------------------------
+  | Service Schema
+  |--------------------------------------------------------------------------
+  */
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+
+    name: `${service.name} in ${location.city}`,
+
+    serviceType: service.name,
+
+    description:
+      location.description ||
+      location.description ||
+      `Professional ${service.name.toLowerCase()} services in ${location.city} provided by WebXArtist.`,
+
+    provider: {
+      "@type": "Organization",
+      name: "WebXArtist",
+      url: "https://webxartist.com",
+      logo: "https://webxartist.com/logo.png",
+    },
+
+    areaServed: {
+      "@type": "City",
+      name: location.city,
+      containedInPlace: {
+        "@type": "Country",
+        name: "India",
+      },
+    },
+
+    url: `https://webxartist.com/services/${service.slug}/${location.slug}`,
+  };
+
   return (
     <>
       {/* Breadcrumb Schema */}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -111,26 +220,55 @@ export default function Page({ params }) {
         }}
       />
 
-      <main className="bg-[#080a20] text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 pt-32">
+      {/* Service Schema */}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
+      />
+
+      <main className="overflow-hidden bg-[#080a20] text-white">
+        {/* Breadcrumb */}
+
+        <div className="mx-auto max-w-7xl px-6 pt-32">
           <Breadcrumb items={breadcrumb} />
         </div>
 
+        {/* Hero */}
+
         <ServiceLocationHero service={service} location={location} />
+
+        {/* Overview */}
 
         <ServiceLocationOverview service={service} location={location} />
 
-        <ServiceLocationFeatures service={service} />
+        {/* Features */}
 
-        <ServiceLocationProcess service={service} />
+        <ServiceLocationFeatures service={service} location={location} />
 
-        <ServiceLocationBenefits service={service} />
+        {/* Process */}
 
-        <ServiceLocationTechnologies service={service} />
+        <ServiceLocationProcess service={service} location={location} />
+
+        {/* Benefits */}
+
+        <ServiceLocationBenefits service={service} location={location} />
+
+        {/* Technologies */}
+
+        <ServiceLocationTechnologies service={service} location={location} />
+
+        {/* FAQ */}
 
         <ServiceLocationFAQ service={service} location={location} />
 
+        {/* Related Locations */}
+
         <RelatedLocations service={service} currentLocation={location.slug} />
+
+        {/* Related Services */}
 
         <RelatedServices location={location} currentService={service.slug} />
       </main>
