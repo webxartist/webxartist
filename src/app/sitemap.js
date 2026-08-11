@@ -1,18 +1,16 @@
 import services from "@/data/services";
 import { getAllServiceLocationPages } from "@/lib/serviceLocation";
 
-const baseUrl = "https://webxartist.com";
+const baseUrl = "https://www.webxartist.com";
 
 export default function sitemap() {
-  /*
-  |--------------------------------------------------------------------------
-  | Static Pages
-  |--------------------------------------------------------------------------
-  */
+  // --------------------------------
+  // Static Pages
+  // --------------------------------
 
   const staticPages = [
     {
-      url: baseUrl,
+      url: `${baseUrl}/`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
@@ -54,11 +52,9 @@ export default function sitemap() {
     },
   ];
 
-  /*
-  |--------------------------------------------------------------------------
-  | Main Service Pages
-  |--------------------------------------------------------------------------
-  */
+  // --------------------------------
+  // Main Service Pages
+  // --------------------------------
 
   const servicePages = services.map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,
@@ -67,15 +63,9 @@ export default function sitemap() {
     priority: 0.9,
   }));
 
-  /*
-  |--------------------------------------------------------------------------
-  | Service + Location Pages
-  |--------------------------------------------------------------------------
-  |
-  | Uses the same validation logic as the actual pages.
-  | Only valid Service + Location combinations are included.
-  |
-  */
+  // --------------------------------
+  // Service + Location Pages
+  // --------------------------------
 
   const serviceLocationPages = getAllServiceLocationPages().map(
     ({ service, location }) => ({
@@ -86,11 +76,9 @@ export default function sitemap() {
     }),
   );
 
-  /*
-  |--------------------------------------------------------------------------
-  | Final Sitemap
-  |--------------------------------------------------------------------------
-  */
+  // --------------------------------
+  // Return Complete Sitemap
+  // --------------------------------
 
   return [...staticPages, ...servicePages, ...serviceLocationPages];
 }

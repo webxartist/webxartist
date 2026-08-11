@@ -49,7 +49,7 @@ export async function generateMetadata({ params }) {
   const { service, location } = page;
 
   // Canonical URL
-  const canonicalUrl = `https://webxartist.com/services/${service.slug}/${location.slug}`;
+  const canonicalUrl = `https://www.webxartist.com/services/${service.slug}/${location.slug}`;
 
   // Location-specific SEO data
   const title =
@@ -167,7 +167,7 @@ export default function Page({ params }) {
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      item: `https://webxartist.com${item.href}`,
+      item: `https://www.webxartist.com${item.href}`,
     })),
   };
 
@@ -193,8 +193,8 @@ export default function Page({ params }) {
     provider: {
       "@type": "Organization",
       name: "WebXArtist",
-      url: "https://webxartist.com",
-      logo: "https://webxartist.com/logo.png",
+      url: "https://www.webxartist.com",
+      logo: "https://www.webxartist.com/logo.png",
     },
 
     areaServed: {
@@ -206,7 +206,7 @@ export default function Page({ params }) {
       },
     },
 
-    url: `https://webxartist.com/services/${service.slug}/${location.slug}`,
+    url: `https://www.webxartist.com/services/${service.slug}/${location.slug}`,
   };
 
   return (
