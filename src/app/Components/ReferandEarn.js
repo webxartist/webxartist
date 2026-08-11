@@ -43,7 +43,7 @@ const referralData = [
 
 const ReferAndEarn = () => {
   const [copied, setCopied] = useState(false);
-  const referralLink = "https://webxartist.com/referral-code";
+  const referralLink = "https://www.webxartist.com/referral-code";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(referralLink);

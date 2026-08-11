@@ -17,7 +17,7 @@ export const metadata = {
     title: "About WebXArtist Institute & Agency",
     description:
       "Website Development, Digital Marketing, Meta Ads, SEO & IT Training in Mumbra, Thane.",
-    url: "https://webxartist.com/About",
+    url: "https://www.webxartist.com/About",
     siteName: "WebXArtist Institute & Agency",
     images: [
       {
@@ -32,7 +32,7 @@ export const metadata = {
   },
 
   alternates: {
-    canonical: "https://webxartist.com/About",
+    canonical: "https://www.webxartist.com/About",
   },
 };
 
@@ -41,10 +41,10 @@ export default function Page() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://webxartist.com/#organization",
+    "@id": "https://www.webxartist.com/#organization",
     name: "WebXArtist Institute & Agency",
-    url: "https://webxartist.com",
-    logo: "https://webxartist.com/logo.png",
+    url: "https://www.webxartist.com",
+    logo: "https://www.webxartist.com/logo.png",
     description:
       "WebXArtist Institute & Agency provides website development, digital marketing, Meta Ads, SEO, branding, and IT training services in Mumbra, Thane.",
     sameAs: [

@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
     description: location.seo?.description || location.shortDescription,
 
     alternates: {
-      canonical: `https://webxartist.com/locations/${location.slug}`,
+      canonical: `https://www.webxartist.com/locations/${location.slug}`,
     },
 
     openGraph: {
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
 
       description: location.seo?.description || location.shortDescription,
 
-      url: `https://webxartist.com/locations/${location.slug}`,
+      url: `https://www.webxartist.com/locations/${location.slug}`,
 
       siteName: "WebXArtist",
 

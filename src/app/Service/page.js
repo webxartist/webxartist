@@ -11,14 +11,14 @@ export const metadata = {
     "WebXArtist Institute & Agency offers professional website development, branding, SEO, digital marketing, graphic design, SMM, and video editing services in Mumbai, Thane, and Mumbra.",
 
   alternates: {
-    canonical: "https://webxartist.com/Service",
+    canonical: "https://www.webxartist.com/Service",
   },
 
   openGraph: {
     title: "WebXArtist Services – Web Development & Digital Marketing",
     description:
       "Explore web development, branding, SEO, social media marketing, graphic design, and video editing services by WebXArtist.",
-    url: "https://webxartist.com/Service",
+    url: "https://www.webxartist.com/Service",
     siteName: "WebXArtist Institute & Agency",
     images: [
       {
@@ -38,15 +38,15 @@ export default function Page() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://webxartist.com/Service",
+    "@id": "https://www.webxartist.com/Service",
     name: "Web Development & Digital Marketing Services",
     description:
       "Professional web development, branding, SEO, digital marketing, graphic design, and social media services for businesses.",
     provider: {
       "@type": "Organization",
       name: "WebXArtist Institute & Agency",
-      url: "https://webxartist.com",
-      logo: "https://webxartist.com/logo.png",
+      url: "https://www.webxartist.com",
+      logo: "https://www.webxartist.com/logo.png",
     },
     areaServed: {
       "@type": "AdministrativeArea",

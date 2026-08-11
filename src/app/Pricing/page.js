@@ -6,14 +6,14 @@ export const metadata = {
     "Affordable website pricing packages by WebXArtist for businesses in Mumbai, Thane, and Mumbra. Transparent pricing for web design, development, and eCommerce solutions.",
 
   alternates: {
-    canonical: "https://webxartist.com/pricing",
+    canonical: "https://www.webxartist.com/pricing",
   },
 
   openGraph: {
     title: "Website Pricing & Packages – WebXArtist",
     description:
       "Affordable and transparent website development pricing for startups and businesses.",
-    url: "https://webxartist.com/pricing",
+    url: "https://www.webxartist.com/pricing",
     siteName: "WebXArtist Institute & Agency",
     images: [
       {
@@ -47,15 +47,15 @@ export default function Page() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": "https://webxartist.com/pricing#service",
+    "@id": "https://www.webxartist.com/pricing#service",
     name: "Website Development Pricing & Packages",
     description:
       "Affordable website development, web design, and eCommerce pricing packages for startups and businesses.",
     provider: {
       "@type": "Organization",
       name: "WebXArtist Institute & Agency",
-      url: "https://webxartist.com",
-      logo: "https://webxartist.com/logo.png",
+      url: "https://www.webxartist.com",
+      logo: "https://www.webxartist.com/logo.png",
     },
     areaServed: {
       "@type": "AdministrativeArea",
@@ -67,7 +67,7 @@ export default function Page() {
       lowPrice: "15000",
       highPrice: "100000",
       availability: "https://schema.org/InStock",
-      url: "https://webxartist.com/pricing",
+      url: "https://www.webxartist.com/pricing",
     },
   };
 

@@ -8,7 +8,7 @@ export const metadata = {
     "Explore WebXArtist website development, branding, SEO and digital marketing services across Mumbai, Thane, Mumbra, Navi Mumbai and nearby cities.",
 
   alternates: {
-    canonical: "https://webxartist.com/locations",
+    canonical: "https://www.webxartist.com/locations",
   },
 };
 
