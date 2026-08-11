@@ -35,13 +35,13 @@ export async function generateMetadata({ params }) {
     keywords: service.seo?.keywords || [],
 
     alternates: {
-      canonical: `https://webxartist.com/services/${service.slug}`,
+      canonical: `https://www.webxartist.com/services/${service.slug}`,
     },
 
     openGraph: {
       title: service.seo?.title,
       description: service.seo?.description,
-      url: `https://webxartist.com/services/${service.slug}`,
+      url: `https://www.webxartist.com/services/${service.slug}`,
       siteName: "WebXArtist",
       type: "website",
       locale: "en_IN",
@@ -87,8 +87,8 @@ export default function ServicePage({ params }) {
     provider: {
       "@type": "Organization",
       name: "WebXArtist",
-      url: "https://webxartist.com",
-      logo: "https://webxartist.com/logo.png",
+      url: "https://www.webxartist.com",
+      logo: "https://www.webxartist.com/logo.png",
     },
 
     areaServed: {

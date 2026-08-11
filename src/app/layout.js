@@ -41,7 +41,7 @@ export const viewport = {
    ⭐ FULL SITE-WIDE SEO — BEST SETTINGS FOR RANKING
 ------------------------------------------------------ */
 export const metadata = {
-  metadataBase: new URL("https://webxartist.com"),
+  metadataBase: new URL("https://www.webxartist.com"),
 
   verification: {
     google: "xyvHPQW3Gi3HzvFtrTwRk5s3SG_VZvbE1o3z5C_Ag6I",
@@ -96,7 +96,7 @@ export const metadata = {
     description:
       "Professional Website Development, Branding, SEO, Digital Marketing and Graphic Design Services.",
 
-    url: "https://webxartist.com",
+    url: "https://www.webxartist.com",
 
     siteName: "WebXArtist",
 
@@ -143,13 +143,13 @@ const schema = [
 
     "@type": "Organization",
 
-    "@id": "https://webxartist.com/#organization",
+    "@id": "https://www.webxartist.com/#organization",
 
     name: "WebXArtist",
 
-    url: "https://webxartist.com",
+    url: "https://www.webxartist.com",
 
-    logo: "https://webxartist.com/logo.png",
+    logo: "https://www.webxartist.com/logo.png",
 
     email: "webxartist@gmail.com",
 
@@ -183,14 +183,14 @@ const schema = [
 
     "@type": "WebSite",
 
-    "@id": "https://webxartist.com/#website",
+    "@id": "https://www.webxartist.com/#website",
 
-    url: "https://webxartist.com",
+    url: "https://www.webxartist.com",
 
     name: "WebXArtist",
 
     publisher: {
-      "@id": "https://webxartist.com/#organization",
+      "@id": "https://www.webxartist.com/#organization",
     },
   },
 ];
