@@ -11,6 +11,8 @@ import {
   Send,
 } from "lucide-react";
 
+import { event } from "@/lib/analytics";
+
 const services = [
   "Website Development",
   "Google Ads",
@@ -63,6 +65,11 @@ export default function ContactUs() {
       if (!response.ok) {
         throw new Error(data.message || "Something went wrong.");
       }
+
+      // Google Analytics - successful contact form submission
+      event("form_submit", {
+        form_name: "contact_form",
+      });
 
       setStatus("success");
 
@@ -210,6 +217,7 @@ export default function ContactUs() {
                       size={18}
                       className="shrink-0 text-cyan-400"
                     />
+
                     {item}
                   </div>
                 ))}

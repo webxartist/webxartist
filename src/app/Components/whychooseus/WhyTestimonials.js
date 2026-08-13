@@ -8,7 +8,7 @@ const testimonials = [
     name: "Rahul Sharma",
     company: "RK Enterprises",
     review:
-      "WebXArtist built a modern website for our business that helped us generate more enquiries. The team was professional, responsive, and delivered everything on time.",
+      "WebXArtist built a modern website for our business that helped us generate more enquiries. The team was , responsive, and delivered everything on time.",
   },
   {
     name: "Ayesha Khan",

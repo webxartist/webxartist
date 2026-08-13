@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { event } from "@/lib/analytics";
 import Image from "next/image";
 import Link from "next/link";
 import { PhoneCall, ArrowRight } from "lucide-react";
@@ -47,6 +48,11 @@ const ServiceHero = ({ service }) => {
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               href="tel:+918169413149"
+              onClick={() =>
+                event("phone_click", {
+                  location: "service_call_now",
+                })
+              }
               className="flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 px-7 py-3 font-semibold text-black"
             >
               <PhoneCall size={18} />

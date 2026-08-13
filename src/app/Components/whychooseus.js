@@ -157,8 +157,8 @@ const WhyChooseUs = () => {
               WebXArtist is a trusted and affordable website development agency
               serving clients across Mumbai, Thane, Mumbra, and all over India.
               We specialize in custom React websites, full branding, SEO
-              optimization, and professional digital marketing services designed
-              to help your business grow online.
+              optimization, and digital marketing services designed to help your
+              business grow online.
             </p>
 
             <p>

@@ -27,7 +27,7 @@ const pricingData = [
     description:
       "A clean, responsive website perfect for small businesses or personal projects.",
     features: [
-      "Pre-designed professional layout",
+      "Pre-designed  layout",
       "4–5 responsive pages",
       "Mobile & tablet friendly design",
       "Basic SEO & Google indexing",
@@ -38,7 +38,7 @@ const pricingData = [
     popular: false,
   },
   {
-    title: "Professional Business Website",
+    title: " Business Website",
     price: "₹25,000 – ₹35,000",
     description:
       "Custom-coded, modern websites with strong branding, animations, and SEO optimization.",

@@ -27,7 +27,7 @@ const pricingData = [
     description:
       "Perfect for startups and personal projects. Simple yet effective designs.",
     features: [
-      "Professional logo design concepts",
+      " logo design concepts",
       "Social media post & banner designs",
       "Business card & basic branding assets",
       "Brand-aligned color & typography",

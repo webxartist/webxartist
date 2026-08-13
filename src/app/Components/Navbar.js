@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { event } from "@/lib/analytics";
 import { usePathname } from "next/navigation";
 
 import { FaWhatsapp, FaInstagram, FaTwitter } from "react-icons/fa";
@@ -55,7 +56,9 @@ const navItems = [
 const socialLinks = [
   {
     icon: <FaWhatsapp />,
+
     link: "https://wa.me/8169413149",
+    trackingEvent: "whatsapp_click",
   },
   {
     icon: <FaInstagram />,
@@ -377,17 +380,23 @@ const Navbar = () => {
                   animate="visible"
                   variants={socialVariants}
                   href={social.link}
+                  onClick={() =>
+                    social.trackingEvent &&
+                    event(social.trackingEvent, {
+                      location: "Navbar",
+                    })
+                  }
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Social media"
                   className="
-                    relative
-                    text-slate-300
-                    text-lg
-                    transition-colors
-                    duration-300
-                    hover:text-cyan-400
-                  "
+    relative
+    text-slate-300
+    text-lg
+    transition-colors
+    duration-300
+    hover:text-cyan-400
+  "
                   whileHover={{
                     scale: 1.2,
                   }}
@@ -419,6 +428,11 @@ const Navbar = () => {
             >
               <Link
                 href="tel:+918169413149"
+                onClick={() =>
+                  event("phone_click", {
+                    location: "header_call_now",
+                  })
+                }
                 className="
                   group
                   inline-flex
@@ -484,6 +498,12 @@ const Navbar = () => {
 
             <motion.a
               href="https://wa.me/8169413149"
+              onClick={() =>
+                social.trackingEvent &&
+                event(social.trackingEvent, {
+                  location: "Navbar",
+                })
+              }
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Chat on WhatsApp"

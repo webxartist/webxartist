@@ -65,7 +65,7 @@ export default function ServiceLocations({ service }) {
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-            WebXArtist provides professional{" "}
+            WebXArtist provides{" "}
             <strong className="text-slate-300">
               {service.name.toLowerCase()}
             </strong>{" "}
@@ -118,8 +118,7 @@ export default function ServiceLocations({ service }) {
                 {/* Description */}
 
                 <p className="mt-4 leading-7 text-slate-400">
-                  Professional {service.name.toLowerCase()} services for
-                  businesses in{" "}
+                  {service.name.toLowerCase()} services for businesses in{" "}
                   <span className="text-slate-300">{location.city}</span>.
                 </p>
 

@@ -57,7 +57,7 @@ export async function generateMetadata({ params }) {
 
   const description =
     location.seo?.description ||
-    `Professional ${service.name.toLowerCase()} services in ${location.city} by WebXArtist. Modern, affordable and results-focused digital solutions for businesses.`;
+    ` ${service.name.toLowerCase()} services in ${location.city} by WebXArtist. Modern, affordable and results-focused digital solutions for businesses.`;
 
   const keywords = [
     `${service.name} ${location.city}`,
@@ -188,7 +188,7 @@ export default function Page({ params }) {
     description:
       location.description ||
       location.description ||
-      `Professional ${service.name.toLowerCase()} services in ${location.city} provided by WebXArtist.`,
+      `${service.name.toLowerCase()} services in ${location.city} provided by WebXArtist.`,
 
     provider: {
       "@type": "Organization",

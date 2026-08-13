@@ -35,7 +35,7 @@ export default function LocationServices({ location }) {
           <p className="text-slate-400 text-lg leading-8 mt-6">
             WebXArtist provides complete digital solutions for startups,
             professionals and businesses in {location.city}. Explore our
-            professional services below.
+            services below.
           </p>
         </motion.div>
 

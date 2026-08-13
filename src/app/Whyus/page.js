@@ -27,7 +27,7 @@ export const metadata = {
     title: "Why Choose WebXArtist",
 
     description:
-      "Professional website development, branding, SEO, graphic design and digital marketing services for startups and businesses.",
+      " website development, branding, SEO, graphic design and digital marketing services for startups and businesses.",
 
     url: "https://www.webxartist.com/Whyus",
 
@@ -63,7 +63,7 @@ export default function Page() {
         logo: "https://www.webxartist.com/logo.png",
 
         description:
-          "Professional website development, branding, SEO, social media marketing and digital marketing services across India.",
+          " website development, branding, SEO, social media marketing and digital marketing services across India.",
 
         sameAs: [
           "https://www.instagram.com/webxartist",

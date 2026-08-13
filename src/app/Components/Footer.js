@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { event } from "@/lib/analytics";
 import Link from "next/link";
 import {
   FaInstagram,
@@ -133,6 +134,11 @@ export default function Footer() {
             <li>
               <a
                 href="tel:+918169413149"
+                onClick={() =>
+                  event("phone_click", {
+                    location: "footer",
+                  })
+                }
                 className="flex items-center gap-2.5 text-slate-400 text-[14px] hover:text-cyan-400 transition-colors duration-300"
               >
                 <FaPhoneAlt className="text-cyan-400 text-xs shrink-0" />
@@ -142,6 +148,11 @@ export default function Footer() {
             <li>
               <a
                 href="https://wa.me/8169413149"
+                onClick={() =>
+                  event("whatsapp_click", {
+                    location: "website",
+                  })
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-slate-400 text-[14px] hover:text-emerald-400 transition-colors duration-300"

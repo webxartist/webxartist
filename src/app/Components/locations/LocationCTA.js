@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { event } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaWhatsapp } from "react-icons/fa";
 
@@ -50,6 +51,11 @@ export default function LocationCTA({ location }) {
 
             <a
               href="https://wa.me/918169413149"
+              onClick={() =>
+                event("whatsapp_click", {
+                  location: "website",
+                })
+              }
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 rounded-full border border-white/10 px-8 py-4 font-semibold text-white hover:border-cyan-400 transition-all"

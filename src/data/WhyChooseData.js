@@ -115,7 +115,7 @@ const whyChooseData = {
       name: "Rahul Sharma",
       company: "RK Enterprises",
       review:
-        "WebXArtist delivered an outstanding website for our company. Professional team and excellent support.",
+        "WebXArtist delivered an outstanding website for our company.  team and excellent support.",
     },
     {
       name: "Ayesha Khan",

@@ -10,7 +10,7 @@ export default function ServiceLocationHero({ service, location }) {
 
   const heroDescription =
     location.heroSubtitle ||
-    `Professional ${serviceName.toLowerCase()} services for businesses in ${locationName}.`;
+    `${serviceName.toLowerCase()} services for businesses in ${locationName}.`;
 
   return (
     <section className="relative overflow-hidden bg-[#080a20] pt-20 pb-24">
@@ -59,9 +59,9 @@ export default function ServiceLocationHero({ service, location }) {
           {/* Supporting Description */}
 
           <p className="mt-5 max-w-3xl text-base leading-7 text-slate-500">
-            WebXArtist provides professional {serviceName.toLowerCase()}{" "}
-            solutions for startups, local businesses, professional services, and
-            growing companies across {locationName}.
+            WebXArtist provides {serviceName.toLowerCase()} solutions for
+            startups, local businesses, services, and growing companies across{" "}
+            {locationName}.
           </p>
 
           {/* CTA Buttons */}
@@ -97,7 +97,7 @@ export default function ServiceLocationHero({ service, location }) {
             <span className="hidden sm:inline text-slate-700">•</span>
 
             <span>
-              Professional{" "}
+              {" "}
               <strong className="text-slate-300">
                 {serviceName.toLowerCase()}
               </strong>

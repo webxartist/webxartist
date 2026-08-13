@@ -8,7 +8,7 @@ export default function LocationFAQ({ location }) {
   const faqs = [
     {
       question: `Do you provide website development services in ${location.city}?`,
-      answer: `Yes. WebXArtist provides professional website development services for businesses, startups, professionals, and organizations in ${location.city}.`,
+      answer: `Yes. WebXArtist provides  website development services for businesses, startups, professionals, and organizations in ${location.city}.`,
     },
     {
       question: "How much does a business website cost?",

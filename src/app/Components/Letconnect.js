@@ -1,6 +1,7 @@
 "use client";
 
 import { FaWhatsapp } from "react-icons/fa";
+import { event } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { Zap, ShieldCheck, Clock } from "lucide-react";
 
@@ -70,8 +71,8 @@ export default function LetStart() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          We help you build a strong, professional, and memorable brand identity
-          that stands out in today's competitive market.
+          We help you build a strong, , and memorable brand identity that stands
+          out in today's competitive market.
         </motion.p>
 
         {/* WhatsApp CTA with pulsing live-connect ring */}
@@ -89,6 +90,11 @@ export default function LetStart() {
           />
           <a
             href="https://wa.me/8169413149"
+            onClick={() =>
+              event("whatsapp_click", {
+                location: "website",
+              })
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="group relative flex items-center justify-center gap-3 px-9 py-4 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-400 hover:to-green-400 text-white font-bold rounded-full text-[15px] sm:text-lg shadow-[0_0_25px_rgba(16,185,129,0.35)] hover:shadow-[0_0_35px_rgba(16,185,129,0.5)] transition-all duration-300"

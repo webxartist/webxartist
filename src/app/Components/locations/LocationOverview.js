@@ -10,7 +10,7 @@ import {
 
 export default function LocationOverview({ location }) {
   const services = [
-    "Professional Website Development",
+    " Website Development",
     "Responsive Website Design",
     "SEO Friendly Website",
     "Brand Identity & Logo Design",
@@ -68,9 +68,8 @@ export default function LocationOverview({ location }) {
 
             <p className="text-slate-400 leading-8 mb-6">
               At WebXArtist, we help startups, local businesses and growing
-              companies in <strong>{location.city}</strong> establish a
-              professional online presence through modern websites, branding and
-              digital marketing.
+              companies in <strong>{location.city}</strong> establish a online
+              presence through modern websites, branding and digital marketing.
             </p>
 
             <p className="text-slate-400 leading-8 mb-6">

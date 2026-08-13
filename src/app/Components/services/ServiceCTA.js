@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { event } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { PhoneCall, ArrowRight, MessageCircle } from "lucide-react";
 
@@ -46,6 +47,11 @@ const ServiceCTA = ({ service }) => {
               {/* Call */}
               <Link
                 href="tel:+918169413149"
+                onClick={() =>
+                  event("phone_click", {
+                    location: "service_call_now",
+                  })
+                }
                 className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 px-7 py-4 font-semibold text-[#080a20] shadow-lg transition-transform duration-300 hover:scale-105"
               >
                 <PhoneCall size={20} />
@@ -55,6 +61,11 @@ const ServiceCTA = ({ service }) => {
               {/* WhatsApp */}
               <Link
                 href="https://wa.me/918169413149"
+                onClick={() =>
+                  event("whatsapp_click", {
+                    location: "website",
+                  })
+                }
                 target="_blank"
                 className="inline-flex items-center gap-3 rounded-full border border-green-500/40 bg-green-500/10 px-7 py-4 font-semibold text-green-400 transition-all duration-300 hover:bg-green-500/20"
               >

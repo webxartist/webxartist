@@ -8,9 +8,9 @@ const locations = [
 
     services: [
       "website-development",
-      "graphic-design",
-      "logo-design",
-      "video-editing",
+      "google-ads",
+      "meta-ads",
+      "google-my-business",
       "seo-services",
       "social-media-management",
       "content-creation",
@@ -20,12 +20,12 @@ const locations = [
     title: "Digital Marketing & Website Development Company in Mumbai",
 
     shortDescription:
-      "Professional website development, branding and digital marketing services in Mumbai.",
+      "Website development, branding and digital marketing services in Mumbai.",
 
     description:
       "WebXArtist helps startups and businesses in Mumbai with website development, SEO, branding, logo design, graphic design, social media marketing, content creation and email marketing.",
 
-    heroTitle: "Professional Digital Solutions for Mumbai Businesses",
+    heroTitle: "Digital Solutions for Mumbai Businesses",
 
     heroSubtitle:
       "Helping businesses across Mumbai grow online with modern websites and digital marketing.",
@@ -35,7 +35,7 @@ const locations = [
         "Website Development & Digital Marketing Company in Mumbai | WebXArtist",
 
       description:
-        "Professional website development, branding, SEO, graphic design and digital marketing company in Mumbai.",
+        "Website development, branding, SEO, graphic design and digital marketing company in Mumbai.",
     },
   },
 
@@ -48,9 +48,9 @@ const locations = [
 
     services: [
       "website-development",
-      "graphic-design",
-      "logo-design",
-      "video-editing",
+      "google-ads",
+      "meta-ads",
+      "google-my-business",
       "seo-services",
       "social-media-management",
       "content-creation",
@@ -59,12 +59,12 @@ const locations = [
 
     title: "Digital Marketing & Website Development Company in Thane",
 
-    shortDescription: "Professional digital services in Thane.",
+    shortDescription: "digital Marketing services in Thane.",
 
     description:
       "WebXArtist provides website development, SEO, branding and complete digital marketing solutions for businesses in Thane.",
 
-    heroTitle: "Professional Digital Solutions in Thane",
+    heroTitle: "Digital Solutions in Thane",
 
     heroSubtitle:
       "Helping businesses across Thane build their online presence.",
@@ -73,7 +73,7 @@ const locations = [
       title: "Website Development Company in Thane | WebXArtist",
 
       description:
-        "Affordable website development and digital marketing company in Thane.",
+        "website development and digital marketing company in Thane.",
     },
   },
 
@@ -86,9 +86,9 @@ const locations = [
 
     services: [
       "website-development",
-      "graphic-design",
-      "logo-design",
-      "video-editing",
+      "google-ads",
+      "meta-ads",
+      "google-my-business",
       "seo-services",
       "social-media-management",
       "content-creation",
@@ -97,20 +97,19 @@ const locations = [
 
     title: "Digital Marketing & Website Development Company in Mumbra",
 
-    shortDescription: "Professional digital services in Mumbra.",
+    shortDescription: "digital services in Mumbra.",
 
     description:
       "Helping local businesses in Mumbra grow online through websites, branding and digital marketing.",
 
-    heroTitle: "Professional Digital Solutions in Mumbra",
+    heroTitle: " Digital Solutions in Mumbra",
 
     heroSubtitle: "Affordable digital services for every business in Mumbra.",
 
     seo: {
       title: "Website Development Company in Mumbra | WebXArtist",
 
-      description:
-        "Professional website development and SEO company in Mumbra.",
+      description: " website development and SEO company in Mumbra.",
     },
   },
 
@@ -123,9 +122,9 @@ const locations = [
 
     services: [
       "website-development",
-      "graphic-design",
-      "logo-design",
-      "video-editing",
+      "google-ads",
+      "meta-ads",
+      "google-my-business",
       "seo-services",
       "social-media-management",
       "content-creation",
@@ -134,7 +133,7 @@ const locations = [
 
     title: "Website Development Company in Navi Mumbai",
 
-    shortDescription: "Professional digital services in Navi Mumbai.",
+    shortDescription: " digital services in Navi Mumbai.",
 
     description:
       "Complete website development and digital marketing solutions in Navi Mumbai.",
@@ -146,8 +145,7 @@ const locations = [
     seo: {
       title: "Website Development Company in Navi Mumbai | WebXArtist",
 
-      description:
-        "Professional website development and branding company in Navi Mumbai.",
+      description: "Website development and branding company in Navi Mumbai.",
     },
   },
 
@@ -160,9 +158,9 @@ const locations = [
 
     services: [
       "website-development",
-      "graphic-design",
-      "logo-design",
-      "video-editing",
+      "google-ads",
+      "meta-ads",
+      "google-my-business",
       "seo-services",
       "social-media-management",
       "content-creation",
@@ -171,19 +169,19 @@ const locations = [
 
     title: "Website Development Company in Panvel",
 
-    shortDescription: "Professional website development services in Panvel.",
+    shortDescription: "Website development services in Panvel.",
 
     description:
       "Helping businesses in Panvel grow with modern websites and digital marketing.",
 
     heroTitle: "Digital Marketing Agency in Panvel",
 
-    heroSubtitle: "Professional web development and branding services.",
+    heroSubtitle: "Web development and branding services.",
 
     seo: {
       title: "Website Development Company in Panvel | WebXArtist",
 
-      description: "Affordable website development and SEO company in Panvel.",
+      description: "Website development and SEO company in Panvel.",
     },
   },
 
@@ -196,9 +194,9 @@ const locations = [
 
     services: [
       "website-development",
-      "graphic-design",
-      "logo-design",
-      "video-editing",
+      "google-ads",
+      "meta-ads",
+      "google-my-business",
       "seo-services",
       "social-media-management",
       "content-creation",
@@ -207,9 +205,9 @@ const locations = [
 
     title: "Website Development Company in Pune",
 
-    shortDescription: "Professional website development services in Pune.",
+    shortDescription: "Website development services in Pune.",
 
-    description: "Professional websites, SEO and branding for Pune businesses.",
+    description: "Websites, SEO and branding for Pune businesses.",
 
     heroTitle: "Website Development & Digital Marketing in Pune",
 
@@ -218,7 +216,7 @@ const locations = [
     seo: {
       title: "Website Development Company in Pune | WebXArtist",
 
-      description: "Professional website development company in Pune.",
+      description: "Website development company in Pune.",
     },
   },
 ];

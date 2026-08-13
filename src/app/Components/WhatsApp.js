@@ -1,6 +1,7 @@
 "use client";
 
 import { FaWhatsapp } from "react-icons/fa";
+import { event } from "@/lib/analytics";
 
 export default function StickyWhatsAppButton() {
   return (
@@ -10,6 +11,11 @@ export default function StickyWhatsAppButton() {
       aria-label="Chat on WhatsApp"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() =>
+        event("whatsapp_click", {
+          location: "website",
+        })
+      }
     >
       <FaWhatsapp className="text-2xl" /> {/* WhatsApp Icon */}
     </a>

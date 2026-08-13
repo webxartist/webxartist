@@ -100,7 +100,7 @@ export default function GMBPricing() {
           </h2>
           <p className="text-slate-400 text-base sm:text-lg max-w-2xl mt-4">
             Rank higher on Google Maps, increase local visibility, and generate
-            more calls with our professional GMB optimization services.
+            more calls with our GMB optimization services.
           </p>
         </motion.div>
 

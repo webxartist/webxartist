@@ -28,8 +28,8 @@ export default function LocationsPage() {
           </h1>
 
           <p className="max-w-3xl mx-auto mt-6 text-slate-400 leading-8">
-            WebXArtist provides professional website development, branding, SEO,
-            graphic design and digital marketing services for businesses across
+            WebXArtist provides website development, branding, SEO, graphic
+            design and digital marketing services for businesses across
             Maharashtra and India.
           </p>
         </div>

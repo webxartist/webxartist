@@ -42,9 +42,9 @@ export default function WhyCTA() {
           </h2>
 
           <p className="mt-8 max-w-3xl mx-auto text-slate-400 text-lg leading-8">
-            Whether you need a professional website, complete branding, SEO,
-            digital marketing, or a full business growth strategy, WebXArtist is
-            your trusted digital partner.
+            Whether you need a website, complete branding, SEO, digital
+            marketing, or a full business growth strategy, WebXArtist is your
+            trusted digital partner.
           </p>
 
           {/* Highlights */}

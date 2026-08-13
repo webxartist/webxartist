@@ -11,7 +11,7 @@ export const metadata = {
   title:
     "About WebXArtist Institute & Agency | Digital Marketing & Web Development in Mumbra",
   description:
-    "WebXArtist Institute & Agency is a professional digital marketing and website development company in Mumbra, Thane. We specialize in Meta Ads, SEO, branding, web development, and IT training.",
+    "WebXArtist Institute & Agency is a  digital marketing and website development company in Mumbra, Thane. We specialize in Meta Ads, SEO, branding, web development, and IT training.",
 
   openGraph: {
     title: "About WebXArtist Institute & Agency",

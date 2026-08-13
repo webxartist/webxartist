@@ -1,5 +1,5 @@
 "use client";
-
+import { event } from "@/lib/analytics";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
@@ -123,6 +123,11 @@ export default function ContactPopup() {
           data.message || "Something went wrong. Please try again.",
         );
       }
+
+      // Google Analytics - successful popup form submission
+      event("popup_form_submit", {
+        form_name: "contact_popup",
+      });
 
       setSuccess(true);
 

@@ -22,12 +22,12 @@ const feedbacks = [
   },
   {
     username: "Dheeraj Yadav",
-    text: "Highly recommend! The team is very professional and skilled in React.js & Next.js.",
+    text: "Highly recommend! The team is very  and skilled in React.js & Next.js.",
     rating: 5,
   },
   {
     username: "Shivam Patel",
-    text: "Very professional. They provide high-tech development services at great prices.",
+    text: "Very . They provide high-tech development services at great prices.",
     rating: 5,
   },
 ];

@@ -46,7 +46,7 @@ export default function LocationBenefits({ location }) {
       icon: <FaChartLine />,
       title: "Business Growth",
       description:
-        "Professional websites designed to generate leads, improve credibility, and grow your business.",
+        " websites designed to generate leads, improve credibility, and grow your business.",
     },
   ];
 

@@ -24,14 +24,14 @@ export default function ServiceLocationOverview({ service, location }) {
           {/* Heading */}
 
           <h2 className="mt-4 text-4xl md:text-5xl font-bold max-w-4xl text-white">
-            Professional {serviceName} Services in {locationName}
+            {serviceName} Services in {locationName}
           </h2>
 
           {/* Location Introduction */}
 
           <p className="mt-8 text-slate-400 text-lg leading-8 max-w-4xl">
             {location.shortDescription ||
-              `WebXArtist provides professional ${serviceName.toLowerCase()} services
+              `WebXArtist provides  ${serviceName.toLowerCase()} services
               for businesses in ${locationName}.`}
           </p>
 
@@ -49,8 +49,8 @@ export default function ServiceLocationOverview({ service, location }) {
           <p className="mt-6 text-slate-400 text-lg leading-8 max-w-4xl">
             Our {serviceName.toLowerCase()} solutions are designed for
             businesses across {locationName}, including startups, local
-            businesses, clinics, restaurants, schools, manufacturers,
-            professional services, and growing companies.
+            businesses, clinics, restaurants, schools, manufacturers, services,
+            and growing companies.
           </p>
 
           {/* Information Cards */}
@@ -66,7 +66,7 @@ export default function ServiceLocationOverview({ service, location }) {
               <ul className="space-y-4 text-slate-400">
                 <li className="flex gap-3">
                   <span className="text-cyan-400">✓</span>
-                  <span>Professional and business-focused solutions</span>
+                  <span> and business-focused solutions</span>
                 </li>
 
                 <li className="flex gap-3">
@@ -102,7 +102,7 @@ export default function ServiceLocationOverview({ service, location }) {
                 WebXArtist provides {serviceName.toLowerCase()} services for
                 businesses looking to grow their digital presence in{" "}
                 <strong className="text-white">{locationName}</strong>. Our
-                approach combines professional execution, modern technology, and
+                approach combines execution, modern technology, and
                 business-focused strategies to help create a stronger online
                 presence.
               </p>

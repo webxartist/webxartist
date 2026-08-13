@@ -54,7 +54,7 @@ export const metadata = {
   },
 
   description:
-    "WebXArtist is a professional website development, branding, SEO, digital marketing, graphic design and software development agency serving businesses across India.",
+    "WebXArtist is a  website development, branding, SEO, digital marketing, graphic design and software development agency serving businesses across India.",
 
   keywords: [
     "Website Development",
@@ -94,7 +94,7 @@ export const metadata = {
       "WebXArtist | Website Development, Branding & Digital Marketing Agency",
 
     description:
-      "Professional Website Development, Branding, SEO, Digital Marketing and Graphic Design Services.",
+      " Website Development, Branding, SEO, Digital Marketing and Graphic Design Services.",
 
     url: "https://www.webxartist.com",
 

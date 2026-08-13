@@ -37,7 +37,7 @@ const technologies = [
   {
     name: "Figma",
     image: "/figma.svg",
-    description: "Professional UI/UX design and prototyping.",
+    description: " UI/UX design and prototyping.",
   },
   {
     name: "Adobe Photoshop",
@@ -47,7 +47,7 @@ const technologies = [
   {
     name: "Adobe Illustrator",
     image: "/tool.png",
-    description: "Professional logo and brand identity design.",
+    description: " logo and brand identity design.",
   },
   {
     name: "Google Analytics",

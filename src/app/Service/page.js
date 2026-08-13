@@ -8,7 +8,7 @@ export const metadata = {
   title:
     "Our Services | Web Development, Branding & Digital Marketing in Mumbra – WebXArtist",
   description:
-    "WebXArtist Institute & Agency offers professional website development, branding, SEO, digital marketing, graphic design, SMM, and video editing services in Mumbai, Thane, and Mumbra.",
+    "WebXArtist Institute & Agency offers  website development, branding, SEO, digital marketing, graphic design, SMM, and video editing services in Mumbai, Thane, and Mumbra.",
 
   alternates: {
     canonical: "https://www.webxartist.com/Service",
@@ -41,7 +41,7 @@ export default function Page() {
     "@id": "https://www.webxartist.com/Service",
     name: "Web Development & Digital Marketing Services",
     description:
-      "Professional web development, branding, SEO, digital marketing, graphic design, and social media services for businesses.",
+      " web development, branding, SEO, digital marketing, graphic design, and social media services for businesses.",
     provider: {
       "@type": "Organization",
       name: "WebXArtist Institute & Agency",

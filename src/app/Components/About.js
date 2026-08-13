@@ -275,11 +275,11 @@ const About = () => {
 
           <div className="space-y-5 text-slate-400 text-[15px] sm:text-base leading-relaxed">
             <p>
-              WebXArtist Institute is a professional IT and digital skills
-              training institute focused on practical, industry-ready education.
-              We provide hands-on training for students, job seekers,
-              freelancers, and entrepreneurs who want to build real careers in
-              technology and digital fields.
+              WebXArtist Institute is a IT and digital skills training institute
+              focused on practical, industry-ready education. We provide
+              hands-on training for students, job seekers, freelancers, and
+              entrepreneurs who want to build real careers in technology and
+              digital fields.
             </p>
 
             <p>

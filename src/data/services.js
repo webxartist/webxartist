@@ -21,7 +21,7 @@ const services = [
 
     heroImage: "/services/website-development-banner.jpg",
 
-    shortDescription: "Professional websites that help businesses grow online.",
+    shortDescription: "Websites that help businesses grow online.",
 
     description:
       "We design and develop fast, responsive, and SEO-friendly websites that help businesses build trust, generate quality leads, and increase sales. Whether you need a business website, a personal portfolio, an e-commerce store, or a custom web application, WebXArtist delivers complete digital solutions tailored to your goals built to perform, not just to look good.",
@@ -31,7 +31,7 @@ const services = [
 
     category: "Development",
 
-    heroTitle: "Professional Website Development Services",
+    heroTitle: "Website Development Services",
 
     heroSubtitle:
       "Build a powerful online presence with modern, responsive, and conversion-focused websites.",
@@ -45,7 +45,7 @@ const services = [
       {
         title: "Business Brochures",
         description:
-          "Professional brochure designs that effectively showcase your products, services, and company information.",
+          "Brochure designs that effectively showcase your products, services, and company information.",
       },
       {
         title: "Flyers & Posters",
@@ -55,7 +55,7 @@ const services = [
       {
         title: "Business Cards",
         description:
-          "Premium business card designs that create a strong first impression and reflect your professional brand identity.",
+          "Business card designs that create a strong first impression and reflect your  brand identity.",
       },
       {
         title: "Corporate Branding",
@@ -90,7 +90,7 @@ const services = [
       {
         title: "Print Ready Files",
         description:
-          "All designs are delivered in high-resolution, print-ready formats suitable for professional printing.",
+          "All designs are delivered in high-resolution, print-ready formats suitable for  printing.",
       },
       {
         title: "Unlimited Design Revisions",
@@ -185,7 +185,7 @@ const services = [
     ],
 
     benefits: [
-      "Business Websites  Professional, credible, and designed to convert visitors into customers",
+      "Business Websites  , credible, and designed to convert visitors into customers",
       "Portfolio Websites Showcase your work, skills, and personality to attract the right clients",
       "E-Commerce Stores Sell products online with secure payments and a smooth checkout experience",
       "Custom Web Applications Tailored, scalable solutions built around your unique business needs",
@@ -227,7 +227,7 @@ const services = [
     seo: {
       title: "Website Development Services | WebXArtist",
       description:
-        "Professional website development services including business websites, e-commerce, landing pages, and custom web applications.",
+        "Website development services including business websites, e-commerce, landing pages, and custom web applications.",
     },
   },
 
@@ -244,7 +244,7 @@ const services = [
 
     category: "Marketing",
 
-    heroTitle: "Professional Google Ads Services",
+    heroTitle: " Google Ads Services",
 
     heroSubtitle:
       "Generate more leads, increase sales, and maximize your ROI with high-performing Google Ads campaigns managed by certified experts.",
@@ -389,7 +389,7 @@ const services = [
       {
         title: "Looker Studio",
         description:
-          "Create interactive dashboards and professional reports to monitor Google Ads performance and ROI.",
+          "Create interactive dashboards and  reports to monitor Google Ads performance and ROI.",
       },
     ],
 
@@ -444,7 +444,7 @@ const services = [
       title: "Google Ads Services | WebXArtist",
 
       description:
-        "Professional Google Ads management services including Search Ads, Display Ads, Shopping Ads, YouTube Ads, Performance Max, and Remarketing to generate leads and increase sales.",
+        " Google Ads management services including Search Ads, Display Ads, Shopping Ads, YouTube Ads, Performance Max, and Remarketing to generate leads and increase sales.",
 
       keywords: [
         "Google Ads",
@@ -668,7 +668,7 @@ const services = [
       title: "Meta Ads Management Services | WebXArtist",
 
       description:
-        "Professional Facebook & Instagram ads management including campaign strategy, audience targeting, ad creatives, and performance reporting.",
+        " Facebook & Instagram ads management including campaign strategy, audience targeting, ad creatives, and performance reporting.",
 
       keywords: [
         "Meta Ads",
@@ -686,7 +686,7 @@ const services = [
   {
     id: 4,
 
-    slug: "GMB",
+    slug: "google-my-business",
 
     name: "Google My Business",
 
@@ -696,16 +696,16 @@ const services = [
 
     category: "Marketing",
 
-    heroTitle: "Professional Video Editing Services",
+    heroTitle: " Video Editing Services",
 
     heroSubtitle:
       "Create engaging videos that capture attention, build trust, and increase customer engagement.",
 
     shortDescription:
-      "Professional video editing for social media, YouTube, businesses, and advertisements.",
+      " video editing for social media, YouTube, businesses, and advertisements.",
 
     description:
-      "Video content is one of the most powerful marketing tools today. At WebXArtist, we create high-quality videos that tell your story, promote your products, and engage your audience. From promotional videos to reels and YouTube editing, we deliver professional results that strengthen your brand.",
+      "Video content is one of the most powerful marketing tools today. At WebXArtist, we create high-quality videos that tell your story, promote your products, and engage your audience. From promotional videos to reels and YouTube editing, we deliver  results that strengthen your brand.",
 
     features: [
       {
@@ -730,8 +730,7 @@ const services = [
       },
       {
         title: "Business Photos Upload",
-        description:
-          "Upload professional business images to increase customer trust.",
+        description: "Upload  business images to increase customer trust.",
       },
       {
         title: "Products & Services Listing",
@@ -788,7 +787,7 @@ const services = [
       {
         title: "Content & Image Upload",
         description:
-          "Upload professional photos, products, services, and business updates.",
+          "Upload  photos, products, services, and business updates.",
       },
       {
         title: "Review Strategy",
@@ -834,8 +833,7 @@ const services = [
       },
       {
         title: "Google Looker Studio",
-        description:
-          "Generate professional reports and performance dashboards.",
+        description: "Generate  reports and performance dashboards.",
       },
       {
         title: "Local SEO Tools",
@@ -890,10 +888,10 @@ const services = [
       "virar",
     ],
     seo: {
-      title: "Professional Video Editing Services | WebXArtist",
+      title: " Video Editing Services | WebXArtist",
 
       description:
-        "Professional video editing services for businesses, YouTube creators, Instagram reels, advertisements, and promotional videos.",
+        " video editing services for businesses, YouTube creators, Instagram reels, advertisements, and promotional videos.",
 
       keywords: [
         "Video Editing",
@@ -920,7 +918,7 @@ const services = [
 
     category: "Digital Marketing",
 
-    heroTitle: "Professional SEO Services",
+    heroTitle: " SEO Services",
 
     heroSubtitle:
       "Improve your Google rankings, drive organic traffic, and generate quality leads for your business.",
@@ -1113,7 +1111,7 @@ const services = [
       title: "SEO Services | WebXArtist",
 
       description:
-        "Professional SEO services including on-page SEO, off-page SEO, technical SEO, local SEO, and Google Business Profile optimization.",
+        " SEO services including on-page SEO, off-page SEO, technical SEO, local SEO, and Google Business Profile optimization.",
 
       keywords: [
         "SEO Services",
@@ -1141,7 +1139,7 @@ const services = [
 
     category: "Digital Marketing",
 
-    heroTitle: "Professional Social Media Management",
+    heroTitle: " Social Media Management",
 
     heroSubtitle:
       "Build a powerful social media presence that attracts customers and grows your business.",
@@ -1166,7 +1164,7 @@ const services = [
       {
         title: "LinkedIn Management",
         description:
-          "Strengthen your professional brand with high-quality LinkedIn content that connects with your target audience.",
+          "Strengthen your  brand with high-quality LinkedIn content that connects with your target audience.",
       },
       {
         title: "Content Calendar",
@@ -1211,7 +1209,7 @@ const services = [
       {
         title: "Profile Optimization",
         description:
-          "Optimize your social media profiles with professional branding, SEO-friendly bios, and complete business information.",
+          "Optimize your social media profiles with  branding, SEO-friendly bios, and complete business information.",
       },
     ],
 
@@ -1262,7 +1260,7 @@ const services = [
       {
         title: "Canva Pro",
         description:
-          "Create high-quality social media graphics, stories, reels, and marketing creatives with professional templates.",
+          "Create high-quality social media graphics, stories, reels, and marketing creatives with  templates.",
       },
       {
         title: "Adobe Photoshop",
@@ -1282,7 +1280,7 @@ const services = [
       {
         title: "LinkedIn",
         description:
-          "Strengthen your professional brand by sharing valuable content and connecting with business-focused audiences.",
+          "Strengthen your  brand by sharing valuable content and connecting with business-focused audiences.",
       },
     ],
 
@@ -1291,7 +1289,7 @@ const services = [
       "Grow Followers Organically",
       "Generate Quality Leads",
       "Improve Customer Engagement",
-      "Professional Online Presence",
+      " Online Presence",
       "Higher Business Visibility",
     ],
 
@@ -1304,7 +1302,7 @@ const services = [
       {
         question: "Will you create the posts?",
         answer:
-          "Yes. Our team creates professional graphics, captions, reels, and marketing content for your business.",
+          "Yes. Our team creates  graphics, captions, reels, and marketing content for your business.",
       },
       {
         question: "How often will you post?",
@@ -1335,7 +1333,7 @@ const services = [
       title: "Social Media Management Services | WebXArtist",
 
       description:
-        "Professional social media management services for Instagram, Facebook, LinkedIn, and business branding.",
+        " social media management services for Instagram, Facebook, LinkedIn, and business branding.",
 
       keywords: [
         "Social Media Management",
@@ -1362,7 +1360,7 @@ const services = [
 
     category: "Digital Marketing",
 
-    heroTitle: "Professional Content Creation Services",
+    heroTitle: " Content Creation Services",
 
     heroSubtitle:
       "Create compelling content that attracts customers, builds trust, and strengthens your brand.",
@@ -1402,7 +1400,7 @@ const services = [
       {
         title: "Business Profiles",
         description:
-          "Create professional business profiles for websites, directories, and company presentations that build credibility.",
+          "Create  business profiles for websites, directories, and company presentations that build credibility.",
       },
       {
         title: "Advertisement Copywriting",
@@ -1422,7 +1420,7 @@ const services = [
       {
         title: "Script Writing",
         description:
-          "Write professional scripts for promotional videos, YouTube content, reels, and business presentations.",
+          "Write  scripts for promotional videos, YouTube content, reels, and business presentations.",
       },
       {
         title: "Content Strategy",
@@ -1556,7 +1554,7 @@ const services = [
       title: "Content Creation Services | WebXArtist",
 
       description:
-        "Professional content creation services including website content, blogs, SEO content, social media captions, and copywriting.",
+        " content creation services including website content, blogs, SEO content, social media captions, and copywriting.",
 
       keywords: [
         "Content Creation",
@@ -1584,13 +1582,13 @@ const services = [
 
     category: "Digital Marketing",
 
-    heroTitle: "Professional Website Maintenance & Support Services",
+    heroTitle: " Website Maintenance & Support Services",
 
     heroSubtitle:
       "Keep your website secure, fast, updated, and running smoothly with reliable maintenance and expert technical support.",
 
     shortDescription:
-      "Ensure your website stays secure, optimized, and performs at its best with professional maintenance services.",
+      "Ensure your website stays secure, optimized, and performs at its best with  maintenance services.",
 
     description:
       "A well-maintained website is essential for delivering a great user experience and protecting your business online. At WebXArtist, we provide comprehensive Website Maintenance & Support services, including regular updates, security monitoring, performance optimization, backups, bug fixes, and technical support. Our proactive maintenance approach ensures your website remains secure, fast, reliable, and up-to-date, allowing you to focus on growing your business while we handle the technical aspects.",
@@ -1718,7 +1716,7 @@ const services = [
       {
         title: "Git & GitHub",
         description:
-          "Securely manage website updates, version control, code backups, and deployment with professional development workflows.",
+          "Securely manage website updates, version control, code backups, and deployment with  development workflows.",
       },
       {
         title: "Uptime Monitoring",
@@ -1776,7 +1774,7 @@ const services = [
       title: "Website Maintenance & Support Services | WebXArtist",
 
       description:
-        "Professional website maintenance and support services including security monitoring, website updates, backups, performance optimization, bug fixes, and ongoing technical support.",
+        " website maintenance and support services including security monitoring, website updates, backups, performance optimization, bug fixes, and ongoing technical support.",
 
       keywords: [
         "Website Maintenance",
