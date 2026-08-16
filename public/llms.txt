@@ -1,0 +1,50 @@
+# WebXArtist Institute & Agency
+
+> WebXArtist Institute & Agency is a digital solutions agency and training institute providing website development, digital marketing, SEO, social media management, graphic design, branding, Google Ads, Meta Ads, e-commerce development, and professional technology training.
+
+## Website
+
+https://www.webxartist.com/
+
+## About
+
+WebXArtist Institute & Agency provides digital solutions and professional training for businesses, entrepreneurs, students, and organizations.
+
+## Services
+
+- Website Development
+- Next.js Development
+- MERN Stack Development
+- E-commerce Website Development
+- SEO Services
+- Digital Marketing
+- Google Ads Management
+- Meta Ads Management
+- Social Media Management
+- Graphic Design
+- Logo Design
+- Branding
+- Video Editing
+- Content Creation
+
+## Training Programs
+
+- Web Development
+- MERN Stack Development
+- Digital Marketing
+- Graphic Design
+- Canva
+- Adobe Photoshop
+- Adobe Illustrator
+
+## Important Pages
+
+- https://webxartist.com/
+- https://webxartist.com/About
+- https://webxartist.com/ContactUs
+- https://webxartist.com/Pricing
+- https://webxartist.com/services
+
+## Contact
+
+Website: https://www.webxartist.com/
