@@ -5,6 +5,7 @@ import Whatsapp from "../Components/WhatsApp";
 import Instagram from "../Components/Instgram";
 import Technology from "../Components/Technology";
 import MetaAds from "../Components/MetaAds";
+import FounderSection from "../Components/founder/FounderSection";
 
 // ✅ SEO METADATA (FIXED)
 export const metadata = {
@@ -70,6 +71,7 @@ export default function Page() {
 
       <div className="pt-16">
         <About />
+        <FounderSection />
         <Technology />
         <MetaAds />
         <Portfolio />

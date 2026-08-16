@@ -192,6 +192,13 @@ const schema = [
 
     url: "https://www.webxartist.com",
 
+    foundingDate: "2024-01-20",
+
+    founder: {
+      "@type": "Person",
+      name: "Zahid Khan",
+    },
+
     description:
       "WebXArtist is a web development and digital marketing agency providing website development, Next.js, MERN, SEO, Google Ads, Meta Ads, branding, graphic design and e-commerce solutions.",
 
