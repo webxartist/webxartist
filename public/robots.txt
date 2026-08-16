@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://www.webxartist.com
-
-# Sitemaps
-Sitemap: https://www.webxartist.com/sitemap.xml

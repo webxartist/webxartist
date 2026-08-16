@@ -4,11 +4,13 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Letconnect from "./Components/Letconnect";
 import { Poppins } from "next/font/google";
-import Script from "next/script"; // ✅ ADD THIS
+import Script from "next/script";
 import CursorSwitcher from "./Components/Cursor";
 import ContactPopup from "./Components/ContactPopup";
 
-// Load Poppins font
+// ------------------------------------------------------
+// ⭐ POPPINS FONT
+// ------------------------------------------------------
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700"],
@@ -16,7 +18,9 @@ const poppins = Poppins({
   display: "swap",
 });
 
-// Load custom local fonts
+// ------------------------------------------------------
+// ⭐ LOCAL GEIST SANS FONT
+// ------------------------------------------------------
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -24,6 +28,9 @@ const geistSans = localFont({
   display: "swap",
 });
 
+// ------------------------------------------------------
+// ⭐ LOCAL GEIST MONO FONT
+// ------------------------------------------------------
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -31,51 +38,81 @@ const geistMono = localFont({
   display: "swap",
 });
 
+// ------------------------------------------------------
+// ⭐ VIEWPORT
+// ------------------------------------------------------
 export const viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: "#080a20",
   colorScheme: "dark",
 };
-/* ------------------------------------------------------
-   ⭐ FULL SITE-WIDE SEO — BEST SETTINGS FOR RANKING
------------------------------------------------------- */
+
+// ------------------------------------------------------
+// ⭐ SITE-WIDE SEO METADATA
+// ------------------------------------------------------
 export const metadata = {
   metadataBase: new URL("https://www.webxartist.com"),
 
+  // ----------------------------------------------------
+  // GOOGLE SEARCH CONSOLE VERIFICATION
+  // ----------------------------------------------------
   verification: {
     google: "xyvHPQW3Gi3HzvFtrTwRk5s3SG_VZvbE1o3z5C_Ag6I",
   },
 
+  // ----------------------------------------------------
+  // PAGE TITLE
+  // ----------------------------------------------------
   title: {
-    default:
-      "WebXArtist | Website Development, Branding & Digital Marketing Agency",
+    default: "Web Development & Digital Marketing Agency | WebXArtist",
     template: "%s | WebXArtist",
   },
 
+  // ----------------------------------------------------
+  // META DESCRIPTION
+  // ----------------------------------------------------
   description:
-    "WebXArtist is a  website development, branding, SEO, digital marketing, graphic design and software development agency serving businesses across India.",
+    "WebXArtist is a web development and digital marketing agency offering Next.js, MERN, SEO, Google Ads, Meta Ads, branding and e-commerce solutions for growing businesses.",
 
+  // ----------------------------------------------------
+  // KEYWORDS
+  // ----------------------------------------------------
   keywords: [
-    "Website Development",
-    "Web Design",
-    "SEO",
-    "Digital Marketing",
-    "Graphic Design",
-    "Logo Design",
-    "Social Media Marketing",
     "WebXArtist",
-    "Mumbai",
-    "Thane",
+    "web development agency",
+    "website development",
+    "website design",
+    "web design agency",
+    "Next.js development",
+    "MERN stack development",
+    "ecommerce website development",
+    "SEO services",
+    "digital marketing agency",
+    "Google Ads management",
+    "Meta Ads management",
+    "social media marketing",
+    "graphic design",
+    "branding agency",
+    "logo design",
     "Mumbra",
-    "Pune",
+    "Thane",
+    "Mumbai",
     "Navi Mumbai",
+    "Pune",
+    "India",
   ],
 
+  // ----------------------------------------------------
+  // CANONICAL
+  // ----------------------------------------------------
   alternates: {
     canonical: "/",
   },
 
+  // ----------------------------------------------------
+  // ROBOTS
+  // ----------------------------------------------------
   robots: {
     index: true,
     follow: true,
@@ -89,14 +126,16 @@ export const metadata = {
     },
   },
 
+  // ----------------------------------------------------
+  // OPEN GRAPH
+  // ----------------------------------------------------
   openGraph: {
-    title:
-      "WebXArtist | Website Development, Branding & Digital Marketing Agency",
+    title: "Web Development & Digital Marketing Agency | WebXArtist",
 
     description:
-      " Website Development, Branding, SEO, Digital Marketing and Graphic Design Services.",
+      "WebXArtist provides website development, Next.js, MERN, SEO, Google Ads, Meta Ads, branding and e-commerce solutions for growing businesses.",
 
-    url: "https://www.webxartist.com",
+    url: "https://www.webxartist.com/",
 
     siteName: "WebXArtist",
 
@@ -109,34 +148,38 @@ export const metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "WebXArtist",
+        alt: "WebXArtist - Web Development & Digital Marketing Agency",
       },
     ],
   },
 
+  // ----------------------------------------------------
+  // TWITTER / X
+  // ----------------------------------------------------
   twitter: {
     card: "summary_large_image",
 
-    title: "WebXArtist",
+    title: "Web Development & Digital Marketing Agency | WebXArtist",
 
     description:
-      "Website Development, Branding, SEO and Digital Marketing Agency.",
+      "Website development, Next.js, MERN, SEO, Google Ads, Meta Ads, branding and e-commerce solutions by WebXArtist.",
 
     images: ["/og-image.png"],
   },
 
+  // ----------------------------------------------------
+  // FAVICONS
+  // ----------------------------------------------------
   icons: {
     icon: "/favicon.ico",
-
     shortcut: "/favicon.ico",
-
     apple: "/apple-touch-icon.png",
   },
 };
 
-/* ------------------------------------------------------
-   ⭐ JSON-LD SCHEMA FOR GOOGLE SEO BOOST
-------------------------------------------------------- */
+// ------------------------------------------------------
+// ⭐ JSON-LD STRUCTURED DATA
+// ------------------------------------------------------
 const schema = [
   {
     "@context": "https://schema.org",
@@ -149,7 +192,15 @@ const schema = [
 
     url: "https://www.webxartist.com",
 
-    logo: "https://www.webxartist.com/logo.png",
+    description:
+      "WebXArtist is a web development and digital marketing agency providing website development, Next.js, MERN, SEO, Google Ads, Meta Ads, branding, graphic design and e-commerce solutions.",
+
+    logo: {
+      "@type": "ImageObject",
+      url: "https://www.webxartist.com/logo.png",
+    },
+
+    image: "https://www.webxartist.com/logo.png",
 
     email: "webxartist@gmail.com",
 
@@ -189,12 +240,20 @@ const schema = [
 
     name: "WebXArtist",
 
+    description:
+      "WebXArtist official website for web development, digital marketing, SEO, branding, graphic design and e-commerce solutions.",
+
     publisher: {
       "@id": "https://www.webxartist.com/#organization",
     },
+
+    inLanguage: "en-IN",
   },
 ];
 
+// ------------------------------------------------------
+// ⭐ ROOT LAYOUT
+// ------------------------------------------------------
 export default function RootLayout({ children }) {
   return (
     <html
@@ -202,6 +261,9 @@ export default function RootLayout({ children }) {
       className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable}`}
     >
       <head>
+        {/* ----------------------------------------------
+            JSON-LD STRUCTURED DATA
+        ---------------------------------------------- */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -209,6 +271,9 @@ export default function RootLayout({ children }) {
           }}
         />
 
+        {/* ----------------------------------------------
+            GOOGLE ANALYTICS
+        ---------------------------------------------- */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-29NBKJ07ZZ"
           strategy="afterInteractive"
@@ -216,20 +281,28 @@ export default function RootLayout({ children }) {
 
         <Script id="google-analytics" strategy="afterInteractive">
           {`
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+            window.dataLayer = window.dataLayer || [];
 
-      gtag('config', 'G-29NBKJ07ZZ');
-    `}
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-29NBKJ07ZZ');
+          `}
         </Script>
       </head>
 
       <body className="bg-white text-black">
         <Navbar />
+
         {children}
+
         <ContactPopup />
+
         <CursorSwitcher />
+
         <Footer />
       </body>
     </html>
