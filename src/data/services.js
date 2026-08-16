@@ -38,64 +38,79 @@ const services = [
 
     features: [
       {
-        title: "Social Media Post Design",
+        title: "Responsive Website Design",
         description:
-          "Eye-catching social media creatives designed to boost engagement, strengthen your brand presence, and attract your target audience.",
+          "Modern, responsive websites designed to provide a seamless user experience across desktops, tablets, and mobile devices.",
       },
       {
-        title: "Business Brochures",
+        title: "Custom UI/UX Design",
         description:
-          "Brochure designs that effectively showcase your products, services, and company information.",
+          "User-focused interface and experience design tailored to your brand, business goals, and target audience.",
       },
       {
-        title: "Flyers & Posters",
+        title: "Next.js Development",
         description:
-          "Creative promotional flyers and posters designed to maximize visibility for events, offers, and marketing campaigns.",
+          "High-performance websites and web applications built with Next.js for speed, scalability, SEO, and modern web experiences.",
       },
       {
-        title: "Business Cards",
+        title: "MERN Stack Development",
         description:
-          "Business card designs that create a strong first impression and reflect your  brand identity.",
+          "Custom full-stack web applications developed using MongoDB, Express.js, React, and Node.js for scalable business solutions.",
       },
       {
-        title: "Corporate Branding",
+        title: "E-commerce Website Development",
         description:
-          "Complete branding solutions including brand identity, visual guidelines, and marketing assets for a consistent corporate image.",
+          "Professional e-commerce websites with product catalogs, shopping carts, checkout functionality, payment integration, and order management.",
       },
       {
-        title: "Banner Design",
+        title: "SEO-Friendly Development",
         description:
-          "High-quality digital and print banner designs for websites, advertisements, exhibitions, and promotional campaigns.",
+          "Search-engine-friendly website architecture with optimized metadata, headings, URLs, structured content, and technical SEO foundations.",
       },
       {
-        title: "Packaging Design",
+        title: "High-Speed Performance",
         description:
-          "Modern and attractive product packaging designs that enhance shelf appeal and strengthen brand recognition.",
+          "Performance-focused development designed to improve page speed, Core Web Vitals, user experience, and search visibility.",
       },
       {
-        title: "Advertisement Creatives",
+        title: "Mobile-First Development",
         description:
-          "High-converting advertisement creatives optimized for Google Ads, Meta Ads, LinkedIn, and other digital platforms.",
+          "Websites developed with a mobile-first approach to ensure excellent usability and performance on smartphones and tablets.",
       },
       {
-        title: "Festival Posters",
+        title: "Custom Web Applications",
         description:
-          "Professionally designed festive and seasonal promotional graphics to keep your brand active throughout the year.",
+          "Scalable custom web applications built around your business processes, requirements, workflows, and user needs.",
       },
       {
-        title: "Visiting Card Design",
+        title: "Admin Dashboard",
         description:
-          "Elegant and customized visiting card designs that represent your business with professionalism.",
+          "Custom admin dashboards that allow businesses to manage content, products, users, orders, enquiries, and other website operations.",
       },
       {
-        title: "Print Ready Files",
+        title: "WhatsApp & Contact Integration",
         description:
-          "All designs are delivered in high-resolution, print-ready formats suitable for  printing.",
+          "Lead-generation features including WhatsApp buttons, contact forms, enquiry systems, click-to-call, and other customer communication options.",
       },
       {
-        title: "Unlimited Design Revisions",
+        title: "Google Maps & Business Integration",
         description:
-          "We refine your designs until you're completely satisfied, ensuring the final output perfectly matches your vision.",
+          "Google Maps and business information integration to help customers find your location and connect with your business easily.",
+      },
+      {
+        title: "Analytics & Tracking Setup",
+        description:
+          "Google Analytics, Google Tag Manager, conversion tracking, and other analytics integrations to measure website performance and leads.",
+      },
+      {
+        title: "SSL & Website Security",
+        description:
+          "Essential security configuration including SSL, secure forms, safe integrations, and security best practices for modern websites.",
+      },
+      {
+        title: "Hosting & Deployment Support",
+        description:
+          "Professional deployment and hosting assistance to launch your website and keep it configured for reliable performance.",
       },
     ],
     process: [
@@ -696,17 +711,15 @@ const services = [
 
     category: "Marketing",
 
-    heroTitle: " Video Editing Services",
+    heroTitle: " Google My Business Services",
+
+    heroTitle: "Google Business Profile Optimization Services",
 
     heroSubtitle:
-      "Create engaging videos that capture attention, build trust, and increase customer engagement.",
+      "Improve your local visibility on Google Search and Maps and attract more customers.",
 
     shortDescription:
-      " video editing for social media, YouTube, businesses, and advertisements.",
-
-    description:
-      "Video content is one of the most powerful marketing tools today. At WebXArtist, we create high-quality videos that tell your story, promote your products, and engage your audience. From promotional videos to reels and YouTube editing, we deliver  results that strengthen your brand.",
-
+      "Google Business Profile optimization and local SEO services for businesses.",
     features: [
       {
         title: "Google Business Profile Setup",
@@ -1572,13 +1585,13 @@ const services = [
   {
     id: 8,
 
-    slug: "email-marketing",
+    slug: "maintenance-and-support",
 
     name: "Maintenance & Support",
 
     image: "/email.png",
 
-    heroImage: "/services/email-marketing-banner.jpg",
+    heroImage: "/services/email-marking-banner.jpg",
 
     category: "Digital Marketing",
 
