@@ -711,8 +711,6 @@ const services = [
 
     category: "Marketing",
 
-    heroTitle: " Google My Business Services",
-
     heroTitle: "Google Business Profile Optimization Services",
 
     heroSubtitle:
@@ -901,19 +899,20 @@ const services = [
       "virar",
     ],
     seo: {
-      title: " Video Editing Services | WebXArtist",
+      title: "Google Business Profile Optimization Services | WebXArtist",
 
       description:
-        " video editing services for businesses, YouTube creators, Instagram reels, advertisements, and promotional videos.",
+        "Improve your Google Business Profile, Google Maps visibility, local search presence, and customer enquiries with professional local SEO services from WebXArtist.",
 
       keywords: [
-        "Video Editing",
-        "Video Editor",
-        "Instagram Reels Editing",
-        "YouTube Video Editing",
-        "Corporate Video",
-        "Promotional Video",
-        "Video Editing Mumbai",
+        "Google Business Profile Optimization",
+        "Google Business Profile Services",
+        "Google Maps SEO",
+        "Local SEO Services",
+        "Google Business Profile Management",
+        "GMB Optimization",
+        "Google Maps Ranking Services",
+        "Local SEO Agency",
       ],
     },
   },

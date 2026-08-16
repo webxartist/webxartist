@@ -3,65 +3,82 @@ import locations from "@/data/locations";
 
 /*
 |--------------------------------------------------------------------------
+| Check whether a service is allowed in a location
+|--------------------------------------------------------------------------
+*/
+
+function isServiceAllowedForLocation(service, location) {
+  const serviceAllowsLocation =
+    !service.locations || service.locations.includes(location.slug);
+
+  const locationAllowsService =
+    !location.services || location.services.includes(service.slug);
+
+  return serviceAllowsLocation && locationAllowsService;
+}
+
+/*
+|--------------------------------------------------------------------------
 | Get all valid Service + Location pages
 |--------------------------------------------------------------------------
 |
-| A page is generated only when BOTH sides agree:
+| A page is generated only when:
 |
-| Service → locations includes the location
-| Location → services includes the service
+| 1. The service allows the location
+| 2. The location allows the service
 |
+|--------------------------------------------------------------------------
 */
 
 export function getAllServiceLocationPages() {
   const pages = [];
 
-  services.forEach((service) => {
-    locations.forEach((location) => {
-      const serviceAllowsLocation =
-        !service.locations || service.locations.includes(location.slug);
-
-      const locationAllowsService =
-        !location.services || location.services.includes(service.slug);
-
-      if (serviceAllowsLocation && locationAllowsService) {
+  for (const service of services) {
+    for (const location of locations) {
+      if (isServiceAllowedForLocation(service, location)) {
         pages.push({
           service,
           location,
         });
       }
-    });
-  });
+    }
+  }
 
   return pages;
 }
 
 /*
 |--------------------------------------------------------------------------
-| Get one Service + Location page
+| Get one valid Service + Location page
 |--------------------------------------------------------------------------
 */
 
 export function getServiceLocation(serviceSlug, locationSlug) {
+  if (!serviceSlug || !locationSlug) {
+    return null;
+  }
+
   const service = services.find((item) => item.slug === serviceSlug);
 
   const location = locations.find((item) => item.slug === locationSlug);
 
-  // Service or location does not exist
+  /*
+  |--------------------------------------------------------------------------
+  | Service or location does not exist
+  |--------------------------------------------------------------------------
+  */
+
   if (!service || !location) {
     return null;
   }
 
-  // Check Service → Location relationship
-  const serviceAllowsLocation =
-    !service.locations || service.locations.includes(location.slug);
+  /*
+  |--------------------------------------------------------------------------
+  | Validate Service ↔ Location relationship
+  |--------------------------------------------------------------------------
+  */
 
-  // Check Location → Service relationship
-  const locationAllowsService =
-    !location.services || location.services.includes(service.slug);
-
-  // Invalid combination
-  if (!serviceAllowsLocation || !locationAllowsService) {
+  if (!isServiceAllowedForLocation(service, location)) {
     return null;
   }
 

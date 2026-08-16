@@ -17,6 +17,8 @@ import ServiceLocationFAQ from "@/app/Components/serviceLocation/ServiceLocation
 import RelatedLocations from "@/app/Components/serviceLocation/RelatedLocations";
 import RelatedServices from "@/app/Components/serviceLocation/RelatedServices";
 
+const baseUrl = "https://www.webxartist.com";
+
 /*
 |--------------------------------------------------------------------------
 | Static Service + Location Pages
@@ -37,73 +39,154 @@ export async function generateStaticParams() {
 */
 
 export async function generateMetadata({ params }) {
-  const page = getServiceLocation(params.slug, params.location);
+  const resolvedParams = await params;
+
+  const { slug, location: locationSlug } = resolvedParams;
+
+  const page = getServiceLocation(slug, locationSlug);
 
   if (!page) {
     return {
       title: "Page Not Found | WebXArtist",
       description: "The requested page could not be found.",
+
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
   }
 
   const { service, location } = page;
 
-  // Canonical URL
-  const canonicalUrl = `https://www.webxartist.com/services/${service.slug}/${location.slug}`;
+  const serviceName = service.name;
+  const cityName = location.city;
 
-  // Location-specific SEO data
-  const title =
-    location.seo?.title || `${service.name} in ${location.city} | WebXArtist`;
+  /*
+  |--------------------------------------------------------------------------
+  | Canonical URL
+  |--------------------------------------------------------------------------
+  */
+
+  const canonicalUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
+
+  /*
+  |--------------------------------------------------------------------------
+  | SEO Title
+  |--------------------------------------------------------------------------
+  */
+
+  const title = `${serviceName} in ${cityName} | WebXArtist`;
+
+  /*
+  |--------------------------------------------------------------------------
+  | SEO Description
+  |--------------------------------------------------------------------------
+  |
+  | The description is generated from the service + location.
+  | This prevents all location pages from having the same metadata.
+  |
+  */
 
   const description =
-    location.seo?.description ||
-    ` ${service.name.toLowerCase()} services in ${location.city} by WebXArtist. Modern, affordable and results-focused digital solutions for businesses.`;
+    `WebXArtist provides professional ${serviceName.toLowerCase()} services in ${cityName}, Maharashtra. ` +
+    `Get customized digital solutions designed to help businesses improve their online presence, visibility, and growth.`;
+
+  /*
+  |--------------------------------------------------------------------------
+  | SEO Keywords
+  |--------------------------------------------------------------------------
+  */
 
   const keywords = [
-    `${service.name} ${location.city}`,
-    `${service.name} in ${location.city}`,
-    `${service.name} services in ${location.city}`,
-    `${service.name.toLowerCase()} agency ${location.city}`,
-    `WebXArtist ${location.city}`,
+    `${serviceName} in ${cityName}`,
+    `${serviceName} ${cityName}`,
+    `${serviceName} services in ${cityName}`,
+    `${serviceName.toLowerCase()} company in ${cityName}`,
+    `${serviceName.toLowerCase()} agency in ${cityName}`,
+    `${serviceName.toLowerCase()} services ${cityName}`,
+    `WebXArtist ${serviceName} ${cityName}`,
   ];
 
   return {
     title,
+
     description,
+
     keywords,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Canonical
+    |--------------------------------------------------------------------------
+    */
 
     alternates: {
       canonical: canonicalUrl,
     },
 
+    /*
+    |--------------------------------------------------------------------------
+    | Robots
+    |--------------------------------------------------------------------------
+    */
+
+    robots: {
+      index: true,
+      follow: true,
+
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+        "max-snippet": -1,
+      },
+    },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Open Graph
+    |--------------------------------------------------------------------------
+    */
+
     openGraph: {
       title,
+
       description,
+
       url: canonicalUrl,
+
       siteName: "WebXArtist",
-      type: "website",
+
       locale: "en_IN",
+
+      type: "website",
 
       images: [
         {
           url: service.heroImage || "/about.png",
           width: 1200,
           height: 630,
-          alt: `${service.name} in ${location.city} | WebXArtist`,
+          alt: `${serviceName} in ${cityName} | WebXArtist`,
         },
       ],
     },
 
+    /*
+    |--------------------------------------------------------------------------
+    | Twitter
+    |--------------------------------------------------------------------------
+    */
+
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
-      images: [service.heroImage || "/about.png"],
-    },
 
-    robots: {
-      index: true,
-      follow: true,
+      title,
+
+      description,
+
+      images: [service.heroImage || "/about.png"],
     },
   };
 }
@@ -114,19 +197,36 @@ export async function generateMetadata({ params }) {
 |--------------------------------------------------------------------------
 */
 
-export default function Page({ params }) {
-  const page = getServiceLocation(params.slug, params.location);
+export default async function Page({ params }) {
+  const resolvedParams = await params;
+
+  const { slug, location: locationSlug } = resolvedParams;
+
+  const page = getServiceLocation(slug, locationSlug);
 
   /*
-   * Invalid service/location combination
-   * will return a proper 404 page.
-   */
+  |--------------------------------------------------------------------------
+  | Invalid Service / Location
+  |--------------------------------------------------------------------------
+  */
 
   if (!page) {
     notFound();
   }
 
   const { service, location } = page;
+
+  const serviceName = service.name;
+
+  const cityName = location.city;
+
+  /*
+  |--------------------------------------------------------------------------
+  | Page URL
+  |--------------------------------------------------------------------------
+  */
+
+  const pageUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
 
   /*
   |--------------------------------------------------------------------------
@@ -139,16 +239,19 @@ export default function Page({ params }) {
       label: "Home",
       href: "/",
     },
+
     {
       label: "Services",
       href: "/Service",
     },
+
     {
       label: service.name,
       href: `/services/${service.slug}`,
     },
+
     {
-      label: location.city,
+      label: cityName,
       href: `/services/${service.slug}/${location.slug}`,
     },
   ];
@@ -161,13 +264,19 @@ export default function Page({ params }) {
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
+
     "@type": "BreadcrumbList",
+
+    "@id": `${pageUrl}#breadcrumb`,
 
     itemListElement: breadcrumb.map((item, index) => ({
       "@type": "ListItem",
+
       position: index + 1,
+
       name: item.label,
-      item: `https://www.webxartist.com${item.href}`,
+
+      item: `${baseUrl}${item.href}`,
     })),
   };
 
@@ -175,43 +284,246 @@ export default function Page({ params }) {
   |--------------------------------------------------------------------------
   | Service Schema
   |--------------------------------------------------------------------------
+  |
+  | IMPORTANT:
+  |
+  | Location description is used first.
+  | If location.description doesn't exist,
+  | service.description is used.
+  |
+  |--------------------------------------------------------------------------
   */
+
+  const serviceDescription =
+    location.description ||
+    service.description ||
+    `${serviceName} services provided by WebXArtist for businesses in ${cityName}, Maharashtra.`;
 
   const serviceSchema = {
     "@context": "https://schema.org",
+
     "@type": "Service",
 
-    name: `${service.name} in ${location.city}`,
+    "@id": `${pageUrl}#service`,
 
-    serviceType: service.name,
+    name: `${serviceName} in ${cityName}`,
 
-    description:
-      location.description ||
-      location.description ||
-      `${service.name.toLowerCase()} services in ${location.city} provided by WebXArtist.`,
+    serviceType: serviceName,
+
+    description: serviceDescription,
+
+    url: pageUrl,
 
     provider: {
       "@type": "Organization",
-      name: "WebXArtist",
-      url: "https://www.webxartist.com",
-      logo: "https://www.webxartist.com/logo.png",
+
+      "@id": `${baseUrl}/#organization`,
+
+      name: "WebXArtist Institute & Agency",
+
+      alternateName: "WebXArtist",
+
+      url: baseUrl,
+
+      logo: `${baseUrl}/logo.png`,
     },
 
     areaServed: {
       "@type": "City",
-      name: location.city,
+
+      name: cityName,
+
       containedInPlace: {
-        "@type": "Country",
-        name: "India",
+        "@type": "State",
+
+        name: "Maharashtra",
+
+        containedInPlace: {
+          "@type": "Country",
+
+          name: "India",
+        },
       },
     },
-
-    url: `https://www.webxartist.com/services/${service.slug}/${location.slug}`,
   };
+
+  /*
+  |--------------------------------------------------------------------------
+  | WebPage Schema
+  |--------------------------------------------------------------------------
+  */
+
+  const webPageDescription =
+    location.description ||
+    `Professional ${serviceName.toLowerCase()} services in ${cityName} provided by WebXArtist.`;
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+
+    "@type": "WebPage",
+
+    "@id": `${pageUrl}#webpage`,
+
+    url: pageUrl,
+
+    name: `${serviceName} in ${cityName} | WebXArtist`,
+
+    description: webPageDescription,
+
+    isPartOf: {
+      "@type": "WebSite",
+
+      "@id": `${baseUrl}/#website`,
+
+      name: "WebXArtist",
+
+      url: baseUrl,
+    },
+
+    about: {
+      "@id": `${pageUrl}#service`,
+    },
+
+    breadcrumb: {
+      "@id": `${pageUrl}#breadcrumb`,
+    },
+
+    inLanguage: "en-IN",
+  };
+
+  /*
+  |--------------------------------------------------------------------------
+  | Organization Schema
+  |--------------------------------------------------------------------------
+  |
+  | Same organization identity throughout the website.
+  |
+  */
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+
+    "@type": "Organization",
+
+    "@id": `${baseUrl}/#organization`,
+
+    name: "WebXArtist Institute & Agency",
+
+    alternateName: "WebXArtist",
+
+    url: baseUrl,
+
+    logo: `${baseUrl}/logo.png`,
+
+    founder: {
+      "@type": "Person",
+
+      name: "Zahid Khan",
+    },
+
+    foundingDate: "2024-01-20",
+
+    address: {
+      "@type": "PostalAddress",
+
+      addressLocality: "Mumbra",
+
+      addressRegion: "Maharashtra",
+
+      addressCountry: "IN",
+    },
+
+    areaServed: [
+      {
+        "@type": "City",
+
+        name: "Mumbra",
+      },
+
+      {
+        "@type": "City",
+
+        name: "Thane",
+      },
+
+      {
+        "@type": "City",
+
+        name: "Mumbai",
+      },
+
+      {
+        "@type": "City",
+
+        name: "Navi Mumbai",
+      },
+
+      {
+        "@type": "City",
+
+        name: "Pune",
+      },
+
+      {
+        "@type": "Country",
+
+        name: "India",
+      },
+    ],
+  };
+
+  /*
+  |--------------------------------------------------------------------------
+  | FAQ Schema
+  |--------------------------------------------------------------------------
+  |
+  | Only create FAQ schema when actual FAQ data exists.
+  |
+  */
+
+  const faqItems = Array.isArray(location.faqs)
+    ? location.faqs
+    : Array.isArray(service.faqs)
+      ? service.faqs
+      : [];
+
+  const validFaqItems = faqItems.filter(
+    (faq) =>
+      faq && typeof faq.question === "string" && typeof faq.answer === "string",
+  );
+
+  const faqSchema =
+    validFaqItems.length > 0
+      ? {
+          "@context": "https://schema.org",
+
+          "@type": "FAQPage",
+
+          mainEntity: validFaqItems.map((faq) => ({
+            "@type": "Question",
+
+            name: faq.question,
+
+            acceptedAnswer: {
+              "@type": "Answer",
+
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
+  /*
+  |--------------------------------------------------------------------------
+  | Render Page
+  |--------------------------------------------------------------------------
+  */
 
   return (
     <>
-      {/* Breadcrumb Schema */}
+      {/* ------------------------------------------------------------
+          Breadcrumb Schema
+      ------------------------------------------------------------- */}
 
       <script
         type="application/ld+json"
@@ -220,7 +532,9 @@ export default function Page({ params }) {
         }}
       />
 
-      {/* Service Schema */}
+      {/* ------------------------------------------------------------
+          Service Schema
+      ------------------------------------------------------------- */}
 
       <script
         type="application/ld+json"
@@ -229,46 +543,105 @@ export default function Page({ params }) {
         }}
       />
 
+      {/* ------------------------------------------------------------
+          WebPage Schema
+      ------------------------------------------------------------- */}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(webPageSchema),
+        }}
+      />
+
+      {/* ------------------------------------------------------------
+          Organization Schema
+      ------------------------------------------------------------- */}
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+
+      {/* ------------------------------------------------------------
+          FAQ Schema
+      ------------------------------------------------------------- */}
+
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
+        />
+      )}
+
+      {/* ------------------------------------------------------------
+          PAGE
+      ------------------------------------------------------------- */}
+
       <main className="overflow-hidden bg-[#080a20] text-white">
-        {/* Breadcrumb */}
+        {/* ----------------------------------------------------------
+            Breadcrumb
+        ----------------------------------------------------------- */}
 
         <div className="mx-auto max-w-7xl px-6 pt-32">
           <Breadcrumb items={breadcrumb} />
         </div>
 
-        {/* Hero */}
+        {/* ----------------------------------------------------------
+            Hero
+        ----------------------------------------------------------- */}
 
         <ServiceLocationHero service={service} location={location} />
 
-        {/* Overview */}
+        {/* ----------------------------------------------------------
+            Overview
+        ----------------------------------------------------------- */}
 
         <ServiceLocationOverview service={service} location={location} />
 
-        {/* Features */}
+        {/* ----------------------------------------------------------
+            Features
+        ----------------------------------------------------------- */}
 
         <ServiceLocationFeatures service={service} location={location} />
 
-        {/* Process */}
+        {/* ----------------------------------------------------------
+            Process
+        ----------------------------------------------------------- */}
 
         <ServiceLocationProcess service={service} location={location} />
 
-        {/* Benefits */}
+        {/* ----------------------------------------------------------
+            Benefits
+        ----------------------------------------------------------- */}
 
         <ServiceLocationBenefits service={service} location={location} />
 
-        {/* Technologies */}
+        {/* ----------------------------------------------------------
+            Technologies
+        ----------------------------------------------------------- */}
 
         <ServiceLocationTechnologies service={service} location={location} />
 
-        {/* FAQ */}
+        {/* ----------------------------------------------------------
+            FAQ
+        ----------------------------------------------------------- */}
 
         <ServiceLocationFAQ service={service} location={location} />
 
-        {/* Related Locations */}
+        {/* ----------------------------------------------------------
+            Related Locations
+        ----------------------------------------------------------- */}
 
         <RelatedLocations service={service} currentLocation={location.slug} />
 
-        {/* Related Services */}
+        {/* ----------------------------------------------------------
+            Related Services
+        ----------------------------------------------------------- */}
 
         <RelatedServices location={location} currentService={service.slug} />
       </main>
