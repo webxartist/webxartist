@@ -130,7 +130,7 @@ export default function FounderSection() {
               {/* Image */}
               <div className="absolute inset-0">
                 <Image
-                  src="/zahid-khan.png"
+                  src="/zahid-khan.PNG"
                   alt="Zahid Khan, Founder and CEO of WebXArtist"
                   fill
                   priority
