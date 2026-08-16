@@ -465,13 +465,13 @@ const services = [
   {
     id: 3,
 
-    slug: "Meta-ads",
+    slug: "meta-ads",
 
     name: "Meta Ads",
 
     image: "/logodesign.png",
 
-    heroImage: "/services/Meta-ads-banner.jpg",
+    heroImage: "/services/meta-ads-banner.jpg",
 
     category: "MarKeting",
 
