@@ -1,33 +1,19 @@
-import {
-  Globe,
-  BadgeDollarSign,
-  Megaphone,
-  MapPinned,
-  Search,
-  Share2,
-  FileText,
-  Mail,
-} from "lucide-react";
-
 const services = [
   {
     id: 1,
-
     slug: "website-development",
-
     name: "Website Development",
 
     image: "/webdevelopment.png",
-
     heroImage: "/services/website-development-banner.jpg",
 
     shortDescription: "Websites that help businesses grow online.",
 
     description:
-      "We design and develop fast, responsive, and SEO-friendly websites that help businesses build trust, generate quality leads, and increase sales. Whether you need a business website, a personal portfolio, an e-commerce store, or a custom web application, WebXArtist delivers complete digital solutions tailored to your goals built to perform, not just to look good.",
+      "We design and develop fast, responsive, and SEO-friendly websites that help businesses build trust, generate quality leads, and increase sales. Whether you need a business website, a personal portfolio, an e-commerce store, or a custom web application, WebXArtist delivers complete digital solutions tailored to your goals and built to perform, not just to look good.",
 
     overviewdescription:
-      "At WebXArtist, we don't just build websites we build digital experiences that work as hard as you do. From the first line of code to the final launch, every website we create is fast, secure, mobile-responsive, and optimized for search engines, so your business is easy to find, easy to trust, and easy to buy from. Whether you're a restaurant owner tired of losing bookings to DMs, a startup founder launching your first landing page, a freelancer who needs a portfolio that gets you hired, or a growing brand ready to sell online we have a solution built around exactly what you need.",
+      "At WebXArtist, we don't just build websites — we build digital experiences that work as hard as you do. From the first line of code to the final launch, every website we create is fast, secure, mobile-responsive, and optimized for search engines, so your business is easy to find, easy to trust, and easy to buy from. Whether you're a restaurant owner tired of losing bookings to DMs, a startup founder launching your first landing page, a freelancer who needs a portfolio that gets you hired, or a growing brand ready to sell online, we have a solution built around exactly what you need.",
 
     category: "Development",
 
@@ -113,6 +99,7 @@ const services = [
           "Professional deployment and hosting assistance to launch your website and keep it configured for reliable performance.",
       },
     ],
+
     process: [
       {
         title: "Requirement Analysis",
@@ -142,7 +129,7 @@ const services = [
       {
         title: "Deployment",
         description:
-          "Once approved, we deploy your website to a secure production server, configure the domain, SSL certificate, and optimize everything for live users.",
+          "Once approved, we deploy your website to a secure production server, configure the domain and SSL certificate, and optimize everything for live users.",
       },
       {
         title: "Support & Maintenance",
@@ -200,12 +187,12 @@ const services = [
     ],
 
     benefits: [
-      "Business Websites  , credible, and designed to convert visitors into customers",
-      "Portfolio Websites Showcase your work, skills, and personality to attract the right clients",
-      "E-Commerce Stores Sell products online with secure payments and a smooth checkout experience",
-      "Custom Web Applications Tailored, scalable solutions built around your unique business needs",
-      "SEO-Friendly Architecture Built to rank on Google, not just to look good",
-      "Fast & Mobile Responsive Flawless performance on every device, for every visitor",
+      "Business Websites — Professional, credible, and designed to convert visitors into customers",
+      "Portfolio Websites — Showcase your work, skills, and personality to attract the right clients",
+      "E-Commerce Stores — Sell products online with secure payments and a smooth checkout experience",
+      "Custom Web Applications — Tailored, scalable solutions built around your unique business needs",
+      "SEO-Friendly Architecture — Built to rank on Google, not just to look good",
+      "Fast & Mobile Responsive — Flawless performance on every device, for every visitor",
     ],
 
     faqs: [
@@ -222,9 +209,10 @@ const services = [
       {
         question: "Do you provide hosting and domain support?",
         answer:
-          "Yes, we assist with domain registration, hosting setup, SSL certificates, and deployment.",
+          "Yes. We assist with domain registration, hosting setup, SSL certificates, and deployment.",
       },
     ],
+
     locations: [
       "mumbai",
       "thane",
@@ -239,6 +227,7 @@ const services = [
       "vasai",
       "virar",
     ],
+
     seo: {
       title: "Website Development Services | WebXArtist",
       description:
@@ -248,24 +237,21 @@ const services = [
 
   {
     id: 2,
-
     slug: "google-ads",
-
     name: "Google Ads",
 
     image: "/google-ads.png",
-
     heroImage: "/services/google-ads-banner.jpg",
 
     category: "Marketing",
 
-    heroTitle: " Google Ads Services",
+    heroTitle: "Google Ads Services",
 
     heroSubtitle:
       "Generate more leads, increase sales, and maximize your ROI with high-performing Google Ads campaigns managed by certified experts.",
 
     shortDescription:
-      " Google Ads management that drives the right traffic to your business and turns clicks into customers.",
+      "Google Ads management that drives the right traffic to your business and turns clicks into customers.",
 
     description:
       "WebXArtist provides result-driven Google Ads management services designed to help businesses reach the right audience at the right time. From Search Ads and Display Ads to Shopping Campaigns, Performance Max, and Remarketing, we create optimized campaigns that maximize your return on investment while reducing wasted ad spend.",
@@ -332,6 +318,7 @@ const services = [
           "Continuously monitor and optimize campaigns to reduce advertising costs while increasing leads, sales, and overall profitability.",
       },
     ],
+
     process: [
       {
         title: "Business & Goal Analysis",
@@ -404,12 +391,12 @@ const services = [
       {
         title: "Looker Studio",
         description:
-          "Create interactive dashboards and  reports to monitor Google Ads performance and ROI.",
+          "Create interactive dashboards and reports to monitor Google Ads performance and ROI.",
       },
     ],
 
     benefits: [
-      "Generate High Quality Leads",
+      "Generate High-Quality Leads",
       "Increase Website Traffic",
       "Higher Conversion Rates",
       "Maximize Return on Investment",
@@ -457,9 +444,8 @@ const services = [
 
     seo: {
       title: "Google Ads Services | WebXArtist",
-
       description:
-        " Google Ads management services including Search Ads, Display Ads, Shopping Ads, YouTube Ads, Performance Max, and Remarketing to generate leads and increase sales.",
+        "Google Ads management services including Search Ads, Display Ads, Shopping Ads, YouTube Ads, Performance Max, and Remarketing to generate leads and increase sales.",
 
       keywords: [
         "Google Ads",
@@ -477,18 +463,16 @@ const services = [
       ],
     },
   },
+
   {
     id: 3,
-
     slug: "meta-ads",
-
     name: "Meta Ads",
 
-    image: "/logodesign.png",
-
+    image: "/meta-ads.jpg",
     heroImage: "/services/meta-ads-banner.jpg",
 
-    category: "MarKeting",
+    category: "Marketing",
 
     heroTitle: "Meta Ads Services",
 
@@ -500,11 +484,12 @@ const services = [
 
     description:
       "Meta Ads put your business directly in front of the people most likely to buy from you on Facebook and Instagram, the two platforms where your customers already spend their time. At WebXArtist, we plan, design, and manage ad campaigns that turn ad spend into real enquiries, orders, and bookings, not just likes and impressions.",
+
     features: [
       {
         title: "Campaign Strategy",
         description:
-          "A clear plan built around your specific goal awareness, leads, or direct sales before a single ad goes live.",
+          "A clear plan built around your specific goal — awareness, leads, or direct sales — before a single ad goes live.",
       },
       {
         title: "Audience Targeting",
@@ -559,7 +544,7 @@ const services = [
       {
         title: "Performance Reporting",
         description:
-          "Clear monthly reports on reach, clicks, cost-per-result, and return on ad spend no confusing jargon.",
+          "Clear monthly reports on reach, clicks, cost-per-result, and return on ad spend without confusing jargon.",
       },
     ],
 
@@ -665,6 +650,7 @@ const services = [
           "No. Ad spend is paid directly to Meta and is separate from our management fee, so you always know exactly where your budget is going.",
       },
     ],
+
     locations: [
       "mumbai",
       "thane",
@@ -679,11 +665,11 @@ const services = [
       "vasai",
       "virar",
     ],
+
     seo: {
       title: "Meta Ads Management Services | WebXArtist",
-
       description:
-        " Facebook & Instagram ads management including campaign strategy, audience targeting, ad creatives, and performance reporting.",
+        "Facebook & Instagram ads management including campaign strategy, audience targeting, ad creatives, and performance reporting.",
 
       keywords: [
         "Meta Ads",
@@ -700,13 +686,10 @@ const services = [
 
   {
     id: 4,
-
     slug: "google-my-business",
+    name: "Google Business Profile",
 
-    name: "Google My Business",
-
-    image: "/meta-ads.jpg",
-
+    image: "/google-my-business.png",
     heroImage: "/services/GMB-banner.jpg",
 
     category: "Marketing",
@@ -718,6 +701,7 @@ const services = [
 
     shortDescription:
       "Google Business Profile optimization and local SEO services for businesses.",
+
     features: [
       {
         title: "Google Business Profile Setup",
@@ -741,7 +725,8 @@ const services = [
       },
       {
         title: "Business Photos Upload",
-        description: "Upload  business images to increase customer trust.",
+        description:
+          "Upload professional business images to increase customer trust.",
       },
       {
         title: "Products & Services Listing",
@@ -779,6 +764,7 @@ const services = [
           "Receive detailed reports showing profile growth and customer interactions.",
       },
     ],
+
     process: [
       {
         title: "Business Analysis",
@@ -798,7 +784,7 @@ const services = [
       {
         title: "Content & Image Upload",
         description:
-          "Upload  photos, products, services, and business updates.",
+          "Upload professional photos, products, services, and business updates.",
       },
       {
         title: "Review Strategy",
@@ -844,7 +830,7 @@ const services = [
       },
       {
         title: "Google Looker Studio",
-        description: "Generate  reports and performance dashboards.",
+        description: "Generate reports and performance dashboards.",
       },
       {
         title: "Local SEO Tools",
@@ -884,6 +870,7 @@ const services = [
           "Yes. We manage customer reviews, publish regular posts, and continuously optimize your profile.",
       },
     ],
+
     locations: [
       "mumbai",
       "thane",
@@ -898,9 +885,9 @@ const services = [
       "vasai",
       "virar",
     ],
+
     seo: {
       title: "Google Business Profile Optimization Services | WebXArtist",
-
       description:
         "Improve your Google Business Profile, Google Maps visibility, local search presence, and customer enquiries with professional local SEO services from WebXArtist.",
 
@@ -919,18 +906,15 @@ const services = [
 
   {
     id: 5,
-
     slug: "seo-services",
-
     name: "SEO Services",
 
     image: "/seo.png",
-
     heroImage: "/services/seo-banner.jpg",
 
     category: "Digital Marketing",
 
-    heroTitle: " SEO Services",
+    heroTitle: "SEO Services",
 
     heroSubtitle:
       "Improve your Google rankings, drive organic traffic, and generate quality leads for your business.",
@@ -1074,6 +1058,7 @@ const services = [
           "Crawl websites to identify technical SEO issues, broken links, duplicate content, and optimization opportunities.",
       },
     ],
+
     benefits: [
       "Higher Google Rankings",
       "Increase Organic Traffic",
@@ -1105,6 +1090,7 @@ const services = [
           "Absolutely. You'll receive regular reports covering rankings, traffic, keyword performance, and completed optimization work.",
       },
     ],
+
     locations: [
       "mumbai",
       "thane",
@@ -1119,11 +1105,11 @@ const services = [
       "vasai",
       "virar",
     ],
+
     seo: {
       title: "SEO Services | WebXArtist",
-
       description:
-        " SEO services including on-page SEO, off-page SEO, technical SEO, local SEO, and Google Business Profile optimization.",
+        "SEO services including on-page SEO, off-page SEO, technical SEO, local SEO, and Google Business Profile optimization.",
 
       keywords: [
         "SEO Services",
@@ -1140,18 +1126,15 @@ const services = [
 
   {
     id: 6,
-
     slug: "social-media-management",
-
     name: "Social Media Management",
 
     image: "/social.png",
-
     heroImage: "/services/social-media-banner.jpg",
 
     category: "Digital Marketing",
 
-    heroTitle: " Social Media Management",
+    heroTitle: "Social Media Management",
 
     heroSubtitle:
       "Build a powerful social media presence that attracts customers and grows your business.",
@@ -1176,7 +1159,7 @@ const services = [
       {
         title: "LinkedIn Management",
         description:
-          "Strengthen your  brand with high-quality LinkedIn content that connects with your target audience.",
+          "Strengthen your brand with high-quality LinkedIn content that connects with your target audience.",
       },
       {
         title: "Content Calendar",
@@ -1221,7 +1204,7 @@ const services = [
       {
         title: "Profile Optimization",
         description:
-          "Optimize your social media profiles with  branding, SEO-friendly bios, and complete business information.",
+          "Optimize your social media profiles with professional branding, SEO-friendly bios, and complete business information.",
       },
     ],
 
@@ -1272,7 +1255,7 @@ const services = [
       {
         title: "Canva Pro",
         description:
-          "Create high-quality social media graphics, stories, reels, and marketing creatives with  templates.",
+          "Create high-quality social media graphics, stories, reels, and marketing creatives with professional templates.",
       },
       {
         title: "Adobe Photoshop",
@@ -1292,7 +1275,7 @@ const services = [
       {
         title: "LinkedIn",
         description:
-          "Strengthen your  brand by sharing valuable content and connecting with business-focused audiences.",
+          "Strengthen your brand by sharing valuable content and connecting with business-focused audiences.",
       },
     ],
 
@@ -1301,7 +1284,7 @@ const services = [
       "Grow Followers Organically",
       "Generate Quality Leads",
       "Improve Customer Engagement",
-      " Online Presence",
+      "Strengthen Online Presence",
       "Higher Business Visibility",
     ],
 
@@ -1314,7 +1297,7 @@ const services = [
       {
         question: "Will you create the posts?",
         answer:
-          "Yes. Our team creates  graphics, captions, reels, and marketing content for your business.",
+          "Yes. Our team creates professional graphics, captions, reels, and marketing content for your business.",
       },
       {
         question: "How often will you post?",
@@ -1327,6 +1310,7 @@ const services = [
           "Yes. We provide detailed reports covering reach, engagement, followers, and overall account performance.",
       },
     ],
+
     locations: [
       "mumbai",
       "thane",
@@ -1341,11 +1325,11 @@ const services = [
       "vasai",
       "virar",
     ],
+
     seo: {
       title: "Social Media Management Services | WebXArtist",
-
       description:
-        " social media management services for Instagram, Facebook, LinkedIn, and business branding.",
+        "Social media management services for Instagram, Facebook, LinkedIn, and business branding.",
 
       keywords: [
         "Social Media Management",
@@ -1361,18 +1345,15 @@ const services = [
 
   {
     id: 7,
-
     slug: "content-creation",
-
     name: "Content Creation",
 
     image: "/content.png",
-
     heroImage: "/services/content-creation-banner.jpg",
 
     category: "Digital Marketing",
 
-    heroTitle: " Content Creation Services",
+    heroTitle: "Content Creation Services",
 
     heroSubtitle:
       "Create compelling content that attracts customers, builds trust, and strengthens your brand.",
@@ -1412,7 +1393,7 @@ const services = [
       {
         title: "Business Profiles",
         description:
-          "Create  business profiles for websites, directories, and company presentations that build credibility.",
+          "Create professional business profiles for websites, directories, and company presentations that build credibility.",
       },
       {
         title: "Advertisement Copywriting",
@@ -1432,7 +1413,7 @@ const services = [
       {
         title: "Script Writing",
         description:
-          "Write  scripts for promotional videos, YouTube content, reels, and business presentations.",
+          "Write professional scripts for promotional videos, YouTube content, reels, and business presentations.",
       },
       {
         title: "Content Strategy",
@@ -1548,6 +1529,7 @@ const services = [
           "Yes. We create engaging captions, promotional content, campaign content, and branded posts for all major social media platforms.",
       },
     ],
+
     locations: [
       "mumbai",
       "thane",
@@ -1562,11 +1544,11 @@ const services = [
       "vasai",
       "virar",
     ],
+
     seo: {
       title: "Content Creation Services | WebXArtist",
-
       description:
-        " content creation services including website content, blogs, SEO content, social media captions, and copywriting.",
+        "Content creation services including website content, blogs, SEO content, social media captions, and copywriting.",
 
       keywords: [
         "Content Creation",
@@ -1583,27 +1565,25 @@ const services = [
 
   {
     id: 8,
-
     slug: "maintenance-and-support",
-
     name: "Maintenance & Support",
 
-    image: "/email.png",
+    image: "/maintenance.png",
+    heroImage: "/services/website-maintenance-banner.jpg",
 
-    heroImage: "/services/email-marking-banner.jpg",
+    category: "Development",
 
-    category: "Digital Marketing",
-
-    heroTitle: " Website Maintenance & Support Services",
+    heroTitle: "Website Maintenance & Support Services",
 
     heroSubtitle:
       "Keep your website secure, fast, updated, and running smoothly with reliable maintenance and expert technical support.",
 
     shortDescription:
-      "Ensure your website stays secure, optimized, and performs at its best with  maintenance services.",
+      "Ensure your website stays secure, optimized, and performs at its best with professional maintenance services.",
 
     description:
       "A well-maintained website is essential for delivering a great user experience and protecting your business online. At WebXArtist, we provide comprehensive Website Maintenance & Support services, including regular updates, security monitoring, performance optimization, backups, bug fixes, and technical support. Our proactive maintenance approach ensures your website remains secure, fast, reliable, and up-to-date, allowing you to focus on growing your business while we handle the technical aspects.",
+
     features: [
       {
         title: "Regular Website Maintenance",
@@ -1704,6 +1684,7 @@ const services = [
           "Provide continuous technical support, monitoring, reporting, and improvements to keep your website running smoothly.",
       },
     ],
+
     technologies: [
       {
         title: "cPanel",
@@ -1728,7 +1709,7 @@ const services = [
       {
         title: "Git & GitHub",
         description:
-          "Securely manage website updates, version control, code backups, and deployment with  development workflows.",
+          "Securely manage website updates, version control, code backups, and deployment with professional development workflows.",
       },
       {
         title: "Uptime Monitoring",
@@ -1768,6 +1749,7 @@ const services = [
           "Maintenance frequency depends on your plan, but we regularly monitor, update, optimize, and secure your website to ensure it performs at its best throughout the month.",
       },
     ],
+
     locations: [
       "mumbai",
       "thane",
@@ -1782,11 +1764,11 @@ const services = [
       "vasai",
       "virar",
     ],
+
     seo: {
       title: "Website Maintenance & Support Services | WebXArtist",
-
       description:
-        " website maintenance and support services including security monitoring, website updates, backups, performance optimization, bug fixes, and ongoing technical support.",
+        "Website maintenance and support services including security monitoring, website updates, backups, performance optimization, bug fixes, and ongoing technical support.",
 
       keywords: [
         "Website Maintenance",
