@@ -53,7 +53,9 @@ export default function ServiceLocationHero({ service, location }) {
           {/* Location-Specific Description */}
 
           <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-400">
-            {heroDescription}
+            {serviceName} services in {locationName} to help businesses improve
+            their online visibility, reach more customers, and grow their
+            business.
           </p>
 
           {/* Supporting Description */}
