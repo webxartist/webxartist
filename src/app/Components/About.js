@@ -154,11 +154,11 @@ const About = () => {
             </h3>
 
             <p className="text-slate-400 leading-relaxed text-[15px] sm:text-base">
-              WebXArtist, established in 2024, is a web development, branding,
-              and digital design agency delivering professional websites,
-              powerful branding, and creative digital solutions. We help
-              businesses build strong online identities that drive engagement,
-              conversions, and long-term growth.
+              WebXArtist, established in 2024, is a website development,
+              branding, and digital marketing agency delivering professional
+              websites, powerful branding, and creative digital marketing
+              solutions. We help businesses build strong online identities that
+              drive engagement, conversions, and long-term growth.
             </p>
 
             <h4 className="text-lg font-bold text-white pt-2">Our Expertise</h4>

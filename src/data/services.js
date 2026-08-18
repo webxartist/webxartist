@@ -690,7 +690,7 @@ const services = [
     name: "Google Business Profile",
 
     image: "/google-my-business.png",
-    heroImage: "/services/GMB-banner.jpg",
+    heroImage: "/services/google-my-business-banner.png",
 
     category: "Marketing",
 
@@ -1569,7 +1569,7 @@ const services = [
     name: "Maintenance & Support",
 
     image: "/maintenance.png",
-    heroImage: "/services/website-maintenance-banner.jpg",
+    heroImage: "/services/maintenance-banner.png",
 
     category: "Development",
 
