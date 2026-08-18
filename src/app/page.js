@@ -10,8 +10,8 @@ import Portfolio from "./Components/Portfolio";
 import Line from "./Components/Line";
 import Cursor from "./Components/Cursor";
 import QA from "./Components/QA";
-import Whatsapp from "./Components/WhatsApp";
-import Instagram from "./Components/Instgram";
+// import Whatsapp from "./Components/WhatsApp";
+// import Instagram from "./Components/Instgram";
 import Feedback from "./Components/Feedback";
 // import Technology from "./Components/Technology";
 // import MetaAds from "./Components/MetaAds";
@@ -32,8 +32,8 @@ const page = () => {
       <Portfolio />
       <QA />
       <Feedback />
-      <Whatsapp />
-      <Instagram />
+      {/* <Whatsapp /> */}
+      {/* <Instagram /> */}
     </>
   );
 };

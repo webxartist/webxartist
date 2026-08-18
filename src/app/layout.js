@@ -7,6 +7,8 @@ import { Poppins } from "next/font/google";
 import Script from "next/script";
 import CursorSwitcher from "./Components/Cursor";
 import ContactPopup from "./Components/ContactPopup";
+import Instagram from "@/app/Components/Instgram";
+import Whatsapp from "@/app/Components/WhatsApp";
 
 // ------------------------------------------------------
 // ⭐ POPPINS FONT
@@ -304,6 +306,9 @@ export default function RootLayout({ children }) {
 
         <CursorSwitcher />
 
+        <Instagram />
+
+        <Whatsapp />
         <Footer />
       </body>
     </html>
