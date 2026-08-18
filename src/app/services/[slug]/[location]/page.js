@@ -89,7 +89,7 @@ export async function generateMetadata({ params }) {
   */
 
   const description =
-    `WebXArtist provides professional ${serviceName.toLowerCase()} services in ${cityName}, Maharashtra. ` +
+    `${serviceName.toLowerCase()} services in ${cityName}. ` +
     `Get customized digital solutions designed to help businesses improve their online presence, visibility, and growth.`;
 
   /*

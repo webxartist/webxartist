@@ -5,7 +5,7 @@ import { useState } from "react";
 const services = [
   {
     id: 1,
-    title: "Web Development",
+    title: "Website Development",
     description: "Create cutting-edge web solutions.",
   },
   {
@@ -15,7 +15,7 @@ const services = [
   },
   {
     id: 3,
-    title: "Graphic Design",
+    title: "Digital Marketing",
     description: "Design creative visual experiences.",
   },
   {
