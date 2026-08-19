@@ -4,6 +4,9 @@ import { getAllServiceLocationPages } from "@/lib/serviceLocation";
 const baseUrl = "https://www.webxartist.com";
 
 export default function sitemap() {
+  // Automatically uses the current date whenever sitemap is generated
+  const today = new Date();
+
   // =====================================================
   // STATIC PAGES
   // =====================================================
@@ -11,43 +14,43 @@ export default function sitemap() {
   const staticPages = [
     {
       url: `${baseUrl}/`,
-      lastModified: "2026-08-16",
-      changeFrequency: "weekly",
+      lastModified: today,
+      changeFrequency: "daily",
       priority: 1,
     },
 
     {
       url: `${baseUrl}/About`,
-      lastModified: "2026-08-16",
-      changeFrequency: "monthly",
+      lastModified: today,
+      changeFrequency: "daily",
       priority: 0.8,
     },
 
     {
       url: `${baseUrl}/Service`,
-      lastModified: "2026-08-16",
-      changeFrequency: "weekly",
+      lastModified: today,
+      changeFrequency: "daily",
       priority: 0.9,
     },
 
     {
       url: `${baseUrl}/Pricing`,
-      lastModified: "2026-08-16",
-      changeFrequency: "monthly",
+      lastModified: today,
+      changeFrequency: "daily",
       priority: 0.8,
     },
 
     {
       url: `${baseUrl}/Whyus`,
-      lastModified: "2026-08-16",
-      changeFrequency: "monthly",
+      lastModified: today,
+      changeFrequency: "daily",
       priority: 0.7,
     },
 
     {
       url: `${baseUrl}/ContactUs`,
-      lastModified: "2026-08-16",
-      changeFrequency: "monthly",
+      lastModified: today,
+      changeFrequency: "daily",
       priority: 0.7,
     },
   ];
@@ -58,8 +61,8 @@ export default function sitemap() {
 
   const servicePages = services.map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,
-    lastModified: "2026-08-16",
-    changeFrequency: "weekly",
+    lastModified: today,
+    changeFrequency: "daily",
     priority: 0.9,
   }));
 
@@ -70,8 +73,8 @@ export default function sitemap() {
   const serviceLocationPages = getAllServiceLocationPages().map(
     ({ service, location }) => ({
       url: `${baseUrl}/services/${service.slug}/${location.slug}`,
-      lastModified: "2026-08-16",
-      changeFrequency: "weekly",
+      lastModified: today,
+      changeFrequency: "daily",
       priority: 0.8,
     }),
   );
