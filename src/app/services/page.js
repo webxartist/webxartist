@@ -5,14 +5,7 @@ import Whatsapp from "../Components/WhatsApp";
 import Instagram from "../Components/Instgram";
 
 const baseUrl = "https://www.webxartist.com";
-
-const servicesUrl = `${baseUrl}/Service`;
-
-/*
-|--------------------------------------------------------------------------
-| SERVICE PAGE SEO METADATA
-|--------------------------------------------------------------------------
-*/
+const servicesUrl = `${baseUrl}/services`;
 
 export const metadata = {
   title: "Website Development & Digital Marketing Services | WebXArtist",
@@ -21,25 +14,15 @@ export const metadata = {
     "WebXArtist Institute & Agency provides website development, SEO, Google Ads, Meta Ads, Google Business Profile optimization, social media management, content creation, and website maintenance services for businesses across India.",
 
   keywords: [
-    // -----------------------------------------------------------------------
-    // Website Development
-    // -----------------------------------------------------------------------
-
     "website development",
     "website development services",
     "website development company",
     "website development agency",
     "web development",
     "web development services",
-    "web development company",
-    "web development agency",
     "business website development",
     "custom website development",
     "responsive website development",
-
-    // -----------------------------------------------------------------------
-    // SEO
-    // -----------------------------------------------------------------------
 
     "SEO services",
     "SEO company",
@@ -49,92 +32,46 @@ export const metadata = {
     "technical SEO",
     "on page SEO",
 
-    // -----------------------------------------------------------------------
-    // Digital Marketing
-    // -----------------------------------------------------------------------
-
     "digital marketing",
     "digital marketing services",
     "digital marketing agency",
     "online marketing services",
     "digital marketing company",
 
-    // -----------------------------------------------------------------------
-    // Google Ads
-    // -----------------------------------------------------------------------
-
     "Google Ads",
     "Google Ads management",
     "Google Ads agency",
     "Google Ads services",
-    "Google search advertising",
-    "Google Ads campaign management",
-
-    // -----------------------------------------------------------------------
-    // Meta Ads
-    // -----------------------------------------------------------------------
 
     "Meta Ads",
     "Meta Ads management",
     "Facebook Ads",
     "Instagram Ads",
-    "Facebook advertising",
-    "Instagram advertising",
     "social media advertising",
-
-    // -----------------------------------------------------------------------
-    // Google Business Profile
-    // -----------------------------------------------------------------------
 
     "Google Business Profile",
     "Google Business Profile optimization",
     "Google My Business",
-    "Google My Business optimization",
-    "local business SEO",
     "Google Maps business optimization",
-
-    // -----------------------------------------------------------------------
-    // Social Media
-    // -----------------------------------------------------------------------
 
     "social media management",
     "social media marketing",
     "social media marketing services",
     "social media agency",
-    "Facebook marketing",
-    "Instagram marketing",
-
-    // -----------------------------------------------------------------------
-    // Content
-    // -----------------------------------------------------------------------
 
     "content creation",
     "content creation services",
     "digital content creation",
-    "social media content",
-
-    // -----------------------------------------------------------------------
-    // Website Support
-    // -----------------------------------------------------------------------
 
     "website maintenance",
     "website maintenance services",
     "website support",
     "website management",
-    "website security maintenance",
-
-    // -----------------------------------------------------------------------
-    // Technology
-    // -----------------------------------------------------------------------
 
     "Next.js development",
     "MERN Stack development",
     "ecommerce website development",
     "custom web application development",
-
-    // -----------------------------------------------------------------------
-    // Brand
-    // -----------------------------------------------------------------------
 
     "WebXArtist",
     "WebXArtist Institute & Agency",
@@ -193,31 +130,14 @@ export const metadata = {
   },
 };
 
-/*
-|--------------------------------------------------------------------------
-| PAGE
-|--------------------------------------------------------------------------
-*/
-
 export default function Page() {
-  /*
-  |--------------------------------------------------------------------------
-  | Organization Schema
-  |--------------------------------------------------------------------------
-  |
-  | This establishes the main WebXArtist entity.
-  |
-  */
-
   const organizationSchema = {
     "@context": "https://schema.org",
-
     "@type": "Organization",
 
     "@id": `${baseUrl}/#organization`,
 
     name: "WebXArtist Institute & Agency",
-
     alternateName: "WebXArtist",
 
     url: baseUrl,
@@ -239,37 +159,30 @@ export default function Page() {
         "@type": "Country",
         name: "India",
       },
-
       {
         "@type": "AdministrativeArea",
         name: "Maharashtra",
       },
-
       {
         "@type": "City",
         name: "Mumbai",
       },
-
       {
         "@type": "City",
         name: "Thane",
       },
-
       {
         "@type": "City",
         name: "Mumbra",
       },
-
       {
         "@type": "City",
         name: "Navi Mumbai",
       },
-
       {
         "@type": "City",
         name: "Panvel",
       },
-
       {
         "@type": "City",
         name: "Pune",
@@ -277,21 +190,13 @@ export default function Page() {
     ],
   };
 
-  /*
-  |--------------------------------------------------------------------------
-  | Website Schema
-  |--------------------------------------------------------------------------
-  */
-
   const websiteSchema = {
     "@context": "https://schema.org",
-
     "@type": "WebSite",
 
     "@id": `${baseUrl}/#website`,
 
     name: "WebXArtist",
-
     alternateName: "WebXArtist Institute & Agency",
 
     url: baseUrl,
@@ -303,20 +208,8 @@ export default function Page() {
     inLanguage: "en-IN",
   };
 
-  /*
-  |--------------------------------------------------------------------------
-  | ItemList
-  |--------------------------------------------------------------------------
-  |
-  | The Services page is a collection of your actual service pages.
-  |
-  | Each individual service has its own URL.
-  |
-  */
-
   const serviceListSchema = {
     "@context": "https://schema.org",
-
     "@type": "ItemList",
 
     "@id": `${servicesUrl}#service-list`,
@@ -339,15 +232,8 @@ export default function Page() {
     })),
   };
 
-  /*
-  |--------------------------------------------------------------------------
-  | Collection Page Schema
-  |--------------------------------------------------------------------------
-  */
-
   const collectionPageSchema = {
     "@context": "https://schema.org",
-
     "@type": "CollectionPage",
 
     "@id": `${servicesUrl}#webpage`,
@@ -374,15 +260,8 @@ export default function Page() {
     inLanguage: "en-IN",
   };
 
-  /*
-  |--------------------------------------------------------------------------
-  | Breadcrumb Schema
-  |--------------------------------------------------------------------------
-  */
-
   const breadcrumbSchema = {
     "@context": "https://schema.org",
-
     "@type": "BreadcrumbList",
 
     "@id": `${servicesUrl}#breadcrumb`,
@@ -390,31 +269,18 @@ export default function Page() {
     itemListElement: [
       {
         "@type": "ListItem",
-
         position: 1,
-
         name: "Home",
-
         item: `${baseUrl}/`,
       },
-
       {
         "@type": "ListItem",
-
         position: 2,
-
         name: "Services",
-
         item: servicesUrl,
       },
     ],
   };
-
-  /*
-  |--------------------------------------------------------------------------
-  | Combine Structured Data
-  |--------------------------------------------------------------------------
-  */
 
   const structuredData = [
     organizationSchema,
@@ -424,18 +290,8 @@ export default function Page() {
     breadcrumbSchema,
   ];
 
-  /*
-  |--------------------------------------------------------------------------
-  | PAGE OUTPUT
-  |--------------------------------------------------------------------------
-  */
-
   return (
     <>
-      {/* ================================================================
-          STRUCTURED DATA
-      ================================================================= */}
-
       {structuredData.map((schema, index) => (
         <script
           key={`schema-${index}`}
@@ -446,10 +302,6 @@ export default function Page() {
         />
       ))}
 
-      {/* ================================================================
-          SERVICES PAGE
-      ================================================================= */}
-
       <main
         className="pt-16"
         itemScope
@@ -457,10 +309,6 @@ export default function Page() {
       >
         <Service />
       </main>
-
-      {/* ================================================================
-          CONTACT ACTIONS
-      ================================================================= */}
 
       <Whatsapp />
 

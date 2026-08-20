@@ -6,54 +6,65 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
-    question: "How long does it take to design a website logo?",
+    question: "What digital marketing services do you provide?",
     answer:
-      "The design process can take anywhere from a few days to a few weeks, depending on the complexity and feedback required.",
+      "We provide complete digital marketing solutions including SEO, Google Ads, Meta Ads, social media marketing, Google Business Profile optimization, content creation, and online presence management.",
   },
   {
-    question: "What types of graphics do you create?",
+    question: "How can digital marketing help my business?",
     answer:
-      "We create various graphics, including logos, social media posts, infographics, and more tailored to your needs.",
+      "Digital marketing can help your business increase online visibility, reach the right audience, generate qualified leads, improve brand awareness, and grow sales through targeted online campaigns.",
   },
   {
-    question: "Can you edit videos for social media?",
+    question: "Do you provide SEO services for websites?",
     answer:
-      "Yes, we offer video editing services specifically optimized for social media platforms.",
+      "Yes. We provide SEO services including keyword research, on-page SEO, technical SEO, local SEO, content optimization, and ongoing website optimization to improve search engine visibility.",
   },
   {
-    question: "Do you provide revisions on designs?",
+    question: "Do you manage Google Ads and Meta Ads campaigns?",
     answer:
-      "Yes, we offer multiple revisions based on the package you choose to ensure your satisfaction.",
+      "Yes. We can plan, create, manage, monitor, and optimize Google Ads and Meta Ads campaigns based on your business goals, target audience, location, and budget.",
   },
   {
-    question: "What file formats do you deliver graphics in?",
+    question: "Do you provide Google Business Profile optimization?",
     answer:
-      "We deliver graphics in multiple formats, including PNG, JPG, SVG, and PDF.",
+      "Yes. We help businesses optimize their Google Business Profile to improve local visibility, strengthen their presence on Google Maps, and make it easier for potential customers to find and contact them.",
   },
   {
-    question: "What is the starting price for a website logo design?",
+    question: "How long does it take to build a website?",
     answer:
-      "Our logo design services start at $200, depending on the complexity and specific requirements.",
+      "Website development time depends on the type and complexity of the project. A basic business website can usually be completed faster than an e-commerce website or a custom web application.",
   },
   {
-    question: "Do you offer package deals for multiple services?",
+    question: "What types of websites do you develop?",
     answer:
-      "Yes, we provide discounted packages for clients who choose multiple services, such as logo design and graphics.",
+      "We develop business websites, service websites, portfolio websites, landing pages, e-commerce websites, custom web applications, and modern responsive websites using technologies such as Next.js and the MERN stack.",
   },
   {
-    question: "How do you handle payment?",
+    question: "Will my website work on mobile phones and tablets?",
     answer:
-      "Payments can be made via credit card, PayPal, or bank transfer. A deposit is required to start the project.",
+      "Yes. We build responsive websites that are designed to provide a smooth user experience across mobile phones, tablets, laptops, and desktop computers.",
   },
   {
-    question: "Are there any additional costs?",
+    question: "Can you redesign or improve my existing website?",
     answer:
-      "Additional costs may arise for extra revisions, rush orders, or specific file format requests.",
+      "Yes. We can redesign existing websites to improve their visual appearance, performance, mobile responsiveness, user experience, SEO structure, security, and conversion potential.",
   },
   {
-    question: "Do you provide refunds?",
+    question: "Do you provide website maintenance and support?",
     answer:
-      "Refunds are handled on a case-by-case basis, depending on the project's status and specific circumstances.",
+      "Yes. We provide website maintenance and support services including content updates, technical fixes, performance improvements, security updates, backups, and ongoing website management.",
+  },
+  {
+    question:
+      "Can website development and digital marketing be handled together?",
+    answer:
+      "Yes. Combining website development with digital marketing can create a stronger online presence. We can build an SEO-friendly, conversion-focused website and support it with SEO, paid advertising, social media, and other digital marketing strategies.",
+  },
+  {
+    question: "How do I get started with WebXArtist?",
+    answer:
+      "Simply contact us and share your business requirements, goals, target location, and the services you need. We can then discuss the right website development or digital marketing strategy for your business.",
   },
 ];
 
@@ -66,10 +77,12 @@ export default function FAQ() {
 
   return (
     <section className="relative bg-[#080a20] py-24 px-6 overflow-hidden font-poppins">
-      {/* Ambient background glow — brand palette */}
+      {/* Ambient background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-10 -left-20 w-72 h-72 bg-cyan-500/10 blur-[120px] rounded-full" />
+
         <div className="absolute bottom-16 right-16 w-80 h-80 bg-orange-500/10 blur-[120px] rounded-full" />
+
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -90,17 +103,20 @@ export default function FAQ() {
           transition={{ duration: 0.7 }}
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[2px] text-slate-300 mb-5">
-            Got Questions?
+            Digital Marketing & Websites
           </span>
+
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">
             Frequently Asked{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300">
               Questions
             </span>
           </h2>
+
           <p className="text-slate-400 text-base sm:text-lg max-w-lg mt-4">
-            Everything clients usually ask before starting a project. Don't see
-            yours? Reach out and we'll answer directly.
+            Have questions about website development or digital marketing? Find
+            answers to the most common questions businesses ask before starting
+            a project.
           </p>
         </motion.div>
 
@@ -108,6 +124,7 @@ export default function FAQ() {
         <div className="space-y-3">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
+
             return (
               <motion.div
                 key={index}
@@ -118,11 +135,16 @@ export default function FAQ() {
                 }`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                }}
                 viewport={{ once: true }}
               >
                 <button
+                  type="button"
                   onClick={() => toggleAnswer(index)}
+                  aria-expanded={isOpen}
                   className="w-full text-left px-6 py-5 flex justify-between items-center gap-4"
                 >
                   <div className="flex items-start gap-4">
@@ -133,30 +155,48 @@ export default function FAQ() {
                     >
                       {String(index + 1).padStart(2, "0")}
                     </span>
+
                     <h3 className="text-[15px] md:text-[16px] font-semibold text-white leading-snug">
                       {faq.question}
                     </h3>
                   </div>
+
                   <motion.span
                     className={`flex items-center justify-center w-7 h-7 rounded-full border shrink-0 ${
                       isOpen
                         ? "border-transparent bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 text-[#080a20]"
                         : "border-white/15 text-slate-400"
                     }`}
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                    animate={{
+                      rotate: isOpen ? 180 : 0,
+                    }}
+                    transition={{
+                      duration: 0.3,
+                    }}
                   >
                     <ChevronDown className="w-4 h-4" />
                   </motion.span>
                 </button>
 
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      initial={{
+                        opacity: 0,
+                        height: 0,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        height: "auto",
+                      }}
+                      exit={{
+                        opacity: 0,
+                        height: 0,
+                      }}
+                      transition={{
+                        duration: 0.35,
+                        ease: "easeInOut",
+                      }}
                     >
                       <div className="px-6 pb-6 pl-[3.1rem]">
                         <p className="text-slate-400 text-[14px] sm:text-[15px] leading-relaxed">

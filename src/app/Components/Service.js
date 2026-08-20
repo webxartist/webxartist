@@ -41,7 +41,7 @@ const Service = () => {
       >
         {/* Eyebrow */}
         <span className="mb-4 inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-300">
-          Our Digital Services
+          Our Services
         </span>
 
         {/* Main Section Heading */}
@@ -49,7 +49,7 @@ const Service = () => {
           id="services-heading"
           className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl"
         >
-          Digital Services That Help Businesses{" "}
+          Digital Marketing Services That Help Businesses{" "}
           <span className="bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 bg-clip-text text-transparent">
             Grow Online
           </span>
@@ -58,9 +58,9 @@ const Service = () => {
         {/* SEO + AEO friendly introduction */}
         <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-slate-400 sm:text-base md:text-lg">
           WebXArtist provides website development, SEO, digital marketing,
-          Google Ads, Meta Ads, social media management, graphic design, and
-          other digital solutions for businesses, startups, and local brands
-          across Mumbai, Thane, Mumbra, and beyond.
+          Google Ads, Meta Ads, social media management, and other digital
+          solutions for businesses, startups, and local brands across Mumbai,
+          Thane, Mumbra, and beyond.
         </p>
       </motion.header>
 

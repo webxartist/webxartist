@@ -15,10 +15,6 @@ import ServiceLocations from "@/app/Components/services/ServiceLocation";
 const baseUrl = "https://www.webxartist.com";
 const siteName = "WebXArtist Institute & Agency";
 
-/* -------------------------------------------------------------------------- */
-/* SERVICE AREAS                                                              */
-/* -------------------------------------------------------------------------- */
-
 const serviceAreas = [
   {
     "@type": "Country",
@@ -54,19 +50,11 @@ const serviceAreas = [
   },
 ];
 
-/* -------------------------------------------------------------------------- */
-/* STATIC PARAMS                                                             */
-/* -------------------------------------------------------------------------- */
-
 export function generateStaticParams() {
   return services.map((service) => ({
     slug: service.slug,
   }));
 }
-
-/* -------------------------------------------------------------------------- */
-/* DYNAMIC METADATA                                                           */
-/* -------------------------------------------------------------------------- */
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -90,14 +78,14 @@ export async function generateMetadata({ params }) {
     service.seo?.description ||
     service.shortDescription ||
     service.description ||
-    `Professional ${service.name.toLowerCase()} services by ${siteName}.`;
+    `${service.name.toLowerCase()} services by ${siteName}.`;
 
   const serviceUrl = `${baseUrl}/services/${service.slug}`;
 
   const imageUrl = service.heroImage
     ? service.heroImage.startsWith("http")
       ? service.heroImage
-      : `${baseUrl}${service.heroImage}`
+      : `${baseUrl}${service.heroImage.startsWith("/") ? "" : "/"}${service.heroImage}`
     : `${baseUrl}/logo.png`;
 
   const keywords = service.seo?.keywords || [
@@ -128,6 +116,7 @@ export async function generateMetadata({ params }) {
     robots: {
       index: true,
       follow: true,
+
       googleBot: {
         index: true,
         follow: true,
@@ -164,10 +153,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-/* -------------------------------------------------------------------------- */
-/* SERVICE PAGE                                                              */
-/* -------------------------------------------------------------------------- */
-
 export default async function ServicePage({ params }) {
   const { slug } = await params;
 
@@ -182,7 +167,7 @@ export default async function ServicePage({ params }) {
   const serviceImage = service.heroImage
     ? service.heroImage.startsWith("http")
       ? service.heroImage
-      : `${baseUrl}${service.heroImage}`
+      : `${baseUrl}${service.heroImage.startsWith("/") ? "" : "/"}${service.heroImage}`
     : `${baseUrl}/logo.png`;
 
   const serviceDescription =
@@ -190,28 +175,27 @@ export default async function ServicePage({ params }) {
     service.shortDescription ||
     `${service.name} services provided by ${siteName}.`;
 
-  /* ------------------------------------------------------------------------ */
-  /* ORGANIZATION SCHEMA                                                     */
-  /* ------------------------------------------------------------------------ */
-
   const organizationSchema = {
+    "@context": "https://schema.org",
     "@type": "Organization",
+
     "@id": `${baseUrl}/#organization`,
+
     name: siteName,
     alternateName: "WebXArtist",
+
     url: baseUrl,
+
     logo: {
       "@type": "ImageObject",
       url: `${baseUrl}/logo.png`,
     },
   };
 
-  /* ------------------------------------------------------------------------ */
-  /* SERVICE SCHEMA                                                          */
-  /* ------------------------------------------------------------------------ */
-
   const serviceSchema = {
+    "@context": "https://schema.org",
     "@type": "Service",
+
     "@id": `${serviceUrl}#service`,
 
     name: service.name,
@@ -231,17 +215,17 @@ export default async function ServicePage({ params }) {
 
     availableChannel: {
       "@type": "ServiceChannel",
-      serviceUrl: serviceUrl,
+
+      serviceUrl,
+
       availableLanguage: ["English", "Hindi"],
     },
   };
 
-  /* ------------------------------------------------------------------------ */
-  /* WEBSITE SCHEMA                                                          */
-  /* ------------------------------------------------------------------------ */
-
   const websiteSchema = {
+    "@context": "https://schema.org",
     "@type": "WebSite",
+
     "@id": `${baseUrl}/#website`,
 
     name: "WebXArtist",
@@ -256,12 +240,10 @@ export default async function ServicePage({ params }) {
     inLanguage: "en-IN",
   };
 
-  /* ------------------------------------------------------------------------ */
-  /* WEBPAGE SCHEMA                                                          */
-  /* ------------------------------------------------------------------------ */
-
   const webPageSchema = {
+    "@context": "https://schema.org",
     "@type": "WebPage",
+
     "@id": `${serviceUrl}#webpage`,
 
     url: serviceUrl,
@@ -293,12 +275,10 @@ export default async function ServicePage({ params }) {
     inLanguage: "en-IN",
   };
 
-  /* ------------------------------------------------------------------------ */
-  /* BREADCRUMB SCHEMA                                                       */
-  /* ------------------------------------------------------------------------ */
-
   const breadcrumbSchema = {
+    "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+
     "@id": `${serviceUrl}#breadcrumb`,
 
     itemListElement: [
@@ -308,14 +288,12 @@ export default async function ServicePage({ params }) {
         name: "Home",
         item: `${baseUrl}/`,
       },
-
       {
         "@type": "ListItem",
         position: 2,
         name: "Services",
-        item: `${baseUrl}/Service`,
+        item: `${baseUrl}/services`,
       },
-
       {
         "@type": "ListItem",
         position: 3,
@@ -325,45 +303,16 @@ export default async function ServicePage({ params }) {
     ],
   };
 
-  /* ------------------------------------------------------------------------ */
-  /* STRUCTURED DATA                                                         */
-  /* ------------------------------------------------------------------------ */
-
   const structuredData = [
-    {
-      "@context": "https://schema.org",
-      ...organizationSchema,
-    },
-
-    {
-      "@context": "https://schema.org",
-      ...websiteSchema,
-    },
-
-    {
-      "@context": "https://schema.org",
-      ...serviceSchema,
-    },
-
-    {
-      "@context": "https://schema.org",
-      ...webPageSchema,
-    },
-
-    {
-      "@context": "https://schema.org",
-      ...breadcrumbSchema,
-    },
+    organizationSchema,
+    websiteSchema,
+    serviceSchema,
+    webPageSchema,
+    breadcrumbSchema,
   ];
-
-  /* ------------------------------------------------------------------------ */
-  /* PAGE                                                                    */
-  /* ------------------------------------------------------------------------ */
 
   return (
     <>
-      {/* Structured Data */}
-
       {structuredData.map((schema, index) => (
         <script
           key={`structured-data-${index}`}
@@ -374,53 +323,31 @@ export default async function ServicePage({ params }) {
         />
       ))}
 
-      {/* Service Page */}
-
       <main
         className="overflow-hidden bg-[#080a20] text-white"
         itemScope
         itemType="https://schema.org/Service"
       >
-        {/* Hero */}
-
         <ServiceHero service={service} />
-
-        {/* Overview */}
 
         <ServiceOverview service={service} />
 
-        {/* Features */}
-
         <ServiceFeatures service={service} />
-
-        {/* Process */}
 
         <ServiceProcess service={service} />
 
-        {/* Benefits */}
-
         <ServiceBenefits service={service} />
-
-        {/* Technologies */}
 
         <ServiceTechnologies service={service} />
 
-        {/* Locations */}
-
         <ServiceLocations service={service} />
 
-        {/* FAQ */}
-
         <ServiceFAQ service={service} />
-
-        {/* Related Services */}
 
         <RelatedServices
           currentSlug={service.slug}
           category={service.category}
         />
-
-        {/* CTA */}
 
         <ServiceCTA service={service} />
       </main>

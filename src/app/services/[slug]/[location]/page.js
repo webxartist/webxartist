@@ -18,12 +18,7 @@ import RelatedLocations from "@/app/Components/serviceLocation/RelatedLocations"
 import RelatedServices from "@/app/Components/serviceLocation/RelatedServices";
 
 const baseUrl = "https://www.webxartist.com";
-
-/*
-|--------------------------------------------------------------------------
-| Static Service + Location Pages
-|--------------------------------------------------------------------------
-*/
+const siteName = "WebXArtist Institute & Agency";
 
 export async function generateStaticParams() {
   return getAllServiceLocationPages().map(({ service, location }) => ({
@@ -32,22 +27,14 @@ export async function generateStaticParams() {
   }));
 }
 
-/*
-|--------------------------------------------------------------------------
-| SEO Metadata
-|--------------------------------------------------------------------------
-*/
-
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params;
-
-  const { slug, location: locationSlug } = resolvedParams;
+  const { slug, location: locationSlug } = await params;
 
   const page = getServiceLocation(slug, locationSlug);
 
   if (!page) {
     return {
-      title: "Page Not Found | WebXArtist",
+      title: `Page Not Found | ${siteName}`,
       description: "The requested page could not be found.",
 
       robots: {
@@ -62,41 +49,13 @@ export async function generateMetadata({ params }) {
   const serviceName = service.name;
   const cityName = location.city;
 
-  /*
-  |--------------------------------------------------------------------------
-  | Canonical URL
-  |--------------------------------------------------------------------------
-  */
-
   const canonicalUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
 
-  /*
-  |--------------------------------------------------------------------------
-  | SEO Title
-  |--------------------------------------------------------------------------
-  */
-
   const title = `${serviceName} in ${cityName} | WebXArtist`;
-
-  /*
-  |--------------------------------------------------------------------------
-  | SEO Description
-  |--------------------------------------------------------------------------
-  |
-  | The description is generated from the service + location.
-  | This prevents all location pages from having the same metadata.
-  |
-  */
 
   const description =
     `${serviceName.toLowerCase()} services in ${cityName}. ` +
     `Get customized digital solutions designed to help businesses improve their online presence, visibility, and growth.`;
-
-  /*
-  |--------------------------------------------------------------------------
-  | SEO Keywords
-  |--------------------------------------------------------------------------
-  */
 
   const keywords = [
     `${serviceName} in ${cityName}`,
@@ -108,28 +67,20 @@ export async function generateMetadata({ params }) {
     `WebXArtist ${serviceName} ${cityName}`,
   ];
 
+  const imageUrl = service.heroImage
+    ? service.heroImage.startsWith("http")
+      ? service.heroImage
+      : `${baseUrl}${service.heroImage.startsWith("/") ? "" : "/"}${service.heroImage}`
+    : `${baseUrl}/about.png`;
+
   return {
     title,
-
     description,
-
     keywords,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Canonical
-    |--------------------------------------------------------------------------
-    */
 
     alternates: {
       canonical: canonicalUrl,
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | Robots
-    |--------------------------------------------------------------------------
-    */
 
     robots: {
       index: true,
@@ -144,20 +95,13 @@ export async function generateMetadata({ params }) {
       },
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | Open Graph
-    |--------------------------------------------------------------------------
-    */
-
     openGraph: {
       title,
-
       description,
 
       url: canonicalUrl,
 
-      siteName: "WebXArtist",
+      siteName,
 
       locale: "en_IN",
 
@@ -165,50 +109,29 @@ export async function generateMetadata({ params }) {
 
       images: [
         {
-          url: service.heroImage || "/about.png",
+          url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${serviceName} in ${cityName} | WebXArtist`,
+          alt: title,
         },
       ],
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | Twitter
-    |--------------------------------------------------------------------------
-    */
 
     twitter: {
       card: "summary_large_image",
 
       title,
-
       description,
 
-      images: [service.heroImage || "/about.png"],
+      images: [imageUrl],
     },
   };
 }
 
-/*
-|--------------------------------------------------------------------------
-| Page
-|--------------------------------------------------------------------------
-*/
-
 export default async function Page({ params }) {
-  const resolvedParams = await params;
-
-  const { slug, location: locationSlug } = resolvedParams;
+  const { slug, location: locationSlug } = await params;
 
   const page = getServiceLocation(slug, locationSlug);
-
-  /*
-  |--------------------------------------------------------------------------
-  | Invalid Service / Location
-  |--------------------------------------------------------------------------
-  */
 
   if (!page) {
     notFound();
@@ -217,22 +140,9 @@ export default async function Page({ params }) {
   const { service, location } = page;
 
   const serviceName = service.name;
-
   const cityName = location.city;
 
-  /*
-  |--------------------------------------------------------------------------
-  | Page URL
-  |--------------------------------------------------------------------------
-  */
-
   const pageUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
-
-  /*
-  |--------------------------------------------------------------------------
-  | Breadcrumb
-  |--------------------------------------------------------------------------
-  */
 
   const breadcrumb = [
     {
@@ -242,7 +152,7 @@ export default async function Page({ params }) {
 
     {
       label: "Services",
-      href: "/Service",
+      href: "/services",
     },
 
     {
@@ -256,15 +166,8 @@ export default async function Page({ params }) {
     },
   ];
 
-  /*
-  |--------------------------------------------------------------------------
-  | Breadcrumb Schema
-  |--------------------------------------------------------------------------
-  */
-
   const breadcrumbSchema = {
     "@context": "https://schema.org",
-
     "@type": "BreadcrumbList",
 
     "@id": `${pageUrl}#breadcrumb`,
@@ -279,20 +182,6 @@ export default async function Page({ params }) {
       item: `${baseUrl}${item.href}`,
     })),
   };
-
-  /*
-  |--------------------------------------------------------------------------
-  | Service Schema
-  |--------------------------------------------------------------------------
-  |
-  | IMPORTANT:
-  |
-  | Location description is used first.
-  | If location.description doesn't exist,
-  | service.description is used.
-  |
-  |--------------------------------------------------------------------------
-  */
 
   const serviceDescription =
     location.description ||
@@ -315,17 +204,7 @@ export default async function Page({ params }) {
     url: pageUrl,
 
     provider: {
-      "@type": "Organization",
-
       "@id": `${baseUrl}/#organization`,
-
-      name: "WebXArtist Institute & Agency",
-
-      alternateName: "WebXArtist",
-
-      url: baseUrl,
-
-      logo: `${baseUrl}/logo.png`,
     },
 
     areaServed: {
@@ -347,12 +226,6 @@ export default async function Page({ params }) {
     },
   };
 
-  /*
-  |--------------------------------------------------------------------------
-  | WebPage Schema
-  |--------------------------------------------------------------------------
-  */
-
   const webPageDescription =
     location.description ||
     `Professional ${serviceName.toLowerCase()} services in ${cityName} provided by WebXArtist.`;
@@ -371,13 +244,7 @@ export default async function Page({ params }) {
     description: webPageDescription,
 
     isPartOf: {
-      "@type": "WebSite",
-
       "@id": `${baseUrl}/#website`,
-
-      name: "WebXArtist",
-
-      url: baseUrl,
     },
 
     about: {
@@ -391,15 +258,6 @@ export default async function Page({ params }) {
     inLanguage: "en-IN",
   };
 
-  /*
-  |--------------------------------------------------------------------------
-  | Organization Schema
-  |--------------------------------------------------------------------------
-  |
-  | Same organization identity throughout the website.
-  |
-  */
-
   const organizationSchema = {
     "@context": "https://schema.org",
 
@@ -407,7 +265,7 @@ export default async function Page({ params }) {
 
     "@id": `${baseUrl}/#organization`,
 
-    name: "WebXArtist Institute & Agency",
+    name: siteName,
 
     alternateName: "WebXArtist",
 
@@ -417,7 +275,6 @@ export default async function Page({ params }) {
 
     founder: {
       "@type": "Person",
-
       name: "Zahid Khan",
     },
 
@@ -436,50 +293,30 @@ export default async function Page({ params }) {
     areaServed: [
       {
         "@type": "City",
-
         name: "Mumbra",
       },
-
       {
         "@type": "City",
-
         name: "Thane",
       },
-
       {
         "@type": "City",
-
         name: "Mumbai",
       },
-
       {
         "@type": "City",
-
         name: "Navi Mumbai",
       },
-
       {
         "@type": "City",
-
         name: "Pune",
       },
-
       {
         "@type": "Country",
-
         name: "India",
       },
     ],
   };
-
-  /*
-  |--------------------------------------------------------------------------
-  | FAQ Schema
-  |--------------------------------------------------------------------------
-  |
-  | Only create FAQ schema when actual FAQ data exists.
-  |
-  */
 
   const faqItems = Array.isArray(location.faqs)
     ? location.faqs
@@ -513,28 +350,14 @@ export default async function Page({ params }) {
         }
       : null;
 
-  /*
-  |--------------------------------------------------------------------------
-  | Render Page
-  |--------------------------------------------------------------------------
-  */
-
   return (
     <>
-      {/* ------------------------------------------------------------
-          Breadcrumb Schema
-      ------------------------------------------------------------- */}
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
-
-      {/* ------------------------------------------------------------
-          Service Schema
-      ------------------------------------------------------------- */}
 
       <script
         type="application/ld+json"
@@ -543,10 +366,6 @@ export default async function Page({ params }) {
         }}
       />
 
-      {/* ------------------------------------------------------------
-          WebPage Schema
-      ------------------------------------------------------------- */}
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -554,20 +373,12 @@ export default async function Page({ params }) {
         }}
       />
 
-      {/* ------------------------------------------------------------
-          Organization Schema
-      ------------------------------------------------------------- */}
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(organizationSchema),
         }}
       />
-
-      {/* ------------------------------------------------------------
-          FAQ Schema
-      ------------------------------------------------------------- */}
 
       {faqSchema && (
         <script
@@ -578,70 +389,26 @@ export default async function Page({ params }) {
         />
       )}
 
-      {/* ------------------------------------------------------------
-          PAGE
-      ------------------------------------------------------------- */}
-
       <main className="overflow-hidden bg-[#080a20] text-white">
-        {/* ----------------------------------------------------------
-            Breadcrumb
-        ----------------------------------------------------------- */}
-
         <div className="mx-auto max-w-7xl px-6 pt-32">
           <Breadcrumb items={breadcrumb} />
         </div>
 
-        {/* ----------------------------------------------------------
-            Hero
-        ----------------------------------------------------------- */}
-
         <ServiceLocationHero service={service} location={location} />
-
-        {/* ----------------------------------------------------------
-            Overview
-        ----------------------------------------------------------- */}
 
         <ServiceLocationOverview service={service} location={location} />
 
-        {/* ----------------------------------------------------------
-            Features
-        ----------------------------------------------------------- */}
-
         <ServiceLocationFeatures service={service} location={location} />
-
-        {/* ----------------------------------------------------------
-            Process
-        ----------------------------------------------------------- */}
 
         <ServiceLocationProcess service={service} location={location} />
 
-        {/* ----------------------------------------------------------
-            Benefits
-        ----------------------------------------------------------- */}
-
         <ServiceLocationBenefits service={service} location={location} />
-
-        {/* ----------------------------------------------------------
-            Technologies
-        ----------------------------------------------------------- */}
 
         <ServiceLocationTechnologies service={service} location={location} />
 
-        {/* ----------------------------------------------------------
-            FAQ
-        ----------------------------------------------------------- */}
-
         <ServiceLocationFAQ service={service} location={location} />
 
-        {/* ----------------------------------------------------------
-            Related Locations
-        ----------------------------------------------------------- */}
-
         <RelatedLocations service={service} currentLocation={location.slug} />
-
-        {/* ----------------------------------------------------------
-            Related Services
-        ----------------------------------------------------------- */}
 
         <RelatedServices location={location} currentService={service.slug} />
       </main>

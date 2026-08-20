@@ -24,7 +24,7 @@ const navItems = [
   },
   {
     name: "Services",
-    href: "/Service",
+    href: "/services",
     icon: Briefcase,
   },
   {

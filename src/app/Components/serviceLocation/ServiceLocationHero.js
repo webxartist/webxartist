@@ -70,7 +70,7 @@ export default function ServiceLocationHero({ service, location }) {
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href="/Contact"
+              href="/ContactUs"
               className="rounded-full bg-gradient-to-r from-cyan-400 to-orange-400 px-8 py-4 font-semibold text-[#080a20] transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/20"
             >
               Get Free Quote
