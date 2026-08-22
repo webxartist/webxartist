@@ -1,47 +1,73 @@
 import Link from "next/link";
-import locations from "@/data/locations";
+
+import { getServiceLocations } from "@/lib/serviceLocation";
 
 export default function RelatedLocations({ service, currentLocation }) {
-  const related = locations
-    .filter(
-      (location) =>
-        location.slug !== currentLocation &&
-        location.services?.includes(service.slug),
-    )
+  if (!service?.slug) {
+    return null;
+  }
+
+  const relatedLocations = getServiceLocations(service.slug)
+    .filter((location) => location.slug !== currentLocation)
     .slice(0, 8);
 
-  if (!related.length) return null;
+  if (!relatedLocations.length) {
+    return null;
+  }
 
   return (
-    <section className="py-24 bg-[#0c1028]">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <span className="text-cyan-400 uppercase tracking-widest font-semibold">
+    <section
+      className="bg-[#0c1028] py-24"
+      aria-labelledby="related-locations-title"
+    >
+      <div className="mx-auto max-w-7xl px-6">
+        {/* =========================================================
+            SECTION HEADER
+        ========================================================= */}
+
+        <div className="mb-14 text-center">
+          <span className="font-semibold uppercase tracking-widest text-cyan-400">
             Other Locations
           </span>
 
-          <h2 className="text-4xl font-bold mt-4">
-            {service.name} in Nearby Cities
+          <h2
+            id="related-locations-title"
+            className="mt-4 text-4xl font-bold text-white md:text-5xl"
+          >
+            {service.name} in Other Locations
           </h2>
 
-          <p className="mt-5 text-slate-400 max-w-3xl mx-auto">
-            Explore our {service.name.toLowerCase()} services across different
-            cities.
+          <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-slate-400">
+            Explore {service.name.toLowerCase()} services available to
+            businesses in other locations served by WebXArtist.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {related.map((location) => (
+        {/* =========================================================
+            LOCATION CARDS
+        ========================================================= */}
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {relatedLocations.map((location) => (
             <Link
               key={location.slug}
               href={`/services/${service.slug}/${location.slug}`}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-cyan-400 transition"
+              className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.07]"
+              aria-label={`${service.name} services in ${location.city}`}
             >
-              <h3 className="font-semibold text-lg">
+              <h3 className="text-lg font-semibold text-white transition-colors duration-300 group-hover:text-cyan-400">
                 {service.name} in {location.city}
               </h3>
 
-              <p className="text-slate-400 mt-3 text-sm">Learn more →</p>
+              <p className="mt-3 text-sm text-slate-400 transition-colors duration-300 group-hover:text-slate-300">
+                Explore services in {location.city}
+                <span
+                  className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </p>
             </Link>
           ))}
         </div>
