@@ -9,28 +9,28 @@ const projects = [
   {
     title: "Corporate Business Website",
     category: "Website Development",
-    image: "/projects/project1.jpg",
+    image: "/project1.png",
     description:
       "A modern corporate website focused on lead generation, brand credibility, and SEO performance.",
   },
   {
     title: "E-Commerce Store",
     category: "E-Commerce",
-    image: "/projects/project2.jpg",
+    image: "/project2.png",
     description:
       "A scalable online shopping platform with secure payments, product management, and responsive design.",
   },
   {
     title: "Restaurant Website",
     category: "Restaurant",
-    image: "/projects/project3.jpg",
+    image: "/project3.png",
     description:
       "An engaging restaurant website featuring online reservations, digital menus, and Google Maps integration.",
   },
   {
     title: "Brand Identity Project",
     category: "Branding",
-    image: "/projects/project4.jpg",
+    image: "/project4.png",
     description:
       "Complete branding solution including logo design, brand guidelines, social media creatives, and marketing assets.",
   },
@@ -110,7 +110,7 @@ export default function WhyProjects() {
                 </p>
 
                 <Link
-                  href="/portfolio"
+                  href="/ContactUs"
                   className="mt-8 inline-flex items-center gap-2 font-semibold text-cyan-400 hover:text-orange-400 transition-colors"
                 >
                   View Project
@@ -129,7 +129,7 @@ export default function WhyProjects() {
           className="mt-16 text-center"
         >
           <Link
-            href="/portfolio"
+            href="/ContactUs"
             className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 px-8 py-4 font-semibold text-[#080a20] hover:scale-105 transition"
           >
             Explore Our Portfolio

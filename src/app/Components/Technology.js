@@ -192,7 +192,7 @@ const Technology = () => {
           map out exactly what your business needs, with no fluff.
         </p>
         <Link
-          href="/Contact"
+          href="/ContactUs"
           className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-[14px] font-bold uppercase tracking-wide text-[#080a20] bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 shadow-[0_0_24px_rgba(26,143,227,0.3)] hover:shadow-[0_0_32px_rgba(255,106,26,0.4)] transition-shadow duration-300"
         >
           Get Your Free Solution Plan
