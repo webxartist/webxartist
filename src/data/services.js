@@ -230,8 +230,24 @@ const services = [
 
     seo: {
       title: "Website Development Services | WebXArtist",
+
       description:
         "Website development services including business websites, e-commerce, landing pages, and custom web applications.",
+
+      keywords: [
+        "Website Development",
+        "Web Development Services",
+        "Website Development Company",
+        "Website Development Agency",
+        "Business Website Development",
+        "E-commerce Website Development",
+        "Next.js Development",
+        "MERN Stack Development",
+        "Website Development Mumbai",
+        "Website Development Thane",
+        "Website Development Mumbra",
+        "WebXArtist",
+      ],
     },
   },
 
@@ -444,6 +460,7 @@ const services = [
 
     seo: {
       title: "Google Ads Services | WebXArtist",
+
       description:
         "Google Ads management services including Search Ads, Display Ads, Shopping Ads, YouTube Ads, Performance Max, and Remarketing to generate leads and increase sales.",
 
@@ -668,6 +685,7 @@ const services = [
 
     seo: {
       title: "Meta Ads Management Services | WebXArtist",
+
       description:
         "Facebook & Instagram ads management including campaign strategy, audience targeting, ad creatives, and performance reporting.",
 
@@ -888,6 +906,7 @@ const services = [
 
     seo: {
       title: "Google Business Profile Optimization Services | WebXArtist",
+
       description:
         "Improve your Google Business Profile, Google Maps visibility, local search presence, and customer enquiries with professional local SEO services from WebXArtist.",
 
@@ -1108,6 +1127,7 @@ const services = [
 
     seo: {
       title: "SEO Services | WebXArtist",
+
       description:
         "SEO services including on-page SEO, off-page SEO, technical SEO, local SEO, and Google Business Profile optimization.",
 
@@ -1328,6 +1348,7 @@ const services = [
 
     seo: {
       title: "Social Media Management Services | WebXArtist",
+
       description:
         "Social media management services for Instagram, Facebook, LinkedIn, and business branding.",
 
@@ -1547,6 +1568,7 @@ const services = [
 
     seo: {
       title: "Content Creation Services | WebXArtist",
+
       description:
         "Content creation services including website content, blogs, SEO content, social media captions, and copywriting.",
 
@@ -1767,6 +1789,7 @@ const services = [
 
     seo: {
       title: "Website Maintenance & Support Services | WebXArtist",
+
       description:
         "Website maintenance and support services including security monitoring, website updates, backups, performance optimization, bug fixes, and ongoing technical support.",
 

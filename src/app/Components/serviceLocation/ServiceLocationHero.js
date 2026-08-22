@@ -5,68 +5,90 @@ import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaArrowRight } from "react-icons/fa";
 
 export default function ServiceLocationHero({ service, location }) {
-  const serviceName = service.name;
-  const locationName = location.city;
+  const serviceName = service?.name || "Digital Services";
+  const locationName = location?.city || "India";
 
   const heroDescription =
-    location.heroSubtitle ||
-    `${serviceName.toLowerCase()} services for businesses in ${locationName}.`;
+    location?.heroSubtitle ||
+    `WebXArtist provides ${serviceName.toLowerCase()} solutions for businesses in ${locationName}, Maharashtra.`;
 
   return (
-    <section className="relative overflow-hidden bg-[#080a20] pt-20 pb-24">
+    <section
+      className="relative overflow-hidden bg-[#080a20] pt-20 pb-24"
+      aria-labelledby="service-location-hero-title"
+    >
       {/* Background Glow */}
 
-      <div className="absolute -top-40 left-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[140px]" />
+      <div
+        className="absolute -top-40 left-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[140px]"
+        aria-hidden="true"
+      />
 
-      <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-orange-500/10 blur-[140px]" />
+      <div
+        className="absolute right-0 bottom-0 h-96 w-96 rounded-full bg-orange-500/10 blur-[140px]"
+        aria-hidden="true"
+      />
 
-      {/* Additional subtle glow */}
+      <div
+        className="absolute top-1/2 left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/[0.03] blur-[120px]"
+        aria-hidden="true"
+      />
 
-      <div className="absolute top-1/2 left-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/[0.03] blur-[120px]" />
-
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative mx-auto max-w-7xl px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.6,
+          }}
         >
           {/* Location Badge */}
 
-          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-5 py-2 text-sm font-medium text-cyan-300">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-5 py-2 text-sm font-medium text-cyan-300">
             <FaMapMarkerAlt aria-hidden="true" />
 
             <span>
               {serviceName} in {locationName}
             </span>
-          </span>
+          </div>
 
-          {/* Heading */}
+          {/* Main Heading */}
 
-          <h1 className="mt-8 max-w-5xl text-4xl font-bold leading-tight text-white md:text-6xl">
+          <h1
+            id="service-location-hero-title"
+            className="mt-8 max-w-5xl text-4xl font-bold leading-tight text-white md:text-6xl"
+          >
             {serviceName} in{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 bg-clip-text text-transparent">
               {locationName}
             </span>
           </h1>
 
-          {/* Location-Specific Description */}
+          {/* Primary Description */}
 
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-400">
-            {serviceName} services in {locationName} to help businesses improve
-            their online visibility, reach more customers, and grow their
-            business.
+          <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-300">
+            {heroDescription}
           </p>
 
-          {/* Supporting Description */}
+          {/* Supporting Local Context */}
 
           <p className="mt-5 max-w-3xl text-base leading-7 text-slate-500">
-            WebXArtist provides {serviceName.toLowerCase()} solutions for
-            startups, local businesses, services, and growing companies across{" "}
-            {locationName}.
+            From startups and local businesses to professional services,
+            retailers, institutes, and growing companies, WebXArtist provides
+            practical digital solutions designed around business goals and
+            customer needs.
           </p>
 
-          {/* CTA Buttons */}
+          {/* CTA */}
 
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
@@ -78,9 +100,9 @@ export default function ServiceLocationHero({ service, location }) {
 
             <Link
               href={`/services/${service.slug}`}
-              className="flex items-center gap-2 rounded-full border border-white/10 px-8 py-4 text-white transition-all duration-300 hover:border-cyan-400 hover:bg-white/5"
+              className="group flex items-center gap-2 rounded-full border border-white/10 px-8 py-4 text-white transition-all duration-300 hover:border-cyan-400 hover:bg-white/5"
             >
-              View Service
+              View {serviceName}
               <FaArrowRight
                 className="transition-transform duration-300 group-hover:translate-x-1"
                 aria-hidden="true"
@@ -88,7 +110,7 @@ export default function ServiceLocationHero({ service, location }) {
             </Link>
           </div>
 
-          {/* Local Context */}
+          {/* Local Signals */}
 
           <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-slate-500">
             <span>
@@ -96,18 +118,25 @@ export default function ServiceLocationHero({ service, location }) {
               businesses
             </span>
 
-            <span className="hidden sm:inline text-slate-700">•</span>
-
-            <span>
-              {" "}
-              <strong className="text-slate-300">
-                {serviceName.toLowerCase()}
-              </strong>
+            <span
+              className="hidden text-slate-700 sm:inline"
+              aria-hidden="true"
+            >
+              •
             </span>
 
-            <span className="hidden sm:inline text-slate-700">•</span>
+            <span>
+              <strong className="text-slate-300">{serviceName}</strong>
+            </span>
 
-            <span>Business-focused solutions</span>
+            <span
+              className="hidden text-slate-700 sm:inline"
+              aria-hidden="true"
+            >
+              •
+            </span>
+
+            <span>Maharashtra, India</span>
           </div>
         </motion.div>
       </div>

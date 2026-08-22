@@ -19,6 +19,13 @@ import RelatedServices from "@/app/Components/serviceLocation/RelatedServices";
 
 const baseUrl = "https://www.webxartist.com";
 const siteName = "WebXArtist Institute & Agency";
+const brandName = "WebXArtist";
+
+/*
+|--------------------------------------------------------------------------
+| Static Params
+|--------------------------------------------------------------------------
+*/
 
 export async function generateStaticParams() {
   return getAllServiceLocationPages().map(({ service, location }) => ({
@@ -27,6 +34,12 @@ export async function generateStaticParams() {
   }));
 }
 
+/*
+|--------------------------------------------------------------------------
+| Metadata
+|--------------------------------------------------------------------------
+*/
+
 export async function generateMetadata({ params }) {
   const { slug, location: locationSlug } = await params;
 
@@ -34,9 +47,8 @@ export async function generateMetadata({ params }) {
 
   if (!page) {
     return {
-      title: `Page Not Found | ${siteName}`,
+      title: `Page Not Found | ${brandName}`,
       description: "The requested page could not be found.",
-
       robots: {
         index: false,
         follow: false,
@@ -48,39 +60,106 @@ export async function generateMetadata({ params }) {
 
   const serviceName = service.name;
   const cityName = location.city;
+  const stateName = location.state || "Maharashtra";
+  const countryName = location.country || "India";
 
   const canonicalUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
 
-  const title = `${serviceName} in ${cityName} | WebXArtist`;
+  /*
+  |--------------------------------------------------------------------------
+  | SEO Title
+  |--------------------------------------------------------------------------
+  |
+  | Keep the primary service + location combination near the beginning.
+  |
+  */
+
+  const title = `${serviceName} in ${cityName} | ${brandName}`;
+
+  /*
+  |--------------------------------------------------------------------------
+  | SEO Description
+  |--------------------------------------------------------------------------
+  |
+  | Prefer service-specific location content when available.
+  | This avoids making every location page use the same generic description.
+  |
+  */
 
   const description =
-    `${serviceName.toLowerCase()} services in ${cityName}. ` +
-    `Get customized digital solutions designed to help businesses improve their online presence, visibility, and growth.`;
+    location.serviceDescription ||
+    location.description ||
+    `${serviceName} services in ${cityName}, ${stateName} by ${brandName}, helping businesses with digital solutions, online visibility and growth.`;
 
-  const keywords = [
+  /*
+  |--------------------------------------------------------------------------
+  | Keywords
+  |--------------------------------------------------------------------------
+  |
+  | Keywords are supporting metadata only.
+  | Avoid excessive keyword repetition.
+  |
+  */
+
+  const locationKeywords = [
     `${serviceName} in ${cityName}`,
     `${serviceName} ${cityName}`,
     `${serviceName} services in ${cityName}`,
     `${serviceName.toLowerCase()} company in ${cityName}`,
     `${serviceName.toLowerCase()} agency in ${cityName}`,
     `${serviceName.toLowerCase()} services ${cityName}`,
-    `WebXArtist ${serviceName} ${cityName}`,
+    `${serviceName} in ${cityName}, ${stateName}`,
+    `${brandName} ${serviceName} ${cityName}`,
   ];
+
+  const serviceKeywords = Array.isArray(service.seo?.keywords)
+    ? service.seo.keywords
+    : [];
+
+  const locationTopics = Array.isArray(location.relatedTopics)
+    ? location.relatedTopics
+    : [];
+
+  const keywords = [
+    ...new Set([...locationKeywords, ...serviceKeywords, ...locationTopics]),
+  ];
+
+  /*
+  |--------------------------------------------------------------------------
+  | Social Image
+  |--------------------------------------------------------------------------
+  */
 
   const imageUrl = service.heroImage
     ? service.heroImage.startsWith("http")
       ? service.heroImage
-      : `${baseUrl}${service.heroImage.startsWith("/") ? "" : "/"}${service.heroImage}`
+      : `${baseUrl}${
+          service.heroImage.startsWith("/") ? "" : "/"
+        }${service.heroImage}`
     : `${baseUrl}/about.png`;
 
   return {
+    metadataBase: new URL(baseUrl),
+
     title,
     description,
     keywords,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Canonical
+    |--------------------------------------------------------------------------
+    */
+
     alternates: {
       canonical: canonicalUrl,
     },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Robots
+    |--------------------------------------------------------------------------
+    */
 
     robots: {
       index: true,
@@ -94,6 +173,12 @@ export async function generateMetadata({ params }) {
         "max-snippet": -1,
       },
     },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Open Graph
+    |--------------------------------------------------------------------------
+    */
 
     openGraph: {
       title,
@@ -112,10 +197,16 @@ export async function generateMetadata({ params }) {
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: title,
+          alt: `${serviceName} in ${cityName} | ${brandName}`,
         },
       ],
     },
+
+    /*
+    |--------------------------------------------------------------------------
+    | Twitter
+    |--------------------------------------------------------------------------
+    */
 
     twitter: {
       card: "summary_large_image",
@@ -127,6 +218,12 @@ export async function generateMetadata({ params }) {
     },
   };
 }
+
+/*
+|--------------------------------------------------------------------------
+| Page
+|--------------------------------------------------------------------------
+*/
 
 export default async function Page({ params }) {
   const { slug, location: locationSlug } = await params;
@@ -141,8 +238,16 @@ export default async function Page({ params }) {
 
   const serviceName = service.name;
   const cityName = location.city;
+  const stateName = location.state || "Maharashtra";
+  const countryName = location.country || "India";
 
   const pageUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
+
+  /*
+  |--------------------------------------------------------------------------
+  | Breadcrumb
+  |--------------------------------------------------------------------------
+  */
 
   const breadcrumb = [
     {
@@ -166,8 +271,15 @@ export default async function Page({ params }) {
     },
   ];
 
+  /*
+  |--------------------------------------------------------------------------
+  | Breadcrumb Schema
+  |--------------------------------------------------------------------------
+  */
+
   const breadcrumbSchema = {
     "@context": "https://schema.org",
+
     "@type": "BreadcrumbList",
 
     "@id": `${pageUrl}#breadcrumb`,
@@ -183,10 +295,23 @@ export default async function Page({ params }) {
     })),
   };
 
+  /*
+  |--------------------------------------------------------------------------
+  | Service Description
+  |--------------------------------------------------------------------------
+  */
+
   const serviceDescription =
+    location.serviceDescription ||
     location.description ||
     service.description ||
-    `${serviceName} services provided by WebXArtist for businesses in ${cityName}, Maharashtra.`;
+    `${serviceName} services provided by ${brandName} for businesses in ${cityName}, ${stateName}.`;
+
+  /*
+  |--------------------------------------------------------------------------
+  | Service Schema
+  |--------------------------------------------------------------------------
+  */
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -204,7 +329,13 @@ export default async function Page({ params }) {
     url: pageUrl,
 
     provider: {
+      "@type": "Organization",
+
       "@id": `${baseUrl}/#organization`,
+
+      name: siteName,
+
+      url: baseUrl,
     },
 
     areaServed: {
@@ -215,20 +346,27 @@ export default async function Page({ params }) {
       containedInPlace: {
         "@type": "State",
 
-        name: "Maharashtra",
+        name: stateName,
 
         containedInPlace: {
           "@type": "Country",
 
-          name: "India",
+          name: countryName,
         },
       },
     },
   };
 
+  /*
+  |--------------------------------------------------------------------------
+  | WebPage Schema
+  |--------------------------------------------------------------------------
+  */
+
   const webPageDescription =
     location.description ||
-    `Professional ${serviceName.toLowerCase()} services in ${cityName} provided by WebXArtist.`;
+    service.description ||
+    `${serviceName} services in ${cityName} provided by ${brandName}.`;
 
   const webPageSchema = {
     "@context": "https://schema.org",
@@ -239,7 +377,7 @@ export default async function Page({ params }) {
 
     url: pageUrl,
 
-    name: `${serviceName} in ${cityName} | WebXArtist`,
+    name: `${serviceName} in ${cityName} | ${brandName}`,
 
     description: webPageDescription,
 
@@ -255,8 +393,18 @@ export default async function Page({ params }) {
       "@id": `${pageUrl}#breadcrumb`,
     },
 
+    mainEntity: {
+      "@id": `${pageUrl}#service`,
+    },
+
     inLanguage: "en-IN",
   };
+
+  /*
+  |--------------------------------------------------------------------------
+  | Organization Schema
+  |--------------------------------------------------------------------------
+  */
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -267,14 +415,19 @@ export default async function Page({ params }) {
 
     name: siteName,
 
-    alternateName: "WebXArtist",
+    alternateName: brandName,
 
     url: baseUrl,
 
-    logo: `${baseUrl}/logo.png`,
+    logo: {
+      "@type": "ImageObject",
+
+      url: `${baseUrl}/logo.png`,
+    },
 
     founder: {
       "@type": "Person",
+
       name: "Zahid Khan",
     },
 
@@ -295,28 +448,44 @@ export default async function Page({ params }) {
         "@type": "City",
         name: "Mumbra",
       },
+
       {
         "@type": "City",
         name: "Thane",
       },
+
       {
         "@type": "City",
         name: "Mumbai",
       },
+
       {
         "@type": "City",
         name: "Navi Mumbai",
       },
+
+      {
+        "@type": "City",
+        name: "Panvel",
+      },
+
       {
         "@type": "City",
         name: "Pune",
       },
+
       {
         "@type": "Country",
         name: "India",
       },
     ],
   };
+
+  /*
+  |--------------------------------------------------------------------------
+  | FAQ Schema
+  |--------------------------------------------------------------------------
+  */
 
   const faqItems = Array.isArray(location.faqs)
     ? location.faqs
@@ -326,7 +495,11 @@ export default async function Page({ params }) {
 
   const validFaqItems = faqItems.filter(
     (faq) =>
-      faq && typeof faq.question === "string" && typeof faq.answer === "string",
+      faq &&
+      typeof faq.question === "string" &&
+      faq.question.trim() !== "" &&
+      typeof faq.answer === "string" &&
+      faq.answer.trim() !== "",
   );
 
   const faqSchema =
@@ -336,28 +509,40 @@ export default async function Page({ params }) {
 
           "@type": "FAQPage",
 
+          "@id": `${pageUrl}#faq`,
+
           mainEntity: validFaqItems.map((faq) => ({
             "@type": "Question",
 
-            name: faq.question,
+            name: faq.question.trim(),
 
             acceptedAnswer: {
               "@type": "Answer",
 
-              text: faq.answer,
+              text: faq.answer.trim(),
             },
           })),
         }
       : null;
 
+  /*
+  |--------------------------------------------------------------------------
+  | Render
+  |--------------------------------------------------------------------------
+  */
+
   return (
     <>
+      {/* Breadcrumb Schema */}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
+
+      {/* Service Schema */}
 
       <script
         type="application/ld+json"
@@ -366,6 +551,8 @@ export default async function Page({ params }) {
         }}
       />
 
+      {/* WebPage Schema */}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -373,12 +560,16 @@ export default async function Page({ params }) {
         }}
       />
 
+      {/* Organization Schema */}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(organizationSchema),
         }}
       />
+
+      {/* FAQ Schema */}
 
       {faqSchema && (
         <script
