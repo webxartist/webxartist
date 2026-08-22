@@ -18,7 +18,7 @@ const locations = [
       "seo-services",
       "social-media-management",
       "content-creation",
-      "email-marketing",
+      "maintenance-and-support",
     ],
 
     /*
@@ -75,7 +75,7 @@ const locations = [
       "digital marketing",
       "SEO",
       "branding",
-      "graphic design",
+      "maintenance and support",
       "e-commerce development",
       "Google Ads",
       "Meta Ads",
@@ -101,7 +101,7 @@ const locations = [
       "seo-services",
       "social-media-management",
       "content-creation",
-      "email-marketing",
+      "maintenance-and-support",
     ],
 
     /*
@@ -149,7 +149,7 @@ const locations = [
       "Meta Ads",
       "social media marketing",
       "branding",
-      "graphic design",
+      "maintenance and support",
     ],
   },
 
@@ -172,7 +172,7 @@ const locations = [
       "seo-services",
       "social-media-management",
       "content-creation",
-      "email-marketing",
+      "maintenance-and-support",
     ],
 
     /*
@@ -220,7 +220,7 @@ const locations = [
       "Meta Ads",
       "social media management",
       "branding",
-      "graphic design",
+      "maintenance and support",
       "e-commerce development",
     ],
   },
@@ -244,7 +244,7 @@ const locations = [
       "seo-services",
       "social-media-management",
       "content-creation",
-      "email-marketing",
+      "maintenance-and-support",
     ],
 
     /*
@@ -292,7 +292,7 @@ const locations = [
       "Google Ads",
       "Meta Ads",
       "branding",
-      "graphic design",
+      "maintenance and support",
     ],
   },
 
@@ -315,7 +315,7 @@ const locations = [
       "seo-services",
       "social-media-management",
       "content-creation",
-      "email-marketing",
+      "maintenance-and-support",
     ],
 
     /*
@@ -363,7 +363,7 @@ const locations = [
       "Meta Ads",
       "social media management",
       "branding",
-      "graphic design",
+      "maintenance-and-support",
     ],
   },
 
@@ -386,7 +386,7 @@ const locations = [
       "seo-services",
       "social-media-management",
       "content-creation",
-      "email-marketing",
+      "maintenance-and-support",
     ],
 
     /*
