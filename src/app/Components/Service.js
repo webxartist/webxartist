@@ -12,15 +12,20 @@ const Service = () => {
       aria-labelledby="services-heading"
       className="relative w-full overflow-hidden bg-[#080a20] px-6 py-20 font-poppins text-white sm:py-24"
     >
-      {/* Background */}
+      {/* =========================================================
+          BACKGROUND
+      ========================================================== */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
         aria-hidden="true"
       >
+        {/* Cyan ambient glow */}
         <div className="absolute left-[-8rem] top-[-8rem] h-[24rem] w-[24rem] rounded-full bg-cyan-500/10 blur-[120px]" />
 
+        {/* Orange ambient glow */}
         <div className="absolute bottom-[-8rem] right-[-8rem] h-[24rem] w-[24rem] rounded-full bg-orange-500/10 blur-[120px]" />
 
+        {/* Subtle grid */}
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
@@ -31,7 +36,9 @@ const Service = () => {
         />
       </div>
 
-      {/* Section Header */}
+      {/* =========================================================
+          SECTION HEADER
+      ========================================================== */}
       <motion.header
         className="relative z-10 mx-auto mb-14 max-w-4xl text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -44,33 +51,42 @@ const Service = () => {
           Our Services
         </span>
 
-        {/* Main Section Heading */}
+        {/* =====================================================
+            MAIN HEADING
+        ====================================================== */}
         <h2
           id="services-heading"
           className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl"
         >
-          Digital Marketing Services That Help Businesses{" "}
+          Digital Solutions & Marketing Services for{" "}
           <span className="bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 bg-clip-text text-transparent">
-            Grow Online
+            Business Growth
           </span>
         </h2>
 
-        {/* SEO + AEO friendly introduction */}
+        {/* =====================================================
+            INTRODUCTION
+            Natural SEO + AEO + GEO friendly
+        ====================================================== */}
         <p className="mx-auto mt-5 max-w-3xl text-sm leading-7 text-slate-400 sm:text-base md:text-lg">
-          WebXArtist provides website development, SEO, digital marketing,
-          Google Ads, Meta Ads, social media management, and other digital
-          solutions for businesses, startups, and local brands across Mumbai,
-          Thane, Mumbra, and beyond.
+          WebXArtist provides website development, SEO, Google Ads, Meta Ads,
+          social media management, content creation, Google Business Profile
+          optimization, and website maintenance for businesses, startups,
+          entrepreneurs, and organizations looking to build visibility, attract
+          customers, and grow online.
         </p>
       </motion.header>
 
-      {/* Service Grid */}
-      <div
-        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      {/* =========================================================
+          SERVICE GRID
+          Semantic UL improves document structure
+      ========================================================== */}
+      <ul
         aria-label="WebXArtist digital services"
+        className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
       >
         {services.map((service, index) => (
-          <motion.div
+          <motion.li
             key={service.id || service.slug}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +117,9 @@ const Service = () => {
                   hover:shadow-[0_20px_60px_rgba(0,0,0,0.25)]
                 "
               >
-                {/* Service Number */}
+                {/* =================================================
+                    SERVICE NUMBER
+                ================================================== */}
                 <span
                   className="absolute right-5 top-5 text-[10px] font-semibold tracking-[0.15em] text-slate-600"
                   aria-hidden="true"
@@ -109,7 +127,9 @@ const Service = () => {
                   {String(index + 1).padStart(2, "0")}
                 </span>
 
-                {/* Icon / Image */}
+                {/* =================================================
+                    SERVICE IMAGE
+                ================================================== */}
                 <div
                   className="
                     mb-6 flex h-14 w-14 items-center justify-center
@@ -122,16 +142,20 @@ const Service = () => {
                 >
                   <Image
                     src={service.image}
-                    alt={`${service.name} service by WebXArtist`}
+                    alt={`${service.name} icon`}
                     width={56}
                     height={56}
                     className="h-10 w-10 object-contain"
-                    loading={index < 4 ? "eager" : "lazy"}
+                    loading="lazy"
+                    sizes="40px"
                   />
                 </div>
 
-                {/* Service Content */}
+                {/* =================================================
+                    SERVICE CONTENT
+                ================================================== */}
                 <div className="flex flex-1 flex-col">
+                  {/* Service heading */}
                   <h3
                     className="
                       pr-8 text-lg font-semibold leading-snug
@@ -143,14 +167,26 @@ const Service = () => {
                     {service.name}
                   </h3>
 
+                  {/* Service description */}
                   <p className="mt-3 text-sm leading-6 text-slate-400">
                     {service.shortDescription}
                   </p>
 
-                  {/* Internal Link */}
+                  {/* =================================================
+                      INTERNAL LINK
+                  ================================================== */}
                   <div className="mt-auto pt-6">
-                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 transition-all duration-300 group-hover:gap-3 group-hover:text-orange-400">
-                      Explore Service
+                    <span
+                      className="
+                        inline-flex items-center gap-2
+                        text-sm font-semibold
+                        text-cyan-400
+                        transition-all duration-300
+                        group-hover:gap-3
+                        group-hover:text-orange-400
+                      "
+                    >
+                      Explore {service.name}
                       <span
                         aria-hidden="true"
                         className="transition-transform duration-300 group-hover:translate-x-1"
@@ -161,7 +197,9 @@ const Service = () => {
                   </div>
                 </div>
 
-                {/* Bottom Accent */}
+                {/* =================================================
+                    BOTTOM ACCENT
+                ================================================== */}
                 <span
                   aria-hidden="true"
                   className="
@@ -174,11 +212,14 @@ const Service = () => {
                 />
               </article>
             </Link>
-          </motion.div>
+          </motion.li>
         ))}
-      </div>
+      </ul>
 
-      {/* Local / AEO Supporting Context */}
+      {/* =========================================================
+          SUPPORTING CONTENT
+          Natural AEO / GEO context
+      ========================================================== */}
       <motion.div
         className="relative z-10 mx-auto mt-14 max-w-4xl text-center"
         initial={{ opacity: 0, y: 15 }}
@@ -187,10 +228,10 @@ const Service = () => {
         transition={{ duration: 0.5 }}
       >
         <p className="text-sm leading-7 text-slate-500 sm:text-base">
-          From business websites and search engine optimization to paid
-          advertising and social media marketing, our services are designed to
-          help businesses build visibility, attract relevant audiences, and
-          generate sustainable online growth.
+          Whether you need a new website, better visibility on Google, paid
+          advertising, social media support, or ongoing website maintenance,
+          WebXArtist provides practical digital solutions built around your
+          business goals, audience, and growth stage.
         </p>
       </motion.div>
     </section>
