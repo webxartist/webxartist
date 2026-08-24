@@ -27,7 +27,7 @@ export default function sitemap() {
     },
 
     {
-      url: `${baseUrl}/Service`,
+      url: `${baseUrl}/services`,
       lastModified: today,
       changeFrequency: "daily",
       priority: 0.9,
