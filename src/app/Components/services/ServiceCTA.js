@@ -107,7 +107,7 @@ const ServiceCTA = ({ service }) => {
               {/* Contact */}
 
               <Link
-                href="/contactus"
+                href="/ContactUs"
                 aria-label="Get a free quote from WebXArtist"
                 className="inline-flex items-center gap-3 rounded-full border border-white/10 px-7 py-4 font-semibold text-white transition-all duration-300 hover:border-cyan-400 hover:text-cyan-300"
               >

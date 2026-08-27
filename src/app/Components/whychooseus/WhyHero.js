@@ -57,7 +57,7 @@ export default function WhyHero() {
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
-              href="/contactus"
+              href="/ContactUs"
               className="inline-flex items-center gap-2 rounded-full px-8 py-4 font-semibold text-[#080a20] bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 hover:scale-105 transition"
             >
               Start Your Project

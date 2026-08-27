@@ -182,7 +182,7 @@ const PricingHeader = () => {
           </a>
 
           <a
-            href="/contactus"
+            href="/ContactUs"
             className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] px-8 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-[#080a20]"
           >
             Get a Custom Quote

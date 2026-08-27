@@ -20,7 +20,7 @@ export const metadata = {
     "Discover why businesses across India trust WebXArtist for website development, branding, SEO, digital marketing, graphic design, and complete business growth solutions.",
 
   alternates: {
-    canonical: "https://www.webxartist.com/whyus",
+    canonical: "https://www.webxartist.com/Whyus",
   },
 
   openGraph: {
@@ -29,7 +29,7 @@ export const metadata = {
     description:
       " website development, branding, SEO, graphic design and digital marketing services for startups and businesses.",
 
-    url: "https://www.webxartist.com/whyus",
+    url: "https://www.webxartist.com/Whyus",
 
     siteName: "WebXArtist Institute & Agency",
 
@@ -81,9 +81,9 @@ export default function Page() {
       {
         "@type": "WebPage",
 
-        "@id": "https://www.webxartist.com/whyus#webpage",
+        "@id": "https://www.webxartist.com/Whyus#webpage",
 
-        url: "https://www.webxartist.com/whyus",
+        url: "https://www.webxartist.com/Whyus",
 
         name: "Why Choose WebXArtist",
 

@@ -20,7 +20,7 @@ export default function sitemap() {
     },
 
     {
-      url: `${baseUrl}about`,
+      url: `${baseUrl}/About`,
       lastModified: today,
       changeFrequency: "daily",
       priority: 0.8,
@@ -34,21 +34,21 @@ export default function sitemap() {
     },
 
     {
-      url: `${baseUrl}/pricing`,
+      url: `${baseUrl}/Pricing`,
       lastModified: today,
       changeFrequency: "daily",
       priority: 0.8,
     },
 
     {
-      url: `${baseUrl}/whyus`,
+      url: `${baseUrl}/Whyus`,
       lastModified: today,
       changeFrequency: "daily",
       priority: 0.7,
     },
 
     {
-      url: `${baseUrl}/contactus`,
+      url: `${baseUrl}/ContactUs`,
       lastModified: today,
       changeFrequency: "daily",
       priority: 0.7,

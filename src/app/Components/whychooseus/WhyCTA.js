@@ -71,7 +71,7 @@ export default function WhyCTA() {
 
           <div className="mt-14 flex flex-col sm:flex-row justify-center gap-5">
             <Link
-              href="/contactus"
+              href="/ContactUs"
               className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 px-8 py-4 font-semibold text-[#080a20] hover:scale-105 transition duration-300"
             >
               Start Your Project

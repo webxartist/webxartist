@@ -27,7 +27,7 @@ export const metadata = {
   ],
 
   alternates: {
-    canonical: "https://www.webxartist.com/pricing",
+    canonical: "https://www.webxartist.com/Pricing",
   },
 
   openGraph: {
@@ -36,7 +36,7 @@ export const metadata = {
     description:
       "Explore transparent pricing for website development, eCommerce, SEO, Google Ads, Meta Ads, social media management, branding and creative services by WebXArtist.",
 
-    url: "https://www.webxartist.com/pricing",
+    url: "https://www.webxartist.com/Pricing",
 
     siteName: "WebXArtist Institute & Agency",
 

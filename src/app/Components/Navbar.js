@@ -34,17 +34,17 @@ const navItems = [
   },
   {
     name: "Why Us",
-    href: "/whyus",
+    href: "/Whyus",
     icon: Award,
   },
   {
     name: "About",
-    href: "/about",
+    href: "/About",
     icon: Users,
   },
   {
     name: "Contact",
-    href: "/contactus",
+    href: "/ContactUs",
     icon: Phone,
   },
 ];
@@ -534,7 +534,7 @@ const Navbar = () => {
 
             <motion.div whileTap={{ scale: 0.96 }}>
               <Link
-                href="/contactus"
+                href="/ContactUs"
                 className="
                   inline-flex
                   items-center

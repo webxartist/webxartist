@@ -18,7 +18,7 @@ export const metadata = {
     title: "About WebXArtist Institute & Agency",
     description:
       "Website Development, Digital Marketing, Meta Ads, SEO & IT Training in Mumbra, Thane.",
-    url: "https://www.webxartist.com/about",
+    url: "https://www.webxartist.com/About",
     siteName: "WebXArtist Institute & Agency",
     images: [
       {
@@ -33,7 +33,7 @@ export const metadata = {
   },
 
   alternates: {
-    canonical: "https://www.webxartist.com/about",
+    canonical: "https://www.webxartist.com/About",
   },
 };
 
