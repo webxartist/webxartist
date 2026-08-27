@@ -29,22 +29,22 @@ const navItems = [
   },
   {
     name: "Pricing",
-    href: "/Pricing",
+    href: "/pricing",
     icon: Tag,
   },
   {
     name: "Why Us",
-    href: "/Whyus",
+    href: "/whyus",
     icon: Award,
   },
   {
     name: "About",
-    href: "/About",
+    href: "/about",
     icon: Users,
   },
   {
     name: "Contact",
-    href: "/ContactUs",
+    href: "/contactus",
     icon: Phone,
   },
 ];
@@ -534,7 +534,7 @@ const Navbar = () => {
 
             <motion.div whileTap={{ scale: 0.96 }}>
               <Link
-                href="/ContactUs"
+                href="/contactus"
                 className="
                   inline-flex
                   items-center

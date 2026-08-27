@@ -27,7 +27,7 @@ export const metadata = {
   ],
 
   alternates: {
-    canonical: "https://www.webxartist.com/Pricing",
+    canonical: "https://www.webxartist.com/pricing",
   },
 
   openGraph: {
@@ -36,7 +36,7 @@ export const metadata = {
     description:
       "Explore transparent pricing for website development, eCommerce, SEO, Google Ads, Meta Ads, social media management, branding and creative services by WebXArtist.",
 
-    url: "https://www.webxartist.com/Pricing",
+    url: "https://www.webxartist.com/pricing",
 
     siteName: "WebXArtist Institute & Agency",
 
@@ -111,14 +111,14 @@ export default function Page() {
 
     "@type": "Service",
 
-    "@id": "https://www.webxartist.com/Pricing#services",
+    "@id": "https://www.webxartist.com/pricing#services",
 
     name: "WebXArtist Digital Services",
 
     description:
       "Website development, eCommerce development, SEO, Google Ads, Meta Ads, social media management, graphic design, video editing and Google Business Profile services for businesses across India.",
 
-    url: "https://www.webxartist.com/Pricing",
+    url: "https://www.webxartist.com/pricing",
 
     provider: {
       "@type": "Organization",

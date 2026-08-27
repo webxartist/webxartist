@@ -26,7 +26,7 @@ const services = [
   "Other",
 ];
 
-export default function ContactUs() {
+export default function contactus() {
   const [form, setForm] = useState({
     name: "",
     email: "",
