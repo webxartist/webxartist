@@ -3,9 +3,9 @@ import ContactUs from "../Components/ContactUs";
 
 const page = () => {
   return (
-    <div>
+    <>
       <ContactUs />
-    </div>
+    </>
   );
 };
 
