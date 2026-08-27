@@ -29,7 +29,7 @@ const navItems = [
   },
   {
     name: "Pricing",
-    href: "/pricing",
+    href: "/Pricing",
     icon: Tag,
   },
   {
