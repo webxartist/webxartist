@@ -9,6 +9,7 @@ import CursorSwitcher from "./Components/Cursor";
 import ContactPopup from "./Components/ContactPopup";
 import Instagram from "@/app/Components/Instgram";
 import Whatsapp from "@/app/Components/WhatsApp";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 // ------------------------------------------------------
 // ⭐ POPPINS FONT
@@ -299,6 +300,7 @@ export default function RootLayout({ children }) {
 
       <body className="bg-white text-black">
         <Navbar />
+        <SpeedInsights />
 
         {children}
 
