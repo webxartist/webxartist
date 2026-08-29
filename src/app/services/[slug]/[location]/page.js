@@ -23,6 +23,67 @@ const brandName = "WebXArtist";
 
 /*
 |--------------------------------------------------------------------------
+| Service Areas
+|--------------------------------------------------------------------------
+|
+| These are the locations WebXArtist currently serves.
+| Keep this list synchronized with your service-location data.
+|
+*/
+
+const serviceAreas = [
+  {
+    "@type": "City",
+    name: "Mumbai",
+  },
+  {
+    "@type": "City",
+    name: "Thane",
+  },
+  {
+    "@type": "City",
+    name: "Navi Mumbai",
+  },
+  {
+    "@type": "City",
+    name: "Mumbra",
+  },
+  {
+    "@type": "City",
+    name: "Panvel",
+  },
+  {
+    "@type": "City",
+    name: "Pune",
+  },
+  {
+    "@type": "City",
+    name: "Kalyan",
+  },
+  {
+    "@type": "City",
+    name: "Dombivli",
+  },
+  {
+    "@type": "City",
+    name: "Bhiwandi",
+  },
+  {
+    "@type": "City",
+    name: "Mira Road",
+  },
+  {
+    "@type": "City",
+    name: "Vasai",
+  },
+  {
+    "@type": "City",
+    name: "Virar",
+  },
+];
+
+/*
+|--------------------------------------------------------------------------
 | Static Params
 |--------------------------------------------------------------------------
 */
@@ -48,7 +109,9 @@ export async function generateMetadata({ params }) {
   if (!page) {
     return {
       title: `Page Not Found | ${brandName}`,
+
       description: "The requested page could not be found.",
+
       robots: {
         index: false,
         follow: false,
@@ -61,7 +124,6 @@ export async function generateMetadata({ params }) {
   const serviceName = service.name;
   const cityName = location.city;
   const stateName = location.state || "Maharashtra";
-  const countryName = location.country || "India";
 
   const canonicalUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
 
@@ -69,9 +131,6 @@ export async function generateMetadata({ params }) {
   |--------------------------------------------------------------------------
   | SEO Title
   |--------------------------------------------------------------------------
-  |
-  | Keep the primary service + location combination near the beginning.
-  |
   */
 
   const title = `${serviceName} in ${cityName} | ${brandName}`;
@@ -80,34 +139,29 @@ export async function generateMetadata({ params }) {
   |--------------------------------------------------------------------------
   | SEO Description
   |--------------------------------------------------------------------------
-  |
-  | Prefer service-specific location content when available.
-  | This avoids making every location page use the same generic description.
-  |
   */
 
   const description =
     location.serviceDescription ||
     location.description ||
-    `${serviceName} services in ${cityName}, ${stateName} by ${brandName}, helping businesses with digital solutions, online visibility and growth.`;
+    `${serviceName} services in ${cityName}, ${stateName} by ${brandName}, helping businesses improve their online presence and digital growth.`;
 
   /*
   |--------------------------------------------------------------------------
   | Keywords
   |--------------------------------------------------------------------------
   |
-  | Keywords are supporting metadata only.
-  | Avoid excessive keyword repetition.
+  | Keep keywords focused on the actual service + location.
+  | Avoid large keyword lists and unnecessary repetition.
   |
   */
 
   const locationKeywords = [
     `${serviceName} in ${cityName}`,
-    `${serviceName} ${cityName}`,
     `${serviceName} services in ${cityName}`,
+    `${serviceName} ${cityName}`,
     `${serviceName.toLowerCase()} company in ${cityName}`,
     `${serviceName.toLowerCase()} agency in ${cityName}`,
-    `${serviceName.toLowerCase()} services ${cityName}`,
     `${serviceName} in ${cityName}, ${stateName}`,
     `${brandName} ${serviceName} ${cityName}`,
   ];
@@ -138,28 +192,24 @@ export async function generateMetadata({ params }) {
         }${service.heroImage}`
     : `${baseUrl}/about.png`;
 
+  /*
+  |--------------------------------------------------------------------------
+  | Metadata
+  |--------------------------------------------------------------------------
+  */
+
   return {
     metadataBase: new URL(baseUrl),
 
     title,
-    description,
-    keywords,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Canonical
-    |--------------------------------------------------------------------------
-    */
+    description,
+
+    keywords,
 
     alternates: {
       canonical: canonicalUrl,
     },
-
-    /*
-    |--------------------------------------------------------------------------
-    | Robots
-    |--------------------------------------------------------------------------
-    */
 
     robots: {
       index: true,
@@ -168,20 +218,18 @@ export async function generateMetadata({ params }) {
       googleBot: {
         index: true,
         follow: true,
+
         "max-image-preview": "large",
+
         "max-video-preview": -1,
+
         "max-snippet": -1,
       },
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | Open Graph
-    |--------------------------------------------------------------------------
-    */
-
     openGraph: {
       title,
+
       description,
 
       url: canonicalUrl,
@@ -195,23 +243,21 @@ export async function generateMetadata({ params }) {
       images: [
         {
           url: imageUrl,
+
           width: 1200,
+
           height: 630,
+
           alt: `${serviceName} in ${cityName} | ${brandName}`,
         },
       ],
     },
 
-    /*
-    |--------------------------------------------------------------------------
-    | Twitter
-    |--------------------------------------------------------------------------
-    */
-
     twitter: {
       card: "summary_large_image",
 
       title,
+
       description,
 
       images: [imageUrl],
@@ -237,8 +283,11 @@ export default async function Page({ params }) {
   const { service, location } = page;
 
   const serviceName = service.name;
+
   const cityName = location.city;
+
   const stateName = location.state || "Maharashtra";
+
   const countryName = location.country || "India";
 
   const pageUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
@@ -311,6 +360,16 @@ export default async function Page({ params }) {
   |--------------------------------------------------------------------------
   | Service Schema
   |--------------------------------------------------------------------------
+  |
+  | IMPORTANT:
+  | This schema describes THIS service in THIS location.
+  |
+  | Example:
+  | Google Ads + Mira Road
+  |
+  | It does not claim that this particular Service entity is
+  | located in all 12 service areas.
+  |
   */
 
   const serviceSchema = {
@@ -404,6 +463,9 @@ export default async function Page({ params }) {
   |--------------------------------------------------------------------------
   | Organization Schema
   |--------------------------------------------------------------------------
+  |
+  | This represents the company and its overall service areas.
+  |
   */
 
   const organizationSchema = {
@@ -443,42 +505,33 @@ export default async function Page({ params }) {
       addressCountry: "IN",
     },
 
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Mumbra",
-      },
+    areaServed: serviceAreas,
+  };
 
-      {
-        "@type": "City",
-        name: "Thane",
-      },
+  /*
+  |--------------------------------------------------------------------------
+  | WebSite Schema
+  |--------------------------------------------------------------------------
+  */
 
-      {
-        "@type": "City",
-        name: "Mumbai",
-      },
+  const websiteSchema = {
+    "@context": "https://schema.org",
 
-      {
-        "@type": "City",
-        name: "Navi Mumbai",
-      },
+    "@type": "WebSite",
 
-      {
-        "@type": "City",
-        name: "Panvel",
-      },
+    "@id": `${baseUrl}/#website`,
 
-      {
-        "@type": "City",
-        name: "Pune",
-      },
+    name: brandName,
 
-      {
-        "@type": "Country",
-        name: "India",
-      },
-    ],
+    alternateName: siteName,
+
+    url: baseUrl,
+
+    publisher: {
+      "@id": `${baseUrl}/#organization`,
+    },
+
+    inLanguage: "en-IN",
   };
 
   /*
@@ -527,58 +580,36 @@ export default async function Page({ params }) {
 
   /*
   |--------------------------------------------------------------------------
+  | Structured Data
+  |--------------------------------------------------------------------------
+  */
+
+  const structuredData = [
+    breadcrumbSchema,
+    serviceSchema,
+    webPageSchema,
+    organizationSchema,
+    websiteSchema,
+    ...(faqSchema ? [faqSchema] : []),
+  ];
+
+  /*
+  |--------------------------------------------------------------------------
   | Render
   |--------------------------------------------------------------------------
   */
 
   return (
     <>
-      {/* Breadcrumb Schema */}
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
-        }}
-      />
-
-      {/* Service Schema */}
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema),
-        }}
-      />
-
-      {/* WebPage Schema */}
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(webPageSchema),
-        }}
-      />
-
-      {/* Organization Schema */}
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(organizationSchema),
-        }}
-      />
-
-      {/* FAQ Schema */}
-
-      {faqSchema && (
+      {structuredData.map((schema, index) => (
         <script
+          key={`schema-${index}`}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema),
+            __html: JSON.stringify(schema),
           }}
         />
-      )}
+      ))}
 
       <main className="overflow-hidden bg-[#080a20] text-white">
         <div className="mx-auto max-w-7xl px-6 pt-32">
