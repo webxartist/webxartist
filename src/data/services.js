@@ -9,7 +9,7 @@ const services = [
 
     shortDescription: "Websites that help businesses grow online.",
 
-    description:
+    description: 
       "We design and develop fast, responsive, and SEO-friendly websites that help businesses build trust, generate quality leads, and increase sales. Whether you need a business website, a personal portfolio, an e-commerce store, or a custom web application, WebXArtist delivers complete digital solutions tailored to your goals and built to perform, not just to look good.",
 
     overviewdescription:

@@ -82,6 +82,8 @@ const serviceAreas = [
   },
 ];
 
+export const dynamicParams = false;
+
 /*
 |--------------------------------------------------------------------------
 | Static Params
