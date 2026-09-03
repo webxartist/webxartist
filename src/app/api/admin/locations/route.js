@@ -5,6 +5,7 @@ import connectMongoDB from "@/lib/mongodb";
 import Location from "@/models/Location";
 
 import { ADMIN_SESSION_COOKIE, verifyAdminSessionToken } from "@/lib/adminAuth";
+import { a } from "framer-motion/client";
 
 export const runtime = "nodejs";
 

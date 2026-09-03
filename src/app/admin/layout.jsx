@@ -38,7 +38,7 @@ const navigation = [
   },
   {
     name: "Service Locations",
-    href: "/admin/service-locations",
+    href: "/admin/dashboard/service-location",
     icon: MapPin,
   },
   {
