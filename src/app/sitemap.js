@@ -27,7 +27,7 @@ export default function sitemap() {
     },
 
     {
-      url: `${baseUrl}/services`,
+      url: `${baseUrl}/Services`,
       lastModified: today,
       changeFrequency: "daily",
       priority: 0.9,
@@ -60,7 +60,7 @@ export default function sitemap() {
   // =====================================================
 
   const servicePages = services.map((service) => ({
-    url: `${baseUrl}/services/${service.slug}`,
+    url: `${baseUrl}/Services/${service.slug}`,
     lastModified: today,
     changeFrequency: "daily",
     priority: 0.9,
@@ -72,7 +72,7 @@ export default function sitemap() {
 
   const serviceLocationPages = getAllServiceLocationPages().map(
     ({ service, location }) => ({
-      url: `${baseUrl}/services/${service.slug}/${location.slug}`,
+      url: `${baseUrl}/Services/${service.slug}/${location.slug}`,
       lastModified: today,
       changeFrequency: "daily",
       priority: 0.8,

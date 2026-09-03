@@ -1,0 +1,1127 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+
+const emptyFeature = () => ({
+  title: "",
+  description: "",
+});
+
+const emptyProcess = () => ({
+  title: "",
+  description: "",
+});
+
+const emptyTechnology = () => ({
+  title: "",
+  description: "",
+});
+
+const emptyFaq = () => ({
+  question: "",
+  answer: "",
+});
+
+const emptyForm = {
+  name: "",
+  slug: "",
+  category: "",
+  shortDescription: "",
+  description: "",
+  overviewdescription: "",
+  heroTitle: "",
+  heroSubtitle: "",
+  image: "",
+  heroImage: "",
+
+  benefits: [],
+  locations: [],
+
+  features: [],
+  process: [],
+  technologies: [],
+  faqs: [],
+
+  seo: {
+    title: "",
+    description: "",
+    keywords: [],
+  },
+
+  isActive: true,
+  sortOrder: 0,
+};
+
+export default function EditServicePage() {
+  const params = useParams();
+  const router = useRouter();
+
+  const id = params?.id;
+
+  const [form, setForm] = useState(emptyForm);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+
+  // --------------------------------------------------
+  // Load Service
+  // --------------------------------------------------
+
+  useEffect(() => {
+    if (!id) return;
+
+    async function loadService() {
+      try {
+        setLoading(true);
+        setError("");
+
+        const response = await fetch(`/api/admin/services/${id}`, {
+          method: "GET",
+          cache: "no-store",
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || "Failed to load service");
+        }
+
+        const service = data.service;
+
+        setForm({
+          name: service.name || "",
+          slug: service.slug || "",
+          category: service.category || "",
+          shortDescription: service.shortDescription || "",
+          description: service.description || "",
+          overviewdescription: service.overviewdescription || "",
+          heroTitle: service.heroTitle || "",
+          heroSubtitle: service.heroSubtitle || "",
+          image: service.image || "",
+          heroImage: service.heroImage || "",
+
+          benefits: Array.isArray(service.benefits) ? service.benefits : [],
+
+          locations: Array.isArray(service.locations) ? service.locations : [],
+
+          features: Array.isArray(service.features)
+            ? service.features.map((item) => ({
+                title: item.title || "",
+                description: item.description || "",
+              }))
+            : [],
+
+          process: Array.isArray(service.process)
+            ? service.process.map((item) => ({
+                title: item.title || "",
+                description: item.description || "",
+              }))
+            : [],
+
+          technologies: Array.isArray(service.technologies)
+            ? service.technologies.map((item) => ({
+                title: item.title || "",
+                description: item.description || "",
+              }))
+            : [],
+
+          faqs: Array.isArray(service.faqs)
+            ? service.faqs.map((item) => ({
+                question: item.question || "",
+                answer: item.answer || "",
+              }))
+            : [],
+
+          seo: {
+            title: service.seo?.title || "",
+            description: service.seo?.description || "",
+            keywords: Array.isArray(service.seo?.keywords)
+              ? service.seo.keywords
+              : [],
+          },
+
+          isActive:
+            typeof service.isActive === "boolean" ? service.isActive : true,
+
+          sortOrder:
+            typeof service.sortOrder === "number" ? service.sortOrder : 0,
+        });
+      } catch (err) {
+        console.error("Load service error:", err);
+        setError(err.message || "Failed to load service");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadService();
+  }, [id]);
+
+  // --------------------------------------------------
+  // Basic Change
+  // --------------------------------------------------
+
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
+  // --------------------------------------------------
+  // Slug
+  // --------------------------------------------------
+
+  function generateSlug(name) {
+    return name
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  function handleNameChange(e) {
+    const name = e.target.value;
+
+    setForm((prev) => ({
+      ...prev,
+      name,
+    }));
+  }
+
+  // --------------------------------------------------
+  // Array Helpers
+  // --------------------------------------------------
+
+  function updateArrayItem(arrayName, index, field, value) {
+    setForm((prev) => ({
+      ...prev,
+      [arrayName]: prev[arrayName].map((item, itemIndex) =>
+        itemIndex === index
+          ? {
+              ...item,
+              [field]: value,
+            }
+          : item,
+      ),
+    }));
+  }
+
+  function addArrayItem(arrayName, item) {
+    setForm((prev) => ({
+      ...prev,
+      [arrayName]: [...prev[arrayName], item()],
+    }));
+  }
+
+  function removeArrayItem(arrayName, index) {
+    setForm((prev) => ({
+      ...prev,
+      [arrayName]: prev[arrayName].filter(
+        (_, itemIndex) => itemIndex !== index,
+      ),
+    }));
+  }
+
+  // --------------------------------------------------
+  // Benefits
+  // --------------------------------------------------
+
+  function addBenefit() {
+    setForm((prev) => ({
+      ...prev,
+      benefits: [...prev.benefits, ""],
+    }));
+  }
+
+  function updateBenefit(index, value) {
+    setForm((prev) => ({
+      ...prev,
+      benefits: prev.benefits.map((item, itemIndex) =>
+        itemIndex === index ? value : item,
+      ),
+    }));
+  }
+
+  function removeBenefit(index) {
+    setForm((prev) => ({
+      ...prev,
+      benefits: prev.benefits.filter((_, itemIndex) => itemIndex !== index),
+    }));
+  }
+
+  // --------------------------------------------------
+  // Locations
+  // --------------------------------------------------
+
+  function addLocation() {
+    setForm((prev) => ({
+      ...prev,
+      locations: [...prev.locations, ""],
+    }));
+  }
+
+  function updateLocation(index, value) {
+    setForm((prev) => ({
+      ...prev,
+      locations: prev.locations.map((item, itemIndex) =>
+        itemIndex === index ? value : item,
+      ),
+    }));
+  }
+
+  function removeLocation(index) {
+    setForm((prev) => ({
+      ...prev,
+      locations: prev.locations.filter((_, itemIndex) => itemIndex !== index),
+    }));
+  }
+
+  // --------------------------------------------------
+  // SEO
+  // --------------------------------------------------
+
+  function updateSeo(field, value) {
+    setForm((prev) => ({
+      ...prev,
+      seo: {
+        ...prev.seo,
+        [field]: value,
+      },
+    }));
+  }
+
+  // --------------------------------------------------
+  // Save
+  // --------------------------------------------------
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    setSaving(true);
+    setMessage("");
+    setError("");
+
+    try {
+      // Remove incomplete dynamic items
+      const cleanedForm = {
+        ...form,
+
+        name: form.name.trim(),
+        slug: form.slug.toLowerCase().trim(),
+
+        benefits: form.benefits.map((item) => item.trim()).filter(Boolean),
+
+        locations: form.locations.map((item) => item.trim()).filter(Boolean),
+
+        features: form.features.filter(
+          (item) => item.title.trim() && item.description.trim(),
+        ),
+
+        process: form.process.filter(
+          (item) => item.title.trim() && item.description.trim(),
+        ),
+
+        technologies: form.technologies.filter(
+          (item) => item.title.trim() && item.description.trim(),
+        ),
+
+        faqs: form.faqs.filter(
+          (item) => item.question.trim() && item.answer.trim(),
+        ),
+
+        seo: {
+          ...form.seo,
+          keywords: form.seo.keywords
+            .map((item) => item.trim())
+            .filter(Boolean),
+        },
+      };
+
+      const response = await fetch(`/api/admin/services/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cleanedForm),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Failed to update service");
+      }
+
+      setMessage("Service updated successfully.");
+
+      setTimeout(() => {
+        router.push("/admin/dashboard/services");
+        router.refresh();
+      }, 800);
+    } catch (err) {
+      console.error("Update service error:", err);
+      setError(err.message || "Something went wrong.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  // --------------------------------------------------
+  // Loading
+  // --------------------------------------------------
+
+  if (loading) {
+    return (
+      <div className="flex min-h-[500px] items-center justify-center p-6">
+        <div className="text-gray-500">Loading service...</div>
+      </div>
+    );
+  }
+
+  // --------------------------------------------------
+  // Error
+  // --------------------------------------------------
+
+  if (error && !form.name) {
+    return (
+      <div className="p-6 lg:p-8">
+        <div className="mx-auto max-w-5xl">
+          <div className="rounded-xl border border-red-200 bg-red-50 p-6 text-red-700">
+            <h2 className="font-semibold">Failed to load service</h2>
+
+            <p className="mt-2 text-sm">{error}</p>
+
+            <button
+              type="button"
+              onClick={() => router.push("/admin/dashboard/services")}
+              className="mt-4 rounded-lg bg-black px-4 py-2 text-sm text-white"
+            >
+              Back to Services
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // --------------------------------------------------
+  // UI
+  // --------------------------------------------------
+
+  return (
+    <div className="p-6 lg:p-8">
+      <div className="mx-auto max-w-5xl">
+        {/* Header */}
+
+        <div className="mb-8">
+          <div className="mb-2">
+            <button
+              type="button"
+              onClick={() => router.push("/admin/dashboard/services")}
+              className="text-sm text-gray-500 hover:text-black"
+            >
+              ← Back to Services
+            </button>
+          </div>
+
+          <h1 className="text-2xl font-bold text-gray-900 lg:text-3xl">
+            Edit Service
+          </h1>
+
+          <p className="mt-1 text-sm text-gray-500">Update {form.name}.</p>
+        </div>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Basic Information */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <h2 className="mb-5 text-lg font-semibold">Basic Information</h2>
+
+            <div className="grid gap-5 md:grid-cols-2">
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Service Name
+                </label>
+
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleNameChange}
+                  required
+                  className="w-full rounded-lg border px-4 py-3 outline-none focus:ring-2"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium">Slug</label>
+
+                <input
+                  type="text"
+                  name="slug"
+                  value={form.slug}
+                  onChange={handleChange}
+                  required
+                  className="w-full rounded-lg border px-4 py-3 outline-none focus:ring-2"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Category
+                </label>
+
+                <input
+                  type="text"
+                  name="category"
+                  value={form.category}
+                  onChange={handleChange}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Sort Order
+                </label>
+
+                <input
+                  type="number"
+                  name="sortOrder"
+                  value={form.sortOrder}
+                  onChange={handleChange}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* Hero */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <h2 className="mb-5 text-lg font-semibold">Hero Section</h2>
+
+            <div className="space-y-5">
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Hero Title
+                </label>
+
+                <input
+                  type="text"
+                  name="heroTitle"
+                  value={form.heroTitle}
+                  onChange={handleChange}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Hero Subtitle
+                </label>
+
+                <textarea
+                  name="heroSubtitle"
+                  value={form.heroSubtitle}
+                  onChange={handleChange}
+                  rows={3}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <label className="mb-2 block text-sm font-medium">
+                    Main Image
+                  </label>
+
+                  <input
+                    type="text"
+                    name="image"
+                    value={form.image}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border px-4 py-3"
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-medium">
+                    Hero Image
+                  </label>
+
+                  <input
+                    type="text"
+                    name="heroImage"
+                    value={form.heroImage}
+                    onChange={handleChange}
+                    className="w-full rounded-lg border px-4 py-3"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Content */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <h2 className="mb-5 text-lg font-semibold">Service Content</h2>
+
+            <div className="space-y-5">
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Short Description
+                </label>
+
+                <textarea
+                  name="shortDescription"
+                  value={form.shortDescription}
+                  onChange={handleChange}
+                  rows={3}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Description
+                </label>
+
+                <textarea
+                  name="description"
+                  value={form.description}
+                  onChange={handleChange}
+                  rows={6}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  Overview Description
+                </label>
+
+                <textarea
+                  name="overviewdescription"
+                  value={form.overviewdescription}
+                  onChange={handleChange}
+                  rows={6}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* Features */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold">Features</h2>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  Add the main features of this service.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => addArrayItem("features", emptyFeature)}
+                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white"
+              >
+                + Add Feature
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {form.features.length === 0 && (
+                <p className="text-sm text-gray-500">No features added.</p>
+              )}
+
+              {form.features.map((feature, index) => (
+                <div key={index} className="rounded-lg border bg-gray-50 p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-sm font-semibold">
+                      Feature {index + 1}
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => removeArrayItem("features", index)}
+                      className="text-sm text-red-600"
+                    >
+                      Remove
+                    </button>
+                  </div>
+
+                  <input
+                    type="text"
+                    value={feature.title}
+                    onChange={(e) =>
+                      updateArrayItem(
+                        "features",
+                        index,
+                        "title",
+                        e.target.value,
+                      )
+                    }
+                    placeholder="Feature title"
+                    className="mb-3 w-full rounded-lg border px-4 py-3"
+                  />
+
+                  <textarea
+                    value={feature.description}
+                    onChange={(e) =>
+                      updateArrayItem(
+                        "features",
+                        index,
+                        "description",
+                        e.target.value,
+                      )
+                    }
+                    placeholder="Feature description"
+                    rows={3}
+                    className="w-full rounded-lg border px-4 py-3"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Process */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold">Process</h2>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  Add your service process steps.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => addArrayItem("process", emptyProcess)}
+                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white"
+              >
+                + Add Step
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {form.process.length === 0 && (
+                <p className="text-sm text-gray-500">No process steps added.</p>
+              )}
+
+              {form.process.map((item, index) => (
+                <div key={index} className="rounded-lg border bg-gray-50 p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-sm font-semibold">
+                      Step {index + 1}
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => removeArrayItem("process", index)}
+                      className="text-sm text-red-600"
+                    >
+                      Remove
+                    </button>
+                  </div>
+
+                  <input
+                    type="text"
+                    value={item.title}
+                    onChange={(e) =>
+                      updateArrayItem("process", index, "title", e.target.value)
+                    }
+                    placeholder="Step title"
+                    className="mb-3 w-full rounded-lg border px-4 py-3"
+                  />
+
+                  <textarea
+                    value={item.description}
+                    onChange={(e) =>
+                      updateArrayItem(
+                        "process",
+                        index,
+                        "description",
+                        e.target.value,
+                      )
+                    }
+                    placeholder="Step description"
+                    rows={3}
+                    className="w-full rounded-lg border px-4 py-3"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Technologies */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold">Technologies</h2>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  Add technologies used for this service.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => addArrayItem("technologies", emptyTechnology)}
+                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white"
+              >
+                + Add Technology
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {form.technologies.length === 0 && (
+                <p className="text-sm text-gray-500">No technologies added.</p>
+              )}
+
+              {form.technologies.map((item, index) => (
+                <div key={index} className="rounded-lg border bg-gray-50 p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-sm font-semibold">
+                      Technology {index + 1}
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => removeArrayItem("technologies", index)}
+                      className="text-sm text-red-600"
+                    >
+                      Remove
+                    </button>
+                  </div>
+
+                  <input
+                    type="text"
+                    value={item.title}
+                    onChange={(e) =>
+                      updateArrayItem(
+                        "technologies",
+                        index,
+                        "title",
+                        e.target.value,
+                      )
+                    }
+                    placeholder="Technology name"
+                    className="mb-3 w-full rounded-lg border px-4 py-3"
+                  />
+
+                  <textarea
+                    value={item.description}
+                    onChange={(e) =>
+                      updateArrayItem(
+                        "technologies",
+                        index,
+                        "description",
+                        e.target.value,
+                      )
+                    }
+                    placeholder="Technology description"
+                    rows={3}
+                    className="w-full rounded-lg border px-4 py-3"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Benefits */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold">Benefits</h2>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  Add benefits customers receive.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={addBenefit}
+                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white"
+              >
+                + Add Benefit
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              {form.benefits.map((benefit, index) => (
+                <div key={index} className="flex gap-3">
+                  <input
+                    type="text"
+                    value={benefit}
+                    onChange={(e) => updateBenefit(index, e.target.value)}
+                    placeholder="Benefit"
+                    className="flex-1 rounded-lg border px-4 py-3"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => removeBenefit(index)}
+                    className="rounded-lg border border-red-200 px-4 text-sm text-red-600"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+
+              {form.benefits.length === 0 && (
+                <p className="text-sm text-gray-500">No benefits added.</p>
+              )}
+            </div>
+          </section>
+
+          {/* FAQs */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold">FAQs</h2>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  Add frequently asked questions.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => addArrayItem("faqs", emptyFaq)}
+                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white"
+              >
+                + Add FAQ
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              {form.faqs.length === 0 && (
+                <p className="text-sm text-gray-500">No FAQs added.</p>
+              )}
+
+              {form.faqs.map((faq, index) => (
+                <div key={index} className="rounded-lg border bg-gray-50 p-4">
+                  <div className="mb-3 flex items-center justify-between">
+                    <span className="text-sm font-semibold">
+                      FAQ {index + 1}
+                    </span>
+
+                    <button
+                      type="button"
+                      onClick={() => removeArrayItem("faqs", index)}
+                      className="text-sm text-red-600"
+                    >
+                      Remove
+                    </button>
+                  </div>
+
+                  <input
+                    type="text"
+                    value={faq.question}
+                    onChange={(e) =>
+                      updateArrayItem("faqs", index, "question", e.target.value)
+                    }
+                    placeholder="Question"
+                    className="mb-3 w-full rounded-lg border px-4 py-3"
+                  />
+
+                  <textarea
+                    value={faq.answer}
+                    onChange={(e) =>
+                      updateArrayItem("faqs", index, "answer", e.target.value)
+                    }
+                    placeholder="Answer"
+                    rows={4}
+                    className="w-full rounded-lg border px-4 py-3"
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Locations */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-semibold">Locations</h2>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  Add locations where this service is available.
+                </p>
+              </div>
+
+              <button
+                type="button"
+                onClick={addLocation}
+                className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white"
+              >
+                + Add Location
+              </button>
+            </div>
+
+            <div className="space-y-3">
+              {form.locations.map((location, index) => (
+                <div key={index} className="flex gap-3">
+                  <input
+                    type="text"
+                    value={location}
+                    onChange={(e) => updateLocation(index, e.target.value)}
+                    placeholder="Mumbai"
+                    className="flex-1 rounded-lg border px-4 py-3"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={() => removeLocation(index)}
+                    className="rounded-lg border border-red-200 px-4 text-sm text-red-600"
+                  >
+                    Remove
+                  </button>
+                </div>
+              ))}
+
+              {form.locations.length === 0 && (
+                <p className="text-sm text-gray-500">No locations added.</p>
+              )}
+            </div>
+          </section>
+
+          {/* SEO */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <h2 className="mb-5 text-lg font-semibold">SEO</h2>
+
+            <div className="space-y-5">
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  SEO Title
+                </label>
+
+                <input
+                  type="text"
+                  value={form.seo.title}
+                  onChange={(e) => updateSeo("title", e.target.value)}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  SEO Description
+                </label>
+
+                <textarea
+                  value={form.seo.description}
+                  onChange={(e) => updateSeo("description", e.target.value)}
+                  rows={4}
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-medium">
+                  SEO Keywords
+                </label>
+
+                <input
+                  type="text"
+                  value={form.seo.keywords.join(", ")}
+                  onChange={(e) =>
+                    updateSeo(
+                      "keywords",
+                      e.target.value
+                        .split(",")
+                        .map((item) => item.trim())
+                        .filter(Boolean),
+                    )
+                  }
+                  placeholder="SEO Services, SEO Company, SEO Mumbai"
+                  className="w-full rounded-lg border px-4 py-3"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* Status */}
+
+          <section className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="flex items-center justify-between">
+              <div>
+                <h2 className="font-semibold">Service Status</h2>
+
+                <p className="mt-1 text-sm text-gray-500">
+                  Control whether this service is visible publicly.
+                </p>
+              </div>
+
+              <label className="flex cursor-pointer items-center gap-3">
+                <input
+                  type="checkbox"
+                  checked={form.isActive}
+                  onChange={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      isActive: e.target.checked,
+                    }))
+                  }
+                  className="h-5 w-5"
+                />
+
+                <span className="text-sm font-medium">Active</span>
+              </label>
+            </div>
+          </section>
+
+          {/* Messages */}
+
+          {error && (
+            <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              {error}
+            </div>
+          )}
+
+          {message && (
+            <div className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+              {message}
+            </div>
+          )}
+
+          {/* Buttons */}
+
+          <div className="flex justify-end gap-3">
+            <button
+              type="button"
+              onClick={() => router.push("/admin/dashboard/services")}
+              className="rounded-lg border px-5 py-3 text-sm font-medium"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              disabled={saving}
+              className="rounded-lg bg-black px-6 py-3 text-sm font-medium text-white disabled:opacity-50"
+            >
+              {saving ? "Saving..." : "Save Changes"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}

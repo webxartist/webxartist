@@ -34,7 +34,7 @@ export default function RelatedServices({ location, currentService }) {
           {related.map((service) => (
             <Link
               key={service.slug}
-              href={`/services/${service.slug}/${location.slug}`}
+              href={`/Services/${service.slug}/${location.slug}`}
               className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-cyan-400 transition"
             >
               <h3 className="font-semibold text-lg">{service.name}</h3>

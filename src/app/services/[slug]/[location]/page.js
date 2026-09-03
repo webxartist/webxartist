@@ -127,7 +127,7 @@ export async function generateMetadata({ params }) {
   const cityName = location.city;
   const stateName = location.state || "Maharashtra";
 
-  const canonicalUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
+  const canonicalUrl = `${baseUrl}/Services/${service.slug}/${location.slug}`;
 
   /*
   |--------------------------------------------------------------------------
@@ -292,7 +292,7 @@ export default async function Page({ params }) {
 
   const countryName = location.country || "India";
 
-  const pageUrl = `${baseUrl}/services/${service.slug}/${location.slug}`;
+  const pageUrl = `${baseUrl}/Services/${service.slug}/${location.slug}`;
 
   /*
   |--------------------------------------------------------------------------
@@ -308,17 +308,17 @@ export default async function Page({ params }) {
 
     {
       label: "Services",
-      href: "/services",
+      href: "/Services",
     },
 
     {
       label: service.name,
-      href: `/services/${service.slug}`,
+      href: `/Services/${service.slug}`,
     },
 
     {
       label: cityName,
-      href: `/services/${service.slug}/${location.slug}`,
+      href: `/Services/${service.slug}/${location.slug}`,
     },
   ];
 

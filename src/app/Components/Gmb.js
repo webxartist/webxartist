@@ -128,7 +128,7 @@ export default function GMBPricing() {
 
           {/* SEO Internal Link */}
           <Link
-            href="/services/google-my-business"
+            href="/Services/google-my-business"
             className="group mt-6 inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 transition-colors duration-300 hover:text-orange-400"
           >
             Explore Google Business Profile Services
@@ -213,7 +213,7 @@ export default function GMBPricing() {
 
               {/* Internal Service Link */}
               <Link
-                href="/services/google-my-business"
+                href="/Services/google-my-business"
                 className="group mb-3 flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] py-3 text-[13px] font-semibold text-slate-300 transition-all duration-300 hover:border-cyan-400/30 hover:bg-cyan-400/[0.06] hover:text-cyan-400"
               >
                 View Service Details
@@ -259,7 +259,7 @@ export default function GMBPricing() {
 
           {/* Bottom Internal Link */}
           <Link
-            href="/services/google-my-business"
+            href="/Services/google-my-business"
             className="group mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:border-orange-400/30 hover:bg-orange-400/[0.06] hover:text-orange-400"
           >
             Learn More About Google Business Profile

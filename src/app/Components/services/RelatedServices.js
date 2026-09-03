@@ -88,7 +88,7 @@ const RelatedServices = ({ currentSlug, category }) => {
                   }}
                 >
                   <Link
-                    href={`/services/${service.slug}`}
+                    href={`/Services/${service.slug}`}
                     className="group block h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] transition-all duration-300 hover:border-cyan-400/30 hover:bg-white/[0.06]"
                   >
                     {/* Image */}

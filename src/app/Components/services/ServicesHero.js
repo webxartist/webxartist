@@ -27,7 +27,7 @@ const ServiceHero = ({ service }) => {
     description ||
     `Professional ${name} services by WebXArtist Institute & Agency.`;
 
-  const imageSrc = image || "/services/default-service.png";
+  const imageSrc = image || "/Services/default-service.png";
 
   const handlePhoneClick = () => {
     event("phone_click", {

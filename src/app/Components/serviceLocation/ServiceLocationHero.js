@@ -99,7 +99,7 @@ export default function ServiceLocationHero({ service, location }) {
             </Link>
 
             <Link
-              href={`/services/${service.slug}`}
+              href={`/Services/${service.slug}`}
               className="group flex items-center gap-2 rounded-full border border-white/10 px-8 py-4 text-white transition-all duration-300 hover:border-cyan-400 hover:bg-white/5"
             >
               View {serviceName}

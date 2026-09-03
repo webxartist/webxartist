@@ -1,0 +1,83 @@
+# Query: /services
+# Flags: CaseSensitive WordMatch RegExp
+
+45 results - 17 files
+
+src\app\sitemap.js:
+  1: import services from "@/data/services";
+
+src\app\admin\layout.jsx:
+  31:     href: "/admin/dashboard/services",
+
+src\app\admin\dashboard\ServicesImportButton.jsx:
+  14:       const response = await fetch("/api/admin/services/import", {
+
+src\app\admin\dashboard\services\page.jsx:
+   22:       const res = await fetch("/api/admin/services", {
+   61:       const res = await fetch("/api/admin/services/import", {
+  102:       const res = await fetch(`/api/admin/services/${id}`, {
+  196:             href="/admin/dashboard/services/new"
+  239:               href="/admin/dashboard/services/new"
+  313:                           href={`/admin/dashboard/services/${service._id}/edit`}
+
+src\app\admin\dashboard\services\[id]\edit\page.jsx:
+    80:         const response = await fetch(`/api/admin/services/${id}`, {
+   345:       const response = await fetch(`/api/admin/services/${id}`, {
+   362:         router.push("/admin/dashboard/services");
+   400:               onClick={() => router.push("/admin/dashboard/services")}
+   424:               onClick={() => router.push("/admin/dashboard/services")}
+  1109:               onClick={() => router.push("/admin/dashboard/services")}
+
+src\app\admin\dashboard\services\new\page.js:
+   353:       const response = await fetch("/api/admin/services", {
+   370:         router.push("/admin/dashboard/services");
+   526:                     placeholder="/Services/banner.jpg"
+  1101:               onClick={() => router.push("/admin/dashboard/services")}
+
+src\app\admin\services\route.js:
+  19:  * GET /api/admin/services
+  62:  * POST /api/admin/services
+
+src\app\api\admin\services\[id]\route.js:
+   22:  * GET /api/admin/services/[id]
+   72:  * PUT /api/admin/services/[id]
+  160:  * DELETE /api/admin/services/[id]
+
+src\app\api\admin\services\import\route.js:
+   6: import services from "@/data/services";
+  37:           message: "No services found in src/data/services.js",
+
+src\app\Components\Service.js:
+  6: import services from "@/data/services";
+
+src\app\Components\locations\LocationServices.js:
+  7: import services from "@/data/services";
+
+src\app\Components\serviceLocation\RelatedServices.js:
+  2: import services from "@/data/services";
+
+src\app\Components\services\RelatedServices.js:
+  7: import services from "@/data/services";
+
+src\app\Services\page.js:
+  1: import services from "@/data/services";
+
+src\app\Services\[slug]\page.js:
+    2: import services from "@/data/services";
+    4: import ServiceHero from "@/app/Components/services/ServicesHero";
+    5: import ServiceOverview from "@/app/Components/services/ServicesOverview";
+    6: import ServiceFeatures from "@/app/Components/services/ServicesFeatures";
+    7: import ServiceProcess from "@/app/Components/services/ServiceProcess";
+    8: import ServiceBenefits from "@/app/Components/services/ServiceBenefits";
+    9: import ServiceTechnologies from "@/app/Components/services/ServiceTechnologies";
+   10: import ServiceFAQ from "@/app/Components/services/ServiceFaq";
+   11: import RelatedServices from "@/app/Components/services/RelatedServices";
+   12: import ServiceCTA from "@/app/Components/services/ServiceCTA";
+   13: import ServiceLocations from "@/app/Components/services/ServiceLocation";
+  547:         item: `${baseUrl}/services`,
+
+src\data\services.js:
+  1373:     heroImage: "/services/content-creation-banner.jpg",
+
+src\lib\serviceLocation.js:
+  1: import services from "@/data/services";

@@ -5,11 +5,11 @@ const services = [
     name: "Website Development",
 
     image: "/webdevelopment.png",
-    heroImage: "/services/website-development-banner.jpg",
+    heroImage: "/Services/website-development-banner.jpg",
 
     shortDescription: "Websites that help businesses grow online.",
 
-    description: 
+    description:
       "We design and develop fast, responsive, and SEO-friendly websites that help businesses build trust, generate quality leads, and increase sales. Whether you need a business website, a personal portfolio, an e-commerce store, or a custom web application, WebXArtist delivers complete digital solutions tailored to your goals and built to perform, not just to look good.",
 
     overviewdescription:
@@ -257,7 +257,7 @@ const services = [
     name: "Google Ads",
 
     image: "/google-ads.png",
-    heroImage: "/services/google-ads-banner.jpg",
+    heroImage: "/Services/google-ads-banner.jpg",
 
     category: "Marketing",
 
@@ -487,7 +487,7 @@ const services = [
     name: "Meta Ads",
 
     image: "/meta-ads.jpg",
-    heroImage: "/services/meta-ads-banner.jpg",
+    heroImage: "/Services/meta-ads-banner.jpg",
 
     category: "Marketing",
 
@@ -708,7 +708,7 @@ const services = [
     name: "Google Business Profile",
 
     image: "/google-my-business.png",
-    heroImage: "/services/google-my-business-banner.png",
+    heroImage: "/Services/google-my-business-banner.png",
 
     category: "Marketing",
 
@@ -929,7 +929,7 @@ const services = [
     name: "SEO Services",
 
     image: "/seo.png",
-    heroImage: "/services/seo-banner.jpg",
+    heroImage: "/Services/seo-banner.jpg",
 
     category: "Digital Marketing",
 
@@ -1150,7 +1150,7 @@ const services = [
     name: "Social Media Management",
 
     image: "/social.png",
-    heroImage: "/services/social-media-banner.jpg",
+    heroImage: "/Services/social-media-banner.jpg",
 
     category: "Digital Marketing",
 
@@ -1370,7 +1370,7 @@ const services = [
     name: "Content Creation",
 
     image: "/content.png",
-    heroImage: "/services/content-creation-banner.jpg",
+    heroImage: "/Services/content-creation-banner.jpg",
 
     category: "Digital Marketing",
 
@@ -1591,7 +1591,7 @@ const services = [
     name: "Maintenance & Support",
 
     image: "/maintenance.png",
-    heroImage: "/services/maintenance-banner.png",
+    heroImage: "/Services/maintenance-banner.png",
 
     category: "Development",
 

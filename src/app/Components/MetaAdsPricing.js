@@ -8,7 +8,7 @@ import Link from "next/link";
 const whatsappNumber = "918169413149";
 
 // ⭐ Internal Service Page
-const metaAdsServiceUrl = "/services/meta-ads";
+const metaAdsServiceUrl = "/Services/meta-ads";
 
 const getWhatsappLink = (plan) => {
   const message = [
