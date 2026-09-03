@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 import connectMongoDB from "@/lib/mongodb";
 
-import Service from "@/models/Service";
+import Service from "@/models/Services";
 import Location from "@/models/Location";
 import ServiceLocation from "@/models/ServiceLocation";
 
