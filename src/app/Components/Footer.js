@@ -16,11 +16,11 @@ import { motion } from "framer-motion";
 
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/Services" },
-  { name: "Pricing", href: "/Pricing" },
-  { name: "Why Us", href: "/Whyus" },
-  { name: "About", href: "/About" },
-  { name: "ContactUs", href: "/ContactUs" },
+  { name: "Services", href: "/services" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Why Us", href: "/whyus" },
+  { name: "About", href: "/about" },
+  { name: "ContactUs", href: "/contactus" },
 ];
 
 const socialLinks = [

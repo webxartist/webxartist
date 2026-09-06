@@ -51,7 +51,7 @@ export default function RelatedLocations({ service, currentLocation }) {
           {relatedLocations.map((location) => (
             <Link
               key={location.slug}
-              href={`/Services/${service.slug}/${location.slug}`}
+              href={`/services/${service.slug}/${location.slug}`}
               className="group rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:bg-white/[0.07]"
               aria-label={`${service.name} services in ${location.city}`}
             >

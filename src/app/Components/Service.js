@@ -71,7 +71,7 @@ const Service = () => {
         aria-label="WebXArtist services"
       >
         {services.map((service, index) => {
-          const serviceUrl = `/Services/${service.slug}`;
+          const serviceUrl = `/services/${service.slug}`;
 
           return (
             <motion.article

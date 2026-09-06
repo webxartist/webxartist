@@ -195,7 +195,7 @@ export default function Pricing() {
 
               {/* Internal Service Link */}
               <Link
-                href="/Services/website-development"
+                href="/services/website-development"
                 className="group mb-3 flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.04] py-3 text-[13px] font-semibold text-slate-200 transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/[0.06] hover:text-cyan-300"
                 aria-label={`Learn more about ${plan.title} website development`}
               >
@@ -250,7 +250,7 @@ export default function Pricing() {
           {/* Main Internal Link */}
           <div className="mt-7">
             <Link
-              href="/Services/website-development"
+              href="/services/website-development"
               className="group inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/[0.05] px-6 py-3 text-sm font-semibold text-cyan-300 transition-all duration-300 hover:border-cyan-400/40 hover:bg-cyan-400/[0.1] hover:text-cyan-200"
             >
               Explore Our Website Development Service

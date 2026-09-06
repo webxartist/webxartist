@@ -145,7 +145,7 @@ export async function generateMetadata({ params }) {
   |--------------------------------------------------------------------------
   */
 
-  const serviceUrl = `${baseUrl}/Services/${service.slug}`;
+  const serviceUrl = `${baseUrl}/services/${service.slug}`;
 
   /*
   |--------------------------------------------------------------------------
@@ -330,7 +330,7 @@ export default async function ServicePage({ params }) {
   |--------------------------------------------------------------------------
   */
 
-  const serviceUrl = `${baseUrl}/Services/${service.slug}`;
+  const serviceUrl = `${baseUrl}/services/${service.slug}`;
 
   /*
   |--------------------------------------------------------------------------
@@ -542,7 +542,7 @@ export default async function ServicePage({ params }) {
 
         name: "Services",
 
-        item: `${baseUrl}/Services`,
+        item: `${baseUrl}/services`,
       },
 
       {

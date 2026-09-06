@@ -50,7 +50,7 @@ export async function generateMetadata({ params }) {
 
       images: [
         {
-          url: "/Services-banner.png",
+          url: "/services-banner.png",
           width: 1200,
           height: 630,
           alt: location.title,

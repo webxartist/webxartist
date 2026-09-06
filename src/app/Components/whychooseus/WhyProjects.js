@@ -110,7 +110,7 @@ export default function WhyProjects() {
                 </p>
 
                 <Link
-                  href="/ContactUs"
+                  href="/contactus"
                   className="mt-8 inline-flex items-center gap-2 font-semibold text-cyan-400 hover:text-orange-400 transition-colors"
                 >
                   View Project
@@ -129,7 +129,7 @@ export default function WhyProjects() {
           className="mt-16 text-center"
         >
           <Link
-            href="/ContactUs"
+            href="/contactus"
             className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-cyan-400 via-orange-400 to-amber-300 px-8 py-4 font-semibold text-[#080a20] hover:scale-105 transition"
           >
             Explore Our Portfolio

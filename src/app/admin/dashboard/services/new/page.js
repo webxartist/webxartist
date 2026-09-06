@@ -523,7 +523,7 @@ export default function AddServicePage() {
                     name="heroImage"
                     value={form.heroImage}
                     onChange={handleChange}
-                    placeholder="/Services/banner.jpg"
+                    placeholder="/services/banner.jpg"
                     className="w-full rounded-lg border px-4 py-3"
                   />
                 </div>

@@ -135,7 +135,7 @@ export default function NewServiceLocationPage() {
 
   const pageUrl =
     selectedService?.slug && selectedLocation?.slug
-      ? `/Services/${selectedService.slug}/${selectedLocation.slug}`
+      ? `/services/${selectedService.slug}/${selectedLocation.slug}`
       : "";
 
   const handleSubmit = async (e) => {

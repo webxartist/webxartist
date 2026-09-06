@@ -8,7 +8,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const whatsappNumber = "918169413149";
 
 // Actual service page URL
-const serviceHref = "/Services/social-media-management";
+const serviceHref = "/services/social-media-management";
 
 const getWhatsappLink = (plan) => {
   const message = [

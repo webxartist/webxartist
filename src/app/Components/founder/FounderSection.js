@@ -314,7 +314,7 @@ export default function FounderSection() {
             </p>
 
             <Link
-              href="/ContactUs"
+              href="/contactus"
               className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#080a20] transition-transform hover:-translate-y-0.5"
             >
               Discuss your business
@@ -473,7 +473,7 @@ export default function FounderSection() {
           </div>
 
           <Link
-            href="/ContactUs"
+            href="/contactus"
             className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-white/10 bg-white px-6 py-3 text-sm font-semibold text-[#080a20] transition-all hover:border-cyan-300 hover:bg-cyan-300"
           >
             Start a conversation

@@ -5,7 +5,7 @@ const services = [
     name: "Website Development",
 
     image: "/webdevelopment.png",
-    heroImage: "/Services/website-development-banner.jpg",
+    heroImage: "/services/website-development-banner.jpg",
 
     shortDescription: "Websites that help businesses grow online.",
 
@@ -257,7 +257,7 @@ const services = [
     name: "Google Ads",
 
     image: "/google-ads.png",
-    heroImage: "/Services/google-ads-banner.jpg",
+    heroImage: "/services/google-ads-banner.jpg",
 
     category: "Marketing",
 
@@ -487,7 +487,7 @@ const services = [
     name: "Meta Ads",
 
     image: "/meta-ads.jpg",
-    heroImage: "/Services/meta-ads-banner.jpg",
+    heroImage: "/services/meta-ads-banner.jpg",
 
     category: "Marketing",
 
@@ -708,7 +708,7 @@ const services = [
     name: "Google Business Profile",
 
     image: "/google-my-business.png",
-    heroImage: "/Services/google-my-business-banner.png",
+    heroImage: "/services/google-my-business-banner.png",
 
     category: "Marketing",
 
@@ -929,7 +929,7 @@ const services = [
     name: "SEO Services",
 
     image: "/seo.png",
-    heroImage: "/Services/seo-banner.jpg",
+    heroImage: "/services/seo-banner.jpg",
 
     category: "Digital Marketing",
 
@@ -1150,7 +1150,7 @@ const services = [
     name: "Social Media Management",
 
     image: "/social.png",
-    heroImage: "/Services/social-media-banner.jpg",
+    heroImage: "/services/social-media-banner.jpg",
 
     category: "Digital Marketing",
 
@@ -1370,7 +1370,7 @@ const services = [
     name: "Content Creation",
 
     image: "/content.png",
-    heroImage: "/Services/content-creation-banner.jpg",
+    heroImage: "/services/content-creation-banner.jpg",
 
     category: "Digital Marketing",
 
@@ -1591,7 +1591,7 @@ const services = [
     name: "Maintenance & Support",
 
     image: "/maintenance.png",
-    heroImage: "/Services/maintenance-banner.png",
+    heroImage: "/services/maintenance-banner.png",
 
     category: "Development",
 

@@ -5,7 +5,7 @@ import Whatsapp from "../Components/WhatsApp";
 import Instagram from "../Components/Instgram";
 
 const baseUrl = "https://www.webxartist.com";
-const servicesUrl = `${baseUrl}/Services`;
+const servicesUrl = `${baseUrl}/services`;
 const siteName = "WebXArtist Institute & Agency";
 const brandName = "WebXArtist";
 
@@ -240,7 +240,7 @@ export const metadata = {
 
     images: [
       {
-        url: `${baseUrl}/Services-banner.png`,
+        url: `${baseUrl}/services-banner.png`,
 
         width: 1200,
 
@@ -265,7 +265,7 @@ export const metadata = {
     description:
       "Website development, SEO, Google Ads, Meta Ads, Google Business Profile, social media management, content creation and website maintenance services by WebXArtist.",
 
-    images: [`${baseUrl}/Services-banner.png`],
+    images: [`${baseUrl}/services-banner.png`],
   },
 };
 
@@ -368,7 +368,7 @@ export default function Page() {
 
       name: service.name,
 
-      url: `${baseUrl}/Services/${service.slug}`,
+      url: `${baseUrl}/services/${service.slug}`,
     })),
   };
 

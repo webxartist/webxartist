@@ -90,7 +90,7 @@ export default function ServiceLocations({ service }) {
               whileHover={{ y: -6 }}
             >
               <Link
-                href={`/Services/${service.slug}/${location.slug}`}
+                href={`/services/${service.slug}/${location.slug}`}
                 aria-label={`View ${service.name} services in ${location.city}`}
                 className="group block h-full rounded-3xl border border-white/10 bg-white/[0.04] p-7 transition-all duration-300 hover:border-cyan-400/40 hover:bg-white/[0.07] hover:shadow-xl hover:shadow-cyan-500/5"
               >

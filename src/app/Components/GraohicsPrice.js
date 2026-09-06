@@ -8,7 +8,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const whatsappNumber = "918169413149";
 
 // Actual Graphic Design service page
-const serviceHref = "/ContactUs";
+const serviceHref = "/contactus";
 
 const getWhatsappLink = (plan) => {
   const message = `Hello WebXArtist 👋

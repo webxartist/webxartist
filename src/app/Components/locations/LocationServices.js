@@ -51,7 +51,7 @@ export default function LocationServices({ location }) {
               transition={{ delay: index * 0.08 }}
             >
               <Link
-                href={`/Services/${service.slug}`}
+                href={`/services/${service.slug}`}
                 className="group block h-full rounded-3xl border border-white/10 bg-white/5 p-8 hover:border-cyan-400/30 transition-all duration-300"
               >
                 <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6">
