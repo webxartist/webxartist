@@ -10,6 +10,7 @@ import ContactPopup from "./Components/ContactPopup";
 import Instagram from "@/app/Components/Instgram";
 import Whatsapp from "@/app/Components/WhatsApp";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 // ------------------------------------------------------
 // ⭐ POPPINS FONT
@@ -303,6 +304,7 @@ export default function RootLayout({ children }) {
         <SpeedInsights />
 
         {children}
+        <Analytics />
 
         <ContactPopup />
 
