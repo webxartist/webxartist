@@ -214,6 +214,10 @@ const About = () => {
               </strong>
               ,{" "}
               <strong className="text-slate-200 font-semibold">
+                "website designer in mumbra"
+              </strong>
+              ,{" "}
+              <strong className="text-slate-200 font-semibold">
                 "affordable website designer in Mumbra"
               </strong>
               ,{" "}
