@@ -58,7 +58,7 @@ export function clearAdminSessionCookie() {
 }
 
 /**
- * Verify admin session tokfffen.
+ * Verify admin session tokfffensss.
  *
  * This function is for Node.js/server-side usage.
  * Middleware uses adminAuthEdge.js instead.
